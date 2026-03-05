@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Wykład 2 – Projektowanie aplikacji internetowych i korporacyjnych</title>
+<title>Konteneryzacja i Docker – Koniec z U mnie działa! – Projektowanie aplikacji internetowych i korporacyjnych</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -109,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykłady</a></li><li class="breadcrumb-item"><a href="../lectures/wyklad2.html">Wykład 2</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykłady</a></li><li class="breadcrumb-item"><a href="../lectures/wyklad2.html">Konteneryzacja i Docker – Koniec z U mnie działa!</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -145,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/wyklad2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Wykład 2</span></a>
+ <span class="menu-text">Konteneryzacja i Docker – Koniec z U mnie działa!</span></a>
   </div>
 </li>
       </ul>
@@ -155,15 +190,26 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><strong>Sections</strong></h2>
+   
+  <ul class="collapse">
+  <li><a href="#problem-u-mnie-działa-czyli-piekło-zależności-matrix-of-hell" id="toc-problem-u-mnie-działa-czyli-piekło-zależności-matrix-of-hell" class="nav-link active" data-scroll-target="#problem-u-mnie-działa-czyli-piekło-zależności-matrix-of-hell">1. Problem: “U mnie działa”, czyli Piekło Zależności (Matrix of Hell)</a></li>
+  <li><a href="#rozwiązanie-metafora-transportu-morskiego" id="toc-rozwiązanie-metafora-transportu-morskiego" class="nav-link" data-scroll-target="#rozwiązanie-metafora-transportu-morskiego">2. Rozwiązanie: Metafora transportu morskiego</a></li>
+  <li><a href="#maszyny-wirtualne-vm-vs.-kontenery-docker" id="toc-maszyny-wirtualne-vm-vs.-kontenery-docker" class="nav-link" data-scroll-target="#maszyny-wirtualne-vm-vs.-kontenery-docker">3. Maszyny Wirtualne (VM) vs.&nbsp;Kontenery (Docker)</a></li>
+  <li><a href="#w-czym-docker-pomaga-w-aplikacjach-internetowych-enterprise" id="toc-w-czym-docker-pomaga-w-aplikacjach-internetowych-enterprise" class="nav-link" data-scroll-target="#w-czym-docker-pomaga-w-aplikacjach-internetowych-enterprise">4. W czym Docker pomaga w aplikacjach internetowych (Enterprise)?</a></li>
+  <li><a href="#święta-trójca-dockera-plik-obraz-i-kontener" id="toc-święta-trójca-dockera-plik-obraz-i-kontener" class="nav-link" data-scroll-target="#święta-trójca-dockera-plik-obraz-i-kontener">5. Święta Trójca Dockera: Plik, Obraz i Kontener</a></li>
+  <li><a href="#docker-w-praktyce-pakujemy-nasz-serwer-z-wykładu-1" id="toc-docker-w-praktyce-pakujemy-nasz-serwer-z-wykładu-1" class="nav-link" data-scroll-target="#docker-w-praktyce-pakujemy-nasz-serwer-z-wykładu-1">6. Docker w praktyce: Pakujemy nasz serwer z Wykładu 1</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykłady</a></li><li class="breadcrumb-item"><a href="../lectures/wyklad2.html">Wykład 2</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykłady</a></li><li class="breadcrumb-item"><a href="../lectures/wyklad2.html">Konteneryzacja i Docker – Koniec z U mnie działa!</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Wykład 2</h1>
+<h1 class="title">Konteneryzacja i Docker – Koniec z U mnie działa!</h1>
 </div>
 
 
@@ -180,8 +226,98 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="problem-u-mnie-działa-czyli-piekło-zależności-matrix-of-hell" class="level2">
+<h2 class="anchored" data-anchor-id="problem-u-mnie-działa-czyli-piekło-zależności-matrix-of-hell">1. Problem: “U mnie działa”, czyli Piekło Zależności (Matrix of Hell)</h2>
+<p>Wyobraźmy sobie sytuację z życia typowego zespołu programistycznego: Student (lub Junior Developer) pisze na swoim MacBooku kod serwera w Node.js (wersja 20). Wszystko działa idealnie. Wysyła kod do kolegi, który ma system Windows z Node.js (wersja 14) – kod rzuca błędami. Ostatecznie kod trafia na serwer produkcyjny z Linuxem Ubuntu, gdzie w ogóle brakuje połowy bibliotek. Aplikacja nie wstaje.</p>
+<p><strong>Główne problemy klasycznego podejścia:</strong> * <strong>Niespójność środowisk:</strong> Różne systemy operacyjne (Windows, macOS, Linux). * <strong>Konflikty wersji:</strong> Aplikacja A na serwerze wymaga Pythona 3.8, a nowa Aplikacja B wymaga Pythona 3.12. Instalacja jednego psuje drugie. * <strong>Trudny onboarding:</strong> Nowy pracownik traci 3 dni na instalowanie baz danych, środowisk i bibliotek, zanim uruchomi projekt na swoim komputerze.</p>
+</section>
+<section id="rozwiązanie-metafora-transportu-morskiego" class="level2">
+<h2 class="anchored" data-anchor-id="rozwiązanie-metafora-transportu-morskiego">2. Rozwiązanie: Metafora transportu morskiego</h2>
+<p>Zanim powstały fizyczne kontenery morskie, transport towarów był koszmarem. Worki z kawą, beczki z winem i stalowe rury ładowano ręcznie. Każdy statek musiał być inaczej przygotowany. Potem wymyślono <strong>standaryzowany stalowy kontener</strong>. Statku, pociągu ani dźwigu nie obchodzi, co jest w środku. Jeśli coś mieści się w kontenerze, można to bez problemu przetransportować i rozładować w dowolnym porcie na świecie.</p>
+<p><strong>Docker robi dokładnie to samo dla oprogramowania.</strong> Pakuje Twój kod, biblioteki, środowisko (np. Pythona) i ustawienia systemowe do jednego, ustandaryzowanego “pudełka” (kontenera). Serwera docelowego nie obchodzi, w jakim języku piszesz. Jeśli serwer ma zainstalowanego Dockera, Twój kontener na 100% tam zadziała – dokładnie tak samo, jak na Twoim laptopie.</p>
+</section>
+<section id="maszyny-wirtualne-vm-vs.-kontenery-docker" class="level2">
+<h2 class="anchored" data-anchor-id="maszyny-wirtualne-vm-vs.-kontenery-docker">3. Maszyny Wirtualne (VM) vs.&nbsp;Kontenery (Docker)</h2>
+<p>Zanim pojawił się Docker, problem izolacji rozwiązywano maszynami wirtualnymi (np. VirtualBox, VMware). Dlaczego kontenery je wyparły w web developmencie?</p>
+<ul>
+<li><strong>Maszyna Wirtualna (VM):</strong> Symuluje cały komputer. Instalujesz aplikację, biblioteki, ale też <strong>cały oddzielny system operacyjny (Guest OS)</strong>. Jest ciężka (zajmuje gigabajty), uruchamia się minutami i zużywa mnóstwo RAM-u.</li>
+<li><strong>Kontener (Docker):</strong> Dzieli jądro (Kernel) systemu operacyjnego gospodarza. Pakuje tylko to, co niezbędne dla aplikacji. Waży megabajty, uruchamia się w ułamku sekundy i jest niezwykle lekki. Na jednym serwerze możesz uruchomić 100 kontenerów, ale tylko kilka maszyn wirtualnych.</li>
+</ul>
+</section>
+<section id="w-czym-docker-pomaga-w-aplikacjach-internetowych-enterprise" class="level2">
+<h2 class="anchored" data-anchor-id="w-czym-docker-pomaga-w-aplikacjach-internetowych-enterprise">4. W czym Docker pomaga w aplikacjach internetowych (Enterprise)?</h2>
+<ol type="1">
+<li><strong>Izolacja usług (Mikroserwisy):</strong> Frontend (React), Backend (Python) i Baza Danych (PostgreSQL) mogą działać w trzech osobnych kontenerach, nie wchodząc sobie w drogę.</li>
+<li><strong>Skalowalność:</strong> Czarny Piątek w sklepie internetowym? Zamiast kupować nowy serwer, Docker potrafi w sekundę sklonować Twój kontener z serwerem API 50 razy, aby obsłużyć ruch.</li>
+<li><strong>Pewność wdrożeń (CI/CD):</strong> Zbudowany raz kontener jest przesyłany z komputera programisty, przez środowisko testowe, aż na produkcję. Mamy gwarancję, że nic się nie “rozsypie” po drodze.</li>
+</ol>
+</section>
+<section id="święta-trójca-dockera-plik-obraz-i-kontener" class="level2">
+<h2 class="anchored" data-anchor-id="święta-trójca-dockera-plik-obraz-i-kontener">5. Święta Trójca Dockera: Plik, Obraz i Kontener</h2>
+<p>Aby pracować z Dockerem, musimy zrozumieć trzy pojęcia, z których wynika cały proces:</p>
+<ol type="1">
+<li><strong>Dockerfile (Przepis kulinarny):</strong> Zwykły plik tekstowy z instrukcjami, jak zbudować nasze środowisko (np. “Weź Linuxa, doinstaluj Pythona, skopiuj mój kod, uruchom serwer”).</li>
+<li><strong>Image (Upieczone ciasto / Szablon):</strong> Wynik wykonania Dockerfile’a. To gotowa, zamrożona paczka z naszą aplikacją. Można ją przesłać do internetu (np. na Docker Hub). Jest “tylko do odczytu”.</li>
+<li><strong>Container (Zjedzenie ciasta / Uruchomiony proces):</strong> Ożywiony Obraz. To działająca instancja naszej aplikacji. Możemy uruchomić 5 kontenerów z tego samego 1 Obrazu.</li>
+</ol>
+</section>
+<section id="docker-w-praktyce-pakujemy-nasz-serwer-z-wykładu-1" class="level2">
+<h2 class="anchored" data-anchor-id="docker-w-praktyce-pakujemy-nasz-serwer-z-wykładu-1">6. Docker w praktyce: Pakujemy nasz serwer z Wykładu 1</h2>
+<p>Weźmy nasz prosty serwer z poprzednich zajęć (napisany w Pythonie / Flasku) i zamknijmy go w kontenerze. Potrzebujemy do tego zaledwie trzech plików w jednym folderze.</p>
+<section id="krok-1-kod-serwera-app.py" class="level3">
+<h3 class="anchored" data-anchor-id="krok-1-kod-serwera-app.py">Krok 1: Kod serwera (<code>app.py</code>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, jsonify</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">'/api/powitanie'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> powitanie():</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jsonify({<span class="st">"wiadomosc"</span>: <span class="st">"Witaj z wnętrza kontenera Docker!"</span>})</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ważne: w Dockerze musimy nasłuchiwać na wszystkich interfejsach (0.0.0.0)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    app.run(host<span class="op">=</span><span class="st">'0.0.0.0'</span>, port<span class="op">=</span><span class="dv">5000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="krok-2-lista-zależności-requirements.txt" class="level3">
+<h3 class="anchored" data-anchor-id="krok-2-lista-zależności-requirements.txt">Krok 2: Lista zależności (requirements.txt)</h3>
+<p>Zamiast instalować pakiety ręcznie, wypisujemy je tutaj, by Docker zrobił to za nas.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Flask==3.0.0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="krok-3-plik-instrukcji-dockerfile" class="level3">
+<h3 class="anchored" data-anchor-id="krok-3-plik-instrukcji-dockerfile">Krok 3: Plik instrukcji (Dockerfile)</h3>
+<p>To jest serce konteneryzacji. Zobacz, jak czytelne są te polecenia:</p>
+<pre><code># 1. Wybierz oficjalny obraz bazowy (lekki Python)
+FROM python:3.11-slim
+
+# 2. Ustaw katalog roboczy wewnątrz kontenera
+WORKDIR /app
+
+# 3. Skopiuj plik z zależnościami z Twojego komputera do kontenera
+COPY requirements.txt .
+
+# 4. Zainstaluj potrzebne biblioteki (w środku kontenera!)
+RUN pip install -r requirements.txt
+
+# 5. Skopiuj resztę kodu (nasz plik app.py)
+COPY app.py .
+
+# 6. Poinformuj Dockera, że aplikacja używa portu 5000
+EXPOSE 5000
+
+# 7. Komenda, która wykona się przy starcie kontenera
+CMD ["python", "app.py"]</code></pre>
+<ol start="7" type="1">
+<li>Jak uruchomić to cudo w terminalu? Mając te trzy pliki, wywołujemy w konsoli tylko dwie komendy:</li>
+</ol>
+<p>Budowanie Obrazu (Building the Image): Mówimy Dockerowi: “Zbuduj obraz na podstawie obecnego katalogu (.) i nazwij go moj-serwer-api”.</p>
+<pre><code>docker build -t moj-serwer-api .</code></pre>
+<p>Uruchomienie Kontenera (Running the Container): Mówimy: “Uruchom kontener z obrazu moj-serwer-api i połącz port 5000 na moim komputerze z portem 5000 wewnątrz kontenera”.</p>
+<pre><code>docker run -p 5000:5000 moj-serwer-api</code></pre>
+<p>Gotowe! Twoja aplikacja działa. Jeśli teraz wyślesz ten sam Obraz do kolegi, nie musi on instalować Pythona ani Flaska. Wpisuje tylko komendę docker run i serwer działa u niego identycznie.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

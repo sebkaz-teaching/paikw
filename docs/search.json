@@ -57,6 +57,90 @@
     ]
   },
   {
+    "objectID": "lectures/wyklad2.html",
+    "href": "lectures/wyklad2.html",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "",
+    "text": "Wyobraźmy sobie sytuację z życia typowego zespołu programistycznego: Student (lub Junior Developer) pisze na swoim MacBooku kod serwera w Node.js (wersja 20). Wszystko działa idealnie. Wysyła kod do kolegi, który ma system Windows z Node.js (wersja 14) – kod rzuca błędami. Ostatecznie kod trafia na serwer produkcyjny z Linuxem Ubuntu, gdzie w ogóle brakuje połowy bibliotek. Aplikacja nie wstaje.\nGłówne problemy klasycznego podejścia: * Niespójność środowisk: Różne systemy operacyjne (Windows, macOS, Linux). * Konflikty wersji: Aplikacja A na serwerze wymaga Pythona 3.8, a nowa Aplikacja B wymaga Pythona 3.12. Instalacja jednego psuje drugie. * Trudny onboarding: Nowy pracownik traci 3 dni na instalowanie baz danych, środowisk i bibliotek, zanim uruchomi projekt na swoim komputerze.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html#problem-u-mnie-działa-czyli-piekło-zależności-matrix-of-hell",
+    "href": "lectures/wyklad2.html#problem-u-mnie-działa-czyli-piekło-zależności-matrix-of-hell",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "",
+    "text": "Wyobraźmy sobie sytuację z życia typowego zespołu programistycznego: Student (lub Junior Developer) pisze na swoim MacBooku kod serwera w Node.js (wersja 20). Wszystko działa idealnie. Wysyła kod do kolegi, który ma system Windows z Node.js (wersja 14) – kod rzuca błędami. Ostatecznie kod trafia na serwer produkcyjny z Linuxem Ubuntu, gdzie w ogóle brakuje połowy bibliotek. Aplikacja nie wstaje.\nGłówne problemy klasycznego podejścia: * Niespójność środowisk: Różne systemy operacyjne (Windows, macOS, Linux). * Konflikty wersji: Aplikacja A na serwerze wymaga Pythona 3.8, a nowa Aplikacja B wymaga Pythona 3.12. Instalacja jednego psuje drugie. * Trudny onboarding: Nowy pracownik traci 3 dni na instalowanie baz danych, środowisk i bibliotek, zanim uruchomi projekt na swoim komputerze.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html#rozwiązanie-metafora-transportu-morskiego",
+    "href": "lectures/wyklad2.html#rozwiązanie-metafora-transportu-morskiego",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "2. Rozwiązanie: Metafora transportu morskiego",
+    "text": "2. Rozwiązanie: Metafora transportu morskiego\nZanim powstały fizyczne kontenery morskie, transport towarów był koszmarem. Worki z kawą, beczki z winem i stalowe rury ładowano ręcznie. Każdy statek musiał być inaczej przygotowany. Potem wymyślono standaryzowany stalowy kontener. Statku, pociągu ani dźwigu nie obchodzi, co jest w środku. Jeśli coś mieści się w kontenerze, można to bez problemu przetransportować i rozładować w dowolnym porcie na świecie.\nDocker robi dokładnie to samo dla oprogramowania. Pakuje Twój kod, biblioteki, środowisko (np. Pythona) i ustawienia systemowe do jednego, ustandaryzowanego “pudełka” (kontenera). Serwera docelowego nie obchodzi, w jakim języku piszesz. Jeśli serwer ma zainstalowanego Dockera, Twój kontener na 100% tam zadziała – dokładnie tak samo, jak na Twoim laptopie.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html#maszyny-wirtualne-vm-vs.-kontenery-docker",
+    "href": "lectures/wyklad2.html#maszyny-wirtualne-vm-vs.-kontenery-docker",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "3. Maszyny Wirtualne (VM) vs. Kontenery (Docker)",
+    "text": "3. Maszyny Wirtualne (VM) vs. Kontenery (Docker)\nZanim pojawił się Docker, problem izolacji rozwiązywano maszynami wirtualnymi (np. VirtualBox, VMware). Dlaczego kontenery je wyparły w web developmencie?\n\nMaszyna Wirtualna (VM): Symuluje cały komputer. Instalujesz aplikację, biblioteki, ale też cały oddzielny system operacyjny (Guest OS). Jest ciężka (zajmuje gigabajty), uruchamia się minutami i zużywa mnóstwo RAM-u.\nKontener (Docker): Dzieli jądro (Kernel) systemu operacyjnego gospodarza. Pakuje tylko to, co niezbędne dla aplikacji. Waży megabajty, uruchamia się w ułamku sekundy i jest niezwykle lekki. Na jednym serwerze możesz uruchomić 100 kontenerów, ale tylko kilka maszyn wirtualnych.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html#w-czym-docker-pomaga-w-aplikacjach-internetowych-enterprise",
+    "href": "lectures/wyklad2.html#w-czym-docker-pomaga-w-aplikacjach-internetowych-enterprise",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "4. W czym Docker pomaga w aplikacjach internetowych (Enterprise)?",
+    "text": "4. W czym Docker pomaga w aplikacjach internetowych (Enterprise)?\n\nIzolacja usług (Mikroserwisy): Frontend (React), Backend (Python) i Baza Danych (PostgreSQL) mogą działać w trzech osobnych kontenerach, nie wchodząc sobie w drogę.\nSkalowalność: Czarny Piątek w sklepie internetowym? Zamiast kupować nowy serwer, Docker potrafi w sekundę sklonować Twój kontener z serwerem API 50 razy, aby obsłużyć ruch.\nPewność wdrożeń (CI/CD): Zbudowany raz kontener jest przesyłany z komputera programisty, przez środowisko testowe, aż na produkcję. Mamy gwarancję, że nic się nie “rozsypie” po drodze.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html#święta-trójca-dockera-plik-obraz-i-kontener",
+    "href": "lectures/wyklad2.html#święta-trójca-dockera-plik-obraz-i-kontener",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "5. Święta Trójca Dockera: Plik, Obraz i Kontener",
+    "text": "5. Święta Trójca Dockera: Plik, Obraz i Kontener\nAby pracować z Dockerem, musimy zrozumieć trzy pojęcia, z których wynika cały proces:\n\nDockerfile (Przepis kulinarny): Zwykły plik tekstowy z instrukcjami, jak zbudować nasze środowisko (np. “Weź Linuxa, doinstaluj Pythona, skopiuj mój kod, uruchom serwer”).\nImage (Upieczone ciasto / Szablon): Wynik wykonania Dockerfile’a. To gotowa, zamrożona paczka z naszą aplikacją. Można ją przesłać do internetu (np. na Docker Hub). Jest “tylko do odczytu”.\nContainer (Zjedzenie ciasta / Uruchomiony proces): Ożywiony Obraz. To działająca instancja naszej aplikacji. Możemy uruchomić 5 kontenerów z tego samego 1 Obrazu.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html#docker-w-praktyce-pakujemy-nasz-serwer-z-wykładu-1",
+    "href": "lectures/wyklad2.html#docker-w-praktyce-pakujemy-nasz-serwer-z-wykładu-1",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "6. Docker w praktyce: Pakujemy nasz serwer z Wykładu 1",
+    "text": "6. Docker w praktyce: Pakujemy nasz serwer z Wykładu 1\nWeźmy nasz prosty serwer z poprzednich zajęć (napisany w Pythonie / Flasku) i zamknijmy go w kontenerze. Potrzebujemy do tego zaledwie trzech plików w jednym folderze.\n\nKrok 1: Kod serwera (app.py)\nfrom flask import Flask, jsonify\n\napp = Flask(__name__)\n\n@app.route('/api/powitanie')\ndef powitanie():\n    return jsonify({\"wiadomosc\": \"Witaj z wnętrza kontenera Docker!\"})\n\nif __name__ == '__main__':\n    # Ważne: w Dockerze musimy nasłuchiwać na wszystkich interfejsach (0.0.0.0)\n    app.run(host='0.0.0.0', port=5000)\n\n\nKrok 2: Lista zależności (requirements.txt)\nZamiast instalować pakiety ręcznie, wypisujemy je tutaj, by Docker zrobił to za nas.\nFlask==3.0.0\n\n\nKrok 3: Plik instrukcji (Dockerfile)\nTo jest serce konteneryzacji. Zobacz, jak czytelne są te polecenia:\n# 1. Wybierz oficjalny obraz bazowy (lekki Python)\nFROM python:3.11-slim\n\n# 2. Ustaw katalog roboczy wewnątrz kontenera\nWORKDIR /app\n\n# 3. Skopiuj plik z zależnościami z Twojego komputera do kontenera\nCOPY requirements.txt .\n\n# 4. Zainstaluj potrzebne biblioteki (w środku kontenera!)\nRUN pip install -r requirements.txt\n\n# 5. Skopiuj resztę kodu (nasz plik app.py)\nCOPY app.py .\n\n# 6. Poinformuj Dockera, że aplikacja używa portu 5000\nEXPOSE 5000\n\n# 7. Komenda, która wykona się przy starcie kontenera\nCMD [\"python\", \"app.py\"]\n\nJak uruchomić to cudo w terminalu? Mając te trzy pliki, wywołujemy w konsoli tylko dwie komendy:\n\nBudowanie Obrazu (Building the Image): Mówimy Dockerowi: “Zbuduj obraz na podstawie obecnego katalogu (.) i nazwij go moj-serwer-api”.\ndocker build -t moj-serwer-api .\nUruchomienie Kontenera (Running the Container): Mówimy: “Uruchom kontener z obrazu moj-serwer-api i połącz port 5000 na moim komputerze z portem 5000 wewnątrz kontenera”.\ndocker run -p 5000:5000 moj-serwer-api\nGotowe! Twoja aplikacja działa. Jeśli teraz wyślesz ten sam Obraz do kolegi, nie musi on instalować Pythona ani Flaska. Wpisuje tylko komendę docker run i serwer działa u niego identycznie.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
     "objectID": "lectures/wyklad1.html",
     "href": "lectures/wyklad1.html",
     "title": "Architektura aplikacji internetowych",
