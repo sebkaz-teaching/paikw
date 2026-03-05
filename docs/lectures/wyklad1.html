@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Wykład 1 – Projektowanie aplikacji internetowych i korporacyjnych</title>
+<title>Architektura aplikacji internetowych – Projektowanie aplikacji internetowych i korporacyjnych</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -37,10 +72,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-f1aadacce99040138bbb613f9330654f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-47ced4e51990f65db33ba556d4d102bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8843a38191b55497cd032d3fc2c3d839.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -109,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykłady</a></li><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykład 1</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykłady</a></li><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Architektura aplikacji internetowych</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -139,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/wyklad1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Wykład 1</span></a>
+ <span class="menu-text">Architektura aplikacji internetowych</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -155,15 +190,31 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><strong>Sections</strong></h2>
+   
+  <ul class="collapse">
+  <li><a href="#wstęp-czym-jest-aplikacja-internetowa" id="toc-wstęp-czym-jest-aplikacja-internetowa" class="nav-link active" data-scroll-target="#wstęp-czym-jest-aplikacja-internetowa">Wstęp: Czym jest aplikacja internetowa?</a></li>
+  <li><a href="#paradygmat-klient-serwer" id="toc-paradygmat-klient-serwer" class="nav-link" data-scroll-target="#paradygmat-klient-serwer">Paradygmat Klient-Serwer</a></li>
+  <li><a href="#paradygmat-peer-to-peer-p2p---sieci-równorzędne" id="toc-paradygmat-peer-to-peer-p2p---sieci-równorzędne" class="nav-link" data-scroll-target="#paradygmat-peer-to-peer-p2p---sieci-równorzędne">Paradygmat Peer-to-Peer (P2P - Sieci równorzędne)</a></li>
+  <li><a href="#paradygmat-wydawca-subskrybent-publish-subscribe-event-driven" id="toc-paradygmat-wydawca-subskrybent-publish-subscribe-event-driven" class="nav-link" data-scroll-target="#paradygmat-wydawca-subskrybent-publish-subscribe-event-driven">Paradygmat Wydawca-Subskrybent (Publish-Subscribe / Event-Driven)</a></li>
+  <li><a href="#k-s-kod-po-stronie-klienta-frontend" id="toc-k-s-kod-po-stronie-klienta-frontend" class="nav-link" data-scroll-target="#k-s-kod-po-stronie-klienta-frontend">K-S: Kod po stronie klienta (Frontend)</a></li>
+  <li><a href="#backend---kod-po-stronie-serwera" id="toc-backend---kod-po-stronie-serwera" class="nav-link" data-scroll-target="#backend---kod-po-stronie-serwera">Backend - kod po stronie Serwera</a></li>
+  <li><a href="#application-programming-interface" id="toc-application-programming-interface" class="nav-link" data-scroll-target="#application-programming-interface">Application Programming Interface</a></li>
+  <li><a href="#format-przekazywania-danych-json" id="toc-format-przekazywania-danych-json" class="nav-link" data-scroll-target="#format-przekazywania-danych-json">Format przekazywania danych: JSON</a></li>
+  <li><a href="#podstawy-komunikacji-metoda-get-pobieranie-danych" id="toc-podstawy-komunikacji-metoda-get-pobieranie-danych" class="nav-link" data-scroll-target="#podstawy-komunikacji-metoda-get-pobieranie-danych">Podstawy komunikacji: Metoda GET (Pobieranie danych)</a></li>
+  <li><a href="#anatomia-komunikacji-w-sieci-żądanie-odpowiedź-i-url" id="toc-anatomia-komunikacji-w-sieci-żądanie-odpowiedź-i-url" class="nav-link" data-scroll-target="#anatomia-komunikacji-w-sieci-żądanie-odpowiedź-i-url">Anatomia komunikacji w sieci: Żądanie, Odpowiedź i URL</a></li>
+  <li><a href="#kody-statusów-http-jak-zrozumieć-odpowiedź-serwera" id="toc-kody-statusów-http-jak-zrozumieć-odpowiedź-serwera" class="nav-link" data-scroll-target="#kody-statusów-http-jak-zrozumieć-odpowiedź-serwera">Kody Statusów HTTP: Jak zrozumieć odpowiedź serwera?</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykłady</a></li><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykład 1</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykłady</a></li><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Architektura aplikacji internetowych</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Wykład 1</h1>
+<h1 class="title">Architektura aplikacji internetowych</h1>
 </div>
 
 
@@ -180,8 +231,276 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="wstęp-czym-jest-aplikacja-internetowa" class="level2">
+<h2 class="anchored" data-anchor-id="wstęp-czym-jest-aplikacja-internetowa">Wstęp: Czym jest aplikacja internetowa?</h2>
+<p>Przejście od stron do aplikacji:</p>
+<ul>
+<li>Kiedyś internet to były statyczne dokumenty tekstowe (HTML).</li>
+<li>Dziś to potężne programy działające w przeglądarkach (np. Dysk Google, Netflix, systemy bankowe), które pod spodem mają złożoną architekturę korporacyjną.</li>
+</ul>
+<p>Cel przedmiotu:</p>
+<ul>
+<li>Zrozumienie, jak zaprojektować, zbudować i wdrożyć system, który z jednej strony ma przyjazny interfejs w przeglądarce, a z drugiej potrafi obsłużyć tysiące użytkowników, bezpiecznie przechowując ich dane.</li>
+</ul>
+</section>
+<section id="paradygmat-klient-serwer" class="level2">
+<h2 class="anchored" data-anchor-id="paradygmat-klient-serwer">Paradygmat Klient-Serwer</h2>
+<p><strong>Klient</strong>: To aplikacja lub urządzenie proszące o zasoby (najczęściej przeglądarka internetowa – Chrome, Firefox, ale też aplikacja mobilna). Klient jest “śłepy i głuchy” na to, co dzieje się w serwerowni. Jego zadaniem jest wyświetlić interfejs i zebrać akcje od użytkownika (np. kliknięcie przycisku “Kup”).</p>
+<p><strong>Serwer</strong>: maszyna (lub chmura maszyn) nasłuchująca żądań. Serwer posiada dostęp do bazy danych, sprawdza uprawnienia (czy użytkownik jest zalogowany?) i wykonuje “ciężką” logikę biznesową.</p>
+<p><strong>Komunikacja</strong>: Odbywa się asynchronicznie za pomocą protokołu HTTP/HTTPS (zapytanie -&gt; odpowiedź).</p>
+</section>
+<section id="paradygmat-peer-to-peer-p2p---sieci-równorzędne" class="level2">
+<h2 class="anchored" data-anchor-id="paradygmat-peer-to-peer-p2p---sieci-równorzędne">Paradygmat Peer-to-Peer (P2P - Sieci równorzędne)</h2>
+<p>W przeciwieństwie do modelu Klient-Serwer, tutaj nie ma “szefa” i “podwładnych”. Wszyscy uczestnicy sieci mają równe prawa.</p>
+<p><strong>Węzeł (Peer)</strong>: Każda aplikacja lub maszyna podłączona do sieci. Pełni ona jednocześnie rolę klienta (pobiera zasoby od innych) oraz serwera (udostępnia własne zasoby innym węzłom).</p>
+<p><strong>Brak centralnego punktu</strong>: Sieć nie posiada jednego, głównego serwera. Dzięki temu awaria jednej maszyny nie zatrzymuje działania całego systemu (tzw. brak <em>Single Point of Failure</em>).</p>
+<p><strong>Komunikacja</strong>: Rozproszona i bezpośrednia pomiędzy węzłami. Wykorzystywana w sieciach torrent, kryptowalutach (Blockchain) oraz nowoczesnych aplikacjach internetowych do bezpośredniego przesyłania obrazu/dźwięku między przeglądarkami użytkowników (technologia WebRTC).</p>
+</section>
+<section id="paradygmat-wydawca-subskrybent-publish-subscribe-event-driven" class="level2">
+<h2 class="anchored" data-anchor-id="paradygmat-wydawca-subskrybent-publish-subscribe-event-driven">Paradygmat Wydawca-Subskrybent (Publish-Subscribe / Event-Driven)</h2>
+<p>Zamiast ciągłego “pytania” serwera, czy coś się zmieniło (tzw. Polling), system reaguje na bieżąco tylko wtedy, gdy wystąpi konkretne zdarzenie.</p>
+<p><strong>Wydawca (Publisher)</strong>: Aplikacja (lub jej część), która generuje komunikat o zdarzeniu (np. “Złożono nowe zamówienie” albo “Ktoś napisał nową wiadomość na czacie”). Wydawca wysyła tę informację w eter, nie martwiąc się o to, kto i kiedy ją odbierze.</p>
+<p><strong>Subskrybent (Subscriber)</strong>: Aplikacja (lub komponent), która wcześniej zadeklarowała: “Interesują mnie tylko komunikaty o nowych zamówieniach”. Czeka w ukryciu, a gdy odpowiednia wiadomość się pojawi, natychmiast ją przetwarza.</p>
+<p><strong>Broker (Pośrednik)</strong>: Centralny “listonosz” (np. system Apache Kafka lub RabbitMQ w backendzie), który odbiera komunikaty od Wydawców i dba o to, by trafiły do właściwych Subskrybentów.</p>
+<p><strong>Komunikacja</strong>: Silnie asynchroniczna. W aplikacjach internetowych ten paradygmat często realizuje się za pomocą protokołu <strong>WebSockets</strong>, który utrzymuje stałe, otwarte połączenie między przeglądarką a serwerem, pozwalając na dwukierunkowy przepływ danych w czasie rzeczywistym.</p>
+<p><img src="../img/rys1.png" class="img-fluid"></p>
+</section>
+<section id="k-s-kod-po-stronie-klienta-frontend" class="level2">
+<h2 class="anchored" data-anchor-id="k-s-kod-po-stronie-klienta-frontend">K-S: Kod po stronie klienta (Frontend)</h2>
+<p>To wszystko, co działa bezpośrednio na komputerze użytkownika (w jego przeglądarce).</p>
+<p><strong>HTML (HyperText Markup Language)</strong>: Szkielet i struktura. Definiuje, gdzie jest nagłówek, gdzie akapit, a gdzie formularz. HTML odpowiada za to, co jest wyświetlane.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">"pl"</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">"UTF-8"</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Wykład: Klient i Serwer w akcji<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> href</span><span class="op">=</span><span class="st">"style.css"</span><span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Pierwszy program<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Hello World<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>CSS (Cascading Style Sheets)</strong>: Odpowiada za to, jak strona wygląda (kolory, animacje, układ responsywny na telefony).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>body { </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-family</span><span class="ch">:</span> <span class="dv">sans-serif</span><span class="op">;</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">30</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">max-width</span><span class="ch">:</span> <span class="dv">600</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span><span class="ch">:</span> <span class="dv">0</span> <span class="bu">auto</span><span class="op">;</span> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>button { </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">10</span><span class="dt">px</span> <span class="dv">15</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span><span class="ch">:</span> <span class="dv">16</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">cursor</span><span class="ch">:</span> <span class="dv">pointer</span><span class="op">;</span> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>JavaScript (JS)</strong>: Język programowania, który pozwala stronie żyć. Reaguje na kliknięcia, wysyła dane w tle, dynamicznie zmienia zawartość bez przeładowywania całej strony.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'pobierz-btn'</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'click'</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fetch</span>(<span class="st">'https://serwer-uczelni.pw.edu.pl/api/studenci'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">then</span>(odpowiedz <span class="kw">=&gt;</span> odpowiedz<span class="op">.</span><span class="fu">json</span>()) </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">then</span>(dane <span class="kw">=&gt;</span> {</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Sukces! Pobrane dane to:"</span><span class="op">,</span> dane)<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        })<span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="backend---kod-po-stronie-serwera" class="level2">
+<h2 class="anchored" data-anchor-id="backend---kod-po-stronie-serwera">Backend - kod po stronie Serwera</h2>
+<p>To “mózg” operacji, ukryty przed oczami użytkownika. Szczególnie w aplikacjach korporacyjnych (Enterprise) to tutaj dzieje się magia.</p>
+<blockquote class="blockquote">
+<p>Zadania:</p>
+<ul>
+<li>Walidacja danych (klientowi nigdy nie ufamy!),</li>
+<li>operacje na bazie danych (SQL/NoSQL),</li>
+<li>integracje z zewnętrznymi systemami (np. systemem płatności BLIK),</li>
+<li>zarządzanie sesjami i bezpieczeństwem.</li>
+</ul>
+</blockquote>
+<p>Technologie: W odróżnieniu od przeglądarki (która rozumie tylko JS/WebAssembly), na serwerze możemy pisać w czym chcemy: <code>Java</code> (Spring Boot), <code>C#</code> (.NET), <code>Python</code> (Django/FastAPI), <code>PHP</code> czy <code>Node.js</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">"Hello, world!!!"</span><span class="ot">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">?&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, jsonify</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">'/api/powitanie'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> powitanie():</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Zwracamy słownik, który Flask sam zamieni na JSON</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jsonify({<span class="st">"wiadomosc"</span>: <span class="st">"Witaj z serwera Python (Flask)!"</span>})</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    app.run(port<span class="op">=</span><span class="dv">5000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Genie</span>, <span class="bu">Genie.Renderer.Json</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">route</span>(<span class="st">"/api/powitanie"</span>) <span class="cf">do</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">json</span>(<span class="fu">Dict</span>(<span class="st">"wiadomosc"</span> <span class="op">=&gt;</span> <span class="st">"Witaj z serwera Julia!"</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">up</span>(<span class="fl">8000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">'express'</span>)<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> <span class="fu">express</span>()<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">'/api/powitanie'</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Odpowiadamy formatem JSON</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">json</span>({ <span class="dt">wiadomosc</span><span class="op">:</span> <span class="st">"Witaj z serwera Node.js!"</span> })<span class="op">;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">listen</span>(<span class="dv">3000</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Serwer działa na porcie 3000'</span>)<span class="op">;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="application-programming-interface" class="level2">
+<h2 class="anchored" data-anchor-id="application-programming-interface">Application Programming Interface</h2>
+<p>Skoro Frontend (np. w React.js) i Backend (np. w Javie) są osobnymi bytami, potrzebują uniwersalnego języka, żeby się dogadać. Tym językiem jest <strong>API</strong>.</p>
+<p>Co to jest API? To “kelner” w restauracji.</p>
+<p>Frontend (klient) składa zamówienie (żądanie HTTP), API przekazuje je do kuchni (Backend), a potem przynosi gotowe danie.</p>
+<section id="architektura-rest" class="level3">
+<h3 class="anchored" data-anchor-id="architektura-rest">Architektura REST</h3>
+<p>REST (Representational State Transfer) to nie jest biblioteka ani protokół – to zbiór surowych reguł i ograniczeń architektonicznych (zdefiniowanych w 2000 roku przez Roya Fieldinga). Jeśli API spełnia te reguły, nazywamy je <strong>RESTful API</strong>.</p>
+<p>Oto kluczowe paradygmaty, na których opiera się prawdziwy REST:</p>
+<p><strong>1. Architektura zorientowana na Zasoby (Resource-Based)</strong></p>
+<p>W REST wszystko jest “Zasobem” (rzeczownikiem), a nie “Akcją” (czasownikiem). Klient nie wywołuje funkcji na serwerze, tylko manipuluje stanem obiektów.</p>
+<ul>
+<li>❌ <strong>Złe podejście (RPC):</strong> <code>adres.pl/api/pobierzStudentow</code> lub <code>adres.pl/api/dodajStudenta</code></li>
+<li>✅ <strong>Dobre podejście (REST):</strong> Mamy jeden zasób <code>adres.pl/api/studenci</code> i to metoda HTTP (GET/POST) określa, co z nim robimy.</li>
+</ul>
+<p><strong>2. Bezstanowość (Statelessness)</strong> To absolutnie najważniejsza zasada skalowalnych aplikacji korporacyjnych.</p>
+<ul>
+<li><strong>Zasada:</strong> Serwer nie przechowuje żadnego stanu sesji klienta pomiędzy zapytaniami. Każde pojedyncze żądanie HTTP musi zawierać absolutnie <strong>wszystkie informacje</strong> niezbędne do jego obsłużenia (np. token autoryzacyjny).</li>
+<li><strong>Dlaczego to takie ważne?</strong> Skalowalność. Jeśli aplikacja zyska nagle milion użytkowników, możemy dostawić 10 nowych serwerów w chmurze. Ponieważ serwery nie muszą pamiętać “historii” rozmowy z klientem, każde kolejne zapytanie od tego samego użytkownika może obsłużyć inna, akurat wolna maszyna (Load Balancing).</li>
+</ul>
+<p><strong>3. Idempotentność metod HTTP</strong></p>
+<p>Pojęcie kluczowe w projektowaniu systemów odpornych na awarie sieci. Operacja jest idempotentna, jeśli wykonanie jej raz przynosi taki sam skutek na serwerze, jak wykonanie jej sto razy pod rząd. * <code>GET</code>, <code>PUT</code>, <code>DELETE</code> są idempotentne. (Jeśli 10 razy wyślesz <code>DELETE /api/studenci/5</code>, student numer 5 zniknie, a kolejne zapytania nic nie zepsują). * <code>POST</code> <strong>nie jest</strong> idempotentny. (Jeśli użytkownikowi zatnie się myszka i kliknie “Zapłać” 3 razy, wyśle 3 żądania <code>POST /api/platnosci</code>, co stworzy 3 osobne transakcje! Frontend i Backend muszą być na to przygotowane).</p>
+<p><strong>4. Reprezentacja danych (Representational)</strong> Zasób w bazie danych (np. rekord w tabeli SQL) nie wędruje fizycznie przez sieć. Serwer przesyła Klientowi jedynie jego <strong>reprezentację</strong> – najczęściej w formacie <code>JSON</code> lub <code>XML</code>. Klient może zażądać konkretnego formatu za pomocą nagłówków HTTP (np. <code>Accept: application/json</code>).</p>
+<p><strong>5. HATEOAS (Dla zaawansowanych - Szczyt dojrzałości REST)</strong> <em>(Hypermedia as the Engine of Application State)</em>. W pełni dojrzałe API RESTowe nie tylko zwraca dane, ale też <strong>linki do kolejnych możliwych akcji</strong>. Klient nie musi zgadywać, jakie adresy URL istnieją. <em>Przykład:</em> Pobierasz dane konta bankowego, a API w JSON-ie od razu dorzuca linki: <code>"przelej_srodki": "/api/konta/123/przelew"</code>, <code>"zamknij_konto": "/api/konta/123/zamknij"</code>.</p>
+</section>
+</section>
+<section id="format-przekazywania-danych-json" class="level2">
+<h2 class="anchored" data-anchor-id="format-przekazywania-danych-json">Format przekazywania danych: JSON</h2>
+<p>Klasyczne podejście (Server-Side Rendering): Kiedyś serwer generował gotowy kod HTML i wysyłał go do przeglądarki. Wymagało to przeładowania całej strony przy każdym kliknięciu.</p>
+<p>Współczesne podejście (SPA - Single Page Application): Dzisiaj przeglądarka pobiera szkielet aplikacji raz. Kiedy potrzebuje nowych danych (np. listy nowych postów na forum), nie prosi serwera o gotowy wygląd (HTML). Prosi tylko o surowe dane.</p>
+<p><strong>JSON (JavaScript Object Notation)</strong>: Lekki, tekstowy format wymiany danych, który wygląda jak lista kluczy i wartości.</p>
+<p>Przykład JSON:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">"imie"</span><span class="fu">:</span> <span class="st">"Jan"</span><span class="fu">,</span> <span class="dt">"wiek"</span><span class="fu">:</span> <span class="dv">22</span><span class="fu">,</span> <span class="dt">"status"</span><span class="fu">:</span> <span class="st">"student"</span><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Frontend odbiera ten mały plik JSON i sam (przy pomocy JavaScriptu) decyduje, jak go ubrać w tagi HTML i pokazać użytkownikowi. To drastycznie zmniejsza obciążenie sieci i przyspiesza działanie aplikacji.</p>
+</section>
+<section id="podstawy-komunikacji-metoda-get-pobieranie-danych" class="level2">
+<h2 class="anchored" data-anchor-id="podstawy-komunikacji-metoda-get-pobieranie-danych">Podstawy komunikacji: Metoda GET (Pobieranie danych)</h2>
+<p>Zanim przejdziemy do budowania złożonych interakcji, musimy zrozumieć, jak działa najbardziej podstawowy mechanizm internetu – metoda <strong>GET</strong>.</p>
+<p>Jak sama nazwa wskazuje, zapytanie <code>GET</code> służy wyłącznie do <strong>pobierania zasobów</strong>. Nie modyfikuje ono żadnych danych na serwerze, nie usuwa ich ani nie dodaje. Jest operacją “tylko do odczytu”.</p>
+<section id="najprostszy-test-get-twoja-przeglądarka" class="level3">
+<h3 class="anchored" data-anchor-id="najprostszy-test-get-twoja-przeglądarka">Najprostszy test GET: Twoja przeglądarka!</h3>
+<p>Nie potrzebujesz ani linijki kodu Frontendowego, żeby przetestować, czy Twoje API działa.</p>
+<p>Za każdym razem, gdy wpisujesz adres w pasku URL przeglądarki (np. <code>google.com</code> albo <code>pw.edu.pl</code>) i wciskasz Enter, Twoja przeglądarka pod spodem wysyła standardowe żądanie <code>GET</code>.</p>
+<p>Dlatego, jeśli uruchomisz na swoim komputerze którykolwiek z naszych serwerów (np. we Flasku na porcie 5000) i wpiszesz w pasku adresu: <code>http://localhost:5000/api/powitanie</code></p>
+<p>Twoja przeglądarka wykona żądanie GET, uderzy w odpowiedni “Endpoint” na serwerze, a w oknie przeglądarki zamiast strony WWW zobaczysz surowy wynik w formacie JSON: <code>{"wiadomosc": "Witaj z serwera Python (Flask)!"}</code></p>
+</section>
+</section>
+<section id="anatomia-komunikacji-w-sieci-żądanie-odpowiedź-i-url" class="level2">
+<h2 class="anchored" data-anchor-id="anatomia-komunikacji-w-sieci-żądanie-odpowiedź-i-url">Anatomia komunikacji w sieci: Żądanie, Odpowiedź i URL</h2>
+<p>Aby Klient i Serwer mogli ze sobą rozmawiać, używają protokołu HTTP. Ta komunikacja przypomina trochę rozmowę w restauracji i opiera się na trzech głównych filarach:</p>
+<ol type="1">
+<li><strong>URL (Uniform Resource Locator)</strong>: To dokładny adres zasobu (np. <code>http://moj-serwer.pl/api/studenci</code>). W naszej metaforze to wskazanie palcem konkretnego dania w menu.</li>
+<li><strong>Żądanie (Request)</strong>: Wiadomość wysyłana przez Klienta (przeglądarkę) do Serwera. Zawiera informację, czego Klient chce (metoda) i pod jakim adresem (URL).</li>
+<li><strong>Odpowiedź (Response)</strong>: Wiadomość zwrotna od Serwera. Zawiera tzw. status (np. <code>200 OK</code> – “mam to dla ciebie”, albo <code>404 Not Found</code> – “nie ma takiego adresu”) oraz same dane (np. w formacie JSON).</li>
+</ol>
+<section id="metoda-get-pobieranie-danych-przez-przeglądarkę" class="level3">
+<h3 class="anchored" data-anchor-id="metoda-get-pobieranie-danych-przez-przeglądarkę">Metoda GET: Pobieranie danych przez przeglądarkę</h3>
+<p>Najbardziej podstawową metodą HTTP jest <strong>GET</strong> (z ang. pobierz). Służy ona <em>wyłącznie</em> do odczytywania danych.</p>
+<p>Co ważne: <strong>Za każdym razem, gdy wpisujesz adres w pasku przeglądarki (np. <code>google.com</code>) i wciskasz Enter, Twoja przeglądarka wysyła w tle żądanie GET.</strong></p>
+<p>Zatem jeśli nasz serwer w Pythonie działa lokalnie, wcale nie potrzebujemy specjalnego kodu na Froncie, by go przetestować. Wystarczy otworzyć nową kartę w Chrome i wpisać: <code>http://localhost:5000/api/powitanie</code> Przeglądarka zapyta (GET), a serwer odpowie, wyświetlając na ekranie surowy tekst JSON.</p>
+</section>
+<section id="zmienność-odpowiedzi-serwer-czyta-url" class="level3">
+<h3 class="anchored" data-anchor-id="zmienność-odpowiedzi-serwer-czyta-url">Zmienność odpowiedzi: Serwer czyta URL</h3>
+<p>Prawdziwa potęga Backendu polega na tym, że serwer nie musi mieć gotowego pliku dla każdego możliwego adresu. Może traktować fragmenty adresu URL jako <strong>zmienne</strong> i na ich podstawie generować odpowiedź w locie.</p>
+<p>Załóżmy, że chcemy pobrać dane konkretnego studenta. Wpisujemy w przeglądarce: <code>http://localhost:5000/api/student/2</code></p>
+<p>Oto jak serwer we Flasku przechwytuje tę cyfrę <code>2</code> z adresu URL i zmienia swój wynik:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, jsonify</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># "Udawana" baza danych</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>baza_studentow <span class="op">=</span> {</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: {<span class="st">"imie"</span>: <span class="st">"Jan"</span>, <span class="st">"kierunek"</span>: <span class="st">"Informatyka"</span>},</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: {<span class="st">"imie"</span>: <span class="st">"Anna"</span>, <span class="st">"kierunek"</span>: <span class="st">"Cyberbezpieczeństwo"</span>},</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: {<span class="st">"imie"</span>: <span class="st">"Piotr"</span>, <span class="st">"kierunek"</span>: <span class="st">"Robotyka"</span>}</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Znak &lt;int:id&gt; mówi serwerowi: "Złap liczbę z adresu URL i przekaż do funkcji"</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">'/api/student/&lt;int:id&gt;'</span>, methods<span class="op">=</span>[<span class="st">'GET'</span>])</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pobierz_konkretnego_studenta(<span class="bu">id</span>):</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sprawdzamy, czy student o takim ID istnieje w naszej bazie</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">id</span> <span class="kw">in</span> baza_studentow:</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Jeśli wpiszesz /api/student/2, serwer zwróci dane Anny</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> jsonify(baza_studentow[<span class="bu">id</span>])</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Jeśli wpiszesz /api/student/99, serwer zwróci błąd</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> jsonify({<span class="st">"blad"</span>: <span class="st">"Nie znaleziono studenta"</span>}), <span class="dv">404</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    app.run(port<span class="op">=</span><span class="dv">5000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="metoda-post-wysyłanie-ukrytych-danych" class="level3">
+<h3 class="anchored" data-anchor-id="metoda-post-wysyłanie-ukrytych-danych">Metoda POST: Wysyłanie ukrytych danych</h3>
+<p>Skoro GET potrafi przekazywać zmienne w adresie URL (np. ?szukaj=buty), dlaczego potrzebujemy czegoś innego?</p>
+<p>Wyobraź sobie logowanie do banku. Gdybyśmy użyli metody GET, Twoje hasło wylądowałoby w pasku adresu przeglądarki (np. bank.pl/login?haslo=mojeTajneHaslo). To ogromne zagrożenie bezpieczeństwa, a ponadto adresy URL mają ograniczoną długość.</p>
+<p>Dlatego, gdy wysyłamy nowe, poufne lub duże dane (np. formularz rejestracji, zdjęcie, wpis na blogu), używamy metody POST.</p>
+<p>W zapytaniu POST dane nie są doklejane do adresu URL.</p>
+<p>Są one pakowane do “brzucha” (ang. Body / Payload) żądania HTTP, który jest niewidoczny z poziomu paska przeglądarki.</p>
+<p>Żądania POST nie da się wywołać po prostu wpisując adres w przeglądarce (wykonujemy je z poziomu kodu JavaScript po kliknięciu przycisku “Wyślij”, lub z aplikacji np. Postman).</p>
+</section>
+<section id="jak-działa-metoda-post-w-praktyce-kod-klienta-i-serwera" class="level3">
+<h3 class="anchored" data-anchor-id="jak-działa-metoda-post-w-praktyce-kod-klienta-i-serwera">Jak działa metoda POST w praktyce? (Kod Klienta i Serwera)</h3>
+<p>Aby przetestować metodę POST, potrzebujemy współpracy Frontendu (który wyśle dane) i Backendu (który je odbierze).</p>
+<p><strong>1. Kod Klienta (Frontend - HTML + JS)</strong> Zamiast wpisywać adres w przeglądarce, użytkownik wypełnia formularz i klika przycisk. Przeglądarka pakuje te dane w JSON i wysyła w tle.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"text"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"imie-input"</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">"Wpisz imię"</span><span class="dt">&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"text"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"kierunek-input"</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">"Wpisz kierunek"</span><span class="dt">&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> id</span><span class="op">=</span><span class="st">"zapisz-btn"</span><span class="dt">&gt;</span>Zapisz na serwerze<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'zapisz-btn'</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'click'</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 1. Zbieramy dane z pól tekstowych</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> daneDoWyslania <span class="op">=</span> { </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">imie</span><span class="op">:</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'imie-input'</span>)<span class="op">.</span><span class="at">value</span><span class="op">,</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">kierunek</span><span class="op">:</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'kierunek-input'</span>)<span class="op">.</span><span class="at">value</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 2. Wysyłamy żądanie POST do API</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fetch</span>(<span class="st">'http://localhost:5000/api/dodaj-studenta'</span><span class="op">,</span> {</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">method</span><span class="op">:</span> <span class="st">'POST'</span><span class="op">,</span> <span class="co">// Zmieniamy domyślne GET na POST</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        <span class="dt">headers</span><span class="op">:</span> {</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Content-Type'</span><span class="op">:</span> <span class="st">'application/json'</span> <span class="co">// Informujemy serwer: "Uwaga, leci JSON!"</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(daneDoWyslania) <span class="co">// Zamieniamy obiekt w tekst JSON</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(odpowiedz <span class="kw">=&gt;</span> odpowiedz<span class="op">.</span><span class="fu">json</span>())</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(wynik <span class="kw">=&gt;</span> {</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Odpowiedź z serwera:"</span><span class="op">,</span> wynik)<span class="op">;</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        <span class="fu">alert</span>(<span class="st">"Serwer zapisał: "</span> <span class="op">+</span> wynik<span class="op">.</span><span class="at">dodano</span>)<span class="op">;</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="kody-statusów-http-jak-zrozumieć-odpowiedź-serwera" class="level2">
+<h2 class="anchored" data-anchor-id="kody-statusów-http-jak-zrozumieć-odpowiedź-serwera">Kody Statusów HTTP: Jak zrozumieć odpowiedź serwera?</h2>
+<p>Zauważyłeś na końcu powyższego kodu liczbę 201? Kiedy serwer odpowiada Klientowi, zawsze dołącza trzycyfrowy Kod Statusu. To szybka informacja dla programisty, jak zakończyła się operacja.</p>
+<p>Zostały one podzielone na logiczne kategorie:</p>
+<p>2xx (Sukces):</p>
+<p>200 OK – Wszystko poszło dobrze (najczęstszy kod po GET).</p>
+<p>201 Created – Pomyślnie utworzono nowy zasób (idealny po POST).</p>
+<p>4xx (Błąd Klienta - zepsułeś coś Ty lub przeglądarka):</p>
+<p>400 Bad Request – Serwer nie rozumie zapytania (np. wysłałeś uszkodzonego JSON-a).</p>
+<p>401 Unauthorized – Brak dostępu (nie jesteś zalogowany).</p>
+<p>404 Not Found – Szukasz adresu lub zasobu, który nie istnieje.</p>
+<p>5xx (Błąd Serwera - zepsuło się w serwerowni):</p>
+<p>500 Internal Server Error – Błąd w kodzie Backendu. Programista serwera musi naprawić problem.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -55,5 +55,149 @@
       "222890-S",
       "Informacje ogólne"
     ]
+  },
+  {
+    "objectID": "lectures/wyklad1.html",
+    "href": "lectures/wyklad1.html",
+    "title": "Architektura aplikacji internetowych",
+    "section": "",
+    "text": "Przejście od stron do aplikacji:\n\nKiedyś internet to były statyczne dokumenty tekstowe (HTML).\nDziś to potężne programy działające w przeglądarkach (np. Dysk Google, Netflix, systemy bankowe), które pod spodem mają złożoną architekturę korporacyjną.\n\nCel przedmiotu:\n\nZrozumienie, jak zaprojektować, zbudować i wdrożyć system, który z jednej strony ma przyjazny interfejs w przeglądarce, a z drugiej potrafi obsłużyć tysiące użytkowników, bezpiecznie przechowując ich dane.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Architektura aplikacji internetowych"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad1.html#wstęp-czym-jest-aplikacja-internetowa",
+    "href": "lectures/wyklad1.html#wstęp-czym-jest-aplikacja-internetowa",
+    "title": "Architektura aplikacji internetowych",
+    "section": "",
+    "text": "Przejście od stron do aplikacji:\n\nKiedyś internet to były statyczne dokumenty tekstowe (HTML).\nDziś to potężne programy działające w przeglądarkach (np. Dysk Google, Netflix, systemy bankowe), które pod spodem mają złożoną architekturę korporacyjną.\n\nCel przedmiotu:\n\nZrozumienie, jak zaprojektować, zbudować i wdrożyć system, który z jednej strony ma przyjazny interfejs w przeglądarce, a z drugiej potrafi obsłużyć tysiące użytkowników, bezpiecznie przechowując ich dane.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Architektura aplikacji internetowych"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad1.html#paradygmat-klient-serwer",
+    "href": "lectures/wyklad1.html#paradygmat-klient-serwer",
+    "title": "Architektura aplikacji internetowych",
+    "section": "Paradygmat Klient-Serwer",
+    "text": "Paradygmat Klient-Serwer\nKlient: To aplikacja lub urządzenie proszące o zasoby (najczęściej przeglądarka internetowa – Chrome, Firefox, ale też aplikacja mobilna). Klient jest “śłepy i głuchy” na to, co dzieje się w serwerowni. Jego zadaniem jest wyświetlić interfejs i zebrać akcje od użytkownika (np. kliknięcie przycisku “Kup”).\nSerwer: maszyna (lub chmura maszyn) nasłuchująca żądań. Serwer posiada dostęp do bazy danych, sprawdza uprawnienia (czy użytkownik jest zalogowany?) i wykonuje “ciężką” logikę biznesową.\nKomunikacja: Odbywa się asynchronicznie za pomocą protokołu HTTP/HTTPS (zapytanie -&gt; odpowiedź).",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Architektura aplikacji internetowych"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad1.html#paradygmat-peer-to-peer-p2p---sieci-równorzędne",
+    "href": "lectures/wyklad1.html#paradygmat-peer-to-peer-p2p---sieci-równorzędne",
+    "title": "Architektura aplikacji internetowych",
+    "section": "Paradygmat Peer-to-Peer (P2P - Sieci równorzędne)",
+    "text": "Paradygmat Peer-to-Peer (P2P - Sieci równorzędne)\nW przeciwieństwie do modelu Klient-Serwer, tutaj nie ma “szefa” i “podwładnych”. Wszyscy uczestnicy sieci mają równe prawa.\nWęzeł (Peer): Każda aplikacja lub maszyna podłączona do sieci. Pełni ona jednocześnie rolę klienta (pobiera zasoby od innych) oraz serwera (udostępnia własne zasoby innym węzłom).\nBrak centralnego punktu: Sieć nie posiada jednego, głównego serwera. Dzięki temu awaria jednej maszyny nie zatrzymuje działania całego systemu (tzw. brak Single Point of Failure).\nKomunikacja: Rozproszona i bezpośrednia pomiędzy węzłami. Wykorzystywana w sieciach torrent, kryptowalutach (Blockchain) oraz nowoczesnych aplikacjach internetowych do bezpośredniego przesyłania obrazu/dźwięku między przeglądarkami użytkowników (technologia WebRTC).",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Architektura aplikacji internetowych"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad1.html#paradygmat-wydawca-subskrybent-publish-subscribe-event-driven",
+    "href": "lectures/wyklad1.html#paradygmat-wydawca-subskrybent-publish-subscribe-event-driven",
+    "title": "Architektura aplikacji internetowych",
+    "section": "Paradygmat Wydawca-Subskrybent (Publish-Subscribe / Event-Driven)",
+    "text": "Paradygmat Wydawca-Subskrybent (Publish-Subscribe / Event-Driven)\nZamiast ciągłego “pytania” serwera, czy coś się zmieniło (tzw. Polling), system reaguje na bieżąco tylko wtedy, gdy wystąpi konkretne zdarzenie.\nWydawca (Publisher): Aplikacja (lub jej część), która generuje komunikat o zdarzeniu (np. “Złożono nowe zamówienie” albo “Ktoś napisał nową wiadomość na czacie”). Wydawca wysyła tę informację w eter, nie martwiąc się o to, kto i kiedy ją odbierze.\nSubskrybent (Subscriber): Aplikacja (lub komponent), która wcześniej zadeklarowała: “Interesują mnie tylko komunikaty o nowych zamówieniach”. Czeka w ukryciu, a gdy odpowiednia wiadomość się pojawi, natychmiast ją przetwarza.\nBroker (Pośrednik): Centralny “listonosz” (np. system Apache Kafka lub RabbitMQ w backendzie), który odbiera komunikaty od Wydawców i dba o to, by trafiły do właściwych Subskrybentów.\nKomunikacja: Silnie asynchroniczna. W aplikacjach internetowych ten paradygmat często realizuje się za pomocą protokołu WebSockets, który utrzymuje stałe, otwarte połączenie między przeglądarką a serwerem, pozwalając na dwukierunkowy przepływ danych w czasie rzeczywistym.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Architektura aplikacji internetowych"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad1.html#k-s-kod-po-stronie-klienta-frontend",
+    "href": "lectures/wyklad1.html#k-s-kod-po-stronie-klienta-frontend",
+    "title": "Architektura aplikacji internetowych",
+    "section": "K-S: Kod po stronie klienta (Frontend)",
+    "text": "K-S: Kod po stronie klienta (Frontend)\nTo wszystko, co działa bezpośrednio na komputerze użytkownika (w jego przeglądarce).\nHTML (HyperText Markup Language): Szkielet i struktura. Definiuje, gdzie jest nagłówek, gdzie akapit, a gdzie formularz. HTML odpowiada za to, co jest wyświetlane.\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"pl\"&gt;\n&lt;head&gt;\n    &lt;meta charset=\"UTF-8\"&gt;\n    &lt;title&gt;Wykład: Klient i Serwer w akcji&lt;/title&gt;\n    &lt;link rel=\"stylesheet\" href=\"style.css\"&gt;\n&lt;/head&gt;\n&lt;body&gt;\n\n    &lt;h1&gt;Pierwszy program&lt;/h1&gt;\n    &lt;p&gt;Hello World&lt;/p&gt;\n\n&lt;/body&gt;\n&lt;/html&gt;\nCSS (Cascading Style Sheets): Odpowiada za to, jak strona wygląda (kolory, animacje, układ responsywny na telefony).\nbody { \n    font-family: sans-serif; \n    padding: 30px; \n    max-width: 600px; \n    margin: 0 auto; \n}\n\nbutton { \n    padding: 10px 15px; \n    font-size: 16px; \n    cursor: pointer; \n}\nJavaScript (JS): Język programowania, który pozwala stronie żyć. Reaguje na kliknięcia, wysyła dane w tle, dynamicznie zmienia zawartość bez przeładowywania całej strony.\ndocument.getElementById('pobierz-btn').addEventListener('click', function() {\n    fetch('https://serwer-uczelni.pw.edu.pl/api/studenci')\n        .then(odpowiedz =&gt; odpowiedz.json()) \n        .then(dane =&gt; {\n            console.log(\"Sukces! Pobrane dane to:\", dane);\n        });\n});",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Architektura aplikacji internetowych"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad1.html#backend---kod-po-stronie-serwera",
+    "href": "lectures/wyklad1.html#backend---kod-po-stronie-serwera",
+    "title": "Architektura aplikacji internetowych",
+    "section": "Backend - kod po stronie Serwera",
+    "text": "Backend - kod po stronie Serwera\nTo “mózg” operacji, ukryty przed oczami użytkownika. Szczególnie w aplikacjach korporacyjnych (Enterprise) to tutaj dzieje się magia.\n\nZadania:\n\nWalidacja danych (klientowi nigdy nie ufamy!),\noperacje na bazie danych (SQL/NoSQL),\nintegracje z zewnętrznymi systemami (np. systemem płatności BLIK),\nzarządzanie sesjami i bezpieczeństwem.\n\n\nTechnologie: W odróżnieniu od przeglądarki (która rozumie tylko JS/WebAssembly), na serwerze możemy pisać w czym chcemy: Java (Spring Boot), C# (.NET), Python (Django/FastAPI), PHP czy Node.js.\n&lt;?php\necho \"Hello, world!!!\";\n?&gt;\nfrom flask import Flask, jsonify\n\napp = Flask(__name__)\n\n@app.route('/api/powitanie')\ndef powitanie():\n    # Zwracamy słownik, który Flask sam zamieni na JSON\n    return jsonify({\"wiadomosc\": \"Witaj z serwera Python (Flask)!\"})\n\nif __name__ == '__main__':\n    app.run(port=5000)\nusing Genie, Genie.Renderer.Json\n\nroute(\"/api/powitanie\") do\n  json(Dict(\"wiadomosc\" =&gt; \"Witaj z serwera Julia!\"))\nend\n\nup(8000)\nconst express = require('express');\nconst app = express();\n\napp.get('/api/powitanie', (req, res) =&gt; {\n    // Odpowiadamy formatem JSON\n    res.json({ wiadomosc: \"Witaj z serwera Node.js!\" });\n});\n\napp.listen(3000, () =&gt; {\n    console.log('Serwer działa na porcie 3000');\n});",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Architektura aplikacji internetowych"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad1.html#application-programming-interface",
+    "href": "lectures/wyklad1.html#application-programming-interface",
+    "title": "Architektura aplikacji internetowych",
+    "section": "Application Programming Interface",
+    "text": "Application Programming Interface\nSkoro Frontend (np. w React.js) i Backend (np. w Javie) są osobnymi bytami, potrzebują uniwersalnego języka, żeby się dogadać. Tym językiem jest API.\nCo to jest API? To “kelner” w restauracji.\nFrontend (klient) składa zamówienie (żądanie HTTP), API przekazuje je do kuchni (Backend), a potem przynosi gotowe danie.\n\nArchitektura REST\nREST (Representational State Transfer) to nie jest biblioteka ani protokół – to zbiór surowych reguł i ograniczeń architektonicznych (zdefiniowanych w 2000 roku przez Roya Fieldinga). Jeśli API spełnia te reguły, nazywamy je RESTful API.\nOto kluczowe paradygmaty, na których opiera się prawdziwy REST:\n1. Architektura zorientowana na Zasoby (Resource-Based)\nW REST wszystko jest “Zasobem” (rzeczownikiem), a nie “Akcją” (czasownikiem). Klient nie wywołuje funkcji na serwerze, tylko manipuluje stanem obiektów.\n\n❌ Złe podejście (RPC): adres.pl/api/pobierzStudentow lub adres.pl/api/dodajStudenta\n✅ Dobre podejście (REST): Mamy jeden zasób adres.pl/api/studenci i to metoda HTTP (GET/POST) określa, co z nim robimy.\n\n2. Bezstanowość (Statelessness) To absolutnie najważniejsza zasada skalowalnych aplikacji korporacyjnych.\n\nZasada: Serwer nie przechowuje żadnego stanu sesji klienta pomiędzy zapytaniami. Każde pojedyncze żądanie HTTP musi zawierać absolutnie wszystkie informacje niezbędne do jego obsłużenia (np. token autoryzacyjny).\nDlaczego to takie ważne? Skalowalność. Jeśli aplikacja zyska nagle milion użytkowników, możemy dostawić 10 nowych serwerów w chmurze. Ponieważ serwery nie muszą pamiętać “historii” rozmowy z klientem, każde kolejne zapytanie od tego samego użytkownika może obsłużyć inna, akurat wolna maszyna (Load Balancing).\n\n3. Idempotentność metod HTTP\nPojęcie kluczowe w projektowaniu systemów odpornych na awarie sieci. Operacja jest idempotentna, jeśli wykonanie jej raz przynosi taki sam skutek na serwerze, jak wykonanie jej sto razy pod rząd. * GET, PUT, DELETE są idempotentne. (Jeśli 10 razy wyślesz DELETE /api/studenci/5, student numer 5 zniknie, a kolejne zapytania nic nie zepsują). * POST nie jest idempotentny. (Jeśli użytkownikowi zatnie się myszka i kliknie “Zapłać” 3 razy, wyśle 3 żądania POST /api/platnosci, co stworzy 3 osobne transakcje! Frontend i Backend muszą być na to przygotowane).\n4. Reprezentacja danych (Representational) Zasób w bazie danych (np. rekord w tabeli SQL) nie wędruje fizycznie przez sieć. Serwer przesyła Klientowi jedynie jego reprezentację – najczęściej w formacie JSON lub XML. Klient może zażądać konkretnego formatu za pomocą nagłówków HTTP (np. Accept: application/json).\n5. HATEOAS (Dla zaawansowanych - Szczyt dojrzałości REST) (Hypermedia as the Engine of Application State). W pełni dojrzałe API RESTowe nie tylko zwraca dane, ale też linki do kolejnych możliwych akcji. Klient nie musi zgadywać, jakie adresy URL istnieją. Przykład: Pobierasz dane konta bankowego, a API w JSON-ie od razu dorzuca linki: \"przelej_srodki\": \"/api/konta/123/przelew\", \"zamknij_konto\": \"/api/konta/123/zamknij\".",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Architektura aplikacji internetowych"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad1.html#format-przekazywania-danych-json",
+    "href": "lectures/wyklad1.html#format-przekazywania-danych-json",
+    "title": "Architektura aplikacji internetowych",
+    "section": "Format przekazywania danych: JSON",
+    "text": "Format przekazywania danych: JSON\nKlasyczne podejście (Server-Side Rendering): Kiedyś serwer generował gotowy kod HTML i wysyłał go do przeglądarki. Wymagało to przeładowania całej strony przy każdym kliknięciu.\nWspółczesne podejście (SPA - Single Page Application): Dzisiaj przeglądarka pobiera szkielet aplikacji raz. Kiedy potrzebuje nowych danych (np. listy nowych postów na forum), nie prosi serwera o gotowy wygląd (HTML). Prosi tylko o surowe dane.\nJSON (JavaScript Object Notation): Lekki, tekstowy format wymiany danych, który wygląda jak lista kluczy i wartości.\nPrzykład JSON:\n{\"imie\": \"Jan\", \"wiek\": 22, \"status\": \"student\"}\nFrontend odbiera ten mały plik JSON i sam (przy pomocy JavaScriptu) decyduje, jak go ubrać w tagi HTML i pokazać użytkownikowi. To drastycznie zmniejsza obciążenie sieci i przyspiesza działanie aplikacji.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Architektura aplikacji internetowych"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad1.html#podstawy-komunikacji-metoda-get-pobieranie-danych",
+    "href": "lectures/wyklad1.html#podstawy-komunikacji-metoda-get-pobieranie-danych",
+    "title": "Architektura aplikacji internetowych",
+    "section": "Podstawy komunikacji: Metoda GET (Pobieranie danych)",
+    "text": "Podstawy komunikacji: Metoda GET (Pobieranie danych)\nZanim przejdziemy do budowania złożonych interakcji, musimy zrozumieć, jak działa najbardziej podstawowy mechanizm internetu – metoda GET.\nJak sama nazwa wskazuje, zapytanie GET służy wyłącznie do pobierania zasobów. Nie modyfikuje ono żadnych danych na serwerze, nie usuwa ich ani nie dodaje. Jest operacją “tylko do odczytu”.\n\nNajprostszy test GET: Twoja przeglądarka!\nNie potrzebujesz ani linijki kodu Frontendowego, żeby przetestować, czy Twoje API działa.\nZa każdym razem, gdy wpisujesz adres w pasku URL przeglądarki (np. google.com albo pw.edu.pl) i wciskasz Enter, Twoja przeglądarka pod spodem wysyła standardowe żądanie GET.\nDlatego, jeśli uruchomisz na swoim komputerze którykolwiek z naszych serwerów (np. we Flasku na porcie 5000) i wpiszesz w pasku adresu: http://localhost:5000/api/powitanie\nTwoja przeglądarka wykona żądanie GET, uderzy w odpowiedni “Endpoint” na serwerze, a w oknie przeglądarki zamiast strony WWW zobaczysz surowy wynik w formacie JSON: {\"wiadomosc\": \"Witaj z serwera Python (Flask)!\"}",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Architektura aplikacji internetowych"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad1.html#anatomia-komunikacji-w-sieci-żądanie-odpowiedź-i-url",
+    "href": "lectures/wyklad1.html#anatomia-komunikacji-w-sieci-żądanie-odpowiedź-i-url",
+    "title": "Architektura aplikacji internetowych",
+    "section": "Anatomia komunikacji w sieci: Żądanie, Odpowiedź i URL",
+    "text": "Anatomia komunikacji w sieci: Żądanie, Odpowiedź i URL\nAby Klient i Serwer mogli ze sobą rozmawiać, używają protokołu HTTP. Ta komunikacja przypomina trochę rozmowę w restauracji i opiera się na trzech głównych filarach:\n\nURL (Uniform Resource Locator): To dokładny adres zasobu (np. http://moj-serwer.pl/api/studenci). W naszej metaforze to wskazanie palcem konkretnego dania w menu.\nŻądanie (Request): Wiadomość wysyłana przez Klienta (przeglądarkę) do Serwera. Zawiera informację, czego Klient chce (metoda) i pod jakim adresem (URL).\nOdpowiedź (Response): Wiadomość zwrotna od Serwera. Zawiera tzw. status (np. 200 OK – “mam to dla ciebie”, albo 404 Not Found – “nie ma takiego adresu”) oraz same dane (np. w formacie JSON).\n\n\nMetoda GET: Pobieranie danych przez przeglądarkę\nNajbardziej podstawową metodą HTTP jest GET (z ang. pobierz). Służy ona wyłącznie do odczytywania danych.\nCo ważne: Za każdym razem, gdy wpisujesz adres w pasku przeglądarki (np. google.com) i wciskasz Enter, Twoja przeglądarka wysyła w tle żądanie GET.\nZatem jeśli nasz serwer w Pythonie działa lokalnie, wcale nie potrzebujemy specjalnego kodu na Froncie, by go przetestować. Wystarczy otworzyć nową kartę w Chrome i wpisać: http://localhost:5000/api/powitanie Przeglądarka zapyta (GET), a serwer odpowie, wyświetlając na ekranie surowy tekst JSON.\n\n\nZmienność odpowiedzi: Serwer czyta URL\nPrawdziwa potęga Backendu polega na tym, że serwer nie musi mieć gotowego pliku dla każdego możliwego adresu. Może traktować fragmenty adresu URL jako zmienne i na ich podstawie generować odpowiedź w locie.\nZałóżmy, że chcemy pobrać dane konkretnego studenta. Wpisujemy w przeglądarce: http://localhost:5000/api/student/2\nOto jak serwer we Flasku przechwytuje tę cyfrę 2 z adresu URL i zmienia swój wynik:\nfrom flask import Flask, jsonify\n\napp = Flask(__name__)\n\n# \"Udawana\" baza danych\nbaza_studentow = {\n    1: {\"imie\": \"Jan\", \"kierunek\": \"Informatyka\"},\n    2: {\"imie\": \"Anna\", \"kierunek\": \"Cyberbezpieczeństwo\"},\n    3: {\"imie\": \"Piotr\", \"kierunek\": \"Robotyka\"}\n}\n\n# Znak &lt;int:id&gt; mówi serwerowi: \"Złap liczbę z adresu URL i przekaż do funkcji\"\n@app.route('/api/student/&lt;int:id&gt;', methods=['GET'])\ndef pobierz_konkretnego_studenta(id):\n    \n    # Sprawdzamy, czy student o takim ID istnieje w naszej bazie\n    if id in baza_studentow:\n        # Jeśli wpiszesz /api/student/2, serwer zwróci dane Anny\n        return jsonify(baza_studentow[id])\n    else:\n        # Jeśli wpiszesz /api/student/99, serwer zwróci błąd\n        return jsonify({\"blad\": \"Nie znaleziono studenta\"}), 404\n\nif __name__ == '__main__':\n    app.run(port=5000)\n\n\nMetoda POST: Wysyłanie ukrytych danych\nSkoro GET potrafi przekazywać zmienne w adresie URL (np. ?szukaj=buty), dlaczego potrzebujemy czegoś innego?\nWyobraź sobie logowanie do banku. Gdybyśmy użyli metody GET, Twoje hasło wylądowałoby w pasku adresu przeglądarki (np. bank.pl/login?haslo=mojeTajneHaslo). To ogromne zagrożenie bezpieczeństwa, a ponadto adresy URL mają ograniczoną długość.\nDlatego, gdy wysyłamy nowe, poufne lub duże dane (np. formularz rejestracji, zdjęcie, wpis na blogu), używamy metody POST.\nW zapytaniu POST dane nie są doklejane do adresu URL.\nSą one pakowane do “brzucha” (ang. Body / Payload) żądania HTTP, który jest niewidoczny z poziomu paska przeglądarki.\nŻądania POST nie da się wywołać po prostu wpisując adres w przeglądarce (wykonujemy je z poziomu kodu JavaScript po kliknięciu przycisku “Wyślij”, lub z aplikacji np. Postman).\n\n\nJak działa metoda POST w praktyce? (Kod Klienta i Serwera)\nAby przetestować metodę POST, potrzebujemy współpracy Frontendu (który wyśle dane) i Backendu (który je odbierze).\n1. Kod Klienta (Frontend - HTML + JS) Zamiast wpisywać adres w przeglądarce, użytkownik wypełnia formularz i klika przycisk. Przeglądarka pakuje te dane w JSON i wysyła w tle.\n&lt;input type=\"text\" id=\"imie-input\" placeholder=\"Wpisz imię\"&gt;\n&lt;input type=\"text\" id=\"kierunek-input\" placeholder=\"Wpisz kierunek\"&gt;\n&lt;button id=\"zapisz-btn\"&gt;Zapisz na serwerze&lt;/button&gt;\n\n&lt;script&gt;\ndocument.getElementById('zapisz-btn').addEventListener('click', function() {\n    // 1. Zbieramy dane z pól tekstowych\n    const daneDoWyslania = { \n        imie: document.getElementById('imie-input').value,\n        kierunek: document.getElementById('kierunek-input').value\n    };\n\n    // 2. Wysyłamy żądanie POST do API\n    fetch('http://localhost:5000/api/dodaj-studenta', {\n        method: 'POST', // Zmieniamy domyślne GET na POST\n        headers: {\n            'Content-Type': 'application/json' // Informujemy serwer: \"Uwaga, leci JSON!\"\n        },\n        body: JSON.stringify(daneDoWyslania) // Zamieniamy obiekt w tekst JSON\n    })\n    .then(odpowiedz =&gt; odpowiedz.json())\n    .then(wynik =&gt; {\n        console.log(\"Odpowiedź z serwera:\", wynik);\n        alert(\"Serwer zapisał: \" + wynik.dodano);\n    });\n});\n&lt;/script&gt;",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Architektura aplikacji internetowych"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad1.html#kody-statusów-http-jak-zrozumieć-odpowiedź-serwera",
+    "href": "lectures/wyklad1.html#kody-statusów-http-jak-zrozumieć-odpowiedź-serwera",
+    "title": "Architektura aplikacji internetowych",
+    "section": "Kody Statusów HTTP: Jak zrozumieć odpowiedź serwera?",
+    "text": "Kody Statusów HTTP: Jak zrozumieć odpowiedź serwera?\nZauważyłeś na końcu powyższego kodu liczbę 201? Kiedy serwer odpowiada Klientowi, zawsze dołącza trzycyfrowy Kod Statusu. To szybka informacja dla programisty, jak zakończyła się operacja.\nZostały one podzielone na logiczne kategorie:\n2xx (Sukces):\n200 OK – Wszystko poszło dobrze (najczęstszy kod po GET).\n201 Created – Pomyślnie utworzono nowy zasób (idealny po POST).\n4xx (Błąd Klienta - zepsułeś coś Ty lub przeglądarka):\n400 Bad Request – Serwer nie rozumie zapytania (np. wysłałeś uszkodzonego JSON-a).\n401 Unauthorized – Brak dostępu (nie jesteś zalogowany).\n404 Not Found – Szukasz adresu lub zasobu, który nie istnieje.\n5xx (Błąd Serwera - zepsuło się w serwerowni):\n500 Internal Server Error – Błąd w kodzie Backendu. Programista serwera musi naprawić problem.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Architektura aplikacji internetowych"
+    ]
   }
 ]

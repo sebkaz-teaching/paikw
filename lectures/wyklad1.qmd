@@ -1,7 +1,381 @@
 ---
-title:  Wykład 1
+title:  Architektura aplikacji internetowych
 
 format:
   html:
     code-fold: true
 ---
+
+
+## Wstęp: Czym jest aplikacja internetowa?
+
+Przejście od stron do aplikacji: 
+
+- Kiedyś internet to były statyczne dokumenty tekstowe (HTML). 
+- Dziś to potężne programy działające w przeglądarkach (np. Dysk Google, Netflix, systemy bankowe), które pod spodem mają złożoną architekturę korporacyjną.
+
+Cel przedmiotu:
+
+- Zrozumienie, jak zaprojektować, zbudować i wdrożyć system, który z jednej strony ma przyjazny interfejs w przeglądarce, a z drugiej potrafi obsłużyć tysiące użytkowników, bezpiecznie przechowując ich dane.
+
+## Paradygmat Klient-Serwer
+
+**Klient**: To aplikacja lub urządzenie proszące o zasoby (najczęściej przeglądarka internetowa – Chrome, Firefox, ale też aplikacja mobilna). 
+Klient jest "śłepy i głuchy" na to, co dzieje się w serwerowni. 
+Jego zadaniem jest wyświetlić interfejs i zebrać akcje od użytkownika (np. kliknięcie przycisku "Kup").
+
+**Serwer**: maszyna (lub chmura maszyn) nasłuchująca żądań. 
+Serwer posiada dostęp do bazy danych, sprawdza uprawnienia (czy użytkownik jest zalogowany?) i wykonuje "ciężką" logikę biznesową.
+
+**Komunikacja**: Odbywa się asynchronicznie za pomocą protokołu HTTP/HTTPS (zapytanie -> odpowiedź).
+
+## Paradygmat Peer-to-Peer (P2P - Sieci równorzędne)
+
+W przeciwieństwie do modelu Klient-Serwer, tutaj nie ma "szefa" i "podwładnych". Wszyscy uczestnicy sieci mają równe prawa.
+
+**Węzeł (Peer)**: Każda aplikacja lub maszyna podłączona do sieci. Pełni ona jednocześnie rolę klienta (pobiera zasoby od innych) oraz serwera (udostępnia własne zasoby innym węzłom). 
+
+**Brak centralnego punktu**: Sieć nie posiada jednego, głównego serwera. Dzięki temu awaria jednej maszyny nie zatrzymuje działania całego systemu (tzw. brak *Single Point of Failure*). 
+
+**Komunikacja**: Rozproszona i bezpośrednia pomiędzy węzłami. Wykorzystywana w sieciach torrent, kryptowalutach (Blockchain) oraz nowoczesnych aplikacjach internetowych do bezpośredniego przesyłania obrazu/dźwięku między przeglądarkami użytkowników (technologia WebRTC).
+
+## Paradygmat Wydawca-Subskrybent (Publish-Subscribe / Event-Driven)
+
+Zamiast ciągłego "pytania" serwera, czy coś się zmieniło (tzw. Polling), system reaguje na bieżąco tylko wtedy, gdy wystąpi konkretne zdarzenie.
+
+**Wydawca (Publisher)**: Aplikacja (lub jej część), która generuje komunikat o zdarzeniu (np. "Złożono nowe zamówienie" albo "Ktoś napisał nową wiadomość na czacie"). Wydawca wysyła tę informację w eter, nie martwiąc się o to, kto i kiedy ją odbierze.
+
+**Subskrybent (Subscriber)**: Aplikacja (lub komponent), która wcześniej zadeklarowała: "Interesują mnie tylko komunikaty o nowych zamówieniach". Czeka w ukryciu, a gdy odpowiednia wiadomość się pojawi, natychmiast ją przetwarza.
+
+**Broker (Pośrednik)**: Centralny "listonosz" (np. system Apache Kafka lub RabbitMQ w backendzie), który odbiera komunikaty od Wydawców i dba o to, by trafiły do właściwych Subskrybentów.
+
+**Komunikacja**: Silnie asynchroniczna. W aplikacjach internetowych ten paradygmat często realizuje się za pomocą protokołu **WebSockets**, który utrzymuje stałe, otwarte połączenie między przeglądarką a serwerem, pozwalając na dwukierunkowy przepływ danych w czasie rzeczywistym.
+
+![](../img/rys1.png)
+
+
+## K-S: Kod po stronie klienta (Frontend)
+
+To wszystko, co działa bezpośrednio na komputerze użytkownika (w jego przeglądarce).
+
+**HTML (HyperText Markup Language)**: Szkielet i struktura. 
+Definiuje, gdzie jest nagłówek, gdzie akapit, a gdzie formularz. 
+HTML odpowiada za to, co jest wyświetlane.
+
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Wykład: Klient i Serwer w akcji</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Pierwszy program</h1>
+    <p>Hello World</p>
+
+</body>
+</html>
+```
+
+**CSS (Cascading Style Sheets)**: Odpowiada za to, jak strona wygląda (kolory, animacje, układ responsywny na telefony).
+
+```css
+body { 
+    font-family: sans-serif; 
+    padding: 30px; 
+    max-width: 600px; 
+    margin: 0 auto; 
+}
+
+button { 
+    padding: 10px 15px; 
+    font-size: 16px; 
+    cursor: pointer; 
+}
+
+```
+
+**JavaScript (JS)**: Język programowania, który pozwala stronie żyć. Reaguje na kliknięcia, wysyła dane w tle, dynamicznie zmienia zawartość bez przeładowywania całej strony.
+```js
+document.getElementById('pobierz-btn').addEventListener('click', function() {
+    fetch('https://serwer-uczelni.pw.edu.pl/api/studenci')
+        .then(odpowiedz => odpowiedz.json()) 
+        .then(dane => {
+            console.log("Sukces! Pobrane dane to:", dane);
+        });
+});
+```
+
+## Backend - kod po stronie Serwera
+
+To "mózg" operacji, ukryty przed oczami użytkownika. 
+Szczególnie w aplikacjach korporacyjnych (Enterprise) to tutaj dzieje się magia.
+
+> Zadania: 
+> 
+> - Walidacja danych (klientowi nigdy nie ufamy!), 
+> - operacje na bazie danych (SQL/NoSQL), 
+> - integracje z zewnętrznymi systemami (np. systemem płatności BLIK), 
+> - zarządzanie sesjami i bezpieczeństwem.
+
+Technologie: W odróżnieniu od przeglądarki (która rozumie tylko JS/WebAssembly), na serwerze możemy pisać w czym chcemy: `Java` (Spring Boot), `C#` (.NET), `Python` (Django/FastAPI), `PHP` czy `Node.js`.
+
+```php
+<?php
+echo "Hello, world!!!";
+?>
+
+```
+
+
+```python
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route('/api/powitanie')
+def powitanie():
+    # Zwracamy słownik, który Flask sam zamieni na JSON
+    return jsonify({"wiadomosc": "Witaj z serwera Python (Flask)!"})
+
+if __name__ == '__main__':
+    app.run(port=5000)
+
+```
+
+```julia
+using Genie, Genie.Renderer.Json
+
+route("/api/powitanie") do
+  json(Dict("wiadomosc" => "Witaj z serwera Julia!"))
+end
+
+up(8000)
+
+```
+
+```js
+const express = require('express');
+const app = express();
+
+app.get('/api/powitanie', (req, res) => {
+    // Odpowiadamy formatem JSON
+    res.json({ wiadomosc: "Witaj z serwera Node.js!" });
+});
+
+app.listen(3000, () => {
+    console.log('Serwer działa na porcie 3000');
+});
+```
+
+## Application Programming Interface
+
+Skoro Frontend (np. w React.js) i Backend (np. w Javie) są osobnymi bytami, potrzebują uniwersalnego języka, żeby się dogadać. Tym językiem jest **API**.
+
+Co to jest API? To "kelner" w restauracji. 
+
+Frontend (klient) składa zamówienie (żądanie HTTP), API przekazuje je do kuchni (Backend), a potem przynosi gotowe danie.
+
+### Architektura REST
+
+REST (Representational State Transfer) to nie jest biblioteka ani protokół – to zbiór surowych reguł i ograniczeń architektonicznych (zdefiniowanych w 2000 roku przez Roya Fieldinga). 
+Jeśli API spełnia te reguły, nazywamy je **RESTful API**.
+
+Oto kluczowe paradygmaty, na których opiera się prawdziwy REST:
+
+**1. Architektura zorientowana na Zasoby (Resource-Based)**
+
+W REST wszystko jest "Zasobem" (rzeczownikiem), a nie "Akcją" (czasownikiem). Klient nie wywołuje funkcji na serwerze, tylko manipuluje stanem obiektów.
+
+-  ❌ **Złe podejście (RPC):** `adres.pl/api/pobierzStudentow` lub `adres.pl/api/dodajStudenta`
+-  ✅ **Dobre podejście (REST):** Mamy jeden zasób `adres.pl/api/studenci` i to metoda HTTP (GET/POST) określa, co z nim robimy.
+
+**2. Bezstanowość (Statelessness)**
+To absolutnie najważniejsza zasada skalowalnych aplikacji korporacyjnych.
+
+- **Zasada:** Serwer nie przechowuje żadnego stanu sesji klienta pomiędzy zapytaniami. Każde pojedyncze żądanie HTTP musi zawierać absolutnie **wszystkie informacje** niezbędne do jego obsłużenia (np. token autoryzacyjny).
+- **Dlaczego to takie ważne?** Skalowalność. Jeśli aplikacja zyska nagle milion użytkowników, możemy dostawić 10 nowych serwerów w chmurze. Ponieważ serwery nie muszą pamiętać "historii" rozmowy z klientem, każde kolejne zapytanie od tego samego użytkownika może obsłużyć inna, akurat wolna maszyna (Load Balancing).
+
+**3. Idempotentność metod HTTP**
+
+Pojęcie kluczowe w projektowaniu systemów odpornych na awarie sieci. Operacja jest idempotentna, jeśli wykonanie jej raz przynosi taki sam skutek na serwerze, jak wykonanie jej sto razy pod rząd.
+* `GET`, `PUT`, `DELETE` są idempotentne. (Jeśli 10 razy wyślesz `DELETE /api/studenci/5`, student numer 5 zniknie, a kolejne zapytania nic nie zepsują).
+* `POST` **nie jest** idempotentny. (Jeśli użytkownikowi zatnie się myszka i kliknie "Zapłać" 3 razy, wyśle 3 żądania `POST /api/platnosci`, co stworzy 3 osobne transakcje! Frontend i Backend muszą być na to przygotowane).
+
+**4. Reprezentacja danych (Representational)**
+Zasób w bazie danych (np. rekord w tabeli SQL) nie wędruje fizycznie przez sieć. Serwer przesyła Klientowi jedynie jego **reprezentację** – najczęściej w formacie `JSON` lub `XML`. Klient może zażądać konkretnego formatu za pomocą nagłówków HTTP (np. `Accept: application/json`).
+
+**5. HATEOAS (Dla zaawansowanych - Szczyt dojrzałości REST)**
+*(Hypermedia as the Engine of Application State)*. W pełni dojrzałe API RESTowe nie tylko zwraca dane, ale też **linki do kolejnych możliwych akcji**. Klient nie musi zgadywać, jakie adresy URL istnieją.
+*Przykład:* Pobierasz dane konta bankowego, a API w JSON-ie od razu dorzuca linki: `"przelej_srodki": "/api/konta/123/przelew"`, `"zamknij_konto": "/api/konta/123/zamknij"`.
+
+
+## Format przekazywania danych: JSON
+
+Klasyczne podejście (Server-Side Rendering): Kiedyś serwer generował gotowy kod HTML i wysyłał go do przeglądarki. Wymagało to przeładowania całej strony przy każdym kliknięciu.
+
+Współczesne podejście (SPA - Single Page Application): Dzisiaj przeglądarka pobiera szkielet aplikacji raz. 
+Kiedy potrzebuje nowych danych (np. listy nowych postów na forum), nie prosi serwera o gotowy wygląd (HTML). 
+Prosi tylko o surowe dane.
+
+**JSON (JavaScript Object Notation)**: Lekki, tekstowy format wymiany danych, który wygląda jak lista kluczy i wartości.
+
+Przykład JSON: 
+```json
+{"imie": "Jan", "wiek": 22, "status": "student"}
+```
+
+Frontend odbiera ten mały plik JSON i sam (przy pomocy JavaScriptu) decyduje, jak go ubrać w tagi HTML i pokazać użytkownikowi. To drastycznie zmniejsza obciążenie sieci i przyspiesza działanie aplikacji.
+
+
+## Podstawy komunikacji: Metoda GET (Pobieranie danych)
+
+Zanim przejdziemy do budowania złożonych interakcji, musimy zrozumieć, jak działa najbardziej podstawowy mechanizm internetu – metoda **GET**. 
+
+Jak sama nazwa wskazuje, zapytanie `GET` służy wyłącznie do **pobierania zasobów**. Nie modyfikuje ono żadnych danych na serwerze, nie usuwa ich ani nie dodaje. Jest operacją "tylko do odczytu".
+
+### Najprostszy test GET: Twoja przeglądarka!
+
+Nie potrzebujesz ani linijki kodu Frontendowego, żeby przetestować, czy Twoje API działa. 
+
+Za każdym razem, gdy wpisujesz adres w pasku URL przeglądarki (np. `google.com` albo `pw.edu.pl`) i wciskasz Enter, Twoja przeglądarka pod spodem wysyła standardowe żądanie `GET`. 
+
+Dlatego, jeśli uruchomisz na swoim komputerze którykolwiek z naszych serwerów (np. we Flasku na porcie 5000) i wpiszesz w pasku adresu:
+`http://localhost:5000/api/powitanie`
+
+Twoja przeglądarka wykona żądanie GET, uderzy w odpowiedni "Endpoint" na serwerze, a w oknie przeglądarki zamiast strony WWW zobaczysz surowy wynik w formacie JSON:
+`{"wiadomosc": "Witaj z serwera Python (Flask)!"}`
+
+
+## Anatomia komunikacji w sieci: Żądanie, Odpowiedź i URL
+
+Aby Klient i Serwer mogli ze sobą rozmawiać, używają protokołu HTTP. Ta komunikacja przypomina trochę rozmowę w restauracji i opiera się na trzech głównych filarach:
+
+1. **URL (Uniform Resource Locator)**: To dokładny adres zasobu (np. `http://moj-serwer.pl/api/studenci`). W naszej metaforze to wskazanie palcem konkretnego dania w menu.
+2. **Żądanie (Request)**: Wiadomość wysyłana przez Klienta (przeglądarkę) do Serwera. Zawiera informację, czego Klient chce (metoda) i pod jakim adresem (URL).
+3. **Odpowiedź (Response)**: Wiadomość zwrotna od Serwera. Zawiera tzw. status (np. `200 OK` – "mam to dla ciebie", albo `404 Not Found` – "nie ma takiego adresu") oraz same dane (np. w formacie JSON).
+
+###  Metoda GET: Pobieranie danych przez przeglądarkę
+
+Najbardziej podstawową metodą HTTP jest **GET** (z ang. pobierz). Służy ona *wyłącznie* do odczytywania danych.
+
+Co ważne: **Za każdym razem, gdy wpisujesz adres w pasku przeglądarki (np. `google.com`) i wciskasz Enter, Twoja przeglądarka wysyła w tle żądanie GET.**
+
+Zatem jeśli nasz serwer w Pythonie działa lokalnie, wcale nie potrzebujemy specjalnego kodu na Froncie, by go przetestować. Wystarczy otworzyć nową kartę w Chrome i wpisać:
+`http://localhost:5000/api/powitanie`
+Przeglądarka zapyta (GET), a serwer odpowie, wyświetlając na ekranie surowy tekst JSON.
+
+### Zmienność odpowiedzi: Serwer czyta URL
+
+Prawdziwa potęga Backendu polega na tym, że serwer nie musi mieć gotowego pliku dla każdego możliwego adresu. Może traktować fragmenty adresu URL jako **zmienne** i na ich podstawie generować odpowiedź w locie.
+
+Załóżmy, że chcemy pobrać dane konkretnego studenta. Wpisujemy w przeglądarce:
+`http://localhost:5000/api/student/2`
+
+Oto jak serwer we Flasku przechwytuje tę cyfrę `2` z adresu URL i zmienia swój wynik:
+
+```python
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+# "Udawana" baza danych
+baza_studentow = {
+    1: {"imie": "Jan", "kierunek": "Informatyka"},
+    2: {"imie": "Anna", "kierunek": "Cyberbezpieczeństwo"},
+    3: {"imie": "Piotr", "kierunek": "Robotyka"}
+}
+
+# Znak <int:id> mówi serwerowi: "Złap liczbę z adresu URL i przekaż do funkcji"
+@app.route('/api/student/<int:id>', methods=['GET'])
+def pobierz_konkretnego_studenta(id):
+    
+    # Sprawdzamy, czy student o takim ID istnieje w naszej bazie
+    if id in baza_studentow:
+        # Jeśli wpiszesz /api/student/2, serwer zwróci dane Anny
+        return jsonify(baza_studentow[id])
+    else:
+        # Jeśli wpiszesz /api/student/99, serwer zwróci błąd
+        return jsonify({"blad": "Nie znaleziono studenta"}), 404
+
+if __name__ == '__main__':
+    app.run(port=5000)
+```
+
+### Metoda POST: Wysyłanie ukrytych danych
+
+Skoro GET potrafi przekazywać zmienne w adresie URL (np. ?szukaj=buty), dlaczego potrzebujemy czegoś innego?
+
+Wyobraź sobie logowanie do banku. Gdybyśmy użyli metody GET, Twoje hasło wylądowałoby w pasku adresu przeglądarki (np. bank.pl/login?haslo=mojeTajneHaslo). To ogromne zagrożenie bezpieczeństwa, a ponadto adresy URL mają ograniczoną długość.
+
+Dlatego, gdy wysyłamy nowe, poufne lub duże dane (np. formularz rejestracji, zdjęcie, wpis na blogu), używamy metody POST.
+
+W zapytaniu POST dane nie są doklejane do adresu URL.
+
+Są one pakowane do "brzucha" (ang. Body / Payload) żądania HTTP, który jest niewidoczny z poziomu paska przeglądarki.
+
+Żądania POST nie da się wywołać po prostu wpisując adres w przeglądarce (wykonujemy je z poziomu kodu JavaScript po kliknięciu przycisku "Wyślij", lub z aplikacji np. Postman).
+
+### Jak działa metoda POST w praktyce? (Kod Klienta i Serwera)
+
+
+
+Aby przetestować metodę POST, potrzebujemy współpracy Frontendu (który wyśle dane) i Backendu (który je odbierze).
+
+**1. Kod Klienta (Frontend - HTML + JS)**
+Zamiast wpisywać adres w przeglądarce, użytkownik wypełnia formularz i klika przycisk. Przeglądarka pakuje te dane w JSON i wysyła w tle.
+
+```html
+<input type="text" id="imie-input" placeholder="Wpisz imię">
+<input type="text" id="kierunek-input" placeholder="Wpisz kierunek">
+<button id="zapisz-btn">Zapisz na serwerze</button>
+
+<script>
+document.getElementById('zapisz-btn').addEventListener('click', function() {
+    // 1. Zbieramy dane z pól tekstowych
+    const daneDoWyslania = { 
+        imie: document.getElementById('imie-input').value,
+        kierunek: document.getElementById('kierunek-input').value
+    };
+
+    // 2. Wysyłamy żądanie POST do API
+    fetch('http://localhost:5000/api/dodaj-studenta', {
+        method: 'POST', // Zmieniamy domyślne GET na POST
+        headers: {
+            'Content-Type': 'application/json' // Informujemy serwer: "Uwaga, leci JSON!"
+        },
+        body: JSON.stringify(daneDoWyslania) // Zamieniamy obiekt w tekst JSON
+    })
+    .then(odpowiedz => odpowiedz.json())
+    .then(wynik => {
+        console.log("Odpowiedź z serwera:", wynik);
+        alert("Serwer zapisał: " + wynik.dodano);
+    });
+});
+</script>
+```
+
+## Kody Statusów HTTP: Jak zrozumieć odpowiedź serwera?
+Zauważyłeś na końcu powyższego kodu liczbę 201? Kiedy serwer odpowiada Klientowi, zawsze dołącza trzycyfrowy Kod Statusu. To szybka informacja dla programisty, jak zakończyła się operacja.
+
+Zostały one podzielone na logiczne kategorie:
+
+2xx (Sukces):
+
+200 OK – Wszystko poszło dobrze (najczęstszy kod po GET).
+
+201 Created – Pomyślnie utworzono nowy zasób (idealny po POST).
+
+4xx (Błąd Klienta - zepsułeś coś Ty lub przeglądarka):
+
+400 Bad Request – Serwer nie rozumie zapytania (np. wysłałeś uszkodzonego JSON-a).
+
+401 Unauthorized – Brak dostępu (nie jesteś zalogowany).
+
+404 Not Found – Szukasz adresu lub zasobu, który nie istnieje.
+
+5xx (Błąd Serwera - zepsuło się w serwerowni):
+
+500 Internal Server Error – Błąd w kodzie Backendu. Programista serwera musi naprawić problem.
