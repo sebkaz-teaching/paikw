@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Wykład 3 – Projektowanie aplikacji internetowych i korporacyjnych</title>
+<title>HTML5 i CSS – Budowanie szkieletu i skóry aplikacji – Projektowanie aplikacji internetowych i korporacyjnych</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -109,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Wykład 3</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykłady</a></li><li class="breadcrumb-item"><a href="../lectures/wyklad3.html">HTML5 i CSS – Budowanie szkieletu i skóry aplikacji</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -148,6 +183,24 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Konteneryzacja i Docker – Koniec z U mnie działa!</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/wyklad3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">HTML5 i CSS – Budowanie szkieletu i skóry aplikacji</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/wyklad4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PHP – Programowanie obiektowe, bazy danych i wzorce CMS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/wyklad5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JavaScript – Język, który ożywia przeglądarkę</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -155,15 +208,33 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><strong>Sections</strong></h2>
+   
+  <ul class="collapse">
+  <li><a href="#od-dokumentu-do-aplikacji-ewolucja-html" id="toc-od-dokumentu-do-aplikacji-ewolucja-html" class="nav-link active" data-scroll-target="#od-dokumentu-do-aplikacji-ewolucja-html">1. Od dokumentu do aplikacji: Ewolucja HTML</a></li>
+  <li><a href="#anatomia-dokumentu-html5" id="toc-anatomia-dokumentu-html5" class="nav-link" data-scroll-target="#anatomia-dokumentu-html5">2. Anatomia dokumentu HTML5</a></li>
+  <li><a href="#elementy-semantyczne-html5-kod-który-ma-znaczenie" id="toc-elementy-semantyczne-html5-kod-który-ma-znaczenie" class="nav-link" data-scroll-target="#elementy-semantyczne-html5-kod-który-ma-znaczenie">3. Elementy semantyczne HTML5: Kod, który ma znaczenie</a></li>
+  <li><a href="#formularze-html5-walidacja-za-darmo" id="toc-formularze-html5-walidacja-za-darmo" class="nav-link" data-scroll-target="#formularze-html5-walidacja-za-darmo">4. Formularze HTML5: Walidacja za darmo</a></li>
+  <li><a href="#multimedia-bez-wtyczek" id="toc-multimedia-bez-wtyczek" class="nav-link" data-scroll-target="#multimedia-bez-wtyczek">5. Multimedia bez wtyczek</a></li>
+  <li><a href="#web-storage-dane-w-przeglądarce" id="toc-web-storage-dane-w-przeglądarce" class="nav-link" data-scroll-target="#web-storage-dane-w-przeglądarce">6. Web Storage: Dane w przeglądarce</a></li>
+  <li><a href="#css-od-chaosu-do-systemu" id="toc-css-od-chaosu-do-systemu" class="nav-link" data-scroll-target="#css-od-chaosu-do-systemu">7. CSS: Od chaosu do systemu</a></li>
+  <li><a href="#box-model-fundament-layoutu" id="toc-box-model-fundament-layoutu" class="nav-link" data-scroll-target="#box-model-fundament-layoutu">8. Box Model: Fundament layoutu</a></li>
+  <li><a href="#flexbox-jednowymiarowy-układ" id="toc-flexbox-jednowymiarowy-układ" class="nav-link" data-scroll-target="#flexbox-jednowymiarowy-układ">9. Flexbox: Jednowymiarowy układ</a></li>
+  <li><a href="#css-grid-dwuwymiarowy-układ" id="toc-css-grid-dwuwymiarowy-układ" class="nav-link" data-scroll-target="#css-grid-dwuwymiarowy-układ">10. CSS Grid: Dwuwymiarowy układ</a></li>
+  <li><a href="#responsywność-media-queries" id="toc-responsywność-media-queries" class="nav-link" data-scroll-target="#responsywność-media-queries">11. Responsywność: Media Queries</a></li>
+  <li><a href="#praktyczny-przykład-karta-produktu" id="toc-praktyczny-przykład-karta-produktu" class="nav-link" data-scroll-target="#praktyczny-przykład-karta-produktu">12. Praktyczny przykład: Karta produktu</a></li>
+  <li><a href="#podsumowanie-wykładu-3" id="toc-podsumowanie-wykładu-3" class="nav-link" data-scroll-target="#podsumowanie-wykładu-3">Podsumowanie Wykładu 3</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykłady</a></li><li class="breadcrumb-item"><a href="../lectures/wyklad3.html">HTML5 i CSS – Budowanie szkieletu i skóry aplikacji</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Wykład 3</h1>
+<h1 class="title">HTML5 i CSS – Budowanie szkieletu i skóry aplikacji</h1>
 </div>
 
 
@@ -180,8 +251,676 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="od-dokumentu-do-aplikacji-ewolucja-html" class="level2">
+<h2 class="anchored" data-anchor-id="od-dokumentu-do-aplikacji-ewolucja-html">1. Od dokumentu do aplikacji: Ewolucja HTML</h2>
+<p>Na Wykładzie 1 poznaliśmy, że Frontend to kod działający w przeglądarce użytkownika. Widzieliśmy prosty szkielet HTML i wiemy, że przeglądarka rozumie trzy języki: HTML, CSS i JavaScript.</p>
+<p>Teraz pora zagłębić się w pierwszy z nich. HTML (HyperText Markup Language) przeszedł długą drogę:</p>
+<ul>
+<li><strong>HTML 1.0 (1993):</strong> Proste dokumenty tekstowe z linkami. Internet jako cyfrowa biblioteka.</li>
+<li><strong>HTML 4.01 (1999):</strong> Tabele, formularze, ramki. Strony zaczęły wyglądać jak “aplikacje”, ale kod był brzydki i chaotyczny (<code>&lt;font&gt;</code>, <code>&lt;center&gt;</code>, tabele do layoutu).</li>
+<li><strong>XHTML (2000):</strong> Próba narzucenia ścisłych reguł XML na HTML. Każdy niezamknięty tag był błędem. Zbyt surowe podejście.</li>
+<li><strong>HTML5 (2014–dziś):</strong> Rewolucja. Nowe elementy semantyczne, wbudowane multimedia, API do geolokalizacji, rysowania (Canvas), przechowywania danych (Web Storage). HTML5 to nie tylko język znaczników — to cała platforma do budowy aplikacji.</li>
+</ul>
+<p><strong>Kluczowa zmiana filozofii:</strong> HTML5 nie wymusza na programiście perfekcyjnej składni (jak XHTML), ale zachęca do pisania kodu <strong>semantycznego</strong> — takiego, który swoją strukturą mówi przeglądarce i wyszukiwarce, <em>czym</em> jest dany fragment treści.</p>
+</section>
+<section id="anatomia-dokumentu-html5" class="level2">
+<h2 class="anchored" data-anchor-id="anatomia-dokumentu-html5">2. Anatomia dokumentu HTML5</h2>
+<p>Każdy plik HTML zaczyna się od tego samego szkieletu. Przypomnijmy go z Wykładu 1 i omówmy dokładnie:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">"pl"</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">"UTF-8"</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">"viewport"</span><span class="ot"> content</span><span class="op">=</span><span class="st">"width=device-width, initial-scale=1.0"</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Moja aplikacja<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> href</span><span class="op">=</span><span class="st">"style.css"</span><span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Witaj na stronie!<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>To jest akapit tekstu.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Co robi każda linia?</p>
+<ul>
+<li><code>&lt;!DOCTYPE html&gt;</code> — Deklaracja typu dokumentu. Mówi przeglądarce: “Traktuj mnie jak HTML5”. Bez tego przeglądarka wchodzi w tzw. <em>quirks mode</em> i renderuje stronę nieprzewidywalnie.</li>
+<li><code>&lt;html lang="pl"&gt;</code> — Element główny. Atrybut <code>lang</code> informuje wyszukiwarki i czytniki ekranowe, w jakim języku jest treść.</li>
+<li><code>&lt;meta charset="UTF-8"&gt;</code> — Kodowanie znaków. Bez tego polskie litery (ą, ę, ś) mogą wyświetlić się jako “krzaczki”.</li>
+<li><code>&lt;meta name="viewport" ...&gt;</code> — Kluczowa linia dla urządzeń mobilnych. Bez niej telefon wyświetli stronę jakby miał ekran desktopowy i zmniejszy ją do rozmiaru znaczka pocztowego.</li>
+<li><code>&lt;head&gt;</code> — Sekcja niewidoczna dla użytkownika. Metadane, tytuł w zakładce, linki do arkuszy CSS i skryptów.</li>
+<li><code>&lt;body&gt;</code> — Wszystko, co użytkownik widzi na ekranie.</li>
+</ul>
+</section>
+<section id="elementy-semantyczne-html5-kod-który-ma-znaczenie" class="level2">
+<h2 class="anchored" data-anchor-id="elementy-semantyczne-html5-kod-który-ma-znaczenie">3. Elementy semantyczne HTML5: Kod, który ma znaczenie</h2>
+<p>W starym HTML cała strona składała się z <code>&lt;div&gt;</code> (kontener blokowy) i <code>&lt;span&gt;</code> (kontener liniowy). Kod wyglądał tak:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ❌ Stare podejście: "Divitis" — choroba nadmiarowych divów --&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"header"</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"nav"</span><span class="dt">&gt;</span>...<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"content"</span><span class="dt">&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span>...<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"sidebar"</span><span class="dt">&gt;</span>...<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"footer"</span><span class="dt">&gt;</span>...<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Problem? Przeglądarka, wyszukiwarka Google i czytnik ekranowy dla osoby niewidomej widzą jedynie stos anonimowych “pudełek” (<code>div</code>). Nie wiedzą, co jest menu, co artykułem, a co stopką.</p>
+<p>HTML5 wprowadził <strong>elementy semantyczne</strong> — tagi, które opisują swoją rolę:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ✅ HTML5: Kod, który mówi, czym jest --&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">header</span><span class="dt">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">nav</span><span class="dt">&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"/"</span><span class="dt">&gt;</span>Start<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"/about"</span><span class="dt">&gt;</span>O nas<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"/contact"</span><span class="dt">&gt;</span>Kontakt<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">header</span><span class="dt">&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">main</span><span class="dt">&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">article</span><span class="dt">&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Tytuł artykułu<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">section</span><span class="dt">&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>Sekcja pierwsza<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Treść sekcji...<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;/</span><span class="kw">section</span><span class="dt">&gt;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">section</span><span class="dt">&gt;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>Sekcja druga<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Kolejna treść...<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;/</span><span class="kw">section</span><span class="dt">&gt;</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">article</span><span class="dt">&gt;</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">aside</span><span class="dt">&gt;</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>Powiązane artykuły<span class="dt">&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"/art2"</span><span class="dt">&gt;</span>Inny artykuł<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">aside</span><span class="dt">&gt;</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">main</span><span class="dt">&gt;</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="dt">&gt;</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span><span class="dv">&amp;copy;</span> 2026 Moja Firma<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Każdy z tych tagów ma konkretne znaczenie:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tag</th>
+<th>Rola</th>
+<th>Uwagi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;header&gt;</code></td>
+<td>Nagłówek strony lub sekcji</td>
+<td>Logo, nawigacja, tytuł</td>
+</tr>
+<tr class="even">
+<td><code>&lt;nav&gt;</code></td>
+<td>Blok nawigacyjny</td>
+<td>Menu główne, breadcrumbs</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;main&gt;</code></td>
+<td>Główna treść strony</td>
+<td><strong>Tylko jeden</strong> na stronę</td>
+</tr>
+<tr class="even">
+<td><code>&lt;article&gt;</code></td>
+<td>Samodzielna treść</td>
+<td>Post, artykuł, komentarz</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;section&gt;</code></td>
+<td>Sekcja tematyczna</td>
+<td>Grupuje powiązaną treść</td>
+</tr>
+<tr class="even">
+<td><code>&lt;aside&gt;</code></td>
+<td>Treść poboczna</td>
+<td>Sidebar, reklamy, linki</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;footer&gt;</code></td>
+<td>Stopka</td>
+<td>Copyright, kontakt, linki</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dlaczego to ważne?</strong></p>
+<ol type="1">
+<li><strong>SEO:</strong> Google lepiej rozumie strukturę strony i wyżej ją pozycjonuje.</li>
+<li><strong>Dostępność (a11y):</strong> Czytniki ekranowe mogą powiedzieć: “Nawigacja — 3 linki”, “Artykuł — Tytuł artykułu”.</li>
+<li><strong>Czytelność kodu:</strong> Programista od razu widzi architekturę strony, bez czytania klas CSS.</li>
+</ol>
+</section>
+<section id="formularze-html5-walidacja-za-darmo" class="level2">
+<h2 class="anchored" data-anchor-id="formularze-html5-walidacja-za-darmo">4. Formularze HTML5: Walidacja za darmo</h2>
+<p>Na Wykładzie 1 widzieliśmy, jak JavaScript wysyła dane przez <code>fetch</code>. Ale zanim dane dotrą do serwera, użytkownik musi je gdzieś wpisać. Do tego służą formularze.</p>
+<p>HTML5 drastycznie ulepszyło formularze, dodając <strong>nowe typy pól</strong> i <strong>wbudowaną walidację</strong> — bez jednej linii JavaScriptu:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">"/api/rejestracja"</span><span class="ot"> method</span><span class="op">=</span><span class="st">"POST"</span><span class="dt">&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Pole tekstowe z walidacją e-mail --&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"email"</span><span class="dt">&gt;</span>E-mail:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"email"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"email"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"email"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ot">           required placeholder</span><span class="op">=</span><span class="st">"jan@example.com"</span><span class="dt">&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Pole numeryczne z zakresem --&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"wiek"</span><span class="dt">&gt;</span>Wiek:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"number"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"wiek"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"wiek"</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="ot">           min</span><span class="op">=</span><span class="st">"18"</span><span class="ot"> max</span><span class="op">=</span><span class="st">"120"</span><span class="ot"> required</span><span class="dt">&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Hasło z minimalną długością --&gt;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"haslo"</span><span class="dt">&gt;</span>Hasło:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"password"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"haslo"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"haslo"</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ot">           minlength</span><span class="op">=</span><span class="st">"8"</span><span class="ot"> required</span><span class="dt">&gt;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Wybór daty --&gt;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"data"</span><span class="dt">&gt;</span>Data urodzenia:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"date"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"data"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"data_urodzenia"</span><span class="dt">&gt;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Pole z wyrażeniem regularnym --&gt;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"kod"</span><span class="dt">&gt;</span>Kod pocztowy:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"text"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"kod"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"kod_pocztowy"</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="ot">           pattern</span><span class="op">=</span><span class="st">"[0-9]{2}-[0-9]{3}"</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">"00-000"</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="ot">           title</span><span class="op">=</span><span class="st">"Format: 00-000"</span><span class="dt">&gt;</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Suwak --&gt;</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"ocena"</span><span class="dt">&gt;</span>Ocena (1-10):<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"range"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"ocena"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"ocena"</span><span class="ot"> min</span><span class="op">=</span><span class="st">"1"</span><span class="ot"> max</span><span class="op">=</span><span class="st">"10"</span><span class="dt">&gt;</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">"submit"</span><span class="dt">&gt;</span>Zarejestruj się<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Przeglądarka sama sprawdzi, czy:</p>
+<ul>
+<li>pole <code>required</code> nie jest puste,</li>
+<li><code>type="email"</code> zawiera <code>@</code>,</li>
+<li><code>min</code>/<code>max</code> jest w zakresie,</li>
+<li><code>pattern</code> pasuje do wyrażenia regularnego,</li>
+<li><code>minlength</code> jest spełnione.</li>
+</ul>
+<p>Użytkownik zobaczy komunikat błędu w swoim języku — i to <strong>bez JavaScriptu</strong>.</p>
+<p><strong>Ważna uwaga z Wykładu 1:</strong> Walidacja po stronie klienta (HTML/JS) to wygoda dla użytkownika. Walidacja po stronie serwera to <strong>bezpieczeństwo</strong>. Klientowi nigdy nie ufamy — ktoś może obejść HTML i wysłać dowolne dane bezpośrednio do naszego API (np. przez Postman).</p>
+</section>
+<section id="multimedia-bez-wtyczek" class="level2">
+<h2 class="anchored" data-anchor-id="multimedia-bez-wtyczek">5. Multimedia bez wtyczek</h2>
+<p>Pamiętacie Adobe Flash? Kiedyś bez niego nie dało się odtworzyć filmiku w przeglądarce. Flash był ciężki, dziurawy jak ser szwajcarski (luki bezpieczeństwa) i nie działał na iPhone’ach. HTML5 rozwiązało ten problem raz na zawsze:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Audio --&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">audio</span><span class="ot"> controls</span><span class="dt">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">source</span><span class="ot"> src</span><span class="op">=</span><span class="st">"podcast.mp3"</span><span class="ot"> type</span><span class="op">=</span><span class="st">"audio/mpeg"</span><span class="dt">&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">source</span><span class="ot"> src</span><span class="op">=</span><span class="st">"podcast.ogg"</span><span class="ot"> type</span><span class="op">=</span><span class="st">"audio/ogg"</span><span class="dt">&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    Twoja przeglądarka nie wspiera odtwarzania audio.</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">audio</span><span class="dt">&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Video --&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">video</span><span class="ot"> controls width</span><span class="op">=</span><span class="st">"640"</span><span class="ot"> poster</span><span class="op">=</span><span class="st">"miniatura.jpg"</span><span class="dt">&gt;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">source</span><span class="ot"> src</span><span class="op">=</span><span class="st">"wyklad.mp4"</span><span class="ot"> type</span><span class="op">=</span><span class="st">"video/mp4"</span><span class="dt">&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">source</span><span class="ot"> src</span><span class="op">=</span><span class="st">"wyklad.webm"</span><span class="ot"> type</span><span class="op">=</span><span class="st">"video/webm"</span><span class="dt">&gt;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    Twoja przeglądarka nie wspiera odtwarzania wideo.</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">video</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Dwie linie kodu — pełny odtwarzacz multimedialny z przyciskami play/pause, paskiem postępu i regulacją głośności. Atrybut <code>poster</code> wyświetla miniaturę przed odtworzeniem.</p>
+<p>Dlaczego wiele elementów <code>&lt;source&gt;</code>? Nie każda przeglądarka obsługuje każdy format. Przeglądarka sama wybierze pierwszy format, który potrafi odtworzyć.</p>
+</section>
+<section id="web-storage-dane-w-przeglądarce" class="level2">
+<h2 class="anchored" data-anchor-id="web-storage-dane-w-przeglądarce">6. Web Storage: Dane w przeglądarce</h2>
+<p>Na Wykładzie 1 mówiliśmy, że serwer jest bezstanowy (Statelessness w REST). Ale co jeśli Frontend chce zapamiętać coś lokalnie — np. motyw ciemny/jasny albo zawartość koszyka przed zalogowaniem?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// localStorage — dane przetrwają zamknięcie przeglądarki</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>localStorage<span class="op">.</span><span class="fu">setItem</span>(<span class="st">'motyw'</span><span class="op">,</span> <span class="st">'ciemny'</span>)<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> motyw <span class="op">=</span> localStorage<span class="op">.</span><span class="fu">getItem</span>(<span class="st">'motyw'</span>)<span class="op">;</span> <span class="co">// 'ciemny'</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>localStorage<span class="op">.</span><span class="fu">removeItem</span>(<span class="st">'motyw'</span>)<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">// sessionStorage — dane znikają po zamknięciu karty</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>sessionStorage<span class="op">.</span><span class="fu">setItem</span>(<span class="st">'koszyk'</span><span class="op">,</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>([<span class="st">'Laptop'</span><span class="op">,</span> <span class="st">'Myszka'</span>]))<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> koszyk <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">parse</span>(sessionStorage<span class="op">.</span><span class="fu">getItem</span>(<span class="st">'koszyk'</span>))<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Ograniczenia:</strong> Dane przechowywane wyłącznie w przeglądarce użytkownika (ok. 5–10 MB). Nie zastąpią bazy danych na serwerze. Nigdy nie przechowuj tu haseł ani tokenów sesji (podatność na ataki XSS).</p>
+</section>
+<section id="css-od-chaosu-do-systemu" class="level2">
+<h2 class="anchored" data-anchor-id="css-od-chaosu-do-systemu">7. CSS: Od chaosu do systemu</h2>
+<p>Wiemy już, że HTML definiuje <em>co</em> jest na stronie. CSS (Cascading Style Sheets) definiuje <em>jak</em> to wygląda. Ale CSS to nie tylko “zmień kolor na czerwony” — to potężny system layoutu.</p>
+<section id="trzy-sposoby-dołączania-css" class="level3">
+<h3 class="anchored" data-anchor-id="trzy-sposoby-dołączania-css">Trzy sposoby dołączania CSS</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- 1. Inline — bezpośrednio w elemencie (❌ unikaj!) --&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color: red; font-size: 18px;"</span><span class="dt">&gt;</span>Tekst<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- 2. Wewnętrzny — w sekcji &lt;head&gt; (dopuszczalny dla małych stron) --&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        p { <span class="kw">color</span><span class="ch">:</span> <span class="cn">red</span><span class="op">;</span> }</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- 3. Zewnętrzny plik — ✅ najlepsza praktyka --&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> href</span><span class="op">=</span><span class="st">"style.css"</span><span class="dt">&gt;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Zewnętrzny plik CSS to standard w profesjonalnych projektach. Jeden plik stylów obsługuje setki stron HTML. Zmiana koloru w jednym miejscu aktualizuje cały serwis.</p>
+</section>
+<section id="selektory-targetowanie-elementów" class="level3">
+<h3 class="anchored" data-anchor-id="selektory-targetowanie-elementów">Selektory — targetowanie elementów</h3>
+<p>Selektor to “celownik”, który mówi CSS: “Zastosuj te style do TYCH elementów”.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Selektor elementu — wszystkie paragrafy */</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>p {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">line-height</span><span class="ch">:</span> <span class="dv">1.6</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">/* Selektor klasy — elementy z class="karta" */</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">.karta</span> {</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#ddd</span><span class="op">;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">/* Selektor ID — jeden konkretny element */</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="pp">#logo</span> {</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span><span class="ch">:</span> <span class="dv">150</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">/* Selektor potomka — linki WEWNĄTRZ nav */</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>nav a {</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-decoration</span><span class="ch">:</span> <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="cn">#333</span><span class="op">;</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">/* Pseudoklasa — stan po najechaniu myszką */</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>a<span class="in">:hover</span> {</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="cn">#0066cc</span><span class="op">;</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-decoration</span><span class="ch">:</span> <span class="dv">underline</span><span class="op">;</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co">/* Pseudoklasa — pierwszy element listy */</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>li<span class="in">:first-child</span> {</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-weight</span><span class="ch">:</span> <span class="dv">bold</span><span class="op">;</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co">/* Selektor atrybutu */</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>input<span class="ex">[</span><span class="ss">type</span><span class="op">=</span><span class="st">"email"</span><span class="ex">]</span> {</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span><span class="ch">:</span> <span class="dv">2</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#0066cc</span><span class="op">;</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="specyficzność-kto-wygrywa" class="level3">
+<h3 class="anchored" data-anchor-id="specyficzność-kto-wygrywa">Specyficzność: Kto wygrywa?</h3>
+<p>Co jeśli dwie reguły CSS mówią co innego o tym samym elemencie? Wygrywa ta z wyższą <strong>specyficznością</strong>. Można ją policzyć jak punkty:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Selektor</th>
+<th>Punkty</th>
+<th>Przykład</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>!important</code></td>
+<td>∞ (nadpisuje wszystko)</td>
+<td><code>color: red !important</code></td>
+</tr>
+<tr class="even">
+<td>Inline style</td>
+<td>1000</td>
+<td><code>style="color:red"</code></td>
+</tr>
+<tr class="odd">
+<td>Selektor ID <code>#</code></td>
+<td>100</td>
+<td><code>#header</code></td>
+</tr>
+<tr class="even">
+<td>Klasa <code>.</code> / pseudoklasa</td>
+<td>10</td>
+<td><code>.karta</code>, <code>:hover</code></td>
+</tr>
+<tr class="odd">
+<td>Element / pseudoelement</td>
+<td>1</td>
+<td><code>p</code>, <code>::before</code></td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Specyficzność: 1 (element) */</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>p { <span class="kw">color</span><span class="ch">:</span> <span class="cn">blue</span><span class="op">;</span> }</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* Specyficzność: 10 (klasa) — WYGRYWA nad elementem */</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.wazny</span> { <span class="kw">color</span><span class="ch">:</span> <span class="cn">red</span><span class="op">;</span> }</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">/* Specyficzność: 100 (ID) — WYGRYWA nad klasą */</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="pp">#naglowek</span> { <span class="kw">color</span><span class="ch">:</span> <span class="cn">green</span><span class="op">;</span> }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Praktyczna zasada:</strong> Unikaj <code>!important</code> i selektorów ID w CSS. Używaj klas — dają wystarczającą specyficzność i są reużywalne.</p>
+</section>
+</section>
+<section id="box-model-fundament-layoutu" class="level2">
+<h2 class="anchored" data-anchor-id="box-model-fundament-layoutu">8. Box Model: Fundament layoutu</h2>
+<p>Każdy element HTML to prostokąt (nawet okrągły przycisk!). Ten prostokąt składa się z czterech warstw — od środka na zewnątrz:</p>
+<ol type="1">
+<li><strong>Content</strong> — sama treść (tekst, obraz)</li>
+<li><strong>Padding</strong> — wewnętrzny odstęp (między treścią a ramką)</li>
+<li><strong>Border</strong> — obramowanie</li>
+<li><strong>Margin</strong> — zewnętrzny odstęp (między tym elementem a sąsiadami)</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.karta</span> {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* Treść: 300px szerokości */</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span><span class="ch">:</span> <span class="dv">300</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* Wewnętrzny odstęp: 20px z każdej strony */</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* Ramka: 2px */</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span><span class="ch">:</span> <span class="dv">2</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#333</span><span class="op">;</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* Zewnętrzny odstęp: 15px */</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span><span class="ch">:</span> <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Pytanie:</strong> Ile pikseli zajmuje ta karta na ekranie?</p>
+<p>Domyślnie: <code>300 (content) + 20*2 (padding) + 2*2 (border) = 344px</code> (margin się nie wlicza w rozmiar elementu, ale wpływa na odległość od sąsiadów).</p>
+<p>To nieczytelne. Dlatego w każdym profesjonalnym projekcie dodaje się:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* ✅ Zmiana modelu obliczania: width OBEJMUJE padding i border */</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">*,</span> <span class="op">*</span><span class="in">::before</span><span class="op">,</span> <span class="op">*</span><span class="in">::after</span> {</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-sizing</span><span class="ch">:</span> <span class="dv">border-box</span><span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Z <code>box-sizing: border-box</code> karta ma <code>width: 300px</code> i tyle zajmuje na ekranie — padding i border są wliczone w te 300px.</p>
+</section>
+<section id="flexbox-jednowymiarowy-układ" class="level2">
+<h2 class="anchored" data-anchor-id="flexbox-jednowymiarowy-układ">9. Flexbox: Jednowymiarowy układ</h2>
+<p>Przed Flexboxem centrowanie elementu w pionie wymagało “hacków” CSS (np. <code>display: table-cell</code> albo <code>position: absolute</code> z <code>transform</code>). Flexbox rozwiązuje to jedną linią.</p>
+<p><strong>Flexbox działa w jednym wymiarze</strong> — albo układasz elementy w wierszu (oś X), albo w kolumnie (oś Y).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Kontener — aktywuje Flexbox */</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">.navbar</span> {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span><span class="ch">:</span> <span class="dv">flex</span><span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">justify-content</span><span class="ch">:</span> <span class="dv">space-between</span><span class="op">;</span> <span class="co">/* Rozmieszczenie wzdłuż osi głównej */</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">align-items</span><span class="ch">:</span> <span class="dv">center</span><span class="op">;</span>            <span class="co">/* Wyrównanie wzdłuż osi poprzecznej */</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">gap</span><span class="ch">:</span> <span class="dv">20</span><span class="dt">px</span><span class="op">;</span>                      <span class="co">/* Odstępy między elementami */</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">10</span><span class="dt">px</span> <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> class</span><span class="op">=</span><span class="st">"navbar"</span><span class="dt">&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"/"</span><span class="ot"> class</span><span class="op">=</span><span class="st">"logo"</span><span class="dt">&gt;</span>MojaApp<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"menu"</span><span class="dt">&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"/about"</span><span class="dt">&gt;</span>O nas<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"/contact"</span><span class="dt">&gt;</span>Kontakt<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="dt">&gt;</span>Zaloguj<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Najważniejsze właściwości kontenera flex:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 22%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Właściwość</th>
+<th>Co robi</th>
+<th>Popularne wartości</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>justify-content</code></td>
+<td>Rozmieszczenie na osi głównej</td>
+<td><code>flex-start</code>, <code>center</code>, <code>space-between</code>, <code>space-around</code></td>
+</tr>
+<tr class="even">
+<td><code>align-items</code></td>
+<td>Wyrównanie na osi poprzecznej</td>
+<td><code>flex-start</code>, <code>center</code>, <code>stretch</code></td>
+</tr>
+<tr class="odd">
+<td><code>flex-direction</code></td>
+<td>Kierunek osi głównej</td>
+<td><code>row</code> (domyślny), <code>column</code></td>
+</tr>
+<tr class="even">
+<td><code>flex-wrap</code></td>
+<td>Zawijanie do nowej linii</td>
+<td><code>nowrap</code> (domyślny), <code>wrap</code></td>
+</tr>
+<tr class="odd">
+<td><code>gap</code></td>
+<td>Odstępy między elementami</td>
+<td>np. <code>20px</code>, <code>1rem</code></td>
+</tr>
+</tbody>
+</table>
+<p>Właściwości elementów wewnątrz flex:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.element</span> {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">flex</span><span class="ch">:</span> <span class="dv">1</span><span class="op">;</span>          <span class="co">/* Rośnij, aby wypełnić dostępną przestrzeń */</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">min-width</span><span class="ch">:</span> <span class="dv">250</span><span class="dt">px</span><span class="op">;</span> <span class="co">/* Ale nie mniejszy niż 250px */</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="klasyczny-przykład-centrowanie-w-pionie-i-poziomie" class="level3">
+<h3 class="anchored" data-anchor-id="klasyczny-przykład-centrowanie-w-pionie-i-poziomie">Klasyczny przykład: Centrowanie w pionie i poziomie</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.center-container</span> {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span><span class="ch">:</span> <span class="dv">flex</span><span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">justify-content</span><span class="ch">:</span> <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">align-items</span><span class="ch">:</span> <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span><span class="ch">:</span> <span class="dv">100</span><span class="dt">vh</span><span class="op">;</span> <span class="co">/* Cała wysokość ekranu */</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Trzy linie CSS — element idealnie wycentrowany. Przed Flexboxem wymagało to 10+ linii hacków.</p>
+</section>
+</section>
+<section id="css-grid-dwuwymiarowy-układ" class="level2">
+<h2 class="anchored" data-anchor-id="css-grid-dwuwymiarowy-układ">10. CSS Grid: Dwuwymiarowy układ</h2>
+<p>Flexbox to układ jednowymiarowy (wiersz LUB kolumna). CSS Grid to pełny dwuwymiarowy system — definiujesz zarówno wiersze, jak i kolumny jednocześnie.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.layout</span> {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span><span class="ch">:</span> <span class="dv">grid</span><span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span><span class="ch">:</span> <span class="dv">250</span><span class="dt">px</span> <span class="dv">1</span><span class="dt">fr</span> <span class="dv">200</span><span class="dt">px</span><span class="op">;</span> <span class="co">/* 3 kolumny: sidebar, main, aside */</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-rows</span><span class="ch">:</span> <span class="bu">auto</span> <span class="dv">1</span><span class="dt">fr</span> <span class="bu">auto</span><span class="op">;</span>       <span class="co">/* 3 wiersze: header, content, footer */</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">gap</span><span class="ch">:</span> <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">min-height</span><span class="ch">:</span> <span class="dv">100</span><span class="dt">vh</span><span class="op">;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span>  { <span class="kw">grid-column</span><span class="ch">:</span> <span class="dv">1</span> / <span class="dv">-1</span><span class="op">;</span> }  <span class="co">/* Od pierwszej do ostatniej kolumny */</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.footer</span>  { <span class="kw">grid-column</span><span class="ch">:</span> <span class="dv">1</span> / <span class="dv">-1</span><span class="op">;</span> }</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">.sidebar</span> { <span class="kw">grid-row</span><span class="ch">:</span> <span class="dv">2</span><span class="op">;</span> }</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">.main</span>    { <span class="kw">grid-row</span><span class="ch">:</span> <span class="dv">2</span><span class="op">;</span> }</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="fu">.aside</span>   { <span class="kw">grid-row</span><span class="ch">:</span> <span class="dv">2</span><span class="op">;</span> }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"layout"</span><span class="dt">&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">header</span><span class="ot"> class</span><span class="op">=</span><span class="st">"header"</span><span class="dt">&gt;</span>Nagłówek<span class="dt">&lt;/</span><span class="kw">header</span><span class="dt">&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> class</span><span class="op">=</span><span class="st">"sidebar"</span><span class="dt">&gt;</span>Menu<span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">main</span><span class="ot"> class</span><span class="op">=</span><span class="st">"main"</span><span class="dt">&gt;</span>Treść główna<span class="dt">&lt;/</span><span class="kw">main</span><span class="dt">&gt;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">aside</span><span class="ot"> class</span><span class="op">=</span><span class="st">"aside"</span><span class="dt">&gt;</span>Panel boczny<span class="dt">&lt;/</span><span class="kw">aside</span><span class="dt">&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">footer</span><span class="ot"> class</span><span class="op">=</span><span class="st">"footer"</span><span class="dt">&gt;</span>Stopka<span class="dt">&lt;/</span><span class="kw">footer</span><span class="dt">&gt;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Bez <code>float</code>, bez <code>position: absolute</code>, bez hacków — czytelny, dwuwymiarowy układ strony.</p>
+<p><strong>Kiedy Flexbox, a kiedy Grid?</strong></p>
+<ul>
+<li><strong>Flexbox:</strong> Nawigacja, pasek narzędzi, lista kart, wyrównanie elementów w jednej linii.</li>
+<li><strong>Grid:</strong> Cały layout strony, galerie zdjęć, dashboard z widgetami — wszędzie, gdzie myślisz “wiersze I kolumny”.</li>
+</ul>
+</section>
+<section id="responsywność-media-queries" class="level2">
+<h2 class="anchored" data-anchor-id="responsywność-media-queries">11. Responsywność: Media Queries</h2>
+<p>Twoja aplikacja musi działać na ekranie 6-calowego telefonu i 27-calowego monitora. Podejście “Mobile First” oznacza: <strong>piszesz style dla telefonu jako bazowe</strong>, a potem za pomocą Media Queries dodajesz reguły dla większych ekranów.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* ===== BAZOWE STYLE (MOBILE) ===== */</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">.grid-produktow</span> {</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span><span class="ch">:</span> <span class="dv">grid</span><span class="op">;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">fr</span><span class="op">;</span>  <span class="co">/* 1 kolumna na telefonie */</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">gap</span><span class="ch">:</span> <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">/* ===== TABLET (768px i więcej) ===== */</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="im">@media</span> <span class="fu">(</span><span class="kw">min-width</span><span class="ch">:</span> <span class="dv">768</span><span class="dt">px</span><span class="fu">)</span> {</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.grid-produktow</span> {</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">grid-template-columns</span><span class="ch">:</span> <span class="fu">repeat(</span><span class="dv">2</span><span class="op">,</span> <span class="dv">1</span><span class="dt">fr</span><span class="fu">)</span><span class="op">;</span>  <span class="co">/* 2 kolumny */</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">gap</span><span class="ch">:</span> <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">padding</span><span class="ch">:</span> <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co">/* ===== DESKTOP (1024px i więcej) ===== */</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="im">@media</span> <span class="fu">(</span><span class="kw">min-width</span><span class="ch">:</span> <span class="dv">1024</span><span class="dt">px</span><span class="fu">)</span> {</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.grid-produktow</span> {</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">grid-template-columns</span><span class="ch">:</span> <span class="fu">repeat(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">1</span><span class="dt">fr</span><span class="fu">)</span><span class="op">;</span>  <span class="co">/* 3 kolumny */</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">max-width</span><span class="ch">:</span> <span class="dv">1200</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>        <span class="kw">margin</span><span class="ch">:</span> <span class="dv">0</span> <span class="bu">auto</span><span class="op">;</span>  <span class="co">/* Wyśrodkuj na szerokim ekranie */</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="co">/* ===== DUŻY EKRAN (1440px i więcej) ===== */</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="im">@media</span> <span class="fu">(</span><span class="kw">min-width</span><span class="ch">:</span> <span class="dv">1440</span><span class="dt">px</span><span class="fu">)</span> {</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.grid-produktow</span> {</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>        <span class="kw">grid-template-columns</span><span class="ch">:</span> <span class="fu">repeat(</span><span class="dv">4</span><span class="op">,</span> <span class="dv">1</span><span class="dt">fr</span><span class="fu">)</span><span class="op">;</span>  <span class="co">/* 4 kolumny */</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To samo siatka produktów — 1 kolumna na telefonie, 2 na tablecie, 3 na desktopie, 4 na dużym monitorze. Bez JavaScriptu, bez osobnych stron “m.example.com”.</p>
+<section id="jednostki-responsywne" class="level3">
+<h3 class="anchored" data-anchor-id="jednostki-responsywne">Jednostki responsywne</h3>
+<p>Zamiast sztywnych pikseli, używaj jednostek względnych:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 30%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Jednostka</th>
+<th>Odniesienie</th>
+<th>Przykład użycia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>rem</code></td>
+<td>Rozmiar fontu <code>&lt;html&gt;</code> (domyślnie 16px)</td>
+<td>Fonty, padding, margin</td>
+</tr>
+<tr class="even">
+<td><code>em</code></td>
+<td>Rozmiar fontu rodzica</td>
+<td>Odstępy wewnątrz komponentu</td>
+</tr>
+<tr class="odd">
+<td><code>%</code></td>
+<td>Rozmiar rodzica</td>
+<td>Szerokości, wysokości</td>
+</tr>
+<tr class="even">
+<td><code>vw</code> / <code>vh</code></td>
+<td>1% szerokości / wysokości okna</td>
+<td>Sekcje pełnoekranowe</td>
+</tr>
+<tr class="odd">
+<td><code>fr</code></td>
+<td>Ułamek wolnej przestrzeni (Grid)</td>
+<td>Kolumny/wiersze Grid</td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* ❌ Sztywne piksele — nie skaluje się */</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>h1 { <span class="kw">font-size</span><span class="ch">:</span> <span class="dv">32</span><span class="dt">px</span><span class="op">;</span> }</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* ✅ Jednostki względne — skaluje się z ustawieniami użytkownika */</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>h1 { <span class="kw">font-size</span><span class="ch">:</span> <span class="dv">2</span><span class="dt">rem</span><span class="op">;</span> }  <span class="co">/* 2 × 16px = 32px domyślnie */</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="praktyczny-przykład-karta-produktu" class="level2">
+<h2 class="anchored" data-anchor-id="praktyczny-przykład-karta-produktu">12. Praktyczny przykład: Karta produktu</h2>
+<p>Złóżmy wszystko razem — semantyczny HTML5 + nowoczesny CSS:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">article</span><span class="ot"> class</span><span class="op">=</span><span class="st">"karta-produktu"</span><span class="dt">&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"laptop.jpg"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"Laptop ThinkPad X1 Carbon"</span><span class="dt">&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"karta-tresc"</span><span class="dt">&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>ThinkPad X1 Carbon<span class="dt">&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">"cena"</span><span class="dt">&gt;</span>5 499 zł<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">"opis"</span><span class="dt">&gt;</span>Lekki laptop biznesowy z 14" ekranem IPS.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> class</span><span class="op">=</span><span class="st">"btn-kup"</span><span class="dt">&gt;</span>Dodaj do koszyka<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">article</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.karta-produktu</span> {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span><span class="ch">:</span> <span class="dv">flex</span><span class="op">;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">flex-direction</span><span class="ch">:</span> <span class="dv">column</span><span class="op">;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#e0e0e0</span><span class="op">;</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-radius</span><span class="ch">:</span> <span class="dv">8</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">overflow</span><span class="ch">:</span> <span class="dv">hidden</span><span class="op">;</span>             <span class="co">/* Obcina rogi obrazka */</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transition</span><span class="ch">:</span> <span class="dv">transform 0.2</span><span class="dt">s</span><span class="op">;</span>  <span class="co">/* Płynna animacja */</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.karta-produktu</span><span class="in">:hover</span> {</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span><span class="ch">:</span> <span class="fu">translateY(</span><span class="dv">-4</span><span class="dt">px</span><span class="fu">)</span><span class="op">;</span>  <span class="co">/* Unosi się po najechaniu */</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-shadow</span><span class="ch">:</span> <span class="dv">0</span> <span class="dv">8</span><span class="dt">px</span> <span class="dv">25</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.1</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="fu">.karta-produktu</span> img {</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span><span class="ch">:</span> <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span><span class="ch">:</span> <span class="dv">200</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">object-fit</span><span class="ch">:</span> <span class="dv">cover</span><span class="op">;</span>  <span class="co">/* Przycina obraz proporcjonalnie */</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a><span class="fu">.karta-tresc</span> {</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">16</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span><span class="ch">:</span> <span class="dv">flex</span><span class="op">;</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">flex-direction</span><span class="ch">:</span> <span class="dv">column</span><span class="op">;</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">flex</span><span class="ch">:</span> <span class="dv">1</span><span class="op">;</span>  <span class="co">/* Rozciąga się, by karty miały równą wysokość */</span></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="fu">.cena</span> {</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span><span class="ch">:</span> <span class="dv">1.5</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-weight</span><span class="ch">:</span> <span class="dv">bold</span><span class="op">;</span></span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="cn">#0066cc</span><span class="op">;</span></span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a><span class="fu">.btn-kup</span> {</span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-top</span><span class="ch">:</span> <span class="bu">auto</span><span class="op">;</span>  <span class="co">/* Przycisk zawsze na dole karty */</span></span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">12</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span><span class="ch">:</span> <span class="cn">#0066cc</span><span class="op">;</span></span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span><span class="ch">:</span> <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-radius</span><span class="ch">:</span> <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">cursor</span><span class="ch">:</span> <span class="dv">pointer</span><span class="op">;</span></span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transition</span><span class="ch">:</span> <span class="dv">background 0.2</span><span class="dt">s</span><span class="op">;</span></span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a><span class="fu">.btn-kup</span><span class="in">:hover</span> {</span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span><span class="ch">:</span> <span class="cn">#0052a3</span><span class="op">;</span></span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Efekt: responsywna karta z animacją hover, wyrównanymi przyciskami i semantycznym HTML-em. Przycisk “Dodaj do koszyka” zawsze przylega do dołu karty dzięki <code>margin-top: auto</code> w Flexboxie.</p>
+</section>
+<section id="podsumowanie-wykładu-3" class="level2">
+<h2 class="anchored" data-anchor-id="podsumowanie-wykładu-3">Podsumowanie Wykładu 3</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Temat</th>
+<th>Co zapamiętać</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HTML5</td>
+<td><code>&lt;!DOCTYPE html&gt;</code>, <code>charset</code>, <code>viewport</code> — trzy obowiązkowe elementy</td>
+</tr>
+<tr class="even">
+<td>Semantyka</td>
+<td><code>header</code>, <code>nav</code>, <code>main</code>, <code>article</code>, <code>section</code>, <code>aside</code>, <code>footer</code> zamiast <code>div</code></td>
+</tr>
+<tr class="odd">
+<td>Formularze</td>
+<td><code>type="email"</code>, <code>required</code>, <code>pattern</code> — walidacja bez JS</td>
+</tr>
+<tr class="even">
+<td>CSS Selektory</td>
+<td>Klasy <code>.</code> (10 pkt) &gt; elementy (1 pkt). Unikaj <code>!important</code></td>
+</tr>
+<tr class="odd">
+<td>Box Model</td>
+<td>Zawsze <code>box-sizing: border-box</code></td>
+</tr>
+<tr class="even">
+<td>Flexbox</td>
+<td>Jednowymiarowy: <code>display: flex</code>, <code>justify-content</code>, <code>align-items</code></td>
+</tr>
+<tr class="odd">
+<td>Grid</td>
+<td>Dwuwymiarowy: <code>display: grid</code>, <code>grid-template-columns</code>, <code>grid-template-rows</code></td>
+</tr>
+<tr class="even">
+<td>Responsywność</td>
+<td>Mobile First + <code>@media (min-width: ...)</code> + jednostki <code>rem</code>/<code>fr</code>/<code>vw</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Zadanie do przećwiczenia:</strong> Stwórz stronę portfolio (strona główna z nawigacją, sekcja “O mnie”, siatka projektów jako karty, formularz kontaktowy, stopka). Użyj wyłącznie HTML5 semantycznego + CSS Grid/Flexbox. Strona musi być responsywna (1 kolumna na mobile, 2–3 na desktopie).</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

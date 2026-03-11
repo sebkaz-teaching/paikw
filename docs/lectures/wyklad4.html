@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Wykład 4 – Projektowanie aplikacji internetowych i korporacyjnych</title>
+<title>PHP – Programowanie obiektowe, bazy danych i wzorce CMS – Projektowanie aplikacji internetowych i korporacyjnych</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -109,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Wykład 4</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykłady</a></li><li class="breadcrumb-item"><a href="../lectures/wyklad4.html">PHP – Programowanie obiektowe, bazy danych i wzorce CMS</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -148,6 +183,24 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Konteneryzacja i Docker – Koniec z U mnie działa!</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/wyklad3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HTML5 i CSS – Budowanie szkieletu i skóry aplikacji</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/wyklad4.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">PHP – Programowanie obiektowe, bazy danych i wzorce CMS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/wyklad5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JavaScript – Język, który ożywia przeglądarkę</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -155,15 +208,28 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><strong>Sections</strong></h2>
+   
+  <ul class="collapse">
+  <li><a href="#php-język-który-napędza-połowę-internetu" id="toc-php-język-który-napędza-połowę-internetu" class="nav-link active" data-scroll-target="#php-język-który-napędza-połowę-internetu">1. PHP: Język, który napędza połowę internetu</a></li>
+  <li><a href="#php-8.x-nowoczesna-składnia" id="toc-php-8.x-nowoczesna-składnia" class="nav-link" data-scroll-target="#php-8.x-nowoczesna-składnia">2. PHP 8.x: Nowoczesna składnia</a></li>
+  <li><a href="#programowanie-obiektowe-oop-w-php" id="toc-programowanie-obiektowe-oop-w-php" class="nav-link" data-scroll-target="#programowanie-obiektowe-oop-w-php">3. Programowanie obiektowe (OOP) w PHP</a></li>
+  <li><a href="#pdo-bezpieczne-połączenie-z-bazą-danych" id="toc-pdo-bezpieczne-połączenie-z-bazą-danych" class="nav-link" data-scroll-target="#pdo-bezpieczne-połączenie-z-bazą-danych">4. PDO: Bezpieczne połączenie z bazą danych</a></li>
+  <li><a href="#klasa-bazowa-model-active-record-dla-cms" id="toc-klasa-bazowa-model-active-record-dla-cms" class="nav-link" data-scroll-target="#klasa-bazowa-model-active-record-dla-cms">5. Klasa bazowa Model — Active Record dla CMS</a></li>
+  <li><a href="#architektura-mvc-porządek-w-kodzie-cms" id="toc-architektura-mvc-porządek-w-kodzie-cms" class="nav-link" data-scroll-target="#architektura-mvc-porządek-w-kodzie-cms">6. Architektura MVC: Porządek w kodzie CMS</a></li>
+  <li><a href="#hashowanie-haseł-password_hash-i-password_verify" id="toc-hashowanie-haseł-password_hash-i-password_verify" class="nav-link" data-scroll-target="#hashowanie-haseł-password_hash-i-password_verify">7. Hashowanie haseł: password_hash i password_verify</a></li>
+  <li><a href="#podsumowanie-wykładu-4" id="toc-podsumowanie-wykładu-4" class="nav-link" data-scroll-target="#podsumowanie-wykładu-4">Podsumowanie Wykładu 4</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/wyklad1.html">Wykłady</a></li><li class="breadcrumb-item"><a href="../lectures/wyklad4.html">PHP – Programowanie obiektowe, bazy danych i wzorce CMS</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Wykład 4</h1>
+<h1 class="title">PHP – Programowanie obiektowe, bazy danych i wzorce CMS</h1>
 </div>
 
 
@@ -180,8 +246,865 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="php-język-który-napędza-połowę-internetu" class="level2">
+<h2 class="anchored" data-anchor-id="php-język-który-napędza-połowę-internetu">1. PHP: Język, który napędza połowę internetu</h2>
+<p>Na Wykładzie 1 widzieliśmy, że Backend to “mózg” operacji — kod ukryty przed użytkownikiem, działający na serwerze. Pokazywaliśmy przykłady w Pythonie (Flask), Node.js i Julii. Dziś skupimy się na PHP.</p>
+<p><strong>Fakty:</strong> Według danych W3Techs, PHP jest używany przez ok. 75% wszystkich stron internetowych z rozpoznanym językiem server-side. WordPress (43% wszystkich stron w internecie), Facebook (początkowo), Wikipedia — wszystkie zbudowane na PHP.</p>
+<p>PHP nie jest “starym, brzydkim językiem”, jak niektórzy twierdzą. PHP 8.x to nowoczesny język z typowaniem, enum-ami, match expression i wydajnością porównywalną z innymi rozwiązaniami. Klucz to pisanie nowoczesnego PHP, a nie kodu jak w 2005 roku.</p>
+<section id="jak-php-działa" class="level3">
+<h3 class="anchored" data-anchor-id="jak-php-działa">Jak PHP działa?</h3>
+<p>Przypomnijmy schemat z Wykładu 1:</p>
+<ol type="1">
+<li>Przeglądarka wysyła żądanie HTTP (<code>GET /strona.php</code>)</li>
+<li>Serwer WWW (Apache/Nginx) rozpoznaje plik <code>.php</code> i przekazuje go do interpretera PHP</li>
+<li>PHP wykonuje kod, generuje HTML (lub JSON)</li>
+<li>Serwer odsyła wynik do przeglądarki</li>
+<li>Przeglądarka renderuje otrzymany HTML</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Prosty skrypt — generuje HTML dynamicznie</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">$godzina</span> <span class="op">=</span> <span class="fu">date</span>(<span class="st">'H'</span>)<span class="ot">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="va">$powitanie</span> <span class="op">=</span> (<span class="va">$godzina</span> <span class="op">&lt;</span> <span class="dv">12</span>) <span class="ot">?</span> <span class="st">'Dzień dobry'</span> <span class="ot">:</span> <span class="st">'Dobry wieczór'</span><span class="ot">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">?&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!</span><span class="cn">DOCTYPE</span> html<span class="op">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>html lang<span class="op">=</span><span class="st">"pl"</span><span class="op">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>head<span class="op">&gt;&lt;</span>title<span class="op">&gt;</span>Powitanie<span class="op">&lt;/</span>title<span class="op">&gt;&lt;/</span>head<span class="op">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>body<span class="op">&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>h1<span class="op">&gt;&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="va">$powitanie</span> <span class="kw">?&gt;</span><span class="ot">,</span> użytkowniku<span class="op">!&lt;/</span>h1<span class="op">&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>p<span class="op">&gt;</span>Jest godzina <span class="op">&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="fu">date</span>(<span class="st">'H:i'</span>) <span class="kw">?&gt;</span><span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>body<span class="op">&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>html<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Znak <code>&lt;?= ... ?&gt;</code> to skrót od <code>&lt;?php echo ... ?&gt;</code>. Powyższy skrypt generuje inny HTML o 8 rano niż o 20 wieczorem — to samo “R” w akronimie REST: serwer wysyła <strong>reprezentację</strong>, nie sam zasób.</p>
+</section>
+</section>
+<section id="php-8.x-nowoczesna-składnia" class="level2">
+<h2 class="anchored" data-anchor-id="php-8.x-nowoczesna-składnia">2. PHP 8.x: Nowoczesna składnia</h2>
+<p>Zanim przejdziemy do OOP, poznajmy kluczowe cechy współczesnego PHP.</p>
+<section id="strict-typing" class="level3">
+<h3 class="anchored" data-anchor-id="strict-typing">Strict typing</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span>(strict_types<span class="op">=</span><span class="dv">1</span>)<span class="ot">;</span> <span class="co">// Włącza ścisłe typowanie — na początku KAŻDEGO pliku</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> dodaj(<span class="dt">int</span> <span class="va">$a</span><span class="ot">,</span> <span class="dt">int</span> <span class="va">$b</span>)<span class="ot">:</span> <span class="dt">int</span> {</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">$a</span> <span class="op">+</span> <span class="va">$b</span><span class="ot">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> dodaj(<span class="dv">2</span><span class="ot">,</span> <span class="dv">3</span>)<span class="ot">;</span>    <span class="co">// ✅ 5</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> dodaj(<span class="st">"2"</span><span class="ot">,</span> <span class="st">"3"</span>)<span class="ot">;</span> <span class="co">// ❌ TypeError! Bez strict_types zwróciłby 5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>declare(strict_types=1)</code> to odpowiednik TypeScript dla JavaScriptu. Bez tego PHP cicho konwertuje typy (np. string “42” na int 42), co prowadzi do trudnych do wykrycia błędów.</p>
+</section>
+<section id="typy-złożone-i-nowe-konstrukcje" class="level3">
+<h3 class="anchored" data-anchor-id="typy-złożone-i-nowe-konstrukcje">Typy złożone i nowe konstrukcje</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span>(strict_types<span class="op">=</span><span class="dv">1</span>)<span class="ot">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Union types — zmienna akceptuje kilka typów</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> znajdz(<span class="dt">int</span><span class="op">|</span><span class="dt">string</span> <span class="va">$id</span>)<span class="ot">:</span> <span class="ot">?</span><span class="dt">array</span> {</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ?array oznacza "array albo null"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">null</span><span class="ot">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">// Named arguments — czytelniejsze wywołania</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> stworzUzytkownika(</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">string</span> <span class="va">$imie</span><span class="ot">,</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">string</span> <span class="va">$email</span><span class="ot">,</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="va">$wiek</span> <span class="op">=</span> <span class="dv">25</span><span class="ot">,</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bool</span> <span class="va">$aktywny</span> <span class="op">=</span> <span class="kw">true</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>)<span class="ot">:</span> <span class="dt">array</span> {</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">compact</span>(<span class="st">'imie'</span><span class="ot">,</span> <span class="st">'email'</span><span class="ot">,</span> <span class="st">'wiek'</span><span class="ot">,</span> <span class="st">'aktywny'</span>)<span class="ot">;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">// Zamiast pamiętać kolejność argumentów:</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="va">$user</span> <span class="op">=</span> stworzUzytkownika(</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    email<span class="ot">:</span> <span class="st">'jan@wp.pl'</span><span class="ot">,</span>   <span class="co">// Kolejność nie ma znaczenia!</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    imie<span class="ot">:</span> <span class="st">'Jan'</span><span class="ot">,</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    aktywny<span class="ot">:</span> <span class="kw">false</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>)<span class="ot">;</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">// Match expression — czytelniejsza alternatywa dla switch</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="va">$status</span> <span class="op">=</span> <span class="st">'admin'</span><span class="ot">;</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="va">$rola</span> <span class="op">=</span> <span class="cf">match</span>(<span class="va">$status</span>) {</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">'admin'</span>     =&gt; <span class="st">'Pełen dostęp'</span><span class="ot">,</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">'editor'</span>    =&gt; <span class="st">'Edycja treści'</span><span class="ot">,</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">'viewer'</span>    =&gt; <span class="st">'Tylko odczyt'</span><span class="ot">,</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">default</span>     =&gt; <span class="st">'Brak uprawnień'</span><span class="ot">,</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>}<span class="ot">;</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co">// Enum (PHP 8.1)</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span> StatusZamowienia<span class="ot">:</span> <span class="dt">string</span> {</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> Nowe      <span class="op">=</span> <span class="st">'nowe'</span><span class="ot">;</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> Oplacone  <span class="op">=</span> <span class="st">'oplacone'</span><span class="ot">;</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> Wyslane   <span class="op">=</span> <span class="st">'wyslane'</span><span class="ot">;</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> Dostarczone <span class="op">=</span> <span class="st">'dostarczone'</span><span class="ot">;</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="va">$zamowienie</span> <span class="op">=</span> StatusZamowienia::Oplacone<span class="ot">;</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$zamowienie</span>-&gt;value<span class="ot">;</span> <span class="co">// 'oplacone'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="programowanie-obiektowe-oop-w-php" class="level2">
+<h2 class="anchored" data-anchor-id="programowanie-obiektowe-oop-w-php">3. Programowanie obiektowe (OOP) w PHP</h2>
+<p>Proceduralne PHP (same funkcje i zmienne globalne) to przepis na katastrofę w większym projekcie. OOP pozwala organizować kod w logiczne, hermetyczne jednostki.</p>
+<section id="klasa-i-obiekt" class="level3">
+<h3 class="anchored" data-anchor-id="klasa-i-obiekt">Klasa i obiekt</h3>
+<p>Klasa to <strong>przepis</strong> (blueprint), obiekt to <strong>konkretne ciasto</strong> upieczone z tego przepisu (analogia z Dockera — Obraz vs Kontener).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span>(strict_types<span class="op">=</span><span class="dv">1</span>)<span class="ot">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Produkt {</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Właściwości — dane obiektu</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">string</span> <span class="va">$nazwa</span><span class="ot">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">float</span> <span class="va">$cena</span><span class="ot">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">int</span> <span class="va">$ilosc</span><span class="ot">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Konstruktor — wywoływany przy tworzeniu obiektu (new Produkt(...))</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__construct</span>(<span class="dt">string</span> <span class="va">$nazwa</span><span class="ot">,</span> <span class="dt">float</span> <span class="va">$cena</span><span class="ot">,</span> <span class="dt">int</span> <span class="va">$ilosc</span> <span class="op">=</span> <span class="dv">0</span>) {</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;nazwa <span class="op">=</span> <span class="va">$nazwa</span><span class="ot">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;cena  <span class="op">=</span> <span class="va">$cena</span><span class="ot">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;ilosc <span class="op">=</span> <span class="va">$ilosc</span><span class="ot">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Metody publiczne — interfejs obiektu</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> getNazwa()<span class="ot">:</span> <span class="dt">string</span> {</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$this</span>-&gt;nazwa<span class="ot">;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> getCena()<span class="ot">:</span> <span class="dt">float</span> {</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$this</span>-&gt;cena<span class="ot">;</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> jestDostepny()<span class="ot">:</span> <span class="dt">bool</span> {</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$this</span>-&gt;ilosc <span class="op">&gt;</span> <span class="dv">0</span><span class="ot">;</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> sprzedaj(<span class="dt">int</span> <span class="va">$ile</span> <span class="op">=</span> <span class="dv">1</span>)<span class="ot">:</span> <span class="dt">void</span> {</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="va">$ile</span> <span class="op">&gt;</span> <span class="va">$this</span>-&gt;ilosc) {</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> \<span class="bu">RuntimeException</span>(<span class="st">"Brak wystarczającej ilości na stanie"</span>)<span class="ot">;</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;ilosc <span class="op">-=</span> <span class="va">$ile</span><span class="ot">;</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Metoda do serializacji — przydatne przy API (JSON)</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> toArray()<span class="ot">:</span> <span class="dt">array</span> {</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>            <span class="st">'nazwa'</span>    =&gt; <span class="va">$this</span>-&gt;nazwa<span class="ot">,</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>            <span class="st">'cena'</span>     =&gt; <span class="va">$this</span>-&gt;cena<span class="ot">,</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>            <span class="st">'ilosc'</span>    =&gt; <span class="va">$this</span>-&gt;ilosc<span class="ot">,</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>            <span class="st">'dostepny'</span> =&gt; <span class="va">$this</span>-&gt;jestDostepny()<span class="ot">,</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        ]<span class="ot">;</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="co">// Użycie:</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="va">$laptop</span> <span class="op">=</span> <span class="kw">new</span> Produkt(<span class="st">'ThinkPad X1'</span><span class="ot">,</span> <span class="fl">5499.99</span><span class="ot">,</span> <span class="dv">10</span>)<span class="ot">;</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$laptop</span>-&gt;getNazwa()<span class="ot">;</span>     <span class="co">// "ThinkPad X1"</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$laptop</span>-&gt;jestDostepny()<span class="ot">;</span> <span class="co">// true</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="va">$laptop</span>-&gt;sprzedaj(<span class="dv">2</span>)<span class="ot">;</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="fu">json_encode</span>(<span class="va">$laptop</span>-&gt;toArray())<span class="ot">;</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="co">// {"nazwa":"ThinkPad X1","cena":5499.99,"ilosc":8,"dostepny":true}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="constructor-promotion-php-8.0" class="level3">
+<h3 class="anchored" data-anchor-id="constructor-promotion-php-8.0">Constructor Promotion (PHP 8.0)</h3>
+<p>Pisanie <code>$this-&gt;nazwa = $nazwa</code> w konstruktorze jest powtarzalne. PHP 8 upraszcza to drastycznie:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span>(strict_types<span class="op">=</span><span class="dv">1</span>)<span class="ot">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Produkt {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Konstruktor z promocją — właściwości deklarowane bezpośrednio w parametrach</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__construct</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">private</span> <span class="dt">string</span> <span class="va">$nazwa</span><span class="ot">,</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">private</span> <span class="dt">float</span> <span class="va">$cena</span><span class="ot">,</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">private</span> <span class="dt">int</span> <span class="va">$ilosc</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    ) {</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Ciało może być puste — PHP sam przypisze wartości</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> getNazwa()<span class="ot">:</span> <span class="dt">string</span> {</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$this</span>-&gt;nazwa<span class="ot">;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ... reszta metod jak wcześniej</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Mniej kodu, ten sam efekt. <code>private string $nazwa</code> w parametrze konstruktora automatycznie tworzy właściwość i przypisuje wartość.</p>
+</section>
+<section id="enkapsulacja-i-modyfikatory-dostępu" class="level3">
+<h3 class="anchored" data-anchor-id="enkapsulacja-i-modyfikatory-dostępu">Enkapsulacja i modyfikatory dostępu</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> KontoBankowe {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__construct</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">private</span> <span class="dt">string</span> <span class="va">$wlasciciel</span><span class="ot">,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">private</span> <span class="dt">float</span> <span class="va">$saldo</span> <span class="op">=</span> <span class="fl">0.0</span>  <span class="co">// ← private: nikt z zewnątrz nie zmieni bezpośrednio</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    ) {}</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> wplac(<span class="dt">float</span> <span class="va">$kwota</span>)<span class="ot">:</span> <span class="dt">void</span> {</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="va">$kwota</span> <span class="op">&lt;=</span> <span class="dv">0</span>) {</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> \<span class="bu">InvalidArgumentException</span>(<span class="st">"Kwota musi być dodatnia"</span>)<span class="ot">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;saldo <span class="op">+=</span> <span class="va">$kwota</span><span class="ot">;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> getSaldo()<span class="ot">:</span> <span class="dt">float</span> {</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$this</span>-&gt;saldo<span class="ot">;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Metoda prywatna — używana tylko wewnątrz klasy</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="kw">function</span> naliczOdsetki()<span class="ot">:</span> <span class="dt">void</span> {</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;saldo <span class="op">*=</span> <span class="fl">1.05</span><span class="ot">;</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="va">$konto</span> <span class="op">=</span> <span class="kw">new</span> KontoBankowe(<span class="st">'Jan Kowalski'</span><span class="ot">,</span> <span class="dv">1000</span>)<span class="ot">;</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="va">$konto</span>-&gt;wplac(<span class="dv">500</span>)<span class="ot">;</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$konto</span>-&gt;getSaldo()<span class="ot">;</span>  <span class="co">// 1500</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co">// $konto-&gt;saldo = 999999;      ❌ Fatal Error! saldo jest private</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">// $konto-&gt;naliczOdsetki();     ❌ Fatal Error! metoda jest private</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 34%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Modyfikator</th>
+<th>Widoczność</th>
+<th>Użycie</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>public</code></td>
+<td>Wszędzie</td>
+<td>Interfejs obiektu (metody do użytku zewnętrznego)</td>
+</tr>
+<tr class="even">
+<td><code>protected</code></td>
+<td>Klasa + klasy dziedziczące</td>
+<td>Metody/właściwości dla podklas</td>
+</tr>
+<tr class="odd">
+<td><code>private</code></td>
+<td>Tylko wewnątrz tej klasy</td>
+<td>Dane wewnętrzne, metody pomocnicze</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dziedziczenie-i-interfejsy" class="level3">
+<h3 class="anchored" data-anchor-id="dziedziczenie-i-interfejsy">Dziedziczenie i interfejsy</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Interfejs — kontrakt: "każda klasa implementująca MUSI mieć te metody"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Exportowalny {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> toArray()<span class="ot">:</span> <span class="dt">array</span><span class="ot">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> toJSON()<span class="ot">:</span> <span class="dt">string</span><span class="ot">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Klasa abstrakcyjna — nie można stworzyć obiektu z niej bezpośrednio</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="kw">abstract</span> <span class="kw">class</span> ElementSklepu <span class="kw">implements</span> Exportowalny {</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__construct</span>(</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">protected</span> <span class="dt">string</span> <span class="va">$nazwa</span><span class="ot">,</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">protected</span> <span class="dt">float</span> <span class="va">$cena</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    ) {}</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Metoda abstrakcyjna — MUSI być zaimplementowana przez podklasę</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">abstract</span> <span class="kw">public</span> <span class="kw">function</span> obliczPodatek()<span class="ot">:</span> <span class="dt">float</span><span class="ot">;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Metoda konkretna — dziedziczona automatycznie</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> toJSON()<span class="ot">:</span> <span class="dt">string</span> {</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">json_encode</span>(<span class="va">$this</span>-&gt;toArray()<span class="ot">,</span> <span class="cn">JSON_UNESCAPED_UNICODE</span>)<span class="ot">;</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProduktFizyczny <span class="kw">extends</span> ElementSklepu {</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__construct</span>(</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">string</span> <span class="va">$nazwa</span><span class="ot">,</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        <span class="dt">float</span> <span class="va">$cena</span><span class="ot">,</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="kw">private</span> <span class="dt">float</span> <span class="va">$waga</span> <span class="co">// kg</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    ) {</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        <span class="kw">parent</span>::<span class="bu">__construct</span>(<span class="va">$nazwa</span><span class="ot">,</span> <span class="va">$cena</span>)<span class="ot">;</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> obliczPodatek()<span class="ot">:</span> <span class="dt">float</span> {</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$this</span>-&gt;cena <span class="op">*</span> <span class="fl">0.23</span><span class="ot">;</span> <span class="co">// 23% VAT</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> toArray()<span class="ot">:</span> <span class="dt">array</span> {</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>            <span class="st">'nazwa'</span>   =&gt; <span class="va">$this</span>-&gt;nazwa<span class="ot">,</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>            <span class="st">'cena'</span>    =&gt; <span class="va">$this</span>-&gt;cena<span class="ot">,</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>            <span class="st">'podatek'</span> =&gt; <span class="va">$this</span>-&gt;obliczPodatek()<span class="ot">,</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>            <span class="st">'waga'</span>    =&gt; <span class="va">$this</span>-&gt;waga<span class="ot">,</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>        ]<span class="ot">;</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProduktCyfrowy <span class="kw">extends</span> ElementSklepu {</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> obliczPodatek()<span class="ot">:</span> <span class="dt">float</span> {</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$this</span>-&gt;cena <span class="op">*</span> <span class="fl">0.08</span><span class="ot">;</span> <span class="co">// 8% VAT na e-booki</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> toArray()<span class="ot">:</span> <span class="dt">array</span> {</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>            <span class="st">'nazwa'</span>   =&gt; <span class="va">$this</span>-&gt;nazwa<span class="ot">,</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>            <span class="st">'cena'</span>    =&gt; <span class="va">$this</span>-&gt;cena<span class="ot">,</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>            <span class="st">'podatek'</span> =&gt; <span class="va">$this</span>-&gt;obliczPodatek()<span class="ot">,</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>        ]<span class="ot">;</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="pdo-bezpieczne-połączenie-z-bazą-danych" class="level2">
+<h2 class="anchored" data-anchor-id="pdo-bezpieczne-połączenie-z-bazą-danych">4. PDO: Bezpieczne połączenie z bazą danych</h2>
+<p>Na Wykładzie 1 serwer “udawał” bazę danych prostym słownikiem w Pythonie. W rzeczywistości dane mieszkają w systemie bazodanowym (MySQL, PostgreSQL, SQLite).</p>
+<p>PHP łączy się z bazą przez <strong>PDO</strong> (PHP Data Objects) — uniwersalny interfejs, który działa z każdym silnikiem SQL.</p>
+<section id="wzorzec-singleton-jedno-połączenie-na-żądanie" class="level3">
+<h3 class="anchored" data-anchor-id="wzorzec-singleton-jedno-połączenie-na-żądanie">Wzorzec Singleton: Jedno połączenie na żądanie</h3>
+<p>Tworzenie nowego połączenia z bazą przy każdym zapytaniu to marnotrawstwo zasobów. Wzorzec Singleton gwarantuje, że w ramach jednego żądania HTTP istnieje dokładnie <strong>jedno</strong> połączenie:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span>(strict_types<span class="op">=</span><span class="dv">1</span>)<span class="ot">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Database {</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="kw">static</span> <span class="ot">?</span><span class="bu">PDO</span> <span class="va">$instance</span> <span class="op">=</span> <span class="kw">null</span><span class="ot">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Prywatny konstruktor — nie można wywołać new Database()</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="kw">function</span> <span class="bu">__construct</span>() {}</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> getInstance()<span class="ot">:</span> <span class="bu">PDO</span> {</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="kw">self</span>::<span class="va">$instance</span> <span class="op">===</span> <span class="kw">null</span>) {</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>            <span class="va">$dsn</span> <span class="op">=</span> <span class="st">'mysql:host=localhost;dbname=sklep;charset=utf8mb4'</span><span class="ot">;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>            <span class="kw">self</span>::<span class="va">$instance</span> <span class="op">=</span> <span class="kw">new</span> <span class="bu">PDO</span>(<span class="va">$dsn</span><span class="ot">,</span> <span class="st">'app_user'</span><span class="ot">,</span> <span class="st">'tajne_haslo'</span><span class="ot">,</span> [</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                <span class="co">// Błędy rzucane jako wyjątki — łapiesz je try/catch</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                <span class="bu">PDO</span>::<span class="cn">ATTR_ERRMODE</span>            =&gt; <span class="bu">PDO</span>::<span class="cn">ERRMODE_EXCEPTION</span><span class="ot">,</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                <span class="co">// Wyniki jako tablice asocjacyjne (klucz =&gt; wartość)</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>                <span class="bu">PDO</span>::<span class="cn">ATTR_DEFAULT_FETCH_MODE</span> =&gt; <span class="bu">PDO</span>::<span class="cn">FETCH_ASSOC</span><span class="ot">,</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>                <span class="co">// Wyłącz emulację prepared statements — prawdziwa ochrona</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                <span class="bu">PDO</span>::<span class="cn">ATTR_EMULATE_PREPARES</span>   =&gt; <span class="kw">false</span><span class="ot">,</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>            ])<span class="ot">;</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">self</span>::<span class="va">$instance</span><span class="ot">;</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co">// Użycie w dowolnym miejscu kodu:</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="va">$db</span> <span class="op">=</span> Database::getInstance()<span class="ot">;</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co">// Drugie wywołanie ZWRACA TEN SAM OBIEKT — nie tworzy nowego połączenia</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="va">$db2</span> <span class="op">=</span> Database::getInstance()<span class="ot">;</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="fu">var_dump</span>(<span class="va">$db</span> <span class="op">===</span> <span class="va">$db2</span>)<span class="ot">;</span> <span class="co">// true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Dlaczego <code>charset=utf8mb4</code>?</strong> Obsługuje pełen Unicode (w tym emoji 🎓). Samo <code>utf8</code> w MySQL to okrojona wersja UTF-8.</p>
+</section>
+<section id="prepared-statements-ochrona-przed-sql-injection" class="level3">
+<h3 class="anchored" data-anchor-id="prepared-statements-ochrona-przed-sql-injection">Prepared Statements: Ochrona przed SQL Injection</h3>
+<p>Na Wykładzie 1 mówiliśmy: <strong>klientowi nigdy nie ufamy</strong>. Oto dlaczego:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">// ❌ NIGDY TAK NIE RÓB — SQL Injection</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="va">$id</span> <span class="op">=</span> <span class="va">$_GET</span>[<span class="st">'id'</span>]<span class="ot">;</span> <span class="co">// Użytkownik wpisał: "1; DROP TABLE users; --"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="va">$db</span>-&gt;query(<span class="st">"SELECT * FROM users WHERE id = </span><span class="va">$id</span><span class="st">"</span>)<span class="ot">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Efekt: DROP TABLE users — baza danych usunięta!</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">// ✅ ZAWSZE Prepared Statements</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span> <span class="op">=</span> <span class="va">$db</span>-&gt;prepare(<span class="st">"SELECT * FROM users WHERE id = :id"</span>)<span class="ot">;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span>-&gt;execute([<span class="st">':id'</span> =&gt; <span class="va">$_GET</span>[<span class="st">'id'</span>]])<span class="ot">;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="va">$user</span> <span class="op">=</span> <span class="va">$stmt</span>-&gt;fetch()<span class="ot">;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">// PDO automatycznie "ucieka" niebezpieczne znaki — zapytanie jest bezpieczne</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Prepared Statements działają w dwóch krokach:</p>
+<ol type="1">
+<li><code>prepare()</code> — wysyła do bazy “szablon” zapytania z “dziurami” (<code>:id</code>)</li>
+<li><code>execute()</code> — wypełnia “dziury” danymi, ale baza traktuje je wyłącznie jako <strong>dane</strong>, nie jako kod SQL</li>
+</ol>
+</section>
+<section id="pełny-crud-create-read-update-delete" class="level3">
+<h3 class="anchored" data-anchor-id="pełny-crud-create-read-update-delete">Pełny CRUD (Create, Read, Update, Delete)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="va">$db</span> <span class="op">=</span> Database::getInstance()<span class="ot">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">// ═══ CREATE ═══</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span> <span class="op">=</span> <span class="va">$db</span>-&gt;prepare(<span class="st">"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="st">    INSERT INTO produkty (nazwa, cena, ilosc)</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="st">    VALUES (:nazwa, :cena, :ilosc)</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)<span class="ot">;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span>-&gt;execute([</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">':nazwa'</span> =&gt; <span class="st">'Laptop ThinkPad'</span><span class="ot">,</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">':cena'</span>  =&gt; <span class="fl">5499.99</span><span class="ot">,</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">':ilosc'</span> =&gt; <span class="dv">10</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>])<span class="ot">;</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="va">$noweId</span> <span class="op">=</span> <span class="va">$db</span>-&gt;lastInsertId()<span class="ot">;</span> <span class="co">// ID wstawionego rekordu</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">// ═══ READ — jeden rekord ═══</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span> <span class="op">=</span> <span class="va">$db</span>-&gt;prepare(<span class="st">"SELECT * FROM produkty WHERE id = :id"</span>)<span class="ot">;</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span>-&gt;execute([<span class="st">':id'</span> =&gt; <span class="va">$noweId</span>])<span class="ot">;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="va">$produkt</span> <span class="op">=</span> <span class="va">$stmt</span>-&gt;fetch()<span class="ot">;</span> <span class="co">// Tablica asocjacyjna lub false</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">// ═══ READ — wiele rekordów z filtrem ═══</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span> <span class="op">=</span> <span class="va">$db</span>-&gt;prepare(<span class="st">"</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT * FROM produkty</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE cena BETWEEN :min AND :max</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="st">    ORDER BY cena ASC</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)<span class="ot">;</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span>-&gt;execute([<span class="st">':min'</span> =&gt; <span class="dv">1000</span><span class="ot">,</span> <span class="st">':max'</span> =&gt; <span class="dv">6000</span>])<span class="ot">;</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="va">$produkty</span> <span class="op">=</span> <span class="va">$stmt</span>-&gt;fetchAll()<span class="ot">;</span> <span class="co">// Tablica tablic asocjacyjnych</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co">// ═══ UPDATE ═══</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span> <span class="op">=</span> <span class="va">$db</span>-&gt;prepare(<span class="st">"</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="st">    UPDATE produkty SET cena = :cena, ilosc = :ilosc</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE id = :id</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)<span class="ot">;</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span>-&gt;execute([<span class="st">':cena'</span> =&gt; <span class="fl">4999.99</span><span class="ot">,</span> <span class="st">':ilosc'</span> =&gt; <span class="dv">8</span><span class="ot">,</span> <span class="st">':id'</span> =&gt; <span class="va">$noweId</span>])<span class="ot">;</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$stmt</span>-&gt;rowCount()<span class="ot">;</span> <span class="co">// Liczba zmienionych wierszy</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="co">// ═══ DELETE ═══</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span> <span class="op">=</span> <span class="va">$db</span>-&gt;prepare(<span class="st">"DELETE FROM produkty WHERE id = :id"</span>)<span class="ot">;</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span>-&gt;execute([<span class="st">':id'</span> =&gt; <span class="va">$noweId</span>])<span class="ot">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="klasa-bazowa-model-active-record-dla-cms" class="level2">
+<h2 class="anchored" data-anchor-id="klasa-bazowa-model-active-record-dla-cms">5. Klasa bazowa Model — Active Record dla CMS</h2>
+<p>W systemach CMS (WordPress, Drupal, własne) każda “rzecz” (post, użytkownik, komentarz) to osobna tabela w bazie. Zamiast powtarzać kod CRUD w każdym pliku, tworzymy <strong>abstrakcyjną klasę bazową</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span>(strict_types<span class="op">=</span><span class="dv">1</span>)<span class="ot">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">abstract</span> <span class="kw">class</span> Model {</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">protected</span> <span class="bu">PDO</span> <span class="va">$db</span><span class="ot">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">protected</span> <span class="dt">string</span> <span class="va">$table</span><span class="ot">;</span> <span class="co">// Każda podklasa definiuje swoją tabelę</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__construct</span>() {</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;db <span class="op">=</span> Database::getInstance()<span class="ot">;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ─── READ ───</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> findAll(<span class="dt">string</span> <span class="va">$orderBy</span> <span class="op">=</span> <span class="st">'id ASC'</span>)<span class="ot">:</span> <span class="dt">array</span> {</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span> <span class="op">=</span> <span class="va">$this</span>-&gt;db-&gt;query(</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">"SELECT * FROM </span>{<span class="va">$this</span>-&gt;table}<span class="st"> ORDER BY </span>{<span class="va">$orderBy</span>}<span class="st">"</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        )<span class="ot">;</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$stmt</span>-&gt;fetchAll()<span class="ot">;</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> findById(<span class="dt">int</span> <span class="va">$id</span>)<span class="ot">:</span> <span class="ot">?</span><span class="dt">array</span> {</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span> <span class="op">=</span> <span class="va">$this</span>-&gt;db-&gt;prepare(</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">"SELECT * FROM </span>{<span class="va">$this</span>-&gt;table}<span class="st"> WHERE id = :id"</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        )<span class="ot">;</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span>-&gt;execute([<span class="st">':id'</span> =&gt; <span class="va">$id</span>])<span class="ot">;</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">$result</span> <span class="op">=</span> <span class="va">$stmt</span>-&gt;fetch()<span class="ot">;</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$result</span> <span class="ot">?:</span> <span class="kw">null</span><span class="ot">;</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ─── CREATE ───</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> create(<span class="dt">array</span> <span class="va">$data</span>)<span class="ot">:</span> <span class="dt">int</span> {</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>        <span class="va">$columns</span> <span class="op">=</span> <span class="fu">implode</span>(<span class="st">', '</span><span class="ot">,</span> <span class="fu">array_keys</span>(<span class="va">$data</span>))<span class="ot">;</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>        <span class="va">$placeholders</span> <span class="op">=</span> <span class="st">':'</span> <span class="op">.</span> <span class="fu">implode</span>(<span class="st">', :'</span><span class="ot">,</span> <span class="fu">array_keys</span>(<span class="va">$data</span>))<span class="ot">;</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span> <span class="op">=</span> <span class="va">$this</span>-&gt;db-&gt;prepare(</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>            <span class="st">"INSERT INTO </span>{<span class="va">$this</span>-&gt;table}<span class="st"> (</span>{<span class="va">$columns</span>}<span class="st">) VALUES (</span>{<span class="va">$placeholders</span>}<span class="st">)"</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>        )<span class="ot">;</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span>-&gt;execute(<span class="va">$data</span>)<span class="ot">;</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="dt">int</span>) <span class="va">$this</span>-&gt;db-&gt;lastInsertId()<span class="ot">;</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ─── UPDATE ───</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> update(<span class="dt">int</span> <span class="va">$id</span><span class="ot">,</span> <span class="dt">array</span> <span class="va">$data</span>)<span class="ot">:</span> <span class="dt">bool</span> {</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>        <span class="va">$sets</span> <span class="op">=</span> []<span class="ot">;</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">foreach</span> (<span class="va">$data</span> <span class="kw">as</span> <span class="va">$key</span> =&gt; <span class="va">$value</span>) {</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>            <span class="va">$sets</span>[] <span class="op">=</span> <span class="st">"</span>{<span class="va">$key</span>}<span class="st"> = :</span>{<span class="va">$key</span>}<span class="st">"</span><span class="ot">;</span></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>        <span class="va">$setString</span> <span class="op">=</span> <span class="fu">implode</span>(<span class="st">', '</span><span class="ot">,</span> <span class="va">$sets</span>)<span class="ot">;</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span> <span class="op">=</span> <span class="va">$this</span>-&gt;db-&gt;prepare(</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>            <span class="st">"UPDATE </span>{<span class="va">$this</span>-&gt;table}<span class="st"> SET </span>{<span class="va">$setString</span>}<span class="st"> WHERE id = :id"</span></span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>        )<span class="ot">;</span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>        <span class="va">$data</span>[<span class="st">'id'</span>] <span class="op">=</span> <span class="va">$id</span><span class="ot">;</span></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$stmt</span>-&gt;execute(<span class="va">$data</span>)<span class="ot">;</span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ─── DELETE ───</span></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> delete(<span class="dt">int</span> <span class="va">$id</span>)<span class="ot">:</span> <span class="dt">bool</span> {</span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span> <span class="op">=</span> <span class="va">$this</span>-&gt;db-&gt;prepare(</span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>            <span class="st">"DELETE FROM </span>{<span class="va">$this</span>-&gt;table}<span class="st"> WHERE id = :id"</span></span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a>        )<span class="ot">;</span></span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$stmt</span>-&gt;execute([<span class="st">':id'</span> =&gt; <span class="va">$id</span>])<span class="ot">;</span></span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ─── COUNT ───</span></span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="fu">count</span>()<span class="ot">:</span> <span class="dt">int</span> {</span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span> <span class="op">=</span> <span class="va">$this</span>-&gt;db-&gt;query(<span class="st">"SELECT COUNT(*) FROM </span>{<span class="va">$this</span>-&gt;table}<span class="st">"</span>)<span class="ot">;</span></span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="dt">int</span>) <span class="va">$stmt</span>-&gt;fetchColumn()<span class="ot">;</span></span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Teraz tworzenie modeli dla konkretnych tabel jest trywialne:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Post <span class="kw">extends</span> Model {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">protected</span> <span class="dt">string</span> <span class="va">$table</span> <span class="op">=</span> <span class="st">'posts'</span><span class="ot">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Metody specyficzne dla postów</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> findPublished()<span class="ot">:</span> <span class="dt">array</span> {</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span> <span class="op">=</span> <span class="va">$this</span>-&gt;db-&gt;prepare(<span class="st">"</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="st">            SELECT p.*, u.imie AS autor</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="st">            FROM </span>{<span class="va">$this</span>-&gt;table}<span class="st"> p</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="st">            JOIN users u ON p.autor_id = u.id</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="st">            WHERE p.status = :status</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="st">            ORDER BY p.data_publikacji DESC</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="st">        "</span>)<span class="ot">;</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span>-&gt;execute([<span class="st">':status'</span> =&gt; <span class="st">'published'</span>])<span class="ot">;</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$stmt</span>-&gt;fetchAll()<span class="ot">;</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> findBySlug(<span class="dt">string</span> <span class="va">$slug</span>)<span class="ot">:</span> <span class="ot">?</span><span class="dt">array</span> {</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span> <span class="op">=</span> <span class="va">$this</span>-&gt;db-&gt;prepare(</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">"SELECT * FROM </span>{<span class="va">$this</span>-&gt;table}<span class="st"> WHERE slug = :slug"</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>        )<span class="ot">;</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span>-&gt;execute([<span class="st">':slug'</span> =&gt; <span class="va">$slug</span>])<span class="ot">;</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">$result</span> <span class="op">=</span> <span class="va">$stmt</span>-&gt;fetch()<span class="ot">;</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$result</span> <span class="ot">?:</span> <span class="kw">null</span><span class="ot">;</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> User <span class="kw">extends</span> Model {</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">protected</span> <span class="dt">string</span> <span class="va">$table</span> <span class="op">=</span> <span class="st">'users'</span><span class="ot">;</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> findByEmail(<span class="dt">string</span> <span class="va">$email</span>)<span class="ot">:</span> <span class="ot">?</span><span class="dt">array</span> {</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span> <span class="op">=</span> <span class="va">$this</span>-&gt;db-&gt;prepare(</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>            <span class="st">"SELECT * FROM </span>{<span class="va">$this</span>-&gt;table}<span class="st"> WHERE email = :email"</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>        )<span class="ot">;</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>        <span class="va">$stmt</span>-&gt;execute([<span class="st">':email'</span> =&gt; <span class="va">$email</span>])<span class="ot">;</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>        <span class="va">$result</span> <span class="op">=</span> <span class="va">$stmt</span>-&gt;fetch()<span class="ot">;</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$result</span> <span class="ot">?:</span> <span class="kw">null</span><span class="ot">;</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ⚠️ Nigdy nie przechowuj haseł w czystym tekście!</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> createWithPassword(<span class="dt">string</span> <span class="va">$imie</span><span class="ot">,</span> <span class="dt">string</span> <span class="va">$email</span><span class="ot">,</span> <span class="dt">string</span> <span class="va">$haslo</span>)<span class="ot">:</span> <span class="dt">int</span> {</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$this</span>-&gt;create([</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>            <span class="st">'imie'</span>  =&gt; <span class="va">$imie</span><span class="ot">,</span></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>            <span class="st">'email'</span> =&gt; <span class="va">$email</span><span class="ot">,</span></span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>            <span class="st">'haslo'</span> =&gt; <span class="fu">password_hash</span>(<span class="va">$haslo</span><span class="ot">,</span> <span class="cn">PASSWORD_BCRYPT</span>)<span class="ot">,</span></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>        ])<span class="ot">;</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> weryfikujHaslo(<span class="dt">string</span> <span class="va">$email</span><span class="ot">,</span> <span class="dt">string</span> <span class="va">$haslo</span>)<span class="ot">:</span> <span class="ot">?</span><span class="dt">array</span> {</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>        <span class="va">$user</span> <span class="op">=</span> <span class="va">$this</span>-&gt;findByEmail(<span class="va">$email</span>)<span class="ot">;</span></span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="va">$user</span> <span class="op">&amp;&amp;</span> <span class="fu">password_verify</span>(<span class="va">$haslo</span><span class="ot">,</span> <span class="va">$user</span>[<span class="st">'haslo'</span>])) {</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">$user</span><span class="ot">;</span></span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">null</span><span class="ot">;</span></span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a><span class="co">// ═══ Użycie ═══</span></span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a><span class="va">$postModel</span> <span class="op">=</span> <span class="kw">new</span> Post()<span class="ot">;</span></span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a><span class="va">$userModel</span> <span class="op">=</span> <span class="kw">new</span> User()<span class="ot">;</span></span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a><span class="co">// Stwórz użytkownika</span></span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a><span class="va">$userId</span> <span class="op">=</span> <span class="va">$userModel</span>-&gt;createWithPassword(<span class="st">'Jan'</span><span class="ot">,</span> <span class="st">'jan@example.com'</span><span class="ot">,</span> <span class="st">'bezpieczneHaslo123'</span>)<span class="ot">;</span></span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a><span class="co">// Stwórz post</span></span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a><span class="va">$postId</span> <span class="op">=</span> <span class="va">$postModel</span>-&gt;create([</span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>    <span class="st">'tytul'</span>           =&gt; <span class="st">'Mój pierwszy wpis'</span><span class="ot">,</span></span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>    <span class="st">'slug'</span>            =&gt; <span class="st">'moj-pierwszy-wpis'</span><span class="ot">,</span></span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>    <span class="st">'tresc'</span>           =&gt; <span class="st">'Treść artykułu...'</span><span class="ot">,</span></span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a>    <span class="st">'autor_id'</span>        =&gt; <span class="va">$userId</span><span class="ot">,</span></span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a>    <span class="st">'status'</span>          =&gt; <span class="st">'published'</span><span class="ot">,</span></span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>    <span class="st">'data_publikacji'</span> =&gt; <span class="fu">date</span>(<span class="st">'Y-m-d H:i:s'</span>)<span class="ot">,</span></span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a>])<span class="ot">;</span></span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a><span class="co">// Pobierz opublikowane posty</span></span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a><span class="va">$posty</span> <span class="op">=</span> <span class="va">$postModel</span>-&gt;findPublished()<span class="ot">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="architektura-mvc-porządek-w-kodzie-cms" class="level2">
+<h2 class="anchored" data-anchor-id="architektura-mvc-porządek-w-kodzie-cms">6. Architektura MVC: Porządek w kodzie CMS</h2>
+<p>Kiedy piszesz cały kod w jednym pliku (<code>index.php</code> z SQL-em, HTML-em i logiką pomieszanymi), powstaje tzw. <strong>spaghetti code</strong>. Przy 500 linijkach nikt tego nie ogarnie.</p>
+<p>Wzorzec <strong>MVC (Model-View-Controller)</strong> dzieli kod na trzy warstwy:</p>
+<ul>
+<li><strong>Model</strong> — dane i logika biznesowa (klasy, które właśnie napisaliśmy)</li>
+<li><strong>View</strong> — widok, szablony HTML</li>
+<li><strong>Controller</strong> — “dyżurny” — odbiera żądanie HTTP, woła odpowiedni Model, przekazuje dane do Widoku</li>
+</ul>
+<section id="struktura-katalogów-prostego-cms" class="level3">
+<h3 class="anchored" data-anchor-id="struktura-katalogów-prostego-cms">Struktura katalogów prostego CMS</h3>
+<pre><code>moj-cms/
+├── public/             # Jedyny folder widoczny z internetu!
+│   ├── index.php       # Front Controller — KAŻDE żądanie przechodzi przez ten plik
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── app.js
+├── src/
+│   ├── Database.php    # Klasa połączenia z bazą (Singleton)
+│   ├── Model.php       # Abstrakcyjna klasa bazowa
+│   ├── models/
+│   │   ├── Post.php
+│   │   └── User.php
+│   ├── controllers/
+│   │   ├── PostController.php
+│   │   └── UserController.php
+│   └── Router.php      # Prosty router URL → Controller
+├── templates/           # Szablony HTML (Widoki)
+│   ├── layout.php       # Główny szablon (header + footer)
+│   ├── home.php
+│   ├── post/
+│   │   ├── index.php    # Lista postów
+│   │   └── show.php     # Pojedynczy post
+│   └── errors/
+│       └── 404.php
+└── config/
+    └── database.php     # Ustawienia bazy (host, login, hasło)</code></pre>
+<p><strong>Kluczowa zasada bezpieczeństwa:</strong> Tylko folder <code>public/</code> jest dostępny z przeglądarki. Pliki w <code>src/</code>, <code>templates/</code>, <code>config/</code> NIE MOGĄ być dostępne bezpośrednio — zawierają hasła do bazy, logikę biznesową itp.</p>
+</section>
+<section id="front-controller-jeden-punkt-wejścia" class="level3">
+<h3 class="anchored" data-anchor-id="front-controller-jeden-punkt-wejścia">Front Controller: Jeden punkt wejścia</h3>
+<p>Zamiast osobnych plików <code>posts.php</code>, <code>users.php</code>, <code>kontakt.php</code>, wszystkie żądania idą przez <code>public/index.php</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">// public/index.php — Front Controller</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span>(strict_types<span class="op">=</span><span class="dv">1</span>)<span class="ot">;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Autoloader — automatycznie ładuje klasy z src/</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">spl_autoload_register</span>(<span class="kw">function</span> (<span class="dt">string</span> <span class="va">$class</span>) {</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">$path</span> <span class="op">=</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">'/../src/'</span> <span class="op">.</span> <span class="fu">str_replace</span>(<span class="st">'</span><span class="sc">\\</span><span class="st">'</span><span class="ot">,</span> <span class="st">'/'</span><span class="ot">,</span> <span class="va">$class</span>) <span class="op">.</span> <span class="st">'.php'</span><span class="ot">;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">file_exists</span>(<span class="va">$path</span>)) {</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">require</span> <span class="va">$path</span><span class="ot">;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>})<span class="ot">;</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">// Załaduj konfigurację</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="kw">require</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">'/../config/database.php'</span><span class="ot">;</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">// Prosty routing</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="va">$uri</span>    <span class="op">=</span> <span class="fu">parse_url</span>(<span class="va">$_SERVER</span>[<span class="st">'REQUEST_URI'</span>]<span class="ot">,</span> <span class="cn">PHP_URL_PATH</span>)<span class="ot">;</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="va">$method</span> <span class="op">=</span> <span class="va">$_SERVER</span>[<span class="st">'REQUEST_METHOD'</span>]<span class="ot">;</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co">// Wywołaj odpowiedni controller na podstawie URL</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="va">$router</span> <span class="op">=</span> <span class="kw">new</span> Router()<span class="ot">;</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="va">$router</span>-&gt;get(<span class="st">'/'</span><span class="ot">,</span>           <span class="st">'PostController@index'</span>)<span class="ot">;</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="va">$router</span>-&gt;get(<span class="st">'/post/{slug}'</span><span class="ot">,</span><span class="st">'PostController@show'</span>)<span class="ot">;</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="va">$router</span>-&gt;get(<span class="st">'/admin/posts'</span><span class="ot">,</span><span class="st">'PostController@adminList'</span>)<span class="ot">;</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="va">$router</span>-&gt;post(<span class="st">'/admin/posts'</span><span class="ot">,</span><span class="st">'PostController@store'</span>)<span class="ot">;</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="va">$router</span>-&gt;dispatch(<span class="va">$method</span><span class="ot">,</span> <span class="va">$uri</span>)<span class="ot">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="prosty-router" class="level3">
+<h3 class="anchored" data-anchor-id="prosty-router">Prosty Router</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span>(strict_types<span class="op">=</span><span class="dv">1</span>)<span class="ot">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Router {</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">array</span> <span class="va">$routes</span> <span class="op">=</span> []<span class="ot">;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> get(<span class="dt">string</span> <span class="va">$path</span><span class="ot">,</span> <span class="dt">string</span> <span class="va">$action</span>)<span class="ot">:</span> <span class="dt">void</span> {</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;routes[<span class="st">'GET'</span>][<span class="va">$path</span>] <span class="op">=</span> <span class="va">$action</span><span class="ot">;</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> post(<span class="dt">string</span> <span class="va">$path</span><span class="ot">,</span> <span class="dt">string</span> <span class="va">$action</span>)<span class="ot">:</span> <span class="dt">void</span> {</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;routes[<span class="st">'POST'</span>][<span class="va">$path</span>] <span class="op">=</span> <span class="va">$action</span><span class="ot">;</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> dispatch(<span class="dt">string</span> <span class="va">$method</span><span class="ot">,</span> <span class="dt">string</span> <span class="va">$uri</span>)<span class="ot">:</span> <span class="dt">void</span> {</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">foreach</span> (<span class="va">$this</span>-&gt;routes[<span class="va">$method</span>] <span class="op">??</span> [] <span class="kw">as</span> <span class="va">$route</span> =&gt; <span class="va">$action</span>) {</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Zamień {slug} na regex</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>            <span class="va">$pattern</span> <span class="op">=</span> <span class="fu">preg_replace</span>(<span class="st">'/\{(\w+)\}/'</span><span class="ot">,</span> <span class="st">'(?P&lt;$1&gt;[^/]+)'</span><span class="ot">,</span> <span class="va">$route</span>)<span class="ot">;</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>            <span class="va">$pattern</span> <span class="op">=</span> <span class="st">'#^'</span> <span class="op">.</span> <span class="va">$pattern</span> <span class="op">.</span> <span class="st">'$#'</span><span class="ot">;</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (<span class="fu">preg_match</span>(<span class="va">$pattern</span><span class="ot">,</span> <span class="va">$uri</span><span class="ot">,</span> <span class="va">$matches</span>)) {</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>                [<span class="va">$controllerName</span><span class="ot">,</span> <span class="va">$methodName</span>] <span class="op">=</span> <span class="fu">explode</span>(<span class="st">'@'</span><span class="ot">,</span> <span class="va">$action</span>)<span class="ot">;</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>                <span class="va">$controller</span> <span class="op">=</span> <span class="kw">new</span> <span class="va">$controllerName</span>()<span class="ot">;</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>                <span class="co">// Zbierz nazwane parametry (np. slug)</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>                <span class="va">$params</span> <span class="op">=</span> <span class="fu">array_filter</span>(<span class="va">$matches</span><span class="ot">,</span> <span class="st">'is_string'</span><span class="ot">,</span> <span class="cn">ARRAY_FILTER_USE_KEY</span>)<span class="ot">;</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>                <span class="va">$controller</span>-&gt;<span class="va">$methodName</span>(...<span class="va">$params</span>)<span class="ot">;</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span><span class="ot">;</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 404 — nie znaleziono trasy</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>        <span class="fu">http_response_code</span>(<span class="dv">404</span>)<span class="ot">;</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>        <span class="kw">require</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">'/../templates/errors/404.php'</span><span class="ot">;</span></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="controller" class="level3">
+<h3 class="anchored" data-anchor-id="controller">Controller</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span>(strict_types<span class="op">=</span><span class="dv">1</span>)<span class="ot">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PostController {</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> Post <span class="va">$postModel</span><span class="ot">;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__construct</span>() {</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;postModel <span class="op">=</span> <span class="kw">new</span> Post()<span class="ot">;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">// GET / — strona główna z listą postów</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> index()<span class="ot">:</span> <span class="dt">void</span> {</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">$posty</span> <span class="op">=</span> <span class="va">$this</span>-&gt;postModel-&gt;findPublished()<span class="ot">;</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">$title</span> <span class="op">=</span> <span class="st">'Strona główna'</span><span class="ot">;</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Przekazujemy dane do widoku</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        <span class="kw">require</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">'/../templates/layout.php'</span><span class="ot">;</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">// GET /post/{slug} — pojedynczy post</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> show(<span class="dt">string</span> <span class="va">$slug</span>)<span class="ot">:</span> <span class="dt">void</span> {</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">$post</span> <span class="op">=</span> <span class="va">$this</span>-&gt;postModel-&gt;findBySlug(<span class="va">$slug</span>)<span class="ot">;</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="op">!</span><span class="va">$post</span>) {</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>            <span class="fu">http_response_code</span>(<span class="dv">404</span>)<span class="ot">;</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>            <span class="kw">require</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">'/../templates/errors/404.php'</span><span class="ot">;</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span><span class="ot">;</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>        <span class="va">$title</span> <span class="op">=</span> <span class="va">$post</span>[<span class="st">'tytul'</span>]<span class="ot">;</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>        <span class="kw">require</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">'/../templates/layout.php'</span><span class="ot">;</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>    <span class="co">// POST /admin/posts — zapisz nowy post</span></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> store()<span class="ot">:</span> <span class="dt">void</span> {</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Walidacja danych z formularza</span></span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>        <span class="va">$tytul</span> <span class="op">=</span> <span class="fu">trim</span>(<span class="va">$_POST</span>[<span class="st">'tytul'</span>] <span class="op">??</span> <span class="st">''</span>)<span class="ot">;</span></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>        <span class="va">$tresc</span> <span class="op">=</span> <span class="fu">trim</span>(<span class="va">$_POST</span>[<span class="st">'tresc'</span>] <span class="op">??</span> <span class="st">''</span>)<span class="ot">;</span></span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="kw">empty</span>(<span class="va">$tytul</span>) <span class="op">||</span> <span class="kw">empty</span>(<span class="va">$tresc</span>)) {</span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Przekieruj z powrotem z błędem</span></span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>            <span class="fu">header</span>(<span class="st">'Location: /admin/posts?error=empty'</span>)<span class="ot">;</span></span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span><span class="ot">;</span></span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;postModel-&gt;create([</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>            <span class="st">'tytul'</span>           =&gt; <span class="va">$tytul</span><span class="ot">,</span></span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>            <span class="st">'slug'</span>            =&gt; <span class="va">$this</span>-&gt;slugify(<span class="va">$tytul</span>)<span class="ot">,</span></span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>            <span class="st">'tresc'</span>           =&gt; <span class="va">$tresc</span><span class="ot">,</span></span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>            <span class="st">'autor_id'</span>        =&gt; <span class="dv">1</span><span class="ot">,</span> <span class="co">// </span><span class="al">TODO</span><span class="co">: pobrać z sesji</span></span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>            <span class="st">'status'</span>          =&gt; <span class="st">'published'</span><span class="ot">,</span></span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>            <span class="st">'data_publikacji'</span> =&gt; <span class="fu">date</span>(<span class="st">'Y-m-d H:i:s'</span>)<span class="ot">,</span></span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>        ])<span class="ot">;</span></span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>        <span class="fu">header</span>(<span class="st">'Location: /?success=created'</span>)<span class="ot">;</span></span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="kw">function</span> slugify(<span class="dt">string</span> <span class="va">$text</span>)<span class="ot">:</span> <span class="dt">string</span> {</span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>        <span class="va">$text</span> <span class="op">=</span> <span class="fu">iconv</span>(<span class="st">'UTF-8'</span><span class="ot">,</span> <span class="st">'ASCII//TRANSLIT'</span><span class="ot">,</span> <span class="va">$text</span>)<span class="ot">;</span></span>
+<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a>        <span class="va">$text</span> <span class="op">=</span> <span class="fu">preg_replace</span>(<span class="st">'/[^a-zA-Z0-9]/'</span><span class="ot">,</span> <span class="st">'-'</span><span class="ot">,</span> <span class="fu">strtolower</span>(<span class="va">$text</span>))<span class="ot">;</span></span>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">trim</span>(<span class="fu">preg_replace</span>(<span class="st">'/-+/'</span><span class="ot">,</span> <span class="st">'-'</span><span class="ot">,</span> <span class="va">$text</span>)<span class="ot">,</span> <span class="st">'-'</span>)<span class="ot">;</span></span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="widok-template" class="level3">
+<h3 class="anchored" data-anchor-id="widok-template">Widok (Template)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!--</span> templates<span class="op">/</span>layout<span class="op">.</span>php <span class="op">-</span>-&gt;</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!</span><span class="cn">DOCTYPE</span> html<span class="op">&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>html lang<span class="op">=</span><span class="st">"pl"</span><span class="op">&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>head<span class="op">&gt;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>meta charset<span class="op">=</span><span class="st">"UTF-8"</span><span class="op">&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>meta name<span class="op">=</span><span class="st">"viewport"</span> content<span class="op">=</span><span class="st">"width=device-width, initial-scale=1.0"</span><span class="op">&gt;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>title<span class="op">&gt;&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="fu">htmlspecialchars</span>(<span class="va">$title</span>) <span class="kw">?&gt;</span> — Mój <span class="cn">CMS</span><span class="op">&lt;/</span>title<span class="op">&gt;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span><span class="fu">link</span> rel<span class="op">=</span><span class="st">"stylesheet"</span> href<span class="op">=</span><span class="st">"/css/style.css"</span><span class="op">&gt;</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>head<span class="op">&gt;</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>body<span class="op">&gt;</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span><span class="fu">header</span><span class="op">&gt;</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>nav<span class="op">&gt;</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>a href<span class="op">=</span><span class="st">"/"</span><span class="op">&gt;</span>Start<span class="op">&lt;/</span>a<span class="op">&gt;</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>a href<span class="op">=</span><span class="st">"/admin/posts"</span><span class="op">&gt;</span>Panel<span class="op">&lt;/</span>a<span class="op">&gt;</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>nav<span class="op">&gt;</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span><span class="fu">header</span><span class="op">&gt;</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>main<span class="op">&gt;</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span><span class="ot">?</span>php</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Wybierz odpowiedni fragment widoku</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">$page</span> <span class="op">=</span> <span class="va">$post</span> <span class="op">??</span> <span class="kw">null</span><span class="ot">;</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="va">$page</span>) {</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>            <span class="kw">require</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">'/post/show.php'</span><span class="ot">;</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>            <span class="kw">require</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">'/home.php'</span><span class="ot">;</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>        <span class="kw">?&gt;</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span>main<span class="op">&gt;</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>footer<span class="op">&gt;</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>p<span class="op">&gt;&amp;</span><span class="fu">copy</span><span class="ot">;</span> <span class="op">&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="fu">date</span>(<span class="st">'Y'</span>) <span class="kw">?&gt;</span> Mój <span class="cn">CMS</span><span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span>footer<span class="op">&gt;</span></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>body<span class="op">&gt;</span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>html<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!--</span> templates<span class="op">/</span>home<span class="op">.</span>php <span class="op">-</span>-&gt;</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>h1<span class="op">&gt;</span>Najnowsze artykuły<span class="op">&lt;/</span>h1<span class="op">&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span><span class="ot">?</span>php <span class="cf">foreach</span> (<span class="va">$posty</span> <span class="kw">as</span> <span class="va">$p</span>)<span class="ot">:</span> <span class="kw">?&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>article<span class="op">&gt;</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>h2<span class="op">&gt;&lt;</span>a href<span class="op">=</span><span class="st">"/post/&lt;?= htmlspecialchars(</span><span class="va">$p</span>[<span class="er">'</span><span class="st">slug']) ?&gt;"</span><span class="op">&gt;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="fu">htmlspecialchars</span>(<span class="va">$p</span>[<span class="st">'tytul'</span>]) <span class="kw">?&gt;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>a<span class="op">&gt;&lt;/</span>h2<span class="op">&gt;</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span><span class="fu">time</span><span class="op">&gt;&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="va">$p</span>[<span class="st">'data_publikacji'</span>] <span class="kw">?&gt;</span><span class="op">&lt;/</span><span class="fu">time</span><span class="op">&gt;</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="fu">htmlspecialchars</span>(<span class="fu">mb_substr</span>(<span class="va">$p</span>[<span class="st">'tresc'</span>]<span class="ot">,</span> <span class="dv">0</span><span class="ot">,</span> <span class="dv">200</span>)) <span class="kw">?&gt;</span>...<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span>article<span class="op">&gt;</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span><span class="ot">?</span>php <span class="cf">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Ważne:</strong> <code>htmlspecialchars()</code> — funkcja, która zamienia znaki specjalne HTML (<code>&lt;</code>, <code>&gt;</code>, <code>"</code>) na bezpieczne encje (<code>&amp;lt;</code>, <code>&amp;gt;</code>). Chroni przed atakami <strong>XSS</strong> (Cross-Site Scripting), gdzie złośliwy użytkownik wstrzykuje <code>&lt;script&gt;</code> do treści.</p>
+</section>
+</section>
+<section id="hashowanie-haseł-password_hash-i-password_verify" class="level2">
+<h2 class="anchored" data-anchor-id="hashowanie-haseł-password_hash-i-password_verify">7. Hashowanie haseł: password_hash i password_verify</h2>
+<p>Nigdy, przenigdy nie przechowuj haseł w czystym tekście. Nawet nie szyfruj ich (szyfrowanie jest odwracalne). Używaj <strong>hashowania</strong> — funkcji jednokierunkowej:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode php code-with-copy"><code class="sourceCode php"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Przy rejestracji:</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="va">$haslo_czyste</span>   <span class="op">=</span> <span class="st">'MojeSuperHaslo123'</span><span class="ot">;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="va">$haslo_zahashowane</span> <span class="op">=</span> <span class="fu">password_hash</span>(<span class="va">$haslo_czyste</span><span class="ot">,</span> <span class="cn">PASSWORD_BCRYPT</span>)<span class="ot">;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Wynik: "$2y$10$xN5Fz..." — nawet administrator bazy nie odczyta hasła</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Przy logowaniu:</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="va">$czy_poprawne</span> <span class="op">=</span> <span class="fu">password_verify</span>(<span class="st">'MojeSuperHaslo123'</span><span class="ot">,</span> <span class="va">$haslo_zahashowane</span>)<span class="ot">;</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">// true — hasło się zgadza</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="va">$czy_poprawne</span> <span class="op">=</span> <span class="fu">password_verify</span>(<span class="st">'zle_haslo'</span><span class="ot">,</span> <span class="va">$haslo_zahashowane</span>)<span class="ot">;</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co">// false</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>PASSWORD_BCRYPT</code> automatycznie dodaje losową “sól” (salt) — dwa identyczne hasła dadzą różne hashe. Atakujący nie może użyć gotowych tablic rainbow.</p>
+</section>
+<section id="podsumowanie-wykładu-4" class="level2">
+<h2 class="anchored" data-anchor-id="podsumowanie-wykładu-4">Podsumowanie Wykładu 4</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Temat</th>
+<th>Co zapamiętać</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PHP 8.x</td>
+<td><code>declare(strict_types=1)</code>, union types, named args, enum, match</td>
+</tr>
+<tr class="even">
+<td>OOP</td>
+<td>Klasa = przepis, Obiekt = ciasto. <code>public</code> / <code>private</code> / <code>protected</code></td>
+</tr>
+<tr class="odd">
+<td>Constructor Promotion</td>
+<td><code>public function __construct(private string $nazwa)</code></td>
+</tr>
+<tr class="even">
+<td>PDO Singleton</td>
+<td>Jedno połączenie na żądanie, <code>ERRMODE_EXCEPTION</code>, <code>EMULATE_PREPARES =&gt; false</code></td>
+</tr>
+<tr class="odd">
+<td>Prepared Statements</td>
+<td><strong>ZAWSZE</strong> <code>:parametry</code> + <code>execute()</code>. NIGDY zmienne w SQL</td>
+</tr>
+<tr class="even">
+<td>Model abstrakcyjny</td>
+<td>Bazowy CRUD, podklasy definiują <code>$table</code> i metody specyficzne</td>
+</tr>
+<tr class="odd">
+<td>MVC</td>
+<td>Model (dane) → Controller (logika) → View (HTML). Front Controller + Router</td>
+</tr>
+<tr class="even">
+<td>Bezpieczeństwo</td>
+<td><code>htmlspecialchars()</code> vs XSS, <code>password_hash()</code> vs plaintext</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Zadanie do przećwiczenia:</strong> Zbuduj prosty blog z panelem admina. Struktura MVC, dwa modele (Post, User), logowanie przez <code>password_verify</code>, lista postów na stronie głównej, formularz dodawania nowego postu. Bonus: zamknij wszystko w kontenerze Docker z Wykładu 2.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

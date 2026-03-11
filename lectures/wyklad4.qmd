@@ -1,7 +1,861 @@
 ---
-title:  Wykład 4
-
+title: "PHP – Programowanie obiektowe, bazy danych i wzorce CMS"
 format:
   html:
     code-fold: true
 ---
+
+## 1. PHP: Język, który napędza połowę internetu
+
+Na Wykładzie 1 widzieliśmy, że Backend to "mózg" operacji — kod ukryty przed użytkownikiem, działający na serwerze. Pokazywaliśmy przykłady w Pythonie (Flask), Node.js i Julii. Dziś skupimy się na PHP.
+
+**Fakty:** Według danych W3Techs, PHP jest używany przez ok. 75% wszystkich stron internetowych z rozpoznanym językiem server-side. WordPress (43% wszystkich stron w internecie), Facebook (początkowo), Wikipedia — wszystkie zbudowane na PHP.
+
+PHP nie jest "starym, brzydkim językiem", jak niektórzy twierdzą. PHP 8.x to nowoczesny język z typowaniem, enum-ami, match expression i wydajnością porównywalną z innymi rozwiązaniami. Klucz to pisanie nowoczesnego PHP, a nie kodu jak w 2005 roku.
+
+### Jak PHP działa?
+
+Przypomnijmy schemat z Wykładu 1:
+
+1. Przeglądarka wysyła żądanie HTTP (`GET /strona.php`)
+2. Serwer WWW (Apache/Nginx) rozpoznaje plik `.php` i przekazuje go do interpretera PHP
+3. PHP wykonuje kod, generuje HTML (lub JSON)
+4. Serwer odsyła wynik do przeglądarki
+5. Przeglądarka renderuje otrzymany HTML
+
+```php
+<?php
+// Prosty skrypt — generuje HTML dynamicznie
+$godzina = date('H');
+$powitanie = ($godzina < 12) ? 'Dzień dobry' : 'Dobry wieczór';
+?>
+<!DOCTYPE html>
+<html lang="pl">
+<head><title>Powitanie</title></head>
+<body>
+    <h1><?= $powitanie ?>, użytkowniku!</h1>
+    <p>Jest godzina <?= date('H:i') ?></p>
+</body>
+</html>
+```
+
+Znak `<?= ... ?>` to skrót od `<?php echo ... ?>`. Powyższy skrypt generuje inny HTML o 8 rano niż o 20 wieczorem — to samo "R" w akronimie REST: serwer wysyła **reprezentację**, nie sam zasób.
+
+## 2. PHP 8.x: Nowoczesna składnia
+
+Zanim przejdziemy do OOP, poznajmy kluczowe cechy współczesnego PHP.
+
+### Strict typing
+
+```php
+<?php
+declare(strict_types=1); // Włącza ścisłe typowanie — na początku KAŻDEGO pliku
+
+function dodaj(int $a, int $b): int {
+    return $a + $b;
+}
+
+echo dodaj(2, 3);    // ✅ 5
+echo dodaj("2", "3"); // ❌ TypeError! Bez strict_types zwróciłby 5
+```
+
+`declare(strict_types=1)` to odpowiednik TypeScript dla JavaScriptu. Bez tego PHP cicho konwertuje typy (np. string "42" na int 42), co prowadzi do trudnych do wykrycia błędów.
+
+### Typy złożone i nowe konstrukcje
+
+```php
+<?php
+declare(strict_types=1);
+
+// Union types — zmienna akceptuje kilka typów
+function znajdz(int|string $id): ?array {
+    // ?array oznacza "array albo null"
+    return null;
+}
+
+// Named arguments — czytelniejsze wywołania
+function stworzUzytkownika(
+    string $imie,
+    string $email,
+    int $wiek = 25,
+    bool $aktywny = true
+): array {
+    return compact('imie', 'email', 'wiek', 'aktywny');
+}
+
+// Zamiast pamiętać kolejność argumentów:
+$user = stworzUzytkownika(
+    email: 'jan@wp.pl',   // Kolejność nie ma znaczenia!
+    imie: 'Jan',
+    aktywny: false
+);
+
+// Match expression — czytelniejsza alternatywa dla switch
+$status = 'admin';
+$rola = match($status) {
+    'admin'     => 'Pełen dostęp',
+    'editor'    => 'Edycja treści',
+    'viewer'    => 'Tylko odczyt',
+    default     => 'Brak uprawnień',
+};
+
+// Enum (PHP 8.1)
+enum StatusZamowienia: string {
+    case Nowe      = 'nowe';
+    case Oplacone  = 'oplacone';
+    case Wyslane   = 'wyslane';
+    case Dostarczone = 'dostarczone';
+}
+
+$zamowienie = StatusZamowienia::Oplacone;
+echo $zamowienie->value; // 'oplacone'
+```
+
+## 3. Programowanie obiektowe (OOP) w PHP
+
+Proceduralne PHP (same funkcje i zmienne globalne) to przepis na katastrofę w większym projekcie. OOP pozwala organizować kod w logiczne, hermetyczne jednostki.
+
+### Klasa i obiekt
+
+Klasa to **przepis** (blueprint), obiekt to **konkretne ciasto** upieczone z tego przepisu (analogia z Dockera — Obraz vs Kontener).
+
+```php
+<?php
+declare(strict_types=1);
+
+class Produkt {
+    // Właściwości — dane obiektu
+    private string $nazwa;
+    private float $cena;
+    private int $ilosc;
+
+    // Konstruktor — wywoływany przy tworzeniu obiektu (new Produkt(...))
+    public function __construct(string $nazwa, float $cena, int $ilosc = 0) {
+        $this->nazwa = $nazwa;
+        $this->cena  = $cena;
+        $this->ilosc = $ilosc;
+    }
+
+    // Metody publiczne — interfejs obiektu
+    public function getNazwa(): string {
+        return $this->nazwa;
+    }
+
+    public function getCena(): float {
+        return $this->cena;
+    }
+
+    public function jestDostepny(): bool {
+        return $this->ilosc > 0;
+    }
+
+    public function sprzedaj(int $ile = 1): void {
+        if ($ile > $this->ilosc) {
+            throw new \RuntimeException("Brak wystarczającej ilości na stanie");
+        }
+        $this->ilosc -= $ile;
+    }
+
+    // Metoda do serializacji — przydatne przy API (JSON)
+    public function toArray(): array {
+        return [
+            'nazwa'    => $this->nazwa,
+            'cena'     => $this->cena,
+            'ilosc'    => $this->ilosc,
+            'dostepny' => $this->jestDostepny(),
+        ];
+    }
+}
+
+// Użycie:
+$laptop = new Produkt('ThinkPad X1', 5499.99, 10);
+echo $laptop->getNazwa();     // "ThinkPad X1"
+echo $laptop->jestDostepny(); // true
+
+$laptop->sprzedaj(2);
+echo json_encode($laptop->toArray());
+// {"nazwa":"ThinkPad X1","cena":5499.99,"ilosc":8,"dostepny":true}
+```
+
+### Constructor Promotion (PHP 8.0)
+
+Pisanie `$this->nazwa = $nazwa` w konstruktorze jest powtarzalne. PHP 8 upraszcza to drastycznie:
+
+```php
+<?php
+declare(strict_types=1);
+
+class Produkt {
+    // Konstruktor z promocją — właściwości deklarowane bezpośrednio w parametrach
+    public function __construct(
+        private string $nazwa,
+        private float $cena,
+        private int $ilosc = 0
+    ) {
+        // Ciało może być puste — PHP sam przypisze wartości
+    }
+
+    public function getNazwa(): string {
+        return $this->nazwa;
+    }
+
+    // ... reszta metod jak wcześniej
+}
+```
+
+Mniej kodu, ten sam efekt. `private string $nazwa` w parametrze konstruktora automatycznie tworzy właściwość i przypisuje wartość.
+
+### Enkapsulacja i modyfikatory dostępu
+
+```php
+<?php
+class KontoBankowe {
+    public function __construct(
+        private string $wlasciciel,
+        private float $saldo = 0.0  // ← private: nikt z zewnątrz nie zmieni bezpośrednio
+    ) {}
+
+    public function wplac(float $kwota): void {
+        if ($kwota <= 0) {
+            throw new \InvalidArgumentException("Kwota musi być dodatnia");
+        }
+        $this->saldo += $kwota;
+    }
+
+    public function getSaldo(): float {
+        return $this->saldo;
+    }
+
+    // Metoda prywatna — używana tylko wewnątrz klasy
+    private function naliczOdsetki(): void {
+        $this->saldo *= 1.05;
+    }
+}
+
+$konto = new KontoBankowe('Jan Kowalski', 1000);
+$konto->wplac(500);
+echo $konto->getSaldo();  // 1500
+
+// $konto->saldo = 999999;      ❌ Fatal Error! saldo jest private
+// $konto->naliczOdsetki();     ❌ Fatal Error! metoda jest private
+```
+
+| Modyfikator | Widoczność | Użycie |
+|-------------|-----------|--------|
+| `public` | Wszędzie | Interfejs obiektu (metody do użytku zewnętrznego) |
+| `protected` | Klasa + klasy dziedziczące | Metody/właściwości dla podklas |
+| `private` | Tylko wewnątrz tej klasy | Dane wewnętrzne, metody pomocnicze |
+
+### Dziedziczenie i interfejsy
+
+```php
+<?php
+// Interfejs — kontrakt: "każda klasa implementująca MUSI mieć te metody"
+interface Exportowalny {
+    public function toArray(): array;
+    public function toJSON(): string;
+}
+
+// Klasa abstrakcyjna — nie można stworzyć obiektu z niej bezpośrednio
+abstract class ElementSklepu implements Exportowalny {
+    public function __construct(
+        protected string $nazwa,
+        protected float $cena
+    ) {}
+
+    // Metoda abstrakcyjna — MUSI być zaimplementowana przez podklasę
+    abstract public function obliczPodatek(): float;
+
+    // Metoda konkretna — dziedziczona automatycznie
+    public function toJSON(): string {
+        return json_encode($this->toArray(), JSON_UNESCAPED_UNICODE);
+    }
+}
+
+class ProduktFizyczny extends ElementSklepu {
+    public function __construct(
+        string $nazwa,
+        float $cena,
+        private float $waga // kg
+    ) {
+        parent::__construct($nazwa, $cena);
+    }
+
+    public function obliczPodatek(): float {
+        return $this->cena * 0.23; // 23% VAT
+    }
+
+    public function toArray(): array {
+        return [
+            'nazwa'   => $this->nazwa,
+            'cena'    => $this->cena,
+            'podatek' => $this->obliczPodatek(),
+            'waga'    => $this->waga,
+        ];
+    }
+}
+
+class ProduktCyfrowy extends ElementSklepu {
+    public function obliczPodatek(): float {
+        return $this->cena * 0.08; // 8% VAT na e-booki
+    }
+
+    public function toArray(): array {
+        return [
+            'nazwa'   => $this->nazwa,
+            'cena'    => $this->cena,
+            'podatek' => $this->obliczPodatek(),
+        ];
+    }
+}
+```
+
+## 4. PDO: Bezpieczne połączenie z bazą danych
+
+Na Wykładzie 1 serwer "udawał" bazę danych prostym słownikiem w Pythonie. W rzeczywistości dane mieszkają w systemie bazodanowym (MySQL, PostgreSQL, SQLite).
+
+PHP łączy się z bazą przez **PDO** (PHP Data Objects) — uniwersalny interfejs, który działa z każdym silnikiem SQL.
+
+### Wzorzec Singleton: Jedno połączenie na żądanie
+
+Tworzenie nowego połączenia z bazą przy każdym zapytaniu to marnotrawstwo zasobów. Wzorzec Singleton gwarantuje, że w ramach jednego żądania HTTP istnieje dokładnie **jedno** połączenie:
+
+```php
+<?php
+declare(strict_types=1);
+
+class Database {
+    private static ?PDO $instance = null;
+
+    // Prywatny konstruktor — nie można wywołać new Database()
+    private function __construct() {}
+
+    public static function getInstance(): PDO {
+        if (self::$instance === null) {
+            $dsn = 'mysql:host=localhost;dbname=sklep;charset=utf8mb4';
+
+            self::$instance = new PDO($dsn, 'app_user', 'tajne_haslo', [
+                // Błędy rzucane jako wyjątki — łapiesz je try/catch
+                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                // Wyniki jako tablice asocjacyjne (klucz => wartość)
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                // Wyłącz emulację prepared statements — prawdziwa ochrona
+                PDO::ATTR_EMULATE_PREPARES   => false,
+            ]);
+        }
+        return self::$instance;
+    }
+}
+
+// Użycie w dowolnym miejscu kodu:
+$db = Database::getInstance();
+// Drugie wywołanie ZWRACA TEN SAM OBIEKT — nie tworzy nowego połączenia
+$db2 = Database::getInstance();
+var_dump($db === $db2); // true
+```
+
+**Dlaczego `charset=utf8mb4`?** Obsługuje pełen Unicode (w tym emoji 🎓). Samo `utf8` w MySQL to okrojona wersja UTF-8.
+
+### Prepared Statements: Ochrona przed SQL Injection
+
+Na Wykładzie 1 mówiliśmy: **klientowi nigdy nie ufamy**. Oto dlaczego:
+
+```php
+<?php
+// ❌ NIGDY TAK NIE RÓB — SQL Injection
+$id = $_GET['id']; // Użytkownik wpisał: "1; DROP TABLE users; --"
+$db->query("SELECT * FROM users WHERE id = $id");
+// Efekt: DROP TABLE users — baza danych usunięta!
+
+// ✅ ZAWSZE Prepared Statements
+$stmt = $db->prepare("SELECT * FROM users WHERE id = :id");
+$stmt->execute([':id' => $_GET['id']]);
+$user = $stmt->fetch();
+// PDO automatycznie "ucieka" niebezpieczne znaki — zapytanie jest bezpieczne
+```
+
+Prepared Statements działają w dwóch krokach:
+
+1. `prepare()` — wysyła do bazy "szablon" zapytania z "dziurami" (`:id`)
+2. `execute()` — wypełnia "dziury" danymi, ale baza traktuje je wyłącznie jako **dane**, nie jako kod SQL
+
+### Pełny CRUD (Create, Read, Update, Delete)
+
+```php
+<?php
+$db = Database::getInstance();
+
+// ═══ CREATE ═══
+$stmt = $db->prepare("
+    INSERT INTO produkty (nazwa, cena, ilosc)
+    VALUES (:nazwa, :cena, :ilosc)
+");
+$stmt->execute([
+    ':nazwa' => 'Laptop ThinkPad',
+    ':cena'  => 5499.99,
+    ':ilosc' => 10
+]);
+$noweId = $db->lastInsertId(); // ID wstawionego rekordu
+
+// ═══ READ — jeden rekord ═══
+$stmt = $db->prepare("SELECT * FROM produkty WHERE id = :id");
+$stmt->execute([':id' => $noweId]);
+$produkt = $stmt->fetch(); // Tablica asocjacyjna lub false
+
+// ═══ READ — wiele rekordów z filtrem ═══
+$stmt = $db->prepare("
+    SELECT * FROM produkty
+    WHERE cena BETWEEN :min AND :max
+    ORDER BY cena ASC
+");
+$stmt->execute([':min' => 1000, ':max' => 6000]);
+$produkty = $stmt->fetchAll(); // Tablica tablic asocjacyjnych
+
+// ═══ UPDATE ═══
+$stmt = $db->prepare("
+    UPDATE produkty SET cena = :cena, ilosc = :ilosc
+    WHERE id = :id
+");
+$stmt->execute([':cena' => 4999.99, ':ilosc' => 8, ':id' => $noweId]);
+echo $stmt->rowCount(); // Liczba zmienionych wierszy
+
+// ═══ DELETE ═══
+$stmt = $db->prepare("DELETE FROM produkty WHERE id = :id");
+$stmt->execute([':id' => $noweId]);
+```
+
+## 5. Klasa bazowa Model — Active Record dla CMS
+
+W systemach CMS (WordPress, Drupal, własne) każda "rzecz" (post, użytkownik, komentarz) to osobna tabela w bazie. Zamiast powtarzać kod CRUD w każdym pliku, tworzymy **abstrakcyjną klasę bazową**:
+
+```php
+<?php
+declare(strict_types=1);
+
+abstract class Model {
+    protected PDO $db;
+    protected string $table; // Każda podklasa definiuje swoją tabelę
+
+    public function __construct() {
+        $this->db = Database::getInstance();
+    }
+
+    // ─── READ ───
+    public function findAll(string $orderBy = 'id ASC'): array {
+        $stmt = $this->db->query(
+            "SELECT * FROM {$this->table} ORDER BY {$orderBy}"
+        );
+        return $stmt->fetchAll();
+    }
+
+    public function findById(int $id): ?array {
+        $stmt = $this->db->prepare(
+            "SELECT * FROM {$this->table} WHERE id = :id"
+        );
+        $stmt->execute([':id' => $id]);
+        $result = $stmt->fetch();
+        return $result ?: null;
+    }
+
+    // ─── CREATE ───
+    public function create(array $data): int {
+        $columns = implode(', ', array_keys($data));
+        $placeholders = ':' . implode(', :', array_keys($data));
+
+        $stmt = $this->db->prepare(
+            "INSERT INTO {$this->table} ({$columns}) VALUES ({$placeholders})"
+        );
+        $stmt->execute($data);
+        return (int) $this->db->lastInsertId();
+    }
+
+    // ─── UPDATE ───
+    public function update(int $id, array $data): bool {
+        $sets = [];
+        foreach ($data as $key => $value) {
+            $sets[] = "{$key} = :{$key}";
+        }
+        $setString = implode(', ', $sets);
+
+        $stmt = $this->db->prepare(
+            "UPDATE {$this->table} SET {$setString} WHERE id = :id"
+        );
+        $data['id'] = $id;
+        return $stmt->execute($data);
+    }
+
+    // ─── DELETE ───
+    public function delete(int $id): bool {
+        $stmt = $this->db->prepare(
+            "DELETE FROM {$this->table} WHERE id = :id"
+        );
+        return $stmt->execute([':id' => $id]);
+    }
+
+    // ─── COUNT ───
+    public function count(): int {
+        $stmt = $this->db->query("SELECT COUNT(*) FROM {$this->table}");
+        return (int) $stmt->fetchColumn();
+    }
+}
+```
+
+Teraz tworzenie modeli dla konkretnych tabel jest trywialne:
+
+```php
+<?php
+class Post extends Model {
+    protected string $table = 'posts';
+
+    // Metody specyficzne dla postów
+    public function findPublished(): array {
+        $stmt = $this->db->prepare("
+            SELECT p.*, u.imie AS autor
+            FROM {$this->table} p
+            JOIN users u ON p.autor_id = u.id
+            WHERE p.status = :status
+            ORDER BY p.data_publikacji DESC
+        ");
+        $stmt->execute([':status' => 'published']);
+        return $stmt->fetchAll();
+    }
+
+    public function findBySlug(string $slug): ?array {
+        $stmt = $this->db->prepare(
+            "SELECT * FROM {$this->table} WHERE slug = :slug"
+        );
+        $stmt->execute([':slug' => $slug]);
+        $result = $stmt->fetch();
+        return $result ?: null;
+    }
+}
+
+class User extends Model {
+    protected string $table = 'users';
+
+    public function findByEmail(string $email): ?array {
+        $stmt = $this->db->prepare(
+            "SELECT * FROM {$this->table} WHERE email = :email"
+        );
+        $stmt->execute([':email' => $email]);
+        $result = $stmt->fetch();
+        return $result ?: null;
+    }
+
+    // ⚠️ Nigdy nie przechowuj haseł w czystym tekście!
+    public function createWithPassword(string $imie, string $email, string $haslo): int {
+        return $this->create([
+            'imie'  => $imie,
+            'email' => $email,
+            'haslo' => password_hash($haslo, PASSWORD_BCRYPT),
+        ]);
+    }
+
+    public function weryfikujHaslo(string $email, string $haslo): ?array {
+        $user = $this->findByEmail($email);
+        if ($user && password_verify($haslo, $user['haslo'])) {
+            return $user;
+        }
+        return null;
+    }
+}
+
+// ═══ Użycie ═══
+$postModel = new Post();
+$userModel = new User();
+
+// Stwórz użytkownika
+$userId = $userModel->createWithPassword('Jan', 'jan@example.com', 'bezpieczneHaslo123');
+
+// Stwórz post
+$postId = $postModel->create([
+    'tytul'           => 'Mój pierwszy wpis',
+    'slug'            => 'moj-pierwszy-wpis',
+    'tresc'           => 'Treść artykułu...',
+    'autor_id'        => $userId,
+    'status'          => 'published',
+    'data_publikacji' => date('Y-m-d H:i:s'),
+]);
+
+// Pobierz opublikowane posty
+$posty = $postModel->findPublished();
+```
+
+## 6. Architektura MVC: Porządek w kodzie CMS
+
+Kiedy piszesz cały kod w jednym pliku (`index.php` z SQL-em, HTML-em i logiką pomieszanymi), powstaje tzw. **spaghetti code**. Przy 500 linijkach nikt tego nie ogarnie.
+
+Wzorzec **MVC (Model-View-Controller)** dzieli kod na trzy warstwy:
+
+* **Model** — dane i logika biznesowa (klasy, które właśnie napisaliśmy)
+* **View** — widok, szablony HTML
+* **Controller** — "dyżurny" — odbiera żądanie HTTP, woła odpowiedni Model, przekazuje dane do Widoku
+
+### Struktura katalogów prostego CMS
+
+```
+moj-cms/
+├── public/             # Jedyny folder widoczny z internetu!
+│   ├── index.php       # Front Controller — KAŻDE żądanie przechodzi przez ten plik
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── app.js
+├── src/
+│   ├── Database.php    # Klasa połączenia z bazą (Singleton)
+│   ├── Model.php       # Abstrakcyjna klasa bazowa
+│   ├── models/
+│   │   ├── Post.php
+│   │   └── User.php
+│   ├── controllers/
+│   │   ├── PostController.php
+│   │   └── UserController.php
+│   └── Router.php      # Prosty router URL → Controller
+├── templates/           # Szablony HTML (Widoki)
+│   ├── layout.php       # Główny szablon (header + footer)
+│   ├── home.php
+│   ├── post/
+│   │   ├── index.php    # Lista postów
+│   │   └── show.php     # Pojedynczy post
+│   └── errors/
+│       └── 404.php
+└── config/
+    └── database.php     # Ustawienia bazy (host, login, hasło)
+```
+
+**Kluczowa zasada bezpieczeństwa:** Tylko folder `public/` jest dostępny z przeglądarki. Pliki w `src/`, `templates/`, `config/` NIE MOGĄ być dostępne bezpośrednio — zawierają hasła do bazy, logikę biznesową itp.
+
+### Front Controller: Jeden punkt wejścia
+
+Zamiast osobnych plików `posts.php`, `users.php`, `kontakt.php`, wszystkie żądania idą przez `public/index.php`:
+
+```php
+<?php
+// public/index.php — Front Controller
+
+declare(strict_types=1);
+
+// Autoloader — automatycznie ładuje klasy z src/
+spl_autoload_register(function (string $class) {
+    $path = __DIR__ . '/../src/' . str_replace('\\', '/', $class) . '.php';
+    if (file_exists($path)) {
+        require $path;
+    }
+});
+
+// Załaduj konfigurację
+require __DIR__ . '/../config/database.php';
+
+// Prosty routing
+$uri    = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$method = $_SERVER['REQUEST_METHOD'];
+
+// Wywołaj odpowiedni controller na podstawie URL
+$router = new Router();
+$router->get('/',           'PostController@index');
+$router->get('/post/{slug}','PostController@show');
+$router->get('/admin/posts','PostController@adminList');
+$router->post('/admin/posts','PostController@store');
+
+$router->dispatch($method, $uri);
+```
+
+### Prosty Router
+
+```php
+<?php
+declare(strict_types=1);
+
+class Router {
+    private array $routes = [];
+
+    public function get(string $path, string $action): void {
+        $this->routes['GET'][$path] = $action;
+    }
+
+    public function post(string $path, string $action): void {
+        $this->routes['POST'][$path] = $action;
+    }
+
+    public function dispatch(string $method, string $uri): void {
+        foreach ($this->routes[$method] ?? [] as $route => $action) {
+            // Zamień {slug} na regex
+            $pattern = preg_replace('/\{(\w+)\}/', '(?P<$1>[^/]+)', $route);
+            $pattern = '#^' . $pattern . '$#';
+
+            if (preg_match($pattern, $uri, $matches)) {
+                [$controllerName, $methodName] = explode('@', $action);
+                $controller = new $controllerName();
+
+                // Zbierz nazwane parametry (np. slug)
+                $params = array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY);
+                $controller->$methodName(...$params);
+                return;
+            }
+        }
+
+        // 404 — nie znaleziono trasy
+        http_response_code(404);
+        require __DIR__ . '/../templates/errors/404.php';
+    }
+}
+```
+
+### Controller
+
+```php
+<?php
+declare(strict_types=1);
+
+class PostController {
+    private Post $postModel;
+
+    public function __construct() {
+        $this->postModel = new Post();
+    }
+
+    // GET / — strona główna z listą postów
+    public function index(): void {
+        $posty = $this->postModel->findPublished();
+        $title = 'Strona główna';
+
+        // Przekazujemy dane do widoku
+        require __DIR__ . '/../templates/layout.php';
+    }
+
+    // GET /post/{slug} — pojedynczy post
+    public function show(string $slug): void {
+        $post = $this->postModel->findBySlug($slug);
+
+        if (!$post) {
+            http_response_code(404);
+            require __DIR__ . '/../templates/errors/404.php';
+            return;
+        }
+
+        $title = $post['tytul'];
+        require __DIR__ . '/../templates/layout.php';
+    }
+
+    // POST /admin/posts — zapisz nowy post
+    public function store(): void {
+        // Walidacja danych z formularza
+        $tytul = trim($_POST['tytul'] ?? '');
+        $tresc = trim($_POST['tresc'] ?? '');
+
+        if (empty($tytul) || empty($tresc)) {
+            // Przekieruj z powrotem z błędem
+            header('Location: /admin/posts?error=empty');
+            return;
+        }
+
+        $this->postModel->create([
+            'tytul'           => $tytul,
+            'slug'            => $this->slugify($tytul),
+            'tresc'           => $tresc,
+            'autor_id'        => 1, // TODO: pobrać z sesji
+            'status'          => 'published',
+            'data_publikacji' => date('Y-m-d H:i:s'),
+        ]);
+
+        header('Location: /?success=created');
+    }
+
+    private function slugify(string $text): string {
+        $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text);
+        $text = preg_replace('/[^a-zA-Z0-9]/', '-', strtolower($text));
+        return trim(preg_replace('/-+/', '-', $text), '-');
+    }
+}
+```
+
+### Widok (Template)
+
+```php
+<!-- templates/layout.php -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= htmlspecialchars($title) ?> — Mój CMS</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Start</a>
+            <a href="/admin/posts">Panel</a>
+        </nav>
+    </header>
+
+    <main>
+        <?php
+        // Wybierz odpowiedni fragment widoku
+        $page = $post ?? null;
+        if ($page) {
+            require __DIR__ . '/post/show.php';
+        } else {
+            require __DIR__ . '/home.php';
+        }
+        ?>
+    </main>
+
+    <footer>
+        <p>&copy; <?= date('Y') ?> Mój CMS</p>
+    </footer>
+</body>
+</html>
+```
+
+```php
+<!-- templates/home.php -->
+<h1>Najnowsze artykuły</h1>
+<?php foreach ($posty as $p): ?>
+    <article>
+        <h2><a href="/post/<?= htmlspecialchars($p['slug']) ?>">
+            <?= htmlspecialchars($p['tytul']) ?>
+        </a></h2>
+        <time><?= $p['data_publikacji'] ?></time>
+        <p><?= htmlspecialchars(mb_substr($p['tresc'], 0, 200)) ?>...</p>
+    </article>
+<?php endforeach; ?>
+```
+
+**Ważne:** `htmlspecialchars()` — funkcja, która zamienia znaki specjalne HTML (`<`, `>`, `"`) na bezpieczne encje (`&lt;`, `&gt;`). Chroni przed atakami **XSS** (Cross-Site Scripting), gdzie złośliwy użytkownik wstrzykuje `<script>` do treści.
+
+## 7. Hashowanie haseł: password_hash i password_verify
+
+Nigdy, przenigdy nie przechowuj haseł w czystym tekście. Nawet nie szyfruj ich (szyfrowanie jest odwracalne). Używaj **hashowania** — funkcji jednokierunkowej:
+
+```php
+<?php
+// Przy rejestracji:
+$haslo_czyste   = 'MojeSuperHaslo123';
+$haslo_zahashowane = password_hash($haslo_czyste, PASSWORD_BCRYPT);
+// Wynik: "$2y$10$xN5Fz..." — nawet administrator bazy nie odczyta hasła
+
+// Przy logowaniu:
+$czy_poprawne = password_verify('MojeSuperHaslo123', $haslo_zahashowane);
+// true — hasło się zgadza
+
+$czy_poprawne = password_verify('zle_haslo', $haslo_zahashowane);
+// false
+```
+
+`PASSWORD_BCRYPT` automatycznie dodaje losową "sól" (salt) — dwa identyczne hasła dadzą różne hashe. Atakujący nie może użyć gotowych tablic rainbow.
+
+## Podsumowanie Wykładu 4
+
+| Temat | Co zapamiętać |
+|-------|---------------|
+| PHP 8.x | `declare(strict_types=1)`, union types, named args, enum, match |
+| OOP | Klasa = przepis, Obiekt = ciasto. `public` / `private` / `protected` |
+| Constructor Promotion | `public function __construct(private string $nazwa)` |
+| PDO Singleton | Jedno połączenie na żądanie, `ERRMODE_EXCEPTION`, `EMULATE_PREPARES => false` |
+| Prepared Statements | **ZAWSZE** `:parametry` + `execute()`. NIGDY zmienne w SQL |
+| Model abstrakcyjny | Bazowy CRUD, podklasy definiują `$table` i metody specyficzne |
+| MVC | Model (dane) → Controller (logika) → View (HTML). Front Controller + Router |
+| Bezpieczeństwo | `htmlspecialchars()` vs XSS, `password_hash()` vs plaintext |
+
+**Zadanie do przećwiczenia:** Zbuduj prosty blog z panelem admina. Struktura MVC, dwa modele (Post, User), logowanie przez `password_verify`, lista postów na stronie głównej, formularz dodawania nowego postu. Bonus: zamknij wszystko w kontenerze Docker z Wykładu 2.

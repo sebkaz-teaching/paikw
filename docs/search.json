@@ -1,143 +1,194 @@
 [
   {
-    "objectID": "indexS.html",
-    "href": "indexS.html",
-    "title": "Informacje ogólne",
+    "objectID": "lectures/wyklad5.html",
+    "href": "lectures/wyklad5.html",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
     "section": "",
-    "text": "Semestr: 2006 Uczelnia: Wojskowa Akademia Techniczna w Warszawie\nPolecane materiały znajdziesz na liście książek."
+    "text": "Na Wykładzie 1 poznaliśmy trzy języki Frontendu: HTML (struktura), CSS (wygląd) i JavaScript (zachowanie). Na Wykładzie 3 zgłębiliśmy HTML5 i CSS. Teraz czas na trzecią nogę — jedyny język programowania, który przeglądarka rozumie natywnie.\nJavaScript to nie Java. Nazwa to marketingowy chwyt z lat 90., gdy Java była modna. To zupełnie różne języki. JavaScript powstał w 1995 roku — napisany w 10 dni przez Brendana Eicha w firmie Netscape. Od tego czasu przeszedł ewolucję od prostego skryptowania po pełnoprawny język do budowy zarówno Frontendu (React, Angular), jak i Backendu (Node.js — Wykład 1).\nECMAScript (ES) — oficjalna specyfikacja języka. Kluczowe wersje:\n\nES5 (2009): var, function — “stary” JavaScript\nES6/ES2015: Rewolucja — let/const, arrow functions, klasy, moduły, template literals\nES2020+: Optional chaining (?.), nullish coalescing (??), top-level await\n\nPiszemy nowoczesny JS (ES6+) — stary styl zostawiamy dla kursów archeologii.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "JavaScript – Język, który ożywia przeglądarkę"
+    ]
   },
   {
-    "objectID": "indexS.html#kalendarz",
-    "href": "indexS.html#kalendarz",
-    "title": "Informacje ogólne",
-    "section": "Kalendarz",
-    "text": "Kalendarz\n\nWykład\n\n07-03-2026 08:00 - 11:20 - Wykład 1, 2\n14-03-2026 11:40-13:20 - Wykład 3\n\n\n\nLaboratoria\n\n21.03.2026\n26.03.2026\n12.04.2026\n26.04.2026"
-  },
-  {
-    "objectID": "ksiazki.html",
-    "href": "ksiazki.html",
-    "title": "Książki i strony WWW",
+    "objectID": "lectures/wyklad5.html#dlaczego-javascript",
+    "href": "lectures/wyklad5.html#dlaczego-javascript",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
     "section": "",
-    "text": "G. Maas, F. Garillot Stream Processing with Apache Spark Zobacz opis lub Kup e-book\nF. Hueske, V. Kalavri Stream Processing with Apache Flink Zobacz opis lub Kup e-book\n\n\n\nA. Bellemare Mikrousługi oparte na zdarzeniach. Wykorzystanie danych w organizacji na dużą skalę Zobacz opis lub Kup\n\n\n\n\n\n\nW. McKinney Python w analizie danych. Przetwarzanie danych za pomocą pakietów Pandas i NumPy oraz środowiska IPython. Wydanie II Zobacz opis lub Kup książkę, Kup e-book\nD. McIlwraith, H. Marmanis, D. Babenko Inteligentna sieć. Algorytmy przyszłości. Wydanie II (ebook) Zobacz opis lub Kup książkę, Kup e-book\nJoel Grus Data science od podstaw. Analiza danych w Pythonie. Wydanie II. Zobacz opis lub Kup książkę, Kup e-book.\nJohn W. Foreman Mistrz analizy danych. Od danych do wiedzy. Zobacz opis lub Kup książkę, Kup e-book.\nA. Geron Uczenie maszynowe z użyciem Scikit-Learn i TensorFlow. Wydanie II. Zobacz opis lub Kup książkę, Kup e-book.\nAlberto Boschetti, Luca Massaron Python. Podstawy nauki o danych. Zobacz opis lub Kup książkę.\nSebastian Raschka Python. Uczenie maszynowe. Wydanie II. Zobacz opis lub Kup książkę.\nR. Schutt, C. O’Neil Badanie danych. Raport z pierwszej lini działań. Zobacz opis lub Kup książkę.\nT. Segaran Nowe usługi 2.0. Przewodnik po analizie zbiorów danych Zobacz opis lub Kup książkę, Kup e-book\n\n\n\n\n\nF. Chollet Deep Learning. Praca z językiem Python i biblioteką Keras. Zobacz opis lub Kup książkę, Kup e-book\nJ. Patterson, A. Gibson Deep Learning. Praktyczne wprowadzenie (ebook) Zobacz opis lub Kup e-book\nV. Zocca, G. Spacagna, D. Slater, P. Roelants. Deep Learning. Uczenie głębokie z językiem Python. Sztuczna inteligencja i sieci neuronowe Zobacz opis lub Kup ebook\nD. Osinga Deep Learning. Receptury Zobacz opis lub Kup książkę, Kup e-book\nS. Weidman Uczenie głębokie od zera. Podstawy implementacji w Pythonie Zobacz opis lub Kup książkę, Kup e-book\nD. Foster Deep learning i modelowanie generatywne. Jak nauczyć komputer malowania, pisania, komponowania i grania Zobacz opis lub Kup książkę, Kup e-book\nJ. Howard, S. Gugger Deep learning dla programistów. Budowanie aplikacji AI za pomocą fastai i PyTorch Zobacz opis lub Kup książkę, Kup e-book\n\n\n\n\n\nJ. S. Damji, B. Wenig, T. Das, D. Lee Spark. Błyskawiczna analiza danych Zobacz opis lub Kup\nSpark. Zaawansowana analiza danych (ebook) Zobacz opis lub Kup e-book\nB. Chambers, M. Zaharia Spark: The Definitive Guide. Big Data Processing Made Simple (ebook) Zobacz opis lub Kup e-book\nJ. Quddus Machine Learning with Apache Spark Quick Start Guide (ebook) Zobacz opis lub Kup e-book\n\n\n\n\n\nG. Coldwind Zrozumieć programowanie Zobacz opis lub Kup książkę, Kup e-book\nA. Allain C++. Przewodnik dla początkujących Zobacz opis lub Kup książkę, Kup e-book\nS. Dasgupta, C. Papadimitriou, U. Vazirani Algorytmy PWN.\n\n\n\n\n\nJ. Krochmalski Docker. Projektowanie i wdrażanie aplikacji Zobacz opis lub Kup książkę, Kup e-book\nR. McKendrick, S. Gallagher Docker. Programowanie aplikacji dla zaawansowanych. Wydanie II Zobacz opis lub Kup książkę, Kup e-book\n\n\n\n\n\nP. Bell, B. Beer GitHub. Przyjazny przewodnik (ebook) Zobacz opis lub Kup e-book\n\n\n\n\n\nC. Althoff, Programista Samouk. Profesjonalny przewodnik do samodzielnej nauki kodowania. Zobacz opis lub Kup teraz, Kup e-book\nA. Sweigart, Automatyzacja nudnych zadań z pythonem. Zobacz opis lub Kup książkę, Kup e-book\nK. Reitz, T. Schlusser Przewodnik po Pythonie. Dobre praktyki i praktyczne narzędzia. Zobacz opis lub Kup teraz, Kup e-book\n\n\n\n\n\nB.Tate, L. Carslon, C. Hiibs, Ruby on Rails. Wprowadzenie. Wydanie II Zobacz opis lub Kup e-book\nB. Frain, Responsive Web Design. Projektowanie elastycznych witryn w HTML5 i CSS3, Zobacz opis lub Kup e-book\nK. Beck, TDD. Sztuda tworzenia, Zobacz opis lub Kup teraz, Kup e-book\nB. Dayley, Node.js, MongoDB, AngularJS. Kompendium wiedzy, Zobacz opis lub Kup teraz, Kup e-book\n\n\n\n\n\nA. Jacquier, O. Kondratyev, Quantum Machine Learning and Optimisation in Finance. On the Road to Quantum Advantage."
-  },
-  {
-    "objectID": "ksiazki.html#książki",
-    "href": "ksiazki.html#książki",
-    "title": "Książki i strony WWW",
-    "section": "",
-    "text": "G. Maas, F. Garillot Stream Processing with Apache Spark Zobacz opis lub Kup e-book\nF. Hueske, V. Kalavri Stream Processing with Apache Flink Zobacz opis lub Kup e-book\n\n\n\nA. Bellemare Mikrousługi oparte na zdarzeniach. Wykorzystanie danych w organizacji na dużą skalę Zobacz opis lub Kup\n\n\n\n\n\n\nW. McKinney Python w analizie danych. Przetwarzanie danych za pomocą pakietów Pandas i NumPy oraz środowiska IPython. Wydanie II Zobacz opis lub Kup książkę, Kup e-book\nD. McIlwraith, H. Marmanis, D. Babenko Inteligentna sieć. Algorytmy przyszłości. Wydanie II (ebook) Zobacz opis lub Kup książkę, Kup e-book\nJoel Grus Data science od podstaw. Analiza danych w Pythonie. Wydanie II. Zobacz opis lub Kup książkę, Kup e-book.\nJohn W. Foreman Mistrz analizy danych. Od danych do wiedzy. Zobacz opis lub Kup książkę, Kup e-book.\nA. Geron Uczenie maszynowe z użyciem Scikit-Learn i TensorFlow. Wydanie II. Zobacz opis lub Kup książkę, Kup e-book.\nAlberto Boschetti, Luca Massaron Python. Podstawy nauki o danych. Zobacz opis lub Kup książkę.\nSebastian Raschka Python. Uczenie maszynowe. Wydanie II. Zobacz opis lub Kup książkę.\nR. Schutt, C. O’Neil Badanie danych. Raport z pierwszej lini działań. Zobacz opis lub Kup książkę.\nT. Segaran Nowe usługi 2.0. Przewodnik po analizie zbiorów danych Zobacz opis lub Kup książkę, Kup e-book\n\n\n\n\n\nF. Chollet Deep Learning. Praca z językiem Python i biblioteką Keras. Zobacz opis lub Kup książkę, Kup e-book\nJ. Patterson, A. Gibson Deep Learning. Praktyczne wprowadzenie (ebook) Zobacz opis lub Kup e-book\nV. Zocca, G. Spacagna, D. Slater, P. Roelants. Deep Learning. Uczenie głębokie z językiem Python. Sztuczna inteligencja i sieci neuronowe Zobacz opis lub Kup ebook\nD. Osinga Deep Learning. Receptury Zobacz opis lub Kup książkę, Kup e-book\nS. Weidman Uczenie głębokie od zera. Podstawy implementacji w Pythonie Zobacz opis lub Kup książkę, Kup e-book\nD. Foster Deep learning i modelowanie generatywne. Jak nauczyć komputer malowania, pisania, komponowania i grania Zobacz opis lub Kup książkę, Kup e-book\nJ. Howard, S. Gugger Deep learning dla programistów. Budowanie aplikacji AI za pomocą fastai i PyTorch Zobacz opis lub Kup książkę, Kup e-book\n\n\n\n\n\nJ. S. Damji, B. Wenig, T. Das, D. Lee Spark. Błyskawiczna analiza danych Zobacz opis lub Kup\nSpark. Zaawansowana analiza danych (ebook) Zobacz opis lub Kup e-book\nB. Chambers, M. Zaharia Spark: The Definitive Guide. Big Data Processing Made Simple (ebook) Zobacz opis lub Kup e-book\nJ. Quddus Machine Learning with Apache Spark Quick Start Guide (ebook) Zobacz opis lub Kup e-book\n\n\n\n\n\nG. Coldwind Zrozumieć programowanie Zobacz opis lub Kup książkę, Kup e-book\nA. Allain C++. Przewodnik dla początkujących Zobacz opis lub Kup książkę, Kup e-book\nS. Dasgupta, C. Papadimitriou, U. Vazirani Algorytmy PWN.\n\n\n\n\n\nJ. Krochmalski Docker. Projektowanie i wdrażanie aplikacji Zobacz opis lub Kup książkę, Kup e-book\nR. McKendrick, S. Gallagher Docker. Programowanie aplikacji dla zaawansowanych. Wydanie II Zobacz opis lub Kup książkę, Kup e-book\n\n\n\n\n\nP. Bell, B. Beer GitHub. Przyjazny przewodnik (ebook) Zobacz opis lub Kup e-book\n\n\n\n\n\nC. Althoff, Programista Samouk. Profesjonalny przewodnik do samodzielnej nauki kodowania. Zobacz opis lub Kup teraz, Kup e-book\nA. Sweigart, Automatyzacja nudnych zadań z pythonem. Zobacz opis lub Kup książkę, Kup e-book\nK. Reitz, T. Schlusser Przewodnik po Pythonie. Dobre praktyki i praktyczne narzędzia. Zobacz opis lub Kup teraz, Kup e-book\n\n\n\n\n\nB.Tate, L. Carslon, C. Hiibs, Ruby on Rails. Wprowadzenie. Wydanie II Zobacz opis lub Kup e-book\nB. Frain, Responsive Web Design. Projektowanie elastycznych witryn w HTML5 i CSS3, Zobacz opis lub Kup e-book\nK. Beck, TDD. Sztuda tworzenia, Zobacz opis lub Kup teraz, Kup e-book\nB. Dayley, Node.js, MongoDB, AngularJS. Kompendium wiedzy, Zobacz opis lub Kup teraz, Kup e-book\n\n\n\n\n\nA. Jacquier, O. Kondratyev, Quantum Machine Learning and Optimisation in Finance. On the Road to Quantum Advantage."
-  },
-  {
-    "objectID": "ksiazki.html#strony-www",
-    "href": "ksiazki.html#strony-www",
-    "title": "Książki i strony WWW",
-    "section": "Strony WWW",
-    "text": "Strony WWW\n\nSoftware\n\nGithub\nGit-instrukcja\nwww.python.org\nPyPI python libraries\nAnaconda\nDocker\n\n\n\nPakiety python dla analiz danych\n\nNumPy\nSciPy\nPandas\nScikit-learn\nJupyter\nMatplotlib\nBeautiful Soup\nTheano\nKeras\nTensorFlow\nVirtual ENV\n\n\n\nEdytory tekstu\n\nNotepad++\nSublime Text\nVisual Studio Code\n\n\n\nMarkdown\n\nMD\n\n\n\nJupyter notebook\n\nGaleria ciekawych notatników\nIntro\nKernels\nBringing the best out of jupyter for data science\nJupyter extensions\nI don’t like notebooks\nJupyter lab\nSpeed up jupyter notebook\n\n\n\nPrzetwarzanie danych\n\ndata cookbook\n\n\n\nZbiory danych\n\nInternet Archive\nReddit\nKDnuggets\nKaggle\nList of datasets for machine learning research\nUCI Machine Learning Repo\nPublic API\nGoogle Datatset Search\n\n\n\nPython\n\nChris Albon Technical Notes on Using Data Science & AI\n40+ Python Statistics For Data Science Resources\nPractical Business Python\n\n\n\nkursy ML\n\nKurs Machine Learning - Andrew Ng, Stanford\nKurs Machine Learning - Andrew Ng, Stanford\nPython programming for data science"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Informacje ogólne",
-    "section": "",
-    "text": "Semestr: 2006 Uczelnia: Wojskowa Akademia Techniczna w Warszawie\nPolecane materiały znajdziesz na liście książek.",
-    "crumbs": [
-      "222890-S",
-      "Informacje ogólne"
-    ]
-  },
-  {
-    "objectID": "index.html#kalendarz",
-    "href": "index.html#kalendarz",
-    "title": "Informacje ogólne",
-    "section": "Kalendarz",
-    "text": "Kalendarz\n\nWykład\n\n05-03-2026 08:00 - 11:20 - Wykład 1, 2\n06-03-2026 11:40-13:20 - Wykład 3\n12-03-2026 08:00 - 11:20 - Wykład 4, 5\n13-03-2026 09:50 - 11:30 - Wykład 6\n\n\n\nLaboratoria\n\n19.03.2026 Lab 1, 2\n26.03.2026 Lab 3, 4\n02.04.2026 Lab 5, 6, 7\n30.04.2026 Lab 8,9",
-    "crumbs": [
-      "222890-S",
-      "Informacje ogólne"
-    ]
-  },
-  {
-    "objectID": "lectures/wyklad2.html",
-    "href": "lectures/wyklad2.html",
-    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
-    "section": "",
-    "text": "Wyobraźmy sobie sytuację z życia typowego zespołu programistycznego: Student (lub Junior Developer) pisze na swoim MacBooku kod serwera w Node.js (wersja 20). Wszystko działa idealnie. Wysyła kod do kolegi, który ma system Windows z Node.js (wersja 14) – kod rzuca błędami. Ostatecznie kod trafia na serwer produkcyjny z Linuxem Ubuntu, gdzie w ogóle brakuje połowy bibliotek. Aplikacja nie wstaje.\nGłówne problemy klasycznego podejścia: * Niespójność środowisk: Różne systemy operacyjne (Windows, macOS, Linux). * Konflikty wersji: Aplikacja A na serwerze wymaga Pythona 3.8, a nowa Aplikacja B wymaga Pythona 3.12. Instalacja jednego psuje drugie. * Trudny onboarding: Nowy pracownik traci 3 dni na instalowanie baz danych, środowisk i bibliotek, zanim uruchomi projekt na swoim komputerze.",
+    "text": "Na Wykładzie 1 poznaliśmy trzy języki Frontendu: HTML (struktura), CSS (wygląd) i JavaScript (zachowanie). Na Wykładzie 3 zgłębiliśmy HTML5 i CSS. Teraz czas na trzecią nogę — jedyny język programowania, który przeglądarka rozumie natywnie.\nJavaScript to nie Java. Nazwa to marketingowy chwyt z lat 90., gdy Java była modna. To zupełnie różne języki. JavaScript powstał w 1995 roku — napisany w 10 dni przez Brendana Eicha w firmie Netscape. Od tego czasu przeszedł ewolucję od prostego skryptowania po pełnoprawny język do budowy zarówno Frontendu (React, Angular), jak i Backendu (Node.js — Wykład 1).\nECMAScript (ES) — oficjalna specyfikacja języka. Kluczowe wersje:\n\nES5 (2009): var, function — “stary” JavaScript\nES6/ES2015: Rewolucja — let/const, arrow functions, klasy, moduły, template literals\nES2020+: Optional chaining (?.), nullish coalescing (??), top-level await\n\nPiszemy nowoczesny JS (ES6+) — stary styl zostawiamy dla kursów archeologii.",
     "crumbs": [
       "222890-S",
       "Wykłady",
-      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+      "JavaScript – Język, który ożywia przeglądarkę"
     ]
   },
   {
-    "objectID": "lectures/wyklad2.html#problem-u-mnie-działa-czyli-piekło-zależności-matrix-of-hell",
-    "href": "lectures/wyklad2.html#problem-u-mnie-działa-czyli-piekło-zależności-matrix-of-hell",
-    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
-    "section": "",
-    "text": "Wyobraźmy sobie sytuację z życia typowego zespołu programistycznego: Student (lub Junior Developer) pisze na swoim MacBooku kod serwera w Node.js (wersja 20). Wszystko działa idealnie. Wysyła kod do kolegi, który ma system Windows z Node.js (wersja 14) – kod rzuca błędami. Ostatecznie kod trafia na serwer produkcyjny z Linuxem Ubuntu, gdzie w ogóle brakuje połowy bibliotek. Aplikacja nie wstaje.\nGłówne problemy klasycznego podejścia: * Niespójność środowisk: Różne systemy operacyjne (Windows, macOS, Linux). * Konflikty wersji: Aplikacja A na serwerze wymaga Pythona 3.8, a nowa Aplikacja B wymaga Pythona 3.12. Instalacja jednego psuje drugie. * Trudny onboarding: Nowy pracownik traci 3 dni na instalowanie baz danych, środowisk i bibliotek, zanim uruchomi projekt na swoim komputerze.",
+    "objectID": "lectures/wyklad5.html#zmienne-let-const-i-dlaczego-nie-var",
+    "href": "lectures/wyklad5.html#zmienne-let-const-i-dlaczego-nie-var",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "2. Zmienne: let, const i dlaczego nie var",
+    "text": "2. Zmienne: let, const i dlaczego nie var\n// ❌ var — stare podejście, unikaj\nvar imie = \"Jan\";\nvar imie = \"Anna\"; // Nie zgłasza błędu — nadpisuje po cichu!\n\n// ✅ let — wartość może się zmienić\nlet wiek = 25;\nwiek = 26; // OK\n\n// ✅ const — wartość NIE może się zmienić (stała)\nconst PI = 3.14159;\n// PI = 3; // ❌ TypeError: Assignment to constant variable\n\nconst student = { imie: \"Jan\", wiek: 25 };\nstudent.wiek = 26;  // ✅ OK! Obiekt jest stały, ale jego WŁAŚCIWOŚCI mogą się zmieniać\n// student = {};     // ❌ Błąd — nie możesz podmienić całego obiektu\nZasada: Domyślnie używaj const. Sięgaj po let tylko wtedy, gdy wartość musi się zmieniać (np. licznik w pętli). Nigdy nie używaj var.\nDlaczego nie var? Trzy powody: var ma zasięg funkcyjny (nie blokowy), pozwala na ponowną deklarację i jest “wyciągany” na górę funkcji (hoisting) — to źródło trudnych do znalezienia błędów.",
     "crumbs": [
       "222890-S",
       "Wykłady",
-      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+      "JavaScript – Język, który ożywia przeglądarkę"
     ]
   },
   {
-    "objectID": "lectures/wyklad2.html#rozwiązanie-metafora-transportu-morskiego",
-    "href": "lectures/wyklad2.html#rozwiązanie-metafora-transportu-morskiego",
-    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
-    "section": "2. Rozwiązanie: Metafora transportu morskiego",
-    "text": "2. Rozwiązanie: Metafora transportu morskiego\nZanim powstały fizyczne kontenery morskie, transport towarów był koszmarem. Worki z kawą, beczki z winem i stalowe rury ładowano ręcznie. Każdy statek musiał być inaczej przygotowany. Potem wymyślono standaryzowany stalowy kontener. Statku, pociągu ani dźwigu nie obchodzi, co jest w środku. Jeśli coś mieści się w kontenerze, można to bez problemu przetransportować i rozładować w dowolnym porcie na świecie.\nDocker robi dokładnie to samo dla oprogramowania. Pakuje Twój kod, biblioteki, środowisko (np. Pythona) i ustawienia systemowe do jednego, ustandaryzowanego “pudełka” (kontenera). Serwera docelowego nie obchodzi, w jakim języku piszesz. Jeśli serwer ma zainstalowanego Dockera, Twój kontener na 100% tam zadziała – dokładnie tak samo, jak na Twoim laptopie.",
+    "objectID": "lectures/wyklad5.html#typy-danych",
+    "href": "lectures/wyklad5.html#typy-danych",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "3. Typy danych",
+    "text": "3. Typy danych\nJavaScript ma typowanie dynamiczne — nie deklarujesz typu zmiennej, ale każda wartość MA swój typ:\n// Typy prymitywne\nconst text     = \"Hello\";        // string\nconst liczba   = 42;             // number (int i float to jedno!)\nconst pi       = 3.14;           // number\nconst prawda   = true;           // boolean\nconst nic      = null;           // null — celowy brak wartości\nlet   x;                         // undefined — zmienna bez wartości\nconst duza     = 9007199254740991n; // BigInt (ES2020)\nconst sym      = Symbol('id');   // Symbol — unikalny identyfikator\n\n// Typy złożone (referencyjne)\nconst tablica  = [1, 2, 3];           // Array\nconst obiekt   = { imie: \"Jan\" };     // Object\nconst funkcja  = (x) =&gt; x * 2;        // Function (tak, funkcja to typ!)\n\nPorównywanie: == vs ===\n// == porównuje WARTOŚĆ (z konwersją typów) — ❌ unikaj\n0 == \"\"         // true (co?!)\n0 == false      // true\n\"\" == false     // true\nnull == undefined // true\n\n// === porównuje WARTOŚĆ i TYP — ✅ zawsze używaj\n0 === \"\"        // false\n0 === false     // false\nnull === undefined // false\nZasada: Zawsze używaj === (ścisłe porównanie). Operator == ma niezrozumiałe reguły konwersji typów i jest źródłem 90% błędów logicznych.",
     "crumbs": [
       "222890-S",
       "Wykłady",
-      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+      "JavaScript – Język, który ożywia przeglądarkę"
     ]
   },
   {
-    "objectID": "lectures/wyklad2.html#maszyny-wirtualne-vm-vs.-kontenery-docker",
-    "href": "lectures/wyklad2.html#maszyny-wirtualne-vm-vs.-kontenery-docker",
-    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
-    "section": "3. Maszyny Wirtualne (VM) vs. Kontenery (Docker)",
-    "text": "3. Maszyny Wirtualne (VM) vs. Kontenery (Docker)\nZanim pojawił się Docker, problem izolacji rozwiązywano maszynami wirtualnymi (np. VirtualBox, VMware). Dlaczego kontenery je wyparły w web developmencie?\n\nMaszyna Wirtualna (VM): Symuluje cały komputer. Instalujesz aplikację, biblioteki, ale też cały oddzielny system operacyjny (Guest OS). Jest ciężka (zajmuje gigabajty), uruchamia się minutami i zużywa mnóstwo RAM-u.\nKontener (Docker): Dzieli jądro (Kernel) systemu operacyjnego gospodarza. Pakuje tylko to, co niezbędne dla aplikacji. Waży megabajty, uruchamia się w ułamku sekundy i jest niezwykle lekki. Na jednym serwerze możesz uruchomić 100 kontenerów, ale tylko kilka maszyn wirtualnych.",
+    "objectID": "lectures/wyklad5.html#funkcje-trzy-sposoby-zapisu",
+    "href": "lectures/wyklad5.html#funkcje-trzy-sposoby-zapisu",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "4. Funkcje: Trzy sposoby zapisu",
+    "text": "4. Funkcje: Trzy sposoby zapisu\n// 1. Deklaracja funkcji (function declaration)\nfunction dodaj(a, b) {\n    return a + b;\n}\n\n// 2. Wyrażenie funkcyjne (function expression)\nconst odejmij = function(a, b) {\n    return a - b;\n};\n\n// 3. ✅ Arrow function (ES6) — preferowany skrót\nconst pomnoz = (a, b) =&gt; a * b;\n\n// Arrow z jednym parametrem — można pominąć nawiasy\nconst podwoj = x =&gt; x * 2;\n\n// Arrow z blokiem kodu\nconst podziel = (a, b) =&gt; {\n    if (b === 0) throw new Error(\"Dzielenie przez zero!\");\n    return a / b;\n};\n\nParametry domyślne i rest\n// Parametry domyślne\nfunction powitaj(imie = \"Gość\", jezyk = \"pl\") {\n    const powitania = { pl: \"Cześć\", en: \"Hello\", de: \"Hallo\" };\n    return `${powitania[jezyk]}, ${imie}!`;\n}\n\npowitaj();            // \"Cześć, Gość!\"\npowitaj(\"Jan\", \"en\"); // \"Hello, Jan!\"\n\n// Rest parameters — zbiera \"resztę\" argumentów do tablicy\nfunction suma(...liczby) {\n    return liczby.reduce((acc, n) =&gt; acc + n, 0);\n}\n\nsuma(1, 2, 3, 4, 5); // 15",
     "crumbs": [
       "222890-S",
       "Wykłady",
-      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+      "JavaScript – Język, który ożywia przeglądarkę"
     ]
   },
   {
-    "objectID": "lectures/wyklad2.html#w-czym-docker-pomaga-w-aplikacjach-internetowych-enterprise",
-    "href": "lectures/wyklad2.html#w-czym-docker-pomaga-w-aplikacjach-internetowych-enterprise",
-    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
-    "section": "4. W czym Docker pomaga w aplikacjach internetowych (Enterprise)?",
-    "text": "4. W czym Docker pomaga w aplikacjach internetowych (Enterprise)?\n\nIzolacja usług (Mikroserwisy): Frontend (React), Backend (Python) i Baza Danych (PostgreSQL) mogą działać w trzech osobnych kontenerach, nie wchodząc sobie w drogę.\nSkalowalność: Czarny Piątek w sklepie internetowym? Zamiast kupować nowy serwer, Docker potrafi w sekundę sklonować Twój kontener z serwerem API 50 razy, aby obsłużyć ruch.\nPewność wdrożeń (CI/CD): Zbudowany raz kontener jest przesyłany z komputera programisty, przez środowisko testowe, aż na produkcję. Mamy gwarancję, że nic się nie “rozsypie” po drodze.",
+    "objectID": "lectures/wyklad5.html#obiekty-i-destrukturyzacja",
+    "href": "lectures/wyklad5.html#obiekty-i-destrukturyzacja",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "5. Obiekty i destrukturyzacja",
+    "text": "5. Obiekty i destrukturyzacja\nObiekty w JS to odpowiedniki tablic asocjacyjnych z PHP:\nconst student = {\n    imie: \"Anna\",\n    wiek: 22,\n    kierunek: \"Informatyka\",\n    oceny: [4, 5, 3, 5, 4],\n\n    // Metoda obiektu\n    srednia() {\n        const suma = this.oceny.reduce((a, b) =&gt; a + b, 0);\n        return suma / this.oceny.length;\n    }\n};\n\nconsole.log(student.imie);      // \"Anna\"\nconsole.log(student.srednia()); // 4.2\n\n// Destrukturyzacja — wyciąganie wartości do zmiennych\nconst { imie, wiek, kierunek } = student;\nconsole.log(imie);    // \"Anna\"\nconsole.log(kierunek); // \"Informatyka\"\n\n// Destrukturyzacja z aliasem\nconst { imie: name, wiek: age } = student;\nconsole.log(name); // \"Anna\"\n\nSpread operator (…)\n// Kopiowanie obiektu (płytka kopia)\nconst kopia = { ...student, wiek: 23 }; // Kopia z nadpisanym wiekiem\n\n// Łączenie tablic\nconst a = [1, 2, 3];\nconst b = [4, 5, 6];\nconst c = [...a, ...b]; // [1, 2, 3, 4, 5, 6]",
     "crumbs": [
       "222890-S",
       "Wykłady",
-      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+      "JavaScript – Język, który ożywia przeglądarkę"
     ]
   },
   {
-    "objectID": "lectures/wyklad2.html#święta-trójca-dockera-plik-obraz-i-kontener",
-    "href": "lectures/wyklad2.html#święta-trójca-dockera-plik-obraz-i-kontener",
-    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
-    "section": "5. Święta Trójca Dockera: Plik, Obraz i Kontener",
-    "text": "5. Święta Trójca Dockera: Plik, Obraz i Kontener\nAby pracować z Dockerem, musimy zrozumieć trzy pojęcia, z których wynika cały proces:\n\nDockerfile (Przepis kulinarny): Zwykły plik tekstowy z instrukcjami, jak zbudować nasze środowisko (np. “Weź Linuxa, doinstaluj Pythona, skopiuj mój kod, uruchom serwer”).\nImage (Upieczone ciasto / Szablon): Wynik wykonania Dockerfile’a. To gotowa, zamrożona paczka z naszą aplikacją. Można ją przesłać do internetu (np. na Docker Hub). Jest “tylko do odczytu”.\nContainer (Zjedzenie ciasta / Uruchomiony proces): Ożywiony Obraz. To działająca instancja naszej aplikacji. Możemy uruchomić 5 kontenerów z tego samego 1 Obrazu.",
+    "objectID": "lectures/wyklad5.html#tablice-i-metody-wyższego-rzędu",
+    "href": "lectures/wyklad5.html#tablice-i-metody-wyższego-rzędu",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "6. Tablice i metody wyższego rzędu",
+    "text": "6. Tablice i metody wyższego rzędu\nTablice w JS mają potężne wbudowane metody. Zamiast pisać pętle for, używamy podejścia funkcyjnego:\nconst produkty = [\n    { nazwa: \"Laptop\",  cena: 5499, kategoria: \"elektronika\" },\n    { nazwa: \"Koszulka\", cena: 79,  kategoria: \"odzież\" },\n    { nazwa: \"Telefon\", cena: 3299, kategoria: \"elektronika\" },\n    { nazwa: \"Buty\",    cena: 349,  kategoria: \"odzież\" },\n    { nazwa: \"Tablet\",  cena: 2199, kategoria: \"elektronika\" },\n];\n\n// filter — filtruj elementy spełniające warunek\nconst elektronika = produkty.filter(p =&gt; p.kategoria === \"elektronika\");\n// [{Laptop}, {Telefon}, {Tablet}]\n\n// map — przekształć każdy element\nconst nazwy = produkty.map(p =&gt; p.nazwa);\n// [\"Laptop\", \"Koszulka\", \"Telefon\", \"Buty\", \"Tablet\"]\n\n// find — znajdź PIERWSZY pasujący\nconst laptop = produkty.find(p =&gt; p.nazwa === \"Laptop\");\n// {nazwa: \"Laptop\", cena: 5499, ...}\n\n// reduce — \"zredukuj\" tablicę do jednej wartości\nconst sumarycznaCena = produkty.reduce((suma, p) =&gt; suma + p.cena, 0);\n// 11425\n\n// sort — posortuj (uwaga: mutuje oryginalną tablicę!)\nconst posortowane = [...produkty].sort((a, b) =&gt; a.cena - b.cena);\n// Od najtańszego do najdroższego\n\n// Łączenie metod (chaining)\nconst drogiElektronik = produkty\n    .filter(p =&gt; p.kategoria === \"elektronika\")\n    .filter(p =&gt; p.cena &gt; 3000)\n    .map(p =&gt; `${p.nazwa}: ${p.cena} zł`)\n    .join(\", \");\n// \"Laptop: 5499 zł, Telefon: 3299 zł\"\nDlaczego to ważne? Takie podejście (filter/map/reduce) jest fundamentem Reacta i innych frameworków Frontendowych. Zamiast ręcznie budować HTML w pętli, mapujesz tablicę danych na tablicę komponentów.",
     "crumbs": [
       "222890-S",
       "Wykłady",
-      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+      "JavaScript – Język, który ożywia przeglądarkę"
     ]
   },
   {
-    "objectID": "lectures/wyklad2.html#docker-w-praktyce-pakujemy-nasz-serwer-z-wykładu-1",
-    "href": "lectures/wyklad2.html#docker-w-praktyce-pakujemy-nasz-serwer-z-wykładu-1",
-    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
-    "section": "6. Docker w praktyce: Pakujemy nasz serwer z Wykładu 1",
-    "text": "6. Docker w praktyce: Pakujemy nasz serwer z Wykładu 1\nWeźmy nasz prosty serwer z poprzednich zajęć (napisany w Pythonie / Flasku) i zamknijmy go w kontenerze. Potrzebujemy do tego zaledwie trzech plików w jednym folderze.\n\nKrok 1: Kod serwera (app.py)\nfrom flask import Flask, jsonify\n\napp = Flask(__name__)\n\n@app.route('/api/powitanie')\ndef powitanie():\n    return jsonify({\"wiadomosc\": \"Witaj z wnętrza kontenera Docker!\"})\n\nif __name__ == '__main__':\n    # Ważne: w Dockerze musimy nasłuchiwać na wszystkich interfejsach (0.0.0.0)\n    app.run(host='0.0.0.0', port=5000)\n\n\nKrok 2: Lista zależności (requirements.txt)\nZamiast instalować pakiety ręcznie, wypisujemy je tutaj, by Docker zrobił to za nas.\nFlask==3.0.0\n\n\nKrok 3: Plik instrukcji (Dockerfile)\nTo jest serce konteneryzacji. Zobacz, jak czytelne są te polecenia:\n# 1. Wybierz oficjalny obraz bazowy (lekki Python)\nFROM python:3.11-slim\n\n# 2. Ustaw katalog roboczy wewnątrz kontenera\nWORKDIR /app\n\n# 3. Skopiuj plik z zależnościami z Twojego komputera do kontenera\nCOPY requirements.txt .\n\n# 4. Zainstaluj potrzebne biblioteki (w środku kontenera!)\nRUN pip install -r requirements.txt\n\n# 5. Skopiuj resztę kodu (nasz plik app.py)\nCOPY app.py .\n\n# 6. Poinformuj Dockera, że aplikacja używa portu 5000\nEXPOSE 5000\n\n# 7. Komenda, która wykona się przy starcie kontenera\nCMD [\"python\", \"app.py\"]\n\nJak uruchomić to cudo w terminalu? Mając te trzy pliki, wywołujemy w konsoli tylko dwie komendy:\n\nBudowanie Obrazu (Building the Image): Mówimy Dockerowi: “Zbuduj obraz na podstawie obecnego katalogu (.) i nazwij go moj-serwer-api”.\ndocker build -t moj-serwer-api .\nUruchomienie Kontenera (Running the Container): Mówimy: “Uruchom kontener z obrazu moj-serwer-api i połącz port 5000 na moim komputerze z portem 5000 wewnątrz kontenera”.\ndocker run -p 5000:5000 moj-serwer-api\nGotowe! Twoja aplikacja działa. Jeśli teraz wyślesz ten sam Obraz do kolegi, nie musi on instalować Pythona ani Flaska. Wpisuje tylko komendę docker run i serwer działa u niego identycznie.",
+    "objectID": "lectures/wyklad5.html#asynchroniczność-serce-komunikacji-z-api",
+    "href": "lectures/wyklad5.html#asynchroniczność-serce-komunikacji-z-api",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "7. Asynchroniczność: Serce komunikacji z API",
+    "text": "7. Asynchroniczność: Serce komunikacji z API\nNa Wykładzie 1 widzieliśmy fetch — JavaScript wysyłał żądanie do serwera. Ale komunikacja z serwerem jest asynchroniczna — przeglądarka nie zamraża się czekając na odpowiedź. Wyobraź sobie zamawianie kawy w kawiarni: składasz zamówienie (wysyłasz request), siadasz przy stoliku (przeglądarka robi inne rzeczy), a barista przynosi kawę, gdy jest gotowa (odpowiedź przychodzi).\n\nPromises (Obietnice)\n// fetch zwraca Promise — \"obietnicę\", że dane kiedyś przyjdą\nfetch(\"https://api.example.com/studenci\")\n    .then(response =&gt; {\n        // 1. Sprawdź, czy serwer odpowiedział sukcesem\n        if (!response.ok) {\n            throw new Error(`HTTP ${response.status}`);\n        }\n        // 2. Zamień odpowiedź na JSON\n        return response.json();\n    })\n    .then(data =&gt; {\n        // 3. Dane gotowe — użyj ich\n        console.log(\"Studenci:\", data);\n    })\n    .catch(error =&gt; {\n        // 4. Obsługa błędów (sieć padła, serwer nie odpowiada)\n        console.error(\"Błąd:\", error.message);\n    });\n\n\nasync/await — czytelniejsza składnia\n.then().then().catch() przy złożonych operacjach staje się nieczytelne (tzw. “callback hell”). async/await to cukier składniowy, który sprawia, że asynchroniczny kod wygląda jak synchroniczny:\n// Ta sama logika co wyżej, ale czytelniejsza:\nasync function pobierzStudentow() {\n    try {\n        const response = await fetch(\"https://api.example.com/studenci\");\n\n        if (!response.ok) {\n            throw new Error(`HTTP ${response.status}`);\n        }\n\n        const data = await response.json();\n        console.log(\"Studenci:\", data);\n        return data;\n\n    } catch (error) {\n        console.error(\"Błąd:\", error.message);\n        return [];\n    }\n}\n\n// Wywołanie\npobierzStudentow();\nawait “wstrzymuje” wykonanie funkcji (ale nie blokuje przeglądarki!) do momentu, aż Promise się rozwiąże. Może być użyty tylko wewnątrz funkcji oznaczonej async.",
     "crumbs": [
       "222890-S",
       "Wykłady",
-      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+      "JavaScript – Język, który ożywia przeglądarkę"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad5.html#dom-manipulacja-stroną-z-poziomu-js",
+    "href": "lectures/wyklad5.html#dom-manipulacja-stroną-z-poziomu-js",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "8. DOM: Manipulacja stroną z poziomu JS",
+    "text": "8. DOM: Manipulacja stroną z poziomu JS\nDOM (Document Object Model) to “drzewo” elementów HTML, które JavaScript widzi i może modyfikować. Każdy tag HTML to “węzeł” tego drzewa.\n\nWybieranie elementów\n// Jeden element (pierwszy pasujący)\nconst naglowek = document.querySelector('h1');\nconst przycisk = document.querySelector('#moj-przycisk');\nconst karta    = document.querySelector('.karta-produktu');\n\n// Wiele elementów (NodeList — \"tablica\" elementów)\nconst linki   = document.querySelectorAll('nav a');\nconst karty   = document.querySelectorAll('.karta-produktu');\n\n// Iteracja po kolekcji\nlinki.forEach(link =&gt; {\n    console.log(link.href);\n});\n\n\nZmiana treści i stylu\nconst tytul = document.querySelector('#tytul');\n\n// Zmiana tekstu\ntytul.textContent = \"Nowy tytuł\";\n\n// Zmiana HTML wewnątrz elementu\ntytul.innerHTML = \"Nowy &lt;em&gt;tytuł&lt;/em&gt;\";\n\n// Zmiana stylu\ntytul.style.color = \"#0066cc\";\ntytul.style.fontSize = \"2rem\";\n\n// Lepsze podejście: dodaj/usuń klasę CSS\ntytul.classList.add('wyroznienie');\ntytul.classList.remove('ukryty');\ntytul.classList.toggle('aktywny'); // Dodaje jeśli nie ma, usuwa jeśli jest\nWażna zasada: Unikaj style.color = ... w JavaScript. Zamiast tego definiuj klasy CSS i dodawaj/usuwaj je przez classList. Oddziela to logikę od stylowania.\n\n\nTworzenie elementów\n// Stwórz nowy element\nconst nowyElement = document.createElement('article');\nnowyElement.className = 'karta-produktu';\nnowyElement.innerHTML = `\n    &lt;h3&gt;Nowy produkt&lt;/h3&gt;\n    &lt;p class=\"cena\"&gt;199 zł&lt;/p&gt;\n`;\n\n// Dodaj do strony\ndocument.querySelector('.lista-produktow').appendChild(nowyElement);",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "JavaScript – Język, który ożywia przeglądarkę"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad5.html#zdarzenia-events-reagowanie-na-użytkownika",
+    "href": "lectures/wyklad5.html#zdarzenia-events-reagowanie-na-użytkownika",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "9. Zdarzenia (Events): Reagowanie na użytkownika",
+    "text": "9. Zdarzenia (Events): Reagowanie na użytkownika\nJavaScript reaguje na akcje użytkownika (kliknięcia, pisanie, scrollowanie) przez system zdarzeń (events):\n// Kliknięcie przycisku\nconst przycisk = document.querySelector('#dodaj-btn');\n\nprzycisk.addEventListener('click', function(event) {\n    console.log(\"Kliknięto przycisk!\");\n    console.log(\"Element:\", event.target); // Sam przycisk\n});\n\n// Arrow function (krócej)\nprzycisk.addEventListener('click', (e) =&gt; {\n    e.preventDefault(); // Zablokuj domyślne zachowanie (np. wysłanie formularza)\n    console.log(\"Kliknięto!\");\n});\n\nPopularne typy zdarzeń\n\n\n\nZdarzenie\nKiedy?\nTypowe użycie\n\n\n\n\nclick\nKliknięcie\nPrzyciski, linki\n\n\nsubmit\nWysłanie formularza\nWalidacja przed wysłaniem\n\n\ninput\nZmiana wartości pola\nWyszukiwanie “na żywo”\n\n\nkeydown\nWciśnięcie klawisza\nSkróty klawiaturowe\n\n\nDOMContentLoaded\nHTML załadowany\nInicjalizacja skryptów\n\n\nscroll\nPrzewijanie strony\nLazy loading, animacje\n\n\n\n\n\nPraktyczny przykład: Walidacja formularza\ndocument.querySelector('#form-rejestracja').addEventListener('submit', (e) =&gt; {\n    const email = document.querySelector('#email').value;\n    const haslo = document.querySelector('#haslo').value;\n    const bledy = [];\n\n    if (!email.includes('@')) {\n        bledy.push('Podaj prawidłowy adres e-mail');\n    }\n\n    if (haslo.length &lt; 8) {\n        bledy.push('Hasło musi mieć co najmniej 8 znaków');\n    }\n\n    if (bledy.length &gt; 0) {\n        e.preventDefault(); // Zablokuj wysłanie formularza\n        const kontenerBledow = document.querySelector('#bledy');\n        kontenerBledow.innerHTML = bledy\n            .map(b =&gt; `&lt;p class=\"blad\"&gt;${b}&lt;/p&gt;`)\n            .join('');\n    }\n});",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "JavaScript – Język, który ożywia przeglądarkę"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad5.html#fetch-dom-łączymy-wszystko-w-całość",
+    "href": "lectures/wyklad5.html#fetch-dom-łączymy-wszystko-w-całość",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "10. Fetch + DOM: Łączymy wszystko w całość",
+    "text": "10. Fetch + DOM: Łączymy wszystko w całość\nNa Wykładzie 1 widzieliśmy, jak Frontend rozmawia z Backendem. Teraz połączymy pobieranie danych z API z dynamicznym wyświetlaniem ich na stronie — bez przeładowania:\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"pl\"&gt;\n&lt;head&gt;\n    &lt;meta charset=\"UTF-8\"&gt;\n    &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\n    &lt;title&gt;Lista studentów&lt;/title&gt;\n    &lt;style&gt;\n        .student-card {\n            border: 1px solid #ddd;\n            padding: 15px;\n            margin: 10px 0;\n            border-radius: 8px;\n        }\n        .loading { color: #888; font-style: italic; }\n        .error { color: red; }\n    &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;h1&gt;Lista studentów&lt;/h1&gt;\n    &lt;button id=\"pobierz-btn\"&gt;Pobierz z serwera&lt;/button&gt;\n    &lt;div id=\"kontener\"&gt;&lt;/div&gt;\n\n    &lt;script&gt;\n    const kontener = document.querySelector('#kontener');\n    const przycisk = document.querySelector('#pobierz-btn');\n\n    przycisk.addEventListener('click', async () =&gt; {\n        // 1. Pokaż stan ładowania\n        kontener.innerHTML = '&lt;p class=\"loading\"&gt;Ładowanie danych...&lt;/p&gt;';\n        przycisk.disabled = true;\n\n        try {\n            // 2. Pobierz dane z API (GET)\n            const response = await fetch('http://localhost:5000/api/studenci');\n\n            if (!response.ok) {\n                throw new Error(`Serwer zwrócił błąd ${response.status}`);\n            }\n\n            const studenci = await response.json();\n\n            // 3. Zbuduj HTML z danych i wstaw do DOM\n            if (studenci.length === 0) {\n                kontener.innerHTML = '&lt;p&gt;Brak studentów w bazie.&lt;/p&gt;';\n            } else {\n                kontener.innerHTML = studenci\n                    .map(s =&gt; `\n                        &lt;article class=\"student-card\"&gt;\n                            &lt;h3&gt;${s.imie}&lt;/h3&gt;\n                            &lt;p&gt;Kierunek: ${s.kierunek}&lt;/p&gt;\n                        &lt;/article&gt;\n                    `)\n                    .join('');\n            }\n\n        } catch (error) {\n            // 4. Obsługa błędów\n            kontener.innerHTML = `&lt;p class=\"error\"&gt;Błąd: ${error.message}&lt;/p&gt;`;\n        } finally {\n            przycisk.disabled = false;\n        }\n    });\n    &lt;/script&gt;\n&lt;/body&gt;\n&lt;/html&gt;\nTen prosty przykład demonstruje cały cykl SPA z Wykładu 1:\n\nPrzeglądarka NIE przeładowuje strony\nJavaScript wysyła żądanie GET do API\nSerwer odpowiada JSON-em (nie HTML-em!)\nJavaScript sam buduje HTML z otrzymanych danych i wstawia go do DOM",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "JavaScript – Język, który ożywia przeglądarkę"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad5.html#wysyłanie-danych-post-z-fetch",
+    "href": "lectures/wyklad5.html#wysyłanie-danych-post-z-fetch",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "11. Wysyłanie danych: POST z fetch",
+    "text": "11. Wysyłanie danych: POST z fetch\nNa Wykładzie 1 widzieliśmy prosty POST. Oto pełna wersja z walidacją i obsługą odpowiedzi:\nasync function dodajStudenta(imie, kierunek) {\n    try {\n        const response = await fetch('http://localhost:5000/api/studenci', {\n            method: 'POST',\n            headers: {\n                'Content-Type': 'application/json',\n            },\n            body: JSON.stringify({\n                imie: imie,\n                kierunek: kierunek\n            })\n        });\n\n        if (!response.ok) {\n            const error = await response.json();\n            throw new Error(error.message || `HTTP ${response.status}`);\n        }\n\n        const wynik = await response.json();\n        console.log(\"Dodano studenta z ID:\", wynik.id);\n        return wynik;\n\n    } catch (error) {\n        console.error(\"Nie udało się dodać studenta:\", error.message);\n        throw error; // Przekaż dalej, niech wywołujący zdecyduje co z tym zrobić\n    }\n}\n\n// Obsługa formularza\ndocument.querySelector('#form-dodaj').addEventListener('submit', async (e) =&gt; {\n    e.preventDefault(); // Nie przeładowuj strony!\n\n    const imie = document.querySelector('#imie').value.trim();\n    const kierunek = document.querySelector('#kierunek').value.trim();\n\n    if (!imie || !kierunek) {\n        alert(\"Wypełnij wszystkie pola\");\n        return;\n    }\n\n    try {\n        await dodajStudenta(imie, kierunek);\n        alert(\"Student dodany!\");\n        e.target.reset(); // Wyczyść formularz\n    } catch (err) {\n        alert(\"Błąd: \" + err.message);\n    }\n});\nPorównaj z Wykładem 1 — ta sama logika, ale z poprawną obsługą błędów, walidacją i async/await zamiast łańcuchów .then().",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "JavaScript – Język, który ożywia przeglądarkę"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad5.html#klasy-w-javascript-es6",
+    "href": "lectures/wyklad5.html#klasy-w-javascript-es6",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "12. Klasy w JavaScript (ES6)",
+    "text": "12. Klasy w JavaScript (ES6)\nJavaScript ma klasy od ES6. Składnia jest podobna do PHP z Wykładu 4:\nclass Produkt {\n    // Pola prywatne (ES2022) — zaczynają się od #\n    #nazwa;\n    #cena;\n    #ilosc;\n\n    constructor(nazwa, cena, ilosc = 0) {\n        this.#nazwa  = nazwa;\n        this.#cena   = cena;\n        this.#ilosc  = ilosc;\n    }\n\n    // Gettery\n    get nazwa() { return this.#nazwa; }\n    get cena()  { return this.#cena; }\n\n    jestDostepny() {\n        return this.#ilosc &gt; 0;\n    }\n\n    sprzedaj(ile = 1) {\n        if (ile &gt; this.#ilosc) {\n            throw new Error(\"Brak na stanie\");\n        }\n        this.#ilosc -= ile;\n    }\n\n    // Metoda do serializacji (analogia do toArray() z PHP)\n    toJSON() {\n        return {\n            nazwa:    this.#nazwa,\n            cena:     this.#cena,\n            ilosc:    this.#ilosc,\n            dostepny: this.jestDostepny()\n        };\n    }\n\n    // Metoda statyczna — wywoływana na klasie, nie na obiekcie\n    static fromJSON(json) {\n        return new Produkt(json.nazwa, json.cena, json.ilosc);\n    }\n}\n\n// Użycie\nconst laptop = new Produkt(\"ThinkPad\", 5499, 10);\nconsole.log(laptop.nazwa);          // \"ThinkPad\" (getter)\nconsole.log(laptop.jestDostepny()); // true\n\n// Serializacja do JSON (np. wysyłka do API)\nconst json = JSON.stringify(laptop.toJSON());\n// {\"nazwa\":\"ThinkPad\",\"cena\":5499,\"ilosc\":10,\"dostepny\":true}\n\nDziedziczenie\nclass ProduktFizyczny extends Produkt {\n    #waga;\n\n    constructor(nazwa, cena, ilosc, waga) {\n        super(nazwa, cena, ilosc); // Wywołaj konstruktor rodzica\n        this.#waga = waga;\n    }\n\n    kosztDostawy() {\n        return this.#waga * 5; // 5 zł za kg\n    }\n\n    toJSON() {\n        return {\n            ...super.toJSON(),       // Spread: weź pola z rodzica\n            waga:    this.#waga,\n            dostawa: this.kosztDostawy()\n        };\n    }\n}\n\nconst laptop = new ProduktFizyczny(\"ThinkPad\", 5499, 10, 1.2);\nconsole.log(laptop.kosztDostawy()); // 6",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "JavaScript – Język, który ożywia przeglądarkę"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad5.html#moduły-importexport",
+    "href": "lectures/wyklad5.html#moduły-importexport",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "13. Moduły (import/export)",
+    "text": "13. Moduły (import/export)\nW większych projektach kod dzielimy na pliki (moduły). Każdy moduł eksportuje to, co chce udostępnić, i importuje to, czego potrzebuje:\n// ═══ plik: models/Produkt.js ═══\nexport class Produkt {\n    constructor(nazwa, cena) {\n        this.nazwa = nazwa;\n        this.cena  = cena;\n    }\n}\n\nexport function formatujCene(cena) {\n    return `${cena.toFixed(2)} zł`;\n}\n\n// ═══ plik: services/api.js ═══\nconst API_URL = 'http://localhost:5000/api';\n\nexport async function pobierzProdukty() {\n    const res = await fetch(`${API_URL}/produkty`);\n    return res.json();\n}\n\nexport async function dodajProdukt(dane) {\n    const res = await fetch(`${API_URL}/produkty`, {\n        method: 'POST',\n        headers: { 'Content-Type': 'application/json' },\n        body: JSON.stringify(dane)\n    });\n    return res.json();\n}\n\n// ═══ plik: main.js ═══\nimport { Produkt, formatujCene } from './models/Produkt.js';\nimport { pobierzProdukty } from './services/api.js';\n\nconst produkty = await pobierzProdukty();\nprodukty.forEach(p =&gt; {\n    console.log(`${p.nazwa}: ${formatujCene(p.cena)}`);\n});\nAby użyć modułów w HTML:\n&lt;!-- type=\"module\" włącza obsługę import/export --&gt;\n&lt;script type=\"module\" src=\"main.js\"&gt;&lt;/script&gt;",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "JavaScript – Język, który ożywia przeglądarkę"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad5.html#javascript-a-php-porównanie",
+    "href": "lectures/wyklad5.html#javascript-a-php-porównanie",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "14. JavaScript a PHP — porównanie",
+    "text": "14. JavaScript a PHP — porównanie\nPo Wykładzie 4 (PHP) i 5 (JS) warto zestawić oba języki:\n\n\n\n\n\n\n\n\nCecha\nPHP\nJavaScript\n\n\n\n\nGdzie działa?\nSerwer\nPrzeglądarka (i serwer z Node.js)\n\n\nTypowanie\nDynamiczne (strict_types opcjonalne)\nDynamiczne (TypeScript opcjonalny)\n\n\nZmienne\n$zmienna\nlet/const (bez prefiksu)\n\n\nTablice asocjacyjne\n['klucz' =&gt; 'wartość']\n{ klucz: 'wartość' } (obiekt)\n\n\nPętla po tablicy\nforeach ($arr as $item)\narr.forEach(item =&gt; ...)\n\n\nKlasa + konstruktor\n__construct()\nconstructor()\n\n\nPrywatne pola\nprivate $pole\n#pole\n\n\nDostęp do pola\n$this-&gt;pole\nthis.pole / this.#pole\n\n\nŁączenie stringów\n\"Witaj, $imie\" lub .\n`Witaj, ${imie}` (template literal)\n\n\nBrak wartości\nnull\nnull i undefined\n\n\nPorównanie\n=== (zalecane)\n=== (obowiązkowe!)\n\n\nAsynchroniczność\nBrak (każde żądanie = osobny proces)\nWbudowana (Promise, async/await)",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "JavaScript – Język, który ożywia przeglądarkę"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad5.html#podsumowanie-wykładu-5",
+    "href": "lectures/wyklad5.html#podsumowanie-wykładu-5",
+    "title": "JavaScript – Język, który ożywia przeglądarkę",
+    "section": "Podsumowanie Wykładu 5",
+    "text": "Podsumowanie Wykładu 5\n\n\n\n\n\n\n\nTemat\nCo zapamiętać\n\n\n\n\nZmienne\nconst domyślnie, let gdy zmienia się wartość, nigdy var\n\n\nTypy\n=== zamiast ==. typeof do sprawdzania typu\n\n\nFunkcje\nArrow functions: (a, b) =&gt; a + b. Parametry domyślne, rest ...args\n\n\nTablice\nfilter, map, find, reduce — programowanie funkcyjne\n\n\nAsynchroniczność\nasync/await + try/catch. fetch do komunikacji z API\n\n\nDOM\nquerySelector, addEventListener, classList, createElement\n\n\nKlasy\nclass, constructor, #prywatne, extends, super\n\n\nModuły\nexport/import, &lt;script type=\"module\"&gt;\n\n\nBezpieczeństwo\nNigdy nie wstawiaj danych użytkownika przez innerHTML bez walidacji (XSS!)\n\n\n\nZadanie do przećwiczenia: Stwórz prostą aplikację “Lista zadań” (Todo) z użyciem czystego JS. Wymagania: dodawanie nowych zadań z formularza, oznaczanie jako wykonane (toggle klasy CSS), usuwanie zadań, zapisywanie do localStorage. Bonus: połącz z API (serwer z Wykładu 4) zamiast localStorage — pełny CRUD przez fetch.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "JavaScript – Język, który ożywia przeglądarkę"
     ]
   },
   {
@@ -282,6 +333,423 @@
       "222890-S",
       "Wykłady",
       "Architektura aplikacji internetowych"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html",
+    "href": "lectures/wyklad2.html",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "",
+    "text": "Wyobraźmy sobie sytuację z życia typowego zespołu programistycznego: Student (lub Junior Developer) pisze na swoim MacBooku kod serwera w Node.js (wersja 20). Wszystko działa idealnie. Wysyła kod do kolegi, który ma system Windows z Node.js (wersja 14) – kod rzuca błędami. Ostatecznie kod trafia na serwer produkcyjny z Linuxem Ubuntu, gdzie w ogóle brakuje połowy bibliotek. Aplikacja nie wstaje.\nGłówne problemy klasycznego podejścia: * Niespójność środowisk: Różne systemy operacyjne (Windows, macOS, Linux). * Konflikty wersji: Aplikacja A na serwerze wymaga Pythona 3.8, a nowa Aplikacja B wymaga Pythona 3.12. Instalacja jednego psuje drugie. * Trudny onboarding: Nowy pracownik traci 3 dni na instalowanie baz danych, środowisk i bibliotek, zanim uruchomi projekt na swoim komputerze.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html#problem-u-mnie-działa-czyli-piekło-zależności-matrix-of-hell",
+    "href": "lectures/wyklad2.html#problem-u-mnie-działa-czyli-piekło-zależności-matrix-of-hell",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "",
+    "text": "Wyobraźmy sobie sytuację z życia typowego zespołu programistycznego: Student (lub Junior Developer) pisze na swoim MacBooku kod serwera w Node.js (wersja 20). Wszystko działa idealnie. Wysyła kod do kolegi, który ma system Windows z Node.js (wersja 14) – kod rzuca błędami. Ostatecznie kod trafia na serwer produkcyjny z Linuxem Ubuntu, gdzie w ogóle brakuje połowy bibliotek. Aplikacja nie wstaje.\nGłówne problemy klasycznego podejścia: * Niespójność środowisk: Różne systemy operacyjne (Windows, macOS, Linux). * Konflikty wersji: Aplikacja A na serwerze wymaga Pythona 3.8, a nowa Aplikacja B wymaga Pythona 3.12. Instalacja jednego psuje drugie. * Trudny onboarding: Nowy pracownik traci 3 dni na instalowanie baz danych, środowisk i bibliotek, zanim uruchomi projekt na swoim komputerze.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html#rozwiązanie-metafora-transportu-morskiego",
+    "href": "lectures/wyklad2.html#rozwiązanie-metafora-transportu-morskiego",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "2. Rozwiązanie: Metafora transportu morskiego",
+    "text": "2. Rozwiązanie: Metafora transportu morskiego\nZanim powstały fizyczne kontenery morskie, transport towarów był koszmarem. Worki z kawą, beczki z winem i stalowe rury ładowano ręcznie. Każdy statek musiał być inaczej przygotowany. Potem wymyślono standaryzowany stalowy kontener. Statku, pociągu ani dźwigu nie obchodzi, co jest w środku. Jeśli coś mieści się w kontenerze, można to bez problemu przetransportować i rozładować w dowolnym porcie na świecie.\nDocker robi dokładnie to samo dla oprogramowania. Pakuje Twój kod, biblioteki, środowisko (np. Pythona) i ustawienia systemowe do jednego, ustandaryzowanego “pudełka” (kontenera). Serwera docelowego nie obchodzi, w jakim języku piszesz. Jeśli serwer ma zainstalowanego Dockera, Twój kontener na 100% tam zadziała – dokładnie tak samo, jak na Twoim laptopie.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html#maszyny-wirtualne-vm-vs.-kontenery-docker",
+    "href": "lectures/wyklad2.html#maszyny-wirtualne-vm-vs.-kontenery-docker",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "3. Maszyny Wirtualne (VM) vs. Kontenery (Docker)",
+    "text": "3. Maszyny Wirtualne (VM) vs. Kontenery (Docker)\nZanim pojawił się Docker, problem izolacji rozwiązywano maszynami wirtualnymi (np. VirtualBox, VMware). Dlaczego kontenery je wyparły w web developmencie?\n\nMaszyna Wirtualna (VM): Symuluje cały komputer. Instalujesz aplikację, biblioteki, ale też cały oddzielny system operacyjny (Guest OS). Jest ciężka (zajmuje gigabajty), uruchamia się minutami i zużywa mnóstwo RAM-u.\nKontener (Docker): Dzieli jądro (Kernel) systemu operacyjnego gospodarza. Pakuje tylko to, co niezbędne dla aplikacji. Waży megabajty, uruchamia się w ułamku sekundy i jest niezwykle lekki. Na jednym serwerze możesz uruchomić 100 kontenerów, ale tylko kilka maszyn wirtualnych.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html#w-czym-docker-pomaga-w-aplikacjach-internetowych-enterprise",
+    "href": "lectures/wyklad2.html#w-czym-docker-pomaga-w-aplikacjach-internetowych-enterprise",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "4. W czym Docker pomaga w aplikacjach internetowych (Enterprise)?",
+    "text": "4. W czym Docker pomaga w aplikacjach internetowych (Enterprise)?\n\nIzolacja usług (Mikroserwisy): Frontend (React), Backend (Python) i Baza Danych (PostgreSQL) mogą działać w trzech osobnych kontenerach, nie wchodząc sobie w drogę.\nSkalowalność: Czarny Piątek w sklepie internetowym? Zamiast kupować nowy serwer, Docker potrafi w sekundę sklonować Twój kontener z serwerem API 50 razy, aby obsłużyć ruch.\nPewność wdrożeń (CI/CD): Zbudowany raz kontener jest przesyłany z komputera programisty, przez środowisko testowe, aż na produkcję. Mamy gwarancję, że nic się nie “rozsypie” po drodze.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html#święta-trójca-dockera-plik-obraz-i-kontener",
+    "href": "lectures/wyklad2.html#święta-trójca-dockera-plik-obraz-i-kontener",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "5. Święta Trójca Dockera: Plik, Obraz i Kontener",
+    "text": "5. Święta Trójca Dockera: Plik, Obraz i Kontener\nAby pracować z Dockerem, musimy zrozumieć trzy pojęcia, z których wynika cały proces:\n\nDockerfile (Przepis kulinarny): Zwykły plik tekstowy z instrukcjami, jak zbudować nasze środowisko (np. “Weź Linuxa, doinstaluj Pythona, skopiuj mój kod, uruchom serwer”).\nImage (Upieczone ciasto / Szablon): Wynik wykonania Dockerfile’a. To gotowa, zamrożona paczka z naszą aplikacją. Można ją przesłać do internetu (np. na Docker Hub). Jest “tylko do odczytu”.\nContainer (Zjedzenie ciasta / Uruchomiony proces): Ożywiony Obraz. To działająca instancja naszej aplikacji. Możemy uruchomić 5 kontenerów z tego samego 1 Obrazu.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad2.html#docker-w-praktyce-pakujemy-nasz-serwer-z-wykładu-1",
+    "href": "lectures/wyklad2.html#docker-w-praktyce-pakujemy-nasz-serwer-z-wykładu-1",
+    "title": "Konteneryzacja i Docker – Koniec z U mnie działa!",
+    "section": "6. Docker w praktyce: Pakujemy nasz serwer z Wykładu 1",
+    "text": "6. Docker w praktyce: Pakujemy nasz serwer z Wykładu 1\nWeźmy nasz prosty serwer z poprzednich zajęć (napisany w Pythonie / Flasku) i zamknijmy go w kontenerze. Potrzebujemy do tego zaledwie trzech plików w jednym folderze.\n\nKrok 1: Kod serwera (app.py)\nfrom flask import Flask, jsonify\n\napp = Flask(__name__)\n\n@app.route('/api/powitanie')\ndef powitanie():\n    return jsonify({\"wiadomosc\": \"Witaj z wnętrza kontenera Docker!\"})\n\nif __name__ == '__main__':\n    # Ważne: w Dockerze musimy nasłuchiwać na wszystkich interfejsach (0.0.0.0)\n    app.run(host='0.0.0.0', port=5000)\n\n\nKrok 2: Lista zależności (requirements.txt)\nZamiast instalować pakiety ręcznie, wypisujemy je tutaj, by Docker zrobił to za nas.\nFlask==3.0.0\n\n\nKrok 3: Plik instrukcji (Dockerfile)\nTo jest serce konteneryzacji. Zobacz, jak czytelne są te polecenia:\n# 1. Wybierz oficjalny obraz bazowy (lekki Python)\nFROM python:3.11-slim\n\n# 2. Ustaw katalog roboczy wewnątrz kontenera\nWORKDIR /app\n\n# 3. Skopiuj plik z zależnościami z Twojego komputera do kontenera\nCOPY requirements.txt .\n\n# 4. Zainstaluj potrzebne biblioteki (w środku kontenera!)\nRUN pip install -r requirements.txt\n\n# 5. Skopiuj resztę kodu (nasz plik app.py)\nCOPY app.py .\n\n# 6. Poinformuj Dockera, że aplikacja używa portu 5000\nEXPOSE 5000\n\n# 7. Komenda, która wykona się przy starcie kontenera\nCMD [\"python\", \"app.py\"]\n\nJak uruchomić to cudo w terminalu? Mając te trzy pliki, wywołujemy w konsoli tylko dwie komendy:\n\nBudowanie Obrazu (Building the Image): Mówimy Dockerowi: “Zbuduj obraz na podstawie obecnego katalogu (.) i nazwij go moj-serwer-api”.\ndocker build -t moj-serwer-api .\nUruchomienie Kontenera (Running the Container): Mówimy: “Uruchom kontener z obrazu moj-serwer-api i połącz port 5000 na moim komputerze z portem 5000 wewnątrz kontenera”.\ndocker run -p 5000:5000 moj-serwer-api\nGotowe! Twoja aplikacja działa. Jeśli teraz wyślesz ten sam Obraz do kolegi, nie musi on instalować Pythona ani Flaska. Wpisuje tylko komendę docker run i serwer działa u niego identycznie.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "Konteneryzacja i Docker – Koniec z U mnie działa!"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Informacje ogólne",
+    "section": "",
+    "text": "Semestr: 2006 Uczelnia: Wojskowa Akademia Techniczna w Warszawie\nPolecane materiały znajdziesz na liście książek.",
+    "crumbs": [
+      "222890-S",
+      "Informacje ogólne"
+    ]
+  },
+  {
+    "objectID": "index.html#kalendarz",
+    "href": "index.html#kalendarz",
+    "title": "Informacje ogólne",
+    "section": "Kalendarz",
+    "text": "Kalendarz\n\nWykład\n\n05-03-2026 08:00 - 11:20 - Wykład 1, 2\n06-03-2026 11:40-13:20 - Wykład 3\n12-03-2026 08:00 - 11:20 - Wykład 4, 5\n13-03-2026 09:50 - 11:30 - Wykład 6\n\n\n\nLaboratoria\n\n19.03.2026 Lab 1, 2\n26.03.2026 Lab 3, 4\n02.04.2026 Lab 5, 6, 7\n30.04.2026 Lab 8,9",
+    "crumbs": [
+      "222890-S",
+      "Informacje ogólne"
+    ]
+  },
+  {
+    "objectID": "ksiazki.html",
+    "href": "ksiazki.html",
+    "title": "Książki i strony WWW",
+    "section": "",
+    "text": "G. Maas, F. Garillot Stream Processing with Apache Spark Zobacz opis lub Kup e-book\nF. Hueske, V. Kalavri Stream Processing with Apache Flink Zobacz opis lub Kup e-book\n\n\n\nA. Bellemare Mikrousługi oparte na zdarzeniach. Wykorzystanie danych w organizacji na dużą skalę Zobacz opis lub Kup\n\n\n\n\n\n\nW. McKinney Python w analizie danych. Przetwarzanie danych za pomocą pakietów Pandas i NumPy oraz środowiska IPython. Wydanie II Zobacz opis lub Kup książkę, Kup e-book\nD. McIlwraith, H. Marmanis, D. Babenko Inteligentna sieć. Algorytmy przyszłości. Wydanie II (ebook) Zobacz opis lub Kup książkę, Kup e-book\nJoel Grus Data science od podstaw. Analiza danych w Pythonie. Wydanie II. Zobacz opis lub Kup książkę, Kup e-book.\nJohn W. Foreman Mistrz analizy danych. Od danych do wiedzy. Zobacz opis lub Kup książkę, Kup e-book.\nA. Geron Uczenie maszynowe z użyciem Scikit-Learn i TensorFlow. Wydanie II. Zobacz opis lub Kup książkę, Kup e-book.\nAlberto Boschetti, Luca Massaron Python. Podstawy nauki o danych. Zobacz opis lub Kup książkę.\nSebastian Raschka Python. Uczenie maszynowe. Wydanie II. Zobacz opis lub Kup książkę.\nR. Schutt, C. O’Neil Badanie danych. Raport z pierwszej lini działań. Zobacz opis lub Kup książkę.\nT. Segaran Nowe usługi 2.0. Przewodnik po analizie zbiorów danych Zobacz opis lub Kup książkę, Kup e-book\n\n\n\n\n\nF. Chollet Deep Learning. Praca z językiem Python i biblioteką Keras. Zobacz opis lub Kup książkę, Kup e-book\nJ. Patterson, A. Gibson Deep Learning. Praktyczne wprowadzenie (ebook) Zobacz opis lub Kup e-book\nV. Zocca, G. Spacagna, D. Slater, P. Roelants. Deep Learning. Uczenie głębokie z językiem Python. Sztuczna inteligencja i sieci neuronowe Zobacz opis lub Kup ebook\nD. Osinga Deep Learning. Receptury Zobacz opis lub Kup książkę, Kup e-book\nS. Weidman Uczenie głębokie od zera. Podstawy implementacji w Pythonie Zobacz opis lub Kup książkę, Kup e-book\nD. Foster Deep learning i modelowanie generatywne. Jak nauczyć komputer malowania, pisania, komponowania i grania Zobacz opis lub Kup książkę, Kup e-book\nJ. Howard, S. Gugger Deep learning dla programistów. Budowanie aplikacji AI za pomocą fastai i PyTorch Zobacz opis lub Kup książkę, Kup e-book\n\n\n\n\n\nJ. S. Damji, B. Wenig, T. Das, D. Lee Spark. Błyskawiczna analiza danych Zobacz opis lub Kup\nSpark. Zaawansowana analiza danych (ebook) Zobacz opis lub Kup e-book\nB. Chambers, M. Zaharia Spark: The Definitive Guide. Big Data Processing Made Simple (ebook) Zobacz opis lub Kup e-book\nJ. Quddus Machine Learning with Apache Spark Quick Start Guide (ebook) Zobacz opis lub Kup e-book\n\n\n\n\n\nG. Coldwind Zrozumieć programowanie Zobacz opis lub Kup książkę, Kup e-book\nA. Allain C++. Przewodnik dla początkujących Zobacz opis lub Kup książkę, Kup e-book\nS. Dasgupta, C. Papadimitriou, U. Vazirani Algorytmy PWN.\n\n\n\n\n\nJ. Krochmalski Docker. Projektowanie i wdrażanie aplikacji Zobacz opis lub Kup książkę, Kup e-book\nR. McKendrick, S. Gallagher Docker. Programowanie aplikacji dla zaawansowanych. Wydanie II Zobacz opis lub Kup książkę, Kup e-book\n\n\n\n\n\nP. Bell, B. Beer GitHub. Przyjazny przewodnik (ebook) Zobacz opis lub Kup e-book\n\n\n\n\n\nC. Althoff, Programista Samouk. Profesjonalny przewodnik do samodzielnej nauki kodowania. Zobacz opis lub Kup teraz, Kup e-book\nA. Sweigart, Automatyzacja nudnych zadań z pythonem. Zobacz opis lub Kup książkę, Kup e-book\nK. Reitz, T. Schlusser Przewodnik po Pythonie. Dobre praktyki i praktyczne narzędzia. Zobacz opis lub Kup teraz, Kup e-book\n\n\n\n\n\nB.Tate, L. Carslon, C. Hiibs, Ruby on Rails. Wprowadzenie. Wydanie II Zobacz opis lub Kup e-book\nB. Frain, Responsive Web Design. Projektowanie elastycznych witryn w HTML5 i CSS3, Zobacz opis lub Kup e-book\nK. Beck, TDD. Sztuda tworzenia, Zobacz opis lub Kup teraz, Kup e-book\nB. Dayley, Node.js, MongoDB, AngularJS. Kompendium wiedzy, Zobacz opis lub Kup teraz, Kup e-book\n\n\n\n\n\nA. Jacquier, O. Kondratyev, Quantum Machine Learning and Optimisation in Finance. On the Road to Quantum Advantage."
+  },
+  {
+    "objectID": "ksiazki.html#książki",
+    "href": "ksiazki.html#książki",
+    "title": "Książki i strony WWW",
+    "section": "",
+    "text": "G. Maas, F. Garillot Stream Processing with Apache Spark Zobacz opis lub Kup e-book\nF. Hueske, V. Kalavri Stream Processing with Apache Flink Zobacz opis lub Kup e-book\n\n\n\nA. Bellemare Mikrousługi oparte na zdarzeniach. Wykorzystanie danych w organizacji na dużą skalę Zobacz opis lub Kup\n\n\n\n\n\n\nW. McKinney Python w analizie danych. Przetwarzanie danych za pomocą pakietów Pandas i NumPy oraz środowiska IPython. Wydanie II Zobacz opis lub Kup książkę, Kup e-book\nD. McIlwraith, H. Marmanis, D. Babenko Inteligentna sieć. Algorytmy przyszłości. Wydanie II (ebook) Zobacz opis lub Kup książkę, Kup e-book\nJoel Grus Data science od podstaw. Analiza danych w Pythonie. Wydanie II. Zobacz opis lub Kup książkę, Kup e-book.\nJohn W. Foreman Mistrz analizy danych. Od danych do wiedzy. Zobacz opis lub Kup książkę, Kup e-book.\nA. Geron Uczenie maszynowe z użyciem Scikit-Learn i TensorFlow. Wydanie II. Zobacz opis lub Kup książkę, Kup e-book.\nAlberto Boschetti, Luca Massaron Python. Podstawy nauki o danych. Zobacz opis lub Kup książkę.\nSebastian Raschka Python. Uczenie maszynowe. Wydanie II. Zobacz opis lub Kup książkę.\nR. Schutt, C. O’Neil Badanie danych. Raport z pierwszej lini działań. Zobacz opis lub Kup książkę.\nT. Segaran Nowe usługi 2.0. Przewodnik po analizie zbiorów danych Zobacz opis lub Kup książkę, Kup e-book\n\n\n\n\n\nF. Chollet Deep Learning. Praca z językiem Python i biblioteką Keras. Zobacz opis lub Kup książkę, Kup e-book\nJ. Patterson, A. Gibson Deep Learning. Praktyczne wprowadzenie (ebook) Zobacz opis lub Kup e-book\nV. Zocca, G. Spacagna, D. Slater, P. Roelants. Deep Learning. Uczenie głębokie z językiem Python. Sztuczna inteligencja i sieci neuronowe Zobacz opis lub Kup ebook\nD. Osinga Deep Learning. Receptury Zobacz opis lub Kup książkę, Kup e-book\nS. Weidman Uczenie głębokie od zera. Podstawy implementacji w Pythonie Zobacz opis lub Kup książkę, Kup e-book\nD. Foster Deep learning i modelowanie generatywne. Jak nauczyć komputer malowania, pisania, komponowania i grania Zobacz opis lub Kup książkę, Kup e-book\nJ. Howard, S. Gugger Deep learning dla programistów. Budowanie aplikacji AI za pomocą fastai i PyTorch Zobacz opis lub Kup książkę, Kup e-book\n\n\n\n\n\nJ. S. Damji, B. Wenig, T. Das, D. Lee Spark. Błyskawiczna analiza danych Zobacz opis lub Kup\nSpark. Zaawansowana analiza danych (ebook) Zobacz opis lub Kup e-book\nB. Chambers, M. Zaharia Spark: The Definitive Guide. Big Data Processing Made Simple (ebook) Zobacz opis lub Kup e-book\nJ. Quddus Machine Learning with Apache Spark Quick Start Guide (ebook) Zobacz opis lub Kup e-book\n\n\n\n\n\nG. Coldwind Zrozumieć programowanie Zobacz opis lub Kup książkę, Kup e-book\nA. Allain C++. Przewodnik dla początkujących Zobacz opis lub Kup książkę, Kup e-book\nS. Dasgupta, C. Papadimitriou, U. Vazirani Algorytmy PWN.\n\n\n\n\n\nJ. Krochmalski Docker. Projektowanie i wdrażanie aplikacji Zobacz opis lub Kup książkę, Kup e-book\nR. McKendrick, S. Gallagher Docker. Programowanie aplikacji dla zaawansowanych. Wydanie II Zobacz opis lub Kup książkę, Kup e-book\n\n\n\n\n\nP. Bell, B. Beer GitHub. Przyjazny przewodnik (ebook) Zobacz opis lub Kup e-book\n\n\n\n\n\nC. Althoff, Programista Samouk. Profesjonalny przewodnik do samodzielnej nauki kodowania. Zobacz opis lub Kup teraz, Kup e-book\nA. Sweigart, Automatyzacja nudnych zadań z pythonem. Zobacz opis lub Kup książkę, Kup e-book\nK. Reitz, T. Schlusser Przewodnik po Pythonie. Dobre praktyki i praktyczne narzędzia. Zobacz opis lub Kup teraz, Kup e-book\n\n\n\n\n\nB.Tate, L. Carslon, C. Hiibs, Ruby on Rails. Wprowadzenie. Wydanie II Zobacz opis lub Kup e-book\nB. Frain, Responsive Web Design. Projektowanie elastycznych witryn w HTML5 i CSS3, Zobacz opis lub Kup e-book\nK. Beck, TDD. Sztuda tworzenia, Zobacz opis lub Kup teraz, Kup e-book\nB. Dayley, Node.js, MongoDB, AngularJS. Kompendium wiedzy, Zobacz opis lub Kup teraz, Kup e-book\n\n\n\n\n\nA. Jacquier, O. Kondratyev, Quantum Machine Learning and Optimisation in Finance. On the Road to Quantum Advantage."
+  },
+  {
+    "objectID": "ksiazki.html#strony-www",
+    "href": "ksiazki.html#strony-www",
+    "title": "Książki i strony WWW",
+    "section": "Strony WWW",
+    "text": "Strony WWW\n\nSoftware\n\nGithub\nGit-instrukcja\nwww.python.org\nPyPI python libraries\nAnaconda\nDocker\n\n\n\nPakiety python dla analiz danych\n\nNumPy\nSciPy\nPandas\nScikit-learn\nJupyter\nMatplotlib\nBeautiful Soup\nTheano\nKeras\nTensorFlow\nVirtual ENV\n\n\n\nEdytory tekstu\n\nNotepad++\nSublime Text\nVisual Studio Code\n\n\n\nMarkdown\n\nMD\n\n\n\nJupyter notebook\n\nGaleria ciekawych notatników\nIntro\nKernels\nBringing the best out of jupyter for data science\nJupyter extensions\nI don’t like notebooks\nJupyter lab\nSpeed up jupyter notebook\n\n\n\nPrzetwarzanie danych\n\ndata cookbook\n\n\n\nZbiory danych\n\nInternet Archive\nReddit\nKDnuggets\nKaggle\nList of datasets for machine learning research\nUCI Machine Learning Repo\nPublic API\nGoogle Datatset Search\n\n\n\nPython\n\nChris Albon Technical Notes on Using Data Science & AI\n40+ Python Statistics For Data Science Resources\nPractical Business Python\n\n\n\nkursy ML\n\nKurs Machine Learning - Andrew Ng, Stanford\nKurs Machine Learning - Andrew Ng, Stanford\nPython programming for data science"
+  },
+  {
+    "objectID": "indexS.html",
+    "href": "indexS.html",
+    "title": "Informacje ogólne",
+    "section": "",
+    "text": "Semestr: 2006 Uczelnia: Wojskowa Akademia Techniczna w Warszawie\nPolecane materiały znajdziesz na liście książek."
+  },
+  {
+    "objectID": "indexS.html#kalendarz",
+    "href": "indexS.html#kalendarz",
+    "title": "Informacje ogólne",
+    "section": "Kalendarz",
+    "text": "Kalendarz\n\nWykład\n\n07-03-2026 08:00 - 11:20 - Wykład 1, 2\n14-03-2026 11:40-13:20 - Wykład 3\n\n\n\nLaboratoria\n\n21.03.2026\n26.03.2026\n12.04.2026\n26.04.2026"
+  },
+  {
+    "objectID": "lectures/wyklad3.html",
+    "href": "lectures/wyklad3.html",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "",
+    "text": "Na Wykładzie 1 poznaliśmy, że Frontend to kod działający w przeglądarce użytkownika. Widzieliśmy prosty szkielet HTML i wiemy, że przeglądarka rozumie trzy języki: HTML, CSS i JavaScript.\nTeraz pora zagłębić się w pierwszy z nich. HTML (HyperText Markup Language) przeszedł długą drogę:\n\nHTML 1.0 (1993): Proste dokumenty tekstowe z linkami. Internet jako cyfrowa biblioteka.\nHTML 4.01 (1999): Tabele, formularze, ramki. Strony zaczęły wyglądać jak “aplikacje”, ale kod był brzydki i chaotyczny (&lt;font&gt;, &lt;center&gt;, tabele do layoutu).\nXHTML (2000): Próba narzucenia ścisłych reguł XML na HTML. Każdy niezamknięty tag był błędem. Zbyt surowe podejście.\nHTML5 (2014–dziś): Rewolucja. Nowe elementy semantyczne, wbudowane multimedia, API do geolokalizacji, rysowania (Canvas), przechowywania danych (Web Storage). HTML5 to nie tylko język znaczników — to cała platforma do budowy aplikacji.\n\nKluczowa zmiana filozofii: HTML5 nie wymusza na programiście perfekcyjnej składni (jak XHTML), ale zachęca do pisania kodu semantycznego — takiego, który swoją strukturą mówi przeglądarce i wyszukiwarce, czym jest dany fragment treści.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#od-dokumentu-do-aplikacji-ewolucja-html",
+    "href": "lectures/wyklad3.html#od-dokumentu-do-aplikacji-ewolucja-html",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "",
+    "text": "Na Wykładzie 1 poznaliśmy, że Frontend to kod działający w przeglądarce użytkownika. Widzieliśmy prosty szkielet HTML i wiemy, że przeglądarka rozumie trzy języki: HTML, CSS i JavaScript.\nTeraz pora zagłębić się w pierwszy z nich. HTML (HyperText Markup Language) przeszedł długą drogę:\n\nHTML 1.0 (1993): Proste dokumenty tekstowe z linkami. Internet jako cyfrowa biblioteka.\nHTML 4.01 (1999): Tabele, formularze, ramki. Strony zaczęły wyglądać jak “aplikacje”, ale kod był brzydki i chaotyczny (&lt;font&gt;, &lt;center&gt;, tabele do layoutu).\nXHTML (2000): Próba narzucenia ścisłych reguł XML na HTML. Każdy niezamknięty tag był błędem. Zbyt surowe podejście.\nHTML5 (2014–dziś): Rewolucja. Nowe elementy semantyczne, wbudowane multimedia, API do geolokalizacji, rysowania (Canvas), przechowywania danych (Web Storage). HTML5 to nie tylko język znaczników — to cała platforma do budowy aplikacji.\n\nKluczowa zmiana filozofii: HTML5 nie wymusza na programiście perfekcyjnej składni (jak XHTML), ale zachęca do pisania kodu semantycznego — takiego, który swoją strukturą mówi przeglądarce i wyszukiwarce, czym jest dany fragment treści.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#anatomia-dokumentu-html5",
+    "href": "lectures/wyklad3.html#anatomia-dokumentu-html5",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "2. Anatomia dokumentu HTML5",
+    "text": "2. Anatomia dokumentu HTML5\nKażdy plik HTML zaczyna się od tego samego szkieletu. Przypomnijmy go z Wykładu 1 i omówmy dokładnie:\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"pl\"&gt;\n&lt;head&gt;\n    &lt;meta charset=\"UTF-8\"&gt;\n    &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\n    &lt;title&gt;Moja aplikacja&lt;/title&gt;\n    &lt;link rel=\"stylesheet\" href=\"style.css\"&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;h1&gt;Witaj na stronie!&lt;/h1&gt;\n    &lt;p&gt;To jest akapit tekstu.&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;\nCo robi każda linia?\n\n&lt;!DOCTYPE html&gt; — Deklaracja typu dokumentu. Mówi przeglądarce: “Traktuj mnie jak HTML5”. Bez tego przeglądarka wchodzi w tzw. quirks mode i renderuje stronę nieprzewidywalnie.\n&lt;html lang=\"pl\"&gt; — Element główny. Atrybut lang informuje wyszukiwarki i czytniki ekranowe, w jakim języku jest treść.\n&lt;meta charset=\"UTF-8\"&gt; — Kodowanie znaków. Bez tego polskie litery (ą, ę, ś) mogą wyświetlić się jako “krzaczki”.\n&lt;meta name=\"viewport\" ...&gt; — Kluczowa linia dla urządzeń mobilnych. Bez niej telefon wyświetli stronę jakby miał ekran desktopowy i zmniejszy ją do rozmiaru znaczka pocztowego.\n&lt;head&gt; — Sekcja niewidoczna dla użytkownika. Metadane, tytuł w zakładce, linki do arkuszy CSS i skryptów.\n&lt;body&gt; — Wszystko, co użytkownik widzi na ekranie.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#elementy-semantyczne-html5-kod-który-ma-znaczenie",
+    "href": "lectures/wyklad3.html#elementy-semantyczne-html5-kod-który-ma-znaczenie",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "3. Elementy semantyczne HTML5: Kod, który ma znaczenie",
+    "text": "3. Elementy semantyczne HTML5: Kod, który ma znaczenie\nW starym HTML cała strona składała się z &lt;div&gt; (kontener blokowy) i &lt;span&gt; (kontener liniowy). Kod wyglądał tak:\n&lt;!-- ❌ Stare podejście: \"Divitis\" — choroba nadmiarowych divów --&gt;\n&lt;div id=\"header\"&gt;\n    &lt;div id=\"nav\"&gt;...&lt;/div&gt;\n&lt;/div&gt;\n&lt;div id=\"content\"&gt;\n    &lt;div class=\"post\"&gt;...&lt;/div&gt;\n    &lt;div id=\"sidebar\"&gt;...&lt;/div&gt;\n&lt;/div&gt;\n&lt;div id=\"footer\"&gt;...&lt;/div&gt;\nProblem? Przeglądarka, wyszukiwarka Google i czytnik ekranowy dla osoby niewidomej widzą jedynie stos anonimowych “pudełek” (div). Nie wiedzą, co jest menu, co artykułem, a co stopką.\nHTML5 wprowadził elementy semantyczne — tagi, które opisują swoją rolę:\n&lt;!-- ✅ HTML5: Kod, który mówi, czym jest --&gt;\n&lt;header&gt;\n    &lt;nav&gt;\n        &lt;a href=\"/\"&gt;Start&lt;/a&gt;\n        &lt;a href=\"/about\"&gt;O nas&lt;/a&gt;\n        &lt;a href=\"/contact\"&gt;Kontakt&lt;/a&gt;\n    &lt;/nav&gt;\n&lt;/header&gt;\n\n&lt;main&gt;\n    &lt;article&gt;\n        &lt;h1&gt;Tytuł artykułu&lt;/h1&gt;\n        &lt;section&gt;\n            &lt;h2&gt;Sekcja pierwsza&lt;/h2&gt;\n            &lt;p&gt;Treść sekcji...&lt;/p&gt;\n        &lt;/section&gt;\n        &lt;section&gt;\n            &lt;h2&gt;Sekcja druga&lt;/h2&gt;\n            &lt;p&gt;Kolejna treść...&lt;/p&gt;\n        &lt;/section&gt;\n    &lt;/article&gt;\n\n    &lt;aside&gt;\n        &lt;h3&gt;Powiązane artykuły&lt;/h3&gt;\n        &lt;ul&gt;\n            &lt;li&gt;&lt;a href=\"/art2\"&gt;Inny artykuł&lt;/a&gt;&lt;/li&gt;\n        &lt;/ul&gt;\n    &lt;/aside&gt;\n&lt;/main&gt;\n\n&lt;footer&gt;\n    &lt;p&gt;&copy; 2026 Moja Firma&lt;/p&gt;\n&lt;/footer&gt;\nKażdy z tych tagów ma konkretne znaczenie:\n\n\n\nTag\nRola\nUwagi\n\n\n\n\n&lt;header&gt;\nNagłówek strony lub sekcji\nLogo, nawigacja, tytuł\n\n\n&lt;nav&gt;\nBlok nawigacyjny\nMenu główne, breadcrumbs\n\n\n&lt;main&gt;\nGłówna treść strony\nTylko jeden na stronę\n\n\n&lt;article&gt;\nSamodzielna treść\nPost, artykuł, komentarz\n\n\n&lt;section&gt;\nSekcja tematyczna\nGrupuje powiązaną treść\n\n\n&lt;aside&gt;\nTreść poboczna\nSidebar, reklamy, linki\n\n\n&lt;footer&gt;\nStopka\nCopyright, kontakt, linki\n\n\n\nDlaczego to ważne?\n\nSEO: Google lepiej rozumie strukturę strony i wyżej ją pozycjonuje.\nDostępność (a11y): Czytniki ekranowe mogą powiedzieć: “Nawigacja — 3 linki”, “Artykuł — Tytuł artykułu”.\nCzytelność kodu: Programista od razu widzi architekturę strony, bez czytania klas CSS.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#formularze-html5-walidacja-za-darmo",
+    "href": "lectures/wyklad3.html#formularze-html5-walidacja-za-darmo",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "4. Formularze HTML5: Walidacja za darmo",
+    "text": "4. Formularze HTML5: Walidacja za darmo\nNa Wykładzie 1 widzieliśmy, jak JavaScript wysyła dane przez fetch. Ale zanim dane dotrą do serwera, użytkownik musi je gdzieś wpisać. Do tego służą formularze.\nHTML5 drastycznie ulepszyło formularze, dodając nowe typy pól i wbudowaną walidację — bez jednej linii JavaScriptu:\n&lt;form action=\"/api/rejestracja\" method=\"POST\"&gt;\n    &lt;!-- Pole tekstowe z walidacją e-mail --&gt;\n    &lt;label for=\"email\"&gt;E-mail:&lt;/label&gt;\n    &lt;input type=\"email\" id=\"email\" name=\"email\"\n           required placeholder=\"jan@example.com\"&gt;\n\n    &lt;!-- Pole numeryczne z zakresem --&gt;\n    &lt;label for=\"wiek\"&gt;Wiek:&lt;/label&gt;\n    &lt;input type=\"number\" id=\"wiek\" name=\"wiek\"\n           min=\"18\" max=\"120\" required&gt;\n\n    &lt;!-- Hasło z minimalną długością --&gt;\n    &lt;label for=\"haslo\"&gt;Hasło:&lt;/label&gt;\n    &lt;input type=\"password\" id=\"haslo\" name=\"haslo\"\n           minlength=\"8\" required&gt;\n\n    &lt;!-- Wybór daty --&gt;\n    &lt;label for=\"data\"&gt;Data urodzenia:&lt;/label&gt;\n    &lt;input type=\"date\" id=\"data\" name=\"data_urodzenia\"&gt;\n\n    &lt;!-- Pole z wyrażeniem regularnym --&gt;\n    &lt;label for=\"kod\"&gt;Kod pocztowy:&lt;/label&gt;\n    &lt;input type=\"text\" id=\"kod\" name=\"kod_pocztowy\"\n           pattern=\"[0-9]{2}-[0-9]{3}\" placeholder=\"00-000\"\n           title=\"Format: 00-000\"&gt;\n\n    &lt;!-- Suwak --&gt;\n    &lt;label for=\"ocena\"&gt;Ocena (1-10):&lt;/label&gt;\n    &lt;input type=\"range\" id=\"ocena\" name=\"ocena\" min=\"1\" max=\"10\"&gt;\n\n    &lt;button type=\"submit\"&gt;Zarejestruj się&lt;/button&gt;\n&lt;/form&gt;\nPrzeglądarka sama sprawdzi, czy:\n\npole required nie jest puste,\ntype=\"email\" zawiera @,\nmin/max jest w zakresie,\npattern pasuje do wyrażenia regularnego,\nminlength jest spełnione.\n\nUżytkownik zobaczy komunikat błędu w swoim języku — i to bez JavaScriptu.\nWażna uwaga z Wykładu 1: Walidacja po stronie klienta (HTML/JS) to wygoda dla użytkownika. Walidacja po stronie serwera to bezpieczeństwo. Klientowi nigdy nie ufamy — ktoś może obejść HTML i wysłać dowolne dane bezpośrednio do naszego API (np. przez Postman).",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#multimedia-bez-wtyczek",
+    "href": "lectures/wyklad3.html#multimedia-bez-wtyczek",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "5. Multimedia bez wtyczek",
+    "text": "5. Multimedia bez wtyczek\nPamiętacie Adobe Flash? Kiedyś bez niego nie dało się odtworzyć filmiku w przeglądarce. Flash był ciężki, dziurawy jak ser szwajcarski (luki bezpieczeństwa) i nie działał na iPhone’ach. HTML5 rozwiązało ten problem raz na zawsze:\n&lt;!-- Audio --&gt;\n&lt;audio controls&gt;\n    &lt;source src=\"podcast.mp3\" type=\"audio/mpeg\"&gt;\n    &lt;source src=\"podcast.ogg\" type=\"audio/ogg\"&gt;\n    Twoja przeglądarka nie wspiera odtwarzania audio.\n&lt;/audio&gt;\n\n&lt;!-- Video --&gt;\n&lt;video controls width=\"640\" poster=\"miniatura.jpg\"&gt;\n    &lt;source src=\"wyklad.mp4\" type=\"video/mp4\"&gt;\n    &lt;source src=\"wyklad.webm\" type=\"video/webm\"&gt;\n    Twoja przeglądarka nie wspiera odtwarzania wideo.\n&lt;/video&gt;\nDwie linie kodu — pełny odtwarzacz multimedialny z przyciskami play/pause, paskiem postępu i regulacją głośności. Atrybut poster wyświetla miniaturę przed odtworzeniem.\nDlaczego wiele elementów &lt;source&gt;? Nie każda przeglądarka obsługuje każdy format. Przeglądarka sama wybierze pierwszy format, który potrafi odtworzyć.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#web-storage-dane-w-przeglądarce",
+    "href": "lectures/wyklad3.html#web-storage-dane-w-przeglądarce",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "6. Web Storage: Dane w przeglądarce",
+    "text": "6. Web Storage: Dane w przeglądarce\nNa Wykładzie 1 mówiliśmy, że serwer jest bezstanowy (Statelessness w REST). Ale co jeśli Frontend chce zapamiętać coś lokalnie — np. motyw ciemny/jasny albo zawartość koszyka przed zalogowaniem?\n// localStorage — dane przetrwają zamknięcie przeglądarki\nlocalStorage.setItem('motyw', 'ciemny');\nconst motyw = localStorage.getItem('motyw'); // 'ciemny'\nlocalStorage.removeItem('motyw');\n\n// sessionStorage — dane znikają po zamknięciu karty\nsessionStorage.setItem('koszyk', JSON.stringify(['Laptop', 'Myszka']));\nconst koszyk = JSON.parse(sessionStorage.getItem('koszyk'));\nOgraniczenia: Dane przechowywane wyłącznie w przeglądarce użytkownika (ok. 5–10 MB). Nie zastąpią bazy danych na serwerze. Nigdy nie przechowuj tu haseł ani tokenów sesji (podatność na ataki XSS).",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#css-od-chaosu-do-systemu",
+    "href": "lectures/wyklad3.html#css-od-chaosu-do-systemu",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "7. CSS: Od chaosu do systemu",
+    "text": "7. CSS: Od chaosu do systemu\nWiemy już, że HTML definiuje co jest na stronie. CSS (Cascading Style Sheets) definiuje jak to wygląda. Ale CSS to nie tylko “zmień kolor na czerwony” — to potężny system layoutu.\n\nTrzy sposoby dołączania CSS\n&lt;!-- 1. Inline — bezpośrednio w elemencie (❌ unikaj!) --&gt;\n&lt;p style=\"color: red; font-size: 18px;\"&gt;Tekst&lt;/p&gt;\n\n&lt;!-- 2. Wewnętrzny — w sekcji &lt;head&gt; (dopuszczalny dla małych stron) --&gt;\n&lt;head&gt;\n    &lt;style&gt;\n        p { color: red; }\n    &lt;/style&gt;\n&lt;/head&gt;\n\n&lt;!-- 3. Zewnętrzny plik — ✅ najlepsza praktyka --&gt;\n&lt;head&gt;\n    &lt;link rel=\"stylesheet\" href=\"style.css\"&gt;\n&lt;/head&gt;\nZewnętrzny plik CSS to standard w profesjonalnych projektach. Jeden plik stylów obsługuje setki stron HTML. Zmiana koloru w jednym miejscu aktualizuje cały serwis.\n\n\nSelektory — targetowanie elementów\nSelektor to “celownik”, który mówi CSS: “Zastosuj te style do TYCH elementów”.\n/* Selektor elementu — wszystkie paragrafy */\np {\n    line-height: 1.6;\n}\n\n/* Selektor klasy — elementy z class=\"karta\" */\n.karta {\n    padding: 20px;\n    border: 1px solid #ddd;\n}\n\n/* Selektor ID — jeden konkretny element */\n#logo {\n    width: 150px;\n}\n\n/* Selektor potomka — linki WEWNĄTRZ nav */\nnav a {\n    text-decoration: none;\n    color: #333;\n}\n\n/* Pseudoklasa — stan po najechaniu myszką */\na:hover {\n    color: #0066cc;\n    text-decoration: underline;\n}\n\n/* Pseudoklasa — pierwszy element listy */\nli:first-child {\n    font-weight: bold;\n}\n\n/* Selektor atrybutu */\ninput[type=\"email\"] {\n    border: 2px solid #0066cc;\n}\n\n\nSpecyficzność: Kto wygrywa?\nCo jeśli dwie reguły CSS mówią co innego o tym samym elemencie? Wygrywa ta z wyższą specyficznością. Można ją policzyć jak punkty:\n\n\n\nSelektor\nPunkty\nPrzykład\n\n\n\n\n!important\n∞ (nadpisuje wszystko)\ncolor: red !important\n\n\nInline style\n1000\nstyle=\"color:red\"\n\n\nSelektor ID #\n100\n#header\n\n\nKlasa . / pseudoklasa\n10\n.karta, :hover\n\n\nElement / pseudoelement\n1\np, ::before\n\n\n\n/* Specyficzność: 1 (element) */\np { color: blue; }\n\n/* Specyficzność: 10 (klasa) — WYGRYWA nad elementem */\n.wazny { color: red; }\n\n/* Specyficzność: 100 (ID) — WYGRYWA nad klasą */\n#naglowek { color: green; }\nPraktyczna zasada: Unikaj !important i selektorów ID w CSS. Używaj klas — dają wystarczającą specyficzność i są reużywalne.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#box-model-fundament-layoutu",
+    "href": "lectures/wyklad3.html#box-model-fundament-layoutu",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "8. Box Model: Fundament layoutu",
+    "text": "8. Box Model: Fundament layoutu\nKażdy element HTML to prostokąt (nawet okrągły przycisk!). Ten prostokąt składa się z czterech warstw — od środka na zewnątrz:\n\nContent — sama treść (tekst, obraz)\nPadding — wewnętrzny odstęp (między treścią a ramką)\nBorder — obramowanie\nMargin — zewnętrzny odstęp (między tym elementem a sąsiadami)\n\n.karta {\n    /* Treść: 300px szerokości */\n    width: 300px;\n\n    /* Wewnętrzny odstęp: 20px z każdej strony */\n    padding: 20px;\n\n    /* Ramka: 2px */\n    border: 2px solid #333;\n\n    /* Zewnętrzny odstęp: 15px */\n    margin: 15px;\n}\nPytanie: Ile pikseli zajmuje ta karta na ekranie?\nDomyślnie: 300 (content) + 20*2 (padding) + 2*2 (border) = 344px (margin się nie wlicza w rozmiar elementu, ale wpływa na odległość od sąsiadów).\nTo nieczytelne. Dlatego w każdym profesjonalnym projekcie dodaje się:\n/* ✅ Zmiana modelu obliczania: width OBEJMUJE padding i border */\n*, *::before, *::after {\n    box-sizing: border-box;\n}\nZ box-sizing: border-box karta ma width: 300px i tyle zajmuje na ekranie — padding i border są wliczone w te 300px.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#flexbox-jednowymiarowy-układ",
+    "href": "lectures/wyklad3.html#flexbox-jednowymiarowy-układ",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "9. Flexbox: Jednowymiarowy układ",
+    "text": "9. Flexbox: Jednowymiarowy układ\nPrzed Flexboxem centrowanie elementu w pionie wymagało “hacków” CSS (np. display: table-cell albo position: absolute z transform). Flexbox rozwiązuje to jedną linią.\nFlexbox działa w jednym wymiarze — albo układasz elementy w wierszu (oś X), albo w kolumnie (oś Y).\n/* Kontener — aktywuje Flexbox */\n.navbar {\n    display: flex;\n    justify-content: space-between; /* Rozmieszczenie wzdłuż osi głównej */\n    align-items: center;            /* Wyrównanie wzdłuż osi poprzecznej */\n    gap: 20px;                      /* Odstępy między elementami */\n    padding: 10px 20px;\n}\n&lt;nav class=\"navbar\"&gt;\n    &lt;a href=\"/\" class=\"logo\"&gt;MojaApp&lt;/a&gt;\n    &lt;div class=\"menu\"&gt;\n        &lt;a href=\"/about\"&gt;O nas&lt;/a&gt;\n        &lt;a href=\"/contact\"&gt;Kontakt&lt;/a&gt;\n    &lt;/div&gt;\n    &lt;button&gt;Zaloguj&lt;/button&gt;\n&lt;/nav&gt;\nNajważniejsze właściwości kontenera flex:\n\n\n\n\n\n\n\n\nWłaściwość\nCo robi\nPopularne wartości\n\n\n\n\njustify-content\nRozmieszczenie na osi głównej\nflex-start, center, space-between, space-around\n\n\nalign-items\nWyrównanie na osi poprzecznej\nflex-start, center, stretch\n\n\nflex-direction\nKierunek osi głównej\nrow (domyślny), column\n\n\nflex-wrap\nZawijanie do nowej linii\nnowrap (domyślny), wrap\n\n\ngap\nOdstępy między elementami\nnp. 20px, 1rem\n\n\n\nWłaściwości elementów wewnątrz flex:\n.element {\n    flex: 1;          /* Rośnij, aby wypełnić dostępną przestrzeń */\n    min-width: 250px; /* Ale nie mniejszy niż 250px */\n}\n\nKlasyczny przykład: Centrowanie w pionie i poziomie\n.center-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh; /* Cała wysokość ekranu */\n}\nTrzy linie CSS — element idealnie wycentrowany. Przed Flexboxem wymagało to 10+ linii hacków.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#css-grid-dwuwymiarowy-układ",
+    "href": "lectures/wyklad3.html#css-grid-dwuwymiarowy-układ",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "10. CSS Grid: Dwuwymiarowy układ",
+    "text": "10. CSS Grid: Dwuwymiarowy układ\nFlexbox to układ jednowymiarowy (wiersz LUB kolumna). CSS Grid to pełny dwuwymiarowy system — definiujesz zarówno wiersze, jak i kolumny jednocześnie.\n.layout {\n    display: grid;\n    grid-template-columns: 250px 1fr 200px; /* 3 kolumny: sidebar, main, aside */\n    grid-template-rows: auto 1fr auto;       /* 3 wiersze: header, content, footer */\n    gap: 20px;\n    min-height: 100vh;\n}\n\n.header  { grid-column: 1 / -1; }  /* Od pierwszej do ostatniej kolumny */\n.footer  { grid-column: 1 / -1; }\n.sidebar { grid-row: 2; }\n.main    { grid-row: 2; }\n.aside   { grid-row: 2; }\n&lt;div class=\"layout\"&gt;\n    &lt;header class=\"header\"&gt;Nagłówek&lt;/header&gt;\n    &lt;nav class=\"sidebar\"&gt;Menu&lt;/nav&gt;\n    &lt;main class=\"main\"&gt;Treść główna&lt;/main&gt;\n    &lt;aside class=\"aside\"&gt;Panel boczny&lt;/aside&gt;\n    &lt;footer class=\"footer\"&gt;Stopka&lt;/footer&gt;\n&lt;/div&gt;\nBez float, bez position: absolute, bez hacków — czytelny, dwuwymiarowy układ strony.\nKiedy Flexbox, a kiedy Grid?\n\nFlexbox: Nawigacja, pasek narzędzi, lista kart, wyrównanie elementów w jednej linii.\nGrid: Cały layout strony, galerie zdjęć, dashboard z widgetami — wszędzie, gdzie myślisz “wiersze I kolumny”.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#responsywność-media-queries",
+    "href": "lectures/wyklad3.html#responsywność-media-queries",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "11. Responsywność: Media Queries",
+    "text": "11. Responsywność: Media Queries\nTwoja aplikacja musi działać na ekranie 6-calowego telefonu i 27-calowego monitora. Podejście “Mobile First” oznacza: piszesz style dla telefonu jako bazowe, a potem za pomocą Media Queries dodajesz reguły dla większych ekranów.\n/* ===== BAZOWE STYLE (MOBILE) ===== */\n.grid-produktow {\n    display: grid;\n    grid-template-columns: 1fr;  /* 1 kolumna na telefonie */\n    gap: 15px;\n    padding: 10px;\n}\n\n/* ===== TABLET (768px i więcej) ===== */\n@media (min-width: 768px) {\n    .grid-produktow {\n        grid-template-columns: repeat(2, 1fr);  /* 2 kolumny */\n        gap: 20px;\n        padding: 20px;\n    }\n}\n\n/* ===== DESKTOP (1024px i więcej) ===== */\n@media (min-width: 1024px) {\n    .grid-produktow {\n        grid-template-columns: repeat(3, 1fr);  /* 3 kolumny */\n        max-width: 1200px;\n        margin: 0 auto;  /* Wyśrodkuj na szerokim ekranie */\n    }\n}\n\n/* ===== DUŻY EKRAN (1440px i więcej) ===== */\n@media (min-width: 1440px) {\n    .grid-produktow {\n        grid-template-columns: repeat(4, 1fr);  /* 4 kolumny */\n    }\n}\nTo samo siatka produktów — 1 kolumna na telefonie, 2 na tablecie, 3 na desktopie, 4 na dużym monitorze. Bez JavaScriptu, bez osobnych stron “m.example.com”.\n\nJednostki responsywne\nZamiast sztywnych pikseli, używaj jednostek względnych:\n\n\n\n\n\n\n\n\nJednostka\nOdniesienie\nPrzykład użycia\n\n\n\n\nrem\nRozmiar fontu &lt;html&gt; (domyślnie 16px)\nFonty, padding, margin\n\n\nem\nRozmiar fontu rodzica\nOdstępy wewnątrz komponentu\n\n\n%\nRozmiar rodzica\nSzerokości, wysokości\n\n\nvw / vh\n1% szerokości / wysokości okna\nSekcje pełnoekranowe\n\n\nfr\nUłamek wolnej przestrzeni (Grid)\nKolumny/wiersze Grid\n\n\n\n/* ❌ Sztywne piksele — nie skaluje się */\nh1 { font-size: 32px; }\n\n/* ✅ Jednostki względne — skaluje się z ustawieniami użytkownika */\nh1 { font-size: 2rem; }  /* 2 × 16px = 32px domyślnie */",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#praktyczny-przykład-karta-produktu",
+    "href": "lectures/wyklad3.html#praktyczny-przykład-karta-produktu",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "12. Praktyczny przykład: Karta produktu",
+    "text": "12. Praktyczny przykład: Karta produktu\nZłóżmy wszystko razem — semantyczny HTML5 + nowoczesny CSS:\n&lt;article class=\"karta-produktu\"&gt;\n    &lt;img src=\"laptop.jpg\" alt=\"Laptop ThinkPad X1 Carbon\"&gt;\n    &lt;div class=\"karta-tresc\"&gt;\n        &lt;h3&gt;ThinkPad X1 Carbon&lt;/h3&gt;\n        &lt;p class=\"cena\"&gt;5 499 zł&lt;/p&gt;\n        &lt;p class=\"opis\"&gt;Lekki laptop biznesowy z 14\" ekranem IPS.&lt;/p&gt;\n        &lt;button class=\"btn-kup\"&gt;Dodaj do koszyka&lt;/button&gt;\n    &lt;/div&gt;\n&lt;/article&gt;\n.karta-produktu {\n    display: flex;\n    flex-direction: column;\n    border: 1px solid #e0e0e0;\n    border-radius: 8px;\n    overflow: hidden;             /* Obcina rogi obrazka */\n    transition: transform 0.2s;  /* Płynna animacja */\n}\n\n.karta-produktu:hover {\n    transform: translateY(-4px);  /* Unosi się po najechaniu */\n    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);\n}\n\n.karta-produktu img {\n    width: 100%;\n    height: 200px;\n    object-fit: cover;  /* Przycina obraz proporcjonalnie */\n}\n\n.karta-tresc {\n    padding: 16px;\n    display: flex;\n    flex-direction: column;\n    flex: 1;  /* Rozciąga się, by karty miały równą wysokość */\n}\n\n.cena {\n    font-size: 1.5rem;\n    font-weight: bold;\n    color: #0066cc;\n}\n\n.btn-kup {\n    margin-top: auto;  /* Przycisk zawsze na dole karty */\n    padding: 12px;\n    background: #0066cc;\n    color: white;\n    border: none;\n    border-radius: 6px;\n    cursor: pointer;\n    font-size: 1rem;\n    transition: background 0.2s;\n}\n\n.btn-kup:hover {\n    background: #0052a3;\n}\nEfekt: responsywna karta z animacją hover, wyrównanymi przyciskami i semantycznym HTML-em. Przycisk “Dodaj do koszyka” zawsze przylega do dołu karty dzięki margin-top: auto w Flexboxie.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad3.html#podsumowanie-wykładu-3",
+    "href": "lectures/wyklad3.html#podsumowanie-wykładu-3",
+    "title": "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji",
+    "section": "Podsumowanie Wykładu 3",
+    "text": "Podsumowanie Wykładu 3\n\n\n\n\n\n\n\nTemat\nCo zapamiętać\n\n\n\n\nHTML5\n&lt;!DOCTYPE html&gt;, charset, viewport — trzy obowiązkowe elementy\n\n\nSemantyka\nheader, nav, main, article, section, aside, footer zamiast div\n\n\nFormularze\ntype=\"email\", required, pattern — walidacja bez JS\n\n\nCSS Selektory\nKlasy . (10 pkt) &gt; elementy (1 pkt). Unikaj !important\n\n\nBox Model\nZawsze box-sizing: border-box\n\n\nFlexbox\nJednowymiarowy: display: flex, justify-content, align-items\n\n\nGrid\nDwuwymiarowy: display: grid, grid-template-columns, grid-template-rows\n\n\nResponsywność\nMobile First + @media (min-width: ...) + jednostki rem/fr/vw\n\n\n\nZadanie do przećwiczenia: Stwórz stronę portfolio (strona główna z nawigacją, sekcja “O mnie”, siatka projektów jako karty, formularz kontaktowy, stopka). Użyj wyłącznie HTML5 semantycznego + CSS Grid/Flexbox. Strona musi być responsywna (1 kolumna na mobile, 2–3 na desktopie).",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "HTML5 i CSS – Budowanie szkieletu i skóry aplikacji"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad4.html",
+    "href": "lectures/wyklad4.html",
+    "title": "PHP – Programowanie obiektowe, bazy danych i wzorce CMS",
+    "section": "",
+    "text": "Na Wykładzie 1 widzieliśmy, że Backend to “mózg” operacji — kod ukryty przed użytkownikiem, działający na serwerze. Pokazywaliśmy przykłady w Pythonie (Flask), Node.js i Julii. Dziś skupimy się na PHP.\nFakty: Według danych W3Techs, PHP jest używany przez ok. 75% wszystkich stron internetowych z rozpoznanym językiem server-side. WordPress (43% wszystkich stron w internecie), Facebook (początkowo), Wikipedia — wszystkie zbudowane na PHP.\nPHP nie jest “starym, brzydkim językiem”, jak niektórzy twierdzą. PHP 8.x to nowoczesny język z typowaniem, enum-ami, match expression i wydajnością porównywalną z innymi rozwiązaniami. Klucz to pisanie nowoczesnego PHP, a nie kodu jak w 2005 roku.\n\n\nPrzypomnijmy schemat z Wykładu 1:\n\nPrzeglądarka wysyła żądanie HTTP (GET /strona.php)\nSerwer WWW (Apache/Nginx) rozpoznaje plik .php i przekazuje go do interpretera PHP\nPHP wykonuje kod, generuje HTML (lub JSON)\nSerwer odsyła wynik do przeglądarki\nPrzeglądarka renderuje otrzymany HTML\n\n&lt;?php\n// Prosty skrypt — generuje HTML dynamicznie\n$godzina = date('H');\n$powitanie = ($godzina &lt; 12) ? 'Dzień dobry' : 'Dobry wieczór';\n?&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"pl\"&gt;\n&lt;head&gt;&lt;title&gt;Powitanie&lt;/title&gt;&lt;/head&gt;\n&lt;body&gt;\n    &lt;h1&gt;&lt;?= $powitanie ?&gt;, użytkowniku!&lt;/h1&gt;\n    &lt;p&gt;Jest godzina &lt;?= date('H:i') ?&gt;&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;\nZnak &lt;?= ... ?&gt; to skrót od &lt;?php echo ... ?&gt;. Powyższy skrypt generuje inny HTML o 8 rano niż o 20 wieczorem — to samo “R” w akronimie REST: serwer wysyła reprezentację, nie sam zasób.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "PHP – Programowanie obiektowe, bazy danych i wzorce CMS"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad4.html#php-język-który-napędza-połowę-internetu",
+    "href": "lectures/wyklad4.html#php-język-który-napędza-połowę-internetu",
+    "title": "PHP – Programowanie obiektowe, bazy danych i wzorce CMS",
+    "section": "",
+    "text": "Na Wykładzie 1 widzieliśmy, że Backend to “mózg” operacji — kod ukryty przed użytkownikiem, działający na serwerze. Pokazywaliśmy przykłady w Pythonie (Flask), Node.js i Julii. Dziś skupimy się na PHP.\nFakty: Według danych W3Techs, PHP jest używany przez ok. 75% wszystkich stron internetowych z rozpoznanym językiem server-side. WordPress (43% wszystkich stron w internecie), Facebook (początkowo), Wikipedia — wszystkie zbudowane na PHP.\nPHP nie jest “starym, brzydkim językiem”, jak niektórzy twierdzą. PHP 8.x to nowoczesny język z typowaniem, enum-ami, match expression i wydajnością porównywalną z innymi rozwiązaniami. Klucz to pisanie nowoczesnego PHP, a nie kodu jak w 2005 roku.\n\n\nPrzypomnijmy schemat z Wykładu 1:\n\nPrzeglądarka wysyła żądanie HTTP (GET /strona.php)\nSerwer WWW (Apache/Nginx) rozpoznaje plik .php i przekazuje go do interpretera PHP\nPHP wykonuje kod, generuje HTML (lub JSON)\nSerwer odsyła wynik do przeglądarki\nPrzeglądarka renderuje otrzymany HTML\n\n&lt;?php\n// Prosty skrypt — generuje HTML dynamicznie\n$godzina = date('H');\n$powitanie = ($godzina &lt; 12) ? 'Dzień dobry' : 'Dobry wieczór';\n?&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"pl\"&gt;\n&lt;head&gt;&lt;title&gt;Powitanie&lt;/title&gt;&lt;/head&gt;\n&lt;body&gt;\n    &lt;h1&gt;&lt;?= $powitanie ?&gt;, użytkowniku!&lt;/h1&gt;\n    &lt;p&gt;Jest godzina &lt;?= date('H:i') ?&gt;&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;\nZnak &lt;?= ... ?&gt; to skrót od &lt;?php echo ... ?&gt;. Powyższy skrypt generuje inny HTML o 8 rano niż o 20 wieczorem — to samo “R” w akronimie REST: serwer wysyła reprezentację, nie sam zasób.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "PHP – Programowanie obiektowe, bazy danych i wzorce CMS"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad4.html#php-8.x-nowoczesna-składnia",
+    "href": "lectures/wyklad4.html#php-8.x-nowoczesna-składnia",
+    "title": "PHP – Programowanie obiektowe, bazy danych i wzorce CMS",
+    "section": "2. PHP 8.x: Nowoczesna składnia",
+    "text": "2. PHP 8.x: Nowoczesna składnia\nZanim przejdziemy do OOP, poznajmy kluczowe cechy współczesnego PHP.\n\nStrict typing\n&lt;?php\ndeclare(strict_types=1); // Włącza ścisłe typowanie — na początku KAŻDEGO pliku\n\nfunction dodaj(int $a, int $b): int {\n    return $a + $b;\n}\n\necho dodaj(2, 3);    // ✅ 5\necho dodaj(\"2\", \"3\"); // ❌ TypeError! Bez strict_types zwróciłby 5\ndeclare(strict_types=1) to odpowiednik TypeScript dla JavaScriptu. Bez tego PHP cicho konwertuje typy (np. string “42” na int 42), co prowadzi do trudnych do wykrycia błędów.\n\n\nTypy złożone i nowe konstrukcje\n&lt;?php\ndeclare(strict_types=1);\n\n// Union types — zmienna akceptuje kilka typów\nfunction znajdz(int|string $id): ?array {\n    // ?array oznacza \"array albo null\"\n    return null;\n}\n\n// Named arguments — czytelniejsze wywołania\nfunction stworzUzytkownika(\n    string $imie,\n    string $email,\n    int $wiek = 25,\n    bool $aktywny = true\n): array {\n    return compact('imie', 'email', 'wiek', 'aktywny');\n}\n\n// Zamiast pamiętać kolejność argumentów:\n$user = stworzUzytkownika(\n    email: 'jan@wp.pl',   // Kolejność nie ma znaczenia!\n    imie: 'Jan',\n    aktywny: false\n);\n\n// Match expression — czytelniejsza alternatywa dla switch\n$status = 'admin';\n$rola = match($status) {\n    'admin'     =&gt; 'Pełen dostęp',\n    'editor'    =&gt; 'Edycja treści',\n    'viewer'    =&gt; 'Tylko odczyt',\n    default     =&gt; 'Brak uprawnień',\n};\n\n// Enum (PHP 8.1)\nenum StatusZamowienia: string {\n    case Nowe      = 'nowe';\n    case Oplacone  = 'oplacone';\n    case Wyslane   = 'wyslane';\n    case Dostarczone = 'dostarczone';\n}\n\n$zamowienie = StatusZamowienia::Oplacone;\necho $zamowienie-&gt;value; // 'oplacone'",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "PHP – Programowanie obiektowe, bazy danych i wzorce CMS"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad4.html#programowanie-obiektowe-oop-w-php",
+    "href": "lectures/wyklad4.html#programowanie-obiektowe-oop-w-php",
+    "title": "PHP – Programowanie obiektowe, bazy danych i wzorce CMS",
+    "section": "3. Programowanie obiektowe (OOP) w PHP",
+    "text": "3. Programowanie obiektowe (OOP) w PHP\nProceduralne PHP (same funkcje i zmienne globalne) to przepis na katastrofę w większym projekcie. OOP pozwala organizować kod w logiczne, hermetyczne jednostki.\n\nKlasa i obiekt\nKlasa to przepis (blueprint), obiekt to konkretne ciasto upieczone z tego przepisu (analogia z Dockera — Obraz vs Kontener).\n&lt;?php\ndeclare(strict_types=1);\n\nclass Produkt {\n    // Właściwości — dane obiektu\n    private string $nazwa;\n    private float $cena;\n    private int $ilosc;\n\n    // Konstruktor — wywoływany przy tworzeniu obiektu (new Produkt(...))\n    public function __construct(string $nazwa, float $cena, int $ilosc = 0) {\n        $this-&gt;nazwa = $nazwa;\n        $this-&gt;cena  = $cena;\n        $this-&gt;ilosc = $ilosc;\n    }\n\n    // Metody publiczne — interfejs obiektu\n    public function getNazwa(): string {\n        return $this-&gt;nazwa;\n    }\n\n    public function getCena(): float {\n        return $this-&gt;cena;\n    }\n\n    public function jestDostepny(): bool {\n        return $this-&gt;ilosc &gt; 0;\n    }\n\n    public function sprzedaj(int $ile = 1): void {\n        if ($ile &gt; $this-&gt;ilosc) {\n            throw new \\RuntimeException(\"Brak wystarczającej ilości na stanie\");\n        }\n        $this-&gt;ilosc -= $ile;\n    }\n\n    // Metoda do serializacji — przydatne przy API (JSON)\n    public function toArray(): array {\n        return [\n            'nazwa'    =&gt; $this-&gt;nazwa,\n            'cena'     =&gt; $this-&gt;cena,\n            'ilosc'    =&gt; $this-&gt;ilosc,\n            'dostepny' =&gt; $this-&gt;jestDostepny(),\n        ];\n    }\n}\n\n// Użycie:\n$laptop = new Produkt('ThinkPad X1', 5499.99, 10);\necho $laptop-&gt;getNazwa();     // \"ThinkPad X1\"\necho $laptop-&gt;jestDostepny(); // true\n\n$laptop-&gt;sprzedaj(2);\necho json_encode($laptop-&gt;toArray());\n// {\"nazwa\":\"ThinkPad X1\",\"cena\":5499.99,\"ilosc\":8,\"dostepny\":true}\n\n\nConstructor Promotion (PHP 8.0)\nPisanie $this-&gt;nazwa = $nazwa w konstruktorze jest powtarzalne. PHP 8 upraszcza to drastycznie:\n&lt;?php\ndeclare(strict_types=1);\n\nclass Produkt {\n    // Konstruktor z promocją — właściwości deklarowane bezpośrednio w parametrach\n    public function __construct(\n        private string $nazwa,\n        private float $cena,\n        private int $ilosc = 0\n    ) {\n        // Ciało może być puste — PHP sam przypisze wartości\n    }\n\n    public function getNazwa(): string {\n        return $this-&gt;nazwa;\n    }\n\n    // ... reszta metod jak wcześniej\n}\nMniej kodu, ten sam efekt. private string $nazwa w parametrze konstruktora automatycznie tworzy właściwość i przypisuje wartość.\n\n\nEnkapsulacja i modyfikatory dostępu\n&lt;?php\nclass KontoBankowe {\n    public function __construct(\n        private string $wlasciciel,\n        private float $saldo = 0.0  // ← private: nikt z zewnątrz nie zmieni bezpośrednio\n    ) {}\n\n    public function wplac(float $kwota): void {\n        if ($kwota &lt;= 0) {\n            throw new \\InvalidArgumentException(\"Kwota musi być dodatnia\");\n        }\n        $this-&gt;saldo += $kwota;\n    }\n\n    public function getSaldo(): float {\n        return $this-&gt;saldo;\n    }\n\n    // Metoda prywatna — używana tylko wewnątrz klasy\n    private function naliczOdsetki(): void {\n        $this-&gt;saldo *= 1.05;\n    }\n}\n\n$konto = new KontoBankowe('Jan Kowalski', 1000);\n$konto-&gt;wplac(500);\necho $konto-&gt;getSaldo();  // 1500\n\n// $konto-&gt;saldo = 999999;      ❌ Fatal Error! saldo jest private\n// $konto-&gt;naliczOdsetki();     ❌ Fatal Error! metoda jest private\n\n\n\n\n\n\n\n\nModyfikator\nWidoczność\nUżycie\n\n\n\n\npublic\nWszędzie\nInterfejs obiektu (metody do użytku zewnętrznego)\n\n\nprotected\nKlasa + klasy dziedziczące\nMetody/właściwości dla podklas\n\n\nprivate\nTylko wewnątrz tej klasy\nDane wewnętrzne, metody pomocnicze\n\n\n\n\n\nDziedziczenie i interfejsy\n&lt;?php\n// Interfejs — kontrakt: \"każda klasa implementująca MUSI mieć te metody\"\ninterface Exportowalny {\n    public function toArray(): array;\n    public function toJSON(): string;\n}\n\n// Klasa abstrakcyjna — nie można stworzyć obiektu z niej bezpośrednio\nabstract class ElementSklepu implements Exportowalny {\n    public function __construct(\n        protected string $nazwa,\n        protected float $cena\n    ) {}\n\n    // Metoda abstrakcyjna — MUSI być zaimplementowana przez podklasę\n    abstract public function obliczPodatek(): float;\n\n    // Metoda konkretna — dziedziczona automatycznie\n    public function toJSON(): string {\n        return json_encode($this-&gt;toArray(), JSON_UNESCAPED_UNICODE);\n    }\n}\n\nclass ProduktFizyczny extends ElementSklepu {\n    public function __construct(\n        string $nazwa,\n        float $cena,\n        private float $waga // kg\n    ) {\n        parent::__construct($nazwa, $cena);\n    }\n\n    public function obliczPodatek(): float {\n        return $this-&gt;cena * 0.23; // 23% VAT\n    }\n\n    public function toArray(): array {\n        return [\n            'nazwa'   =&gt; $this-&gt;nazwa,\n            'cena'    =&gt; $this-&gt;cena,\n            'podatek' =&gt; $this-&gt;obliczPodatek(),\n            'waga'    =&gt; $this-&gt;waga,\n        ];\n    }\n}\n\nclass ProduktCyfrowy extends ElementSklepu {\n    public function obliczPodatek(): float {\n        return $this-&gt;cena * 0.08; // 8% VAT na e-booki\n    }\n\n    public function toArray(): array {\n        return [\n            'nazwa'   =&gt; $this-&gt;nazwa,\n            'cena'    =&gt; $this-&gt;cena,\n            'podatek' =&gt; $this-&gt;obliczPodatek(),\n        ];\n    }\n}",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "PHP – Programowanie obiektowe, bazy danych i wzorce CMS"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad4.html#pdo-bezpieczne-połączenie-z-bazą-danych",
+    "href": "lectures/wyklad4.html#pdo-bezpieczne-połączenie-z-bazą-danych",
+    "title": "PHP – Programowanie obiektowe, bazy danych i wzorce CMS",
+    "section": "4. PDO: Bezpieczne połączenie z bazą danych",
+    "text": "4. PDO: Bezpieczne połączenie z bazą danych\nNa Wykładzie 1 serwer “udawał” bazę danych prostym słownikiem w Pythonie. W rzeczywistości dane mieszkają w systemie bazodanowym (MySQL, PostgreSQL, SQLite).\nPHP łączy się z bazą przez PDO (PHP Data Objects) — uniwersalny interfejs, który działa z każdym silnikiem SQL.\n\nWzorzec Singleton: Jedno połączenie na żądanie\nTworzenie nowego połączenia z bazą przy każdym zapytaniu to marnotrawstwo zasobów. Wzorzec Singleton gwarantuje, że w ramach jednego żądania HTTP istnieje dokładnie jedno połączenie:\n&lt;?php\ndeclare(strict_types=1);\n\nclass Database {\n    private static ?PDO $instance = null;\n\n    // Prywatny konstruktor — nie można wywołać new Database()\n    private function __construct() {}\n\n    public static function getInstance(): PDO {\n        if (self::$instance === null) {\n            $dsn = 'mysql:host=localhost;dbname=sklep;charset=utf8mb4';\n\n            self::$instance = new PDO($dsn, 'app_user', 'tajne_haslo', [\n                // Błędy rzucane jako wyjątki — łapiesz je try/catch\n                PDO::ATTR_ERRMODE            =&gt; PDO::ERRMODE_EXCEPTION,\n                // Wyniki jako tablice asocjacyjne (klucz =&gt; wartość)\n                PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_ASSOC,\n                // Wyłącz emulację prepared statements — prawdziwa ochrona\n                PDO::ATTR_EMULATE_PREPARES   =&gt; false,\n            ]);\n        }\n        return self::$instance;\n    }\n}\n\n// Użycie w dowolnym miejscu kodu:\n$db = Database::getInstance();\n// Drugie wywołanie ZWRACA TEN SAM OBIEKT — nie tworzy nowego połączenia\n$db2 = Database::getInstance();\nvar_dump($db === $db2); // true\nDlaczego charset=utf8mb4? Obsługuje pełen Unicode (w tym emoji 🎓). Samo utf8 w MySQL to okrojona wersja UTF-8.\n\n\nPrepared Statements: Ochrona przed SQL Injection\nNa Wykładzie 1 mówiliśmy: klientowi nigdy nie ufamy. Oto dlaczego:\n&lt;?php\n// ❌ NIGDY TAK NIE RÓB — SQL Injection\n$id = $_GET['id']; // Użytkownik wpisał: \"1; DROP TABLE users; --\"\n$db-&gt;query(\"SELECT * FROM users WHERE id = $id\");\n// Efekt: DROP TABLE users — baza danych usunięta!\n\n// ✅ ZAWSZE Prepared Statements\n$stmt = $db-&gt;prepare(\"SELECT * FROM users WHERE id = :id\");\n$stmt-&gt;execute([':id' =&gt; $_GET['id']]);\n$user = $stmt-&gt;fetch();\n// PDO automatycznie \"ucieka\" niebezpieczne znaki — zapytanie jest bezpieczne\nPrepared Statements działają w dwóch krokach:\n\nprepare() — wysyła do bazy “szablon” zapytania z “dziurami” (:id)\nexecute() — wypełnia “dziury” danymi, ale baza traktuje je wyłącznie jako dane, nie jako kod SQL\n\n\n\nPełny CRUD (Create, Read, Update, Delete)\n&lt;?php\n$db = Database::getInstance();\n\n// ═══ CREATE ═══\n$stmt = $db-&gt;prepare(\"\n    INSERT INTO produkty (nazwa, cena, ilosc)\n    VALUES (:nazwa, :cena, :ilosc)\n\");\n$stmt-&gt;execute([\n    ':nazwa' =&gt; 'Laptop ThinkPad',\n    ':cena'  =&gt; 5499.99,\n    ':ilosc' =&gt; 10\n]);\n$noweId = $db-&gt;lastInsertId(); // ID wstawionego rekordu\n\n// ═══ READ — jeden rekord ═══\n$stmt = $db-&gt;prepare(\"SELECT * FROM produkty WHERE id = :id\");\n$stmt-&gt;execute([':id' =&gt; $noweId]);\n$produkt = $stmt-&gt;fetch(); // Tablica asocjacyjna lub false\n\n// ═══ READ — wiele rekordów z filtrem ═══\n$stmt = $db-&gt;prepare(\"\n    SELECT * FROM produkty\n    WHERE cena BETWEEN :min AND :max\n    ORDER BY cena ASC\n\");\n$stmt-&gt;execute([':min' =&gt; 1000, ':max' =&gt; 6000]);\n$produkty = $stmt-&gt;fetchAll(); // Tablica tablic asocjacyjnych\n\n// ═══ UPDATE ═══\n$stmt = $db-&gt;prepare(\"\n    UPDATE produkty SET cena = :cena, ilosc = :ilosc\n    WHERE id = :id\n\");\n$stmt-&gt;execute([':cena' =&gt; 4999.99, ':ilosc' =&gt; 8, ':id' =&gt; $noweId]);\necho $stmt-&gt;rowCount(); // Liczba zmienionych wierszy\n\n// ═══ DELETE ═══\n$stmt = $db-&gt;prepare(\"DELETE FROM produkty WHERE id = :id\");\n$stmt-&gt;execute([':id' =&gt; $noweId]);",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "PHP – Programowanie obiektowe, bazy danych i wzorce CMS"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad4.html#klasa-bazowa-model-active-record-dla-cms",
+    "href": "lectures/wyklad4.html#klasa-bazowa-model-active-record-dla-cms",
+    "title": "PHP – Programowanie obiektowe, bazy danych i wzorce CMS",
+    "section": "5. Klasa bazowa Model — Active Record dla CMS",
+    "text": "5. Klasa bazowa Model — Active Record dla CMS\nW systemach CMS (WordPress, Drupal, własne) każda “rzecz” (post, użytkownik, komentarz) to osobna tabela w bazie. Zamiast powtarzać kod CRUD w każdym pliku, tworzymy abstrakcyjną klasę bazową:\n&lt;?php\ndeclare(strict_types=1);\n\nabstract class Model {\n    protected PDO $db;\n    protected string $table; // Każda podklasa definiuje swoją tabelę\n\n    public function __construct() {\n        $this-&gt;db = Database::getInstance();\n    }\n\n    // ─── READ ───\n    public function findAll(string $orderBy = 'id ASC'): array {\n        $stmt = $this-&gt;db-&gt;query(\n            \"SELECT * FROM {$this-&gt;table} ORDER BY {$orderBy}\"\n        );\n        return $stmt-&gt;fetchAll();\n    }\n\n    public function findById(int $id): ?array {\n        $stmt = $this-&gt;db-&gt;prepare(\n            \"SELECT * FROM {$this-&gt;table} WHERE id = :id\"\n        );\n        $stmt-&gt;execute([':id' =&gt; $id]);\n        $result = $stmt-&gt;fetch();\n        return $result ?: null;\n    }\n\n    // ─── CREATE ───\n    public function create(array $data): int {\n        $columns = implode(', ', array_keys($data));\n        $placeholders = ':' . implode(', :', array_keys($data));\n\n        $stmt = $this-&gt;db-&gt;prepare(\n            \"INSERT INTO {$this-&gt;table} ({$columns}) VALUES ({$placeholders})\"\n        );\n        $stmt-&gt;execute($data);\n        return (int) $this-&gt;db-&gt;lastInsertId();\n    }\n\n    // ─── UPDATE ───\n    public function update(int $id, array $data): bool {\n        $sets = [];\n        foreach ($data as $key =&gt; $value) {\n            $sets[] = \"{$key} = :{$key}\";\n        }\n        $setString = implode(', ', $sets);\n\n        $stmt = $this-&gt;db-&gt;prepare(\n            \"UPDATE {$this-&gt;table} SET {$setString} WHERE id = :id\"\n        );\n        $data['id'] = $id;\n        return $stmt-&gt;execute($data);\n    }\n\n    // ─── DELETE ───\n    public function delete(int $id): bool {\n        $stmt = $this-&gt;db-&gt;prepare(\n            \"DELETE FROM {$this-&gt;table} WHERE id = :id\"\n        );\n        return $stmt-&gt;execute([':id' =&gt; $id]);\n    }\n\n    // ─── COUNT ───\n    public function count(): int {\n        $stmt = $this-&gt;db-&gt;query(\"SELECT COUNT(*) FROM {$this-&gt;table}\");\n        return (int) $stmt-&gt;fetchColumn();\n    }\n}\nTeraz tworzenie modeli dla konkretnych tabel jest trywialne:\n&lt;?php\nclass Post extends Model {\n    protected string $table = 'posts';\n\n    // Metody specyficzne dla postów\n    public function findPublished(): array {\n        $stmt = $this-&gt;db-&gt;prepare(\"\n            SELECT p.*, u.imie AS autor\n            FROM {$this-&gt;table} p\n            JOIN users u ON p.autor_id = u.id\n            WHERE p.status = :status\n            ORDER BY p.data_publikacji DESC\n        \");\n        $stmt-&gt;execute([':status' =&gt; 'published']);\n        return $stmt-&gt;fetchAll();\n    }\n\n    public function findBySlug(string $slug): ?array {\n        $stmt = $this-&gt;db-&gt;prepare(\n            \"SELECT * FROM {$this-&gt;table} WHERE slug = :slug\"\n        );\n        $stmt-&gt;execute([':slug' =&gt; $slug]);\n        $result = $stmt-&gt;fetch();\n        return $result ?: null;\n    }\n}\n\nclass User extends Model {\n    protected string $table = 'users';\n\n    public function findByEmail(string $email): ?array {\n        $stmt = $this-&gt;db-&gt;prepare(\n            \"SELECT * FROM {$this-&gt;table} WHERE email = :email\"\n        );\n        $stmt-&gt;execute([':email' =&gt; $email]);\n        $result = $stmt-&gt;fetch();\n        return $result ?: null;\n    }\n\n    // ⚠️ Nigdy nie przechowuj haseł w czystym tekście!\n    public function createWithPassword(string $imie, string $email, string $haslo): int {\n        return $this-&gt;create([\n            'imie'  =&gt; $imie,\n            'email' =&gt; $email,\n            'haslo' =&gt; password_hash($haslo, PASSWORD_BCRYPT),\n        ]);\n    }\n\n    public function weryfikujHaslo(string $email, string $haslo): ?array {\n        $user = $this-&gt;findByEmail($email);\n        if ($user && password_verify($haslo, $user['haslo'])) {\n            return $user;\n        }\n        return null;\n    }\n}\n\n// ═══ Użycie ═══\n$postModel = new Post();\n$userModel = new User();\n\n// Stwórz użytkownika\n$userId = $userModel-&gt;createWithPassword('Jan', 'jan@example.com', 'bezpieczneHaslo123');\n\n// Stwórz post\n$postId = $postModel-&gt;create([\n    'tytul'           =&gt; 'Mój pierwszy wpis',\n    'slug'            =&gt; 'moj-pierwszy-wpis',\n    'tresc'           =&gt; 'Treść artykułu...',\n    'autor_id'        =&gt; $userId,\n    'status'          =&gt; 'published',\n    'data_publikacji' =&gt; date('Y-m-d H:i:s'),\n]);\n\n// Pobierz opublikowane posty\n$posty = $postModel-&gt;findPublished();",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "PHP – Programowanie obiektowe, bazy danych i wzorce CMS"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad4.html#architektura-mvc-porządek-w-kodzie-cms",
+    "href": "lectures/wyklad4.html#architektura-mvc-porządek-w-kodzie-cms",
+    "title": "PHP – Programowanie obiektowe, bazy danych i wzorce CMS",
+    "section": "6. Architektura MVC: Porządek w kodzie CMS",
+    "text": "6. Architektura MVC: Porządek w kodzie CMS\nKiedy piszesz cały kod w jednym pliku (index.php z SQL-em, HTML-em i logiką pomieszanymi), powstaje tzw. spaghetti code. Przy 500 linijkach nikt tego nie ogarnie.\nWzorzec MVC (Model-View-Controller) dzieli kod na trzy warstwy:\n\nModel — dane i logika biznesowa (klasy, które właśnie napisaliśmy)\nView — widok, szablony HTML\nController — “dyżurny” — odbiera żądanie HTTP, woła odpowiedni Model, przekazuje dane do Widoku\n\n\nStruktura katalogów prostego CMS\nmoj-cms/\n├── public/             # Jedyny folder widoczny z internetu!\n│   ├── index.php       # Front Controller — KAŻDE żądanie przechodzi przez ten plik\n│   ├── css/\n│   │   └── style.css\n│   └── js/\n│       └── app.js\n├── src/\n│   ├── Database.php    # Klasa połączenia z bazą (Singleton)\n│   ├── Model.php       # Abstrakcyjna klasa bazowa\n│   ├── models/\n│   │   ├── Post.php\n│   │   └── User.php\n│   ├── controllers/\n│   │   ├── PostController.php\n│   │   └── UserController.php\n│   └── Router.php      # Prosty router URL → Controller\n├── templates/           # Szablony HTML (Widoki)\n│   ├── layout.php       # Główny szablon (header + footer)\n│   ├── home.php\n│   ├── post/\n│   │   ├── index.php    # Lista postów\n│   │   └── show.php     # Pojedynczy post\n│   └── errors/\n│       └── 404.php\n└── config/\n    └── database.php     # Ustawienia bazy (host, login, hasło)\nKluczowa zasada bezpieczeństwa: Tylko folder public/ jest dostępny z przeglądarki. Pliki w src/, templates/, config/ NIE MOGĄ być dostępne bezpośrednio — zawierają hasła do bazy, logikę biznesową itp.\n\n\nFront Controller: Jeden punkt wejścia\nZamiast osobnych plików posts.php, users.php, kontakt.php, wszystkie żądania idą przez public/index.php:\n&lt;?php\n// public/index.php — Front Controller\n\ndeclare(strict_types=1);\n\n// Autoloader — automatycznie ładuje klasy z src/\nspl_autoload_register(function (string $class) {\n    $path = __DIR__ . '/../src/' . str_replace('\\\\', '/', $class) . '.php';\n    if (file_exists($path)) {\n        require $path;\n    }\n});\n\n// Załaduj konfigurację\nrequire __DIR__ . '/../config/database.php';\n\n// Prosty routing\n$uri    = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);\n$method = $_SERVER['REQUEST_METHOD'];\n\n// Wywołaj odpowiedni controller na podstawie URL\n$router = new Router();\n$router-&gt;get('/',           'PostController@index');\n$router-&gt;get('/post/{slug}','PostController@show');\n$router-&gt;get('/admin/posts','PostController@adminList');\n$router-&gt;post('/admin/posts','PostController@store');\n\n$router-&gt;dispatch($method, $uri);\n\n\nProsty Router\n&lt;?php\ndeclare(strict_types=1);\n\nclass Router {\n    private array $routes = [];\n\n    public function get(string $path, string $action): void {\n        $this-&gt;routes['GET'][$path] = $action;\n    }\n\n    public function post(string $path, string $action): void {\n        $this-&gt;routes['POST'][$path] = $action;\n    }\n\n    public function dispatch(string $method, string $uri): void {\n        foreach ($this-&gt;routes[$method] ?? [] as $route =&gt; $action) {\n            // Zamień {slug} na regex\n            $pattern = preg_replace('/\\{(\\w+)\\}/', '(?P&lt;$1&gt;[^/]+)', $route);\n            $pattern = '#^' . $pattern . '$#';\n\n            if (preg_match($pattern, $uri, $matches)) {\n                [$controllerName, $methodName] = explode('@', $action);\n                $controller = new $controllerName();\n\n                // Zbierz nazwane parametry (np. slug)\n                $params = array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY);\n                $controller-&gt;$methodName(...$params);\n                return;\n            }\n        }\n\n        // 404 — nie znaleziono trasy\n        http_response_code(404);\n        require __DIR__ . '/../templates/errors/404.php';\n    }\n}\n\n\nController\n&lt;?php\ndeclare(strict_types=1);\n\nclass PostController {\n    private Post $postModel;\n\n    public function __construct() {\n        $this-&gt;postModel = new Post();\n    }\n\n    // GET / — strona główna z listą postów\n    public function index(): void {\n        $posty = $this-&gt;postModel-&gt;findPublished();\n        $title = 'Strona główna';\n\n        // Przekazujemy dane do widoku\n        require __DIR__ . '/../templates/layout.php';\n    }\n\n    // GET /post/{slug} — pojedynczy post\n    public function show(string $slug): void {\n        $post = $this-&gt;postModel-&gt;findBySlug($slug);\n\n        if (!$post) {\n            http_response_code(404);\n            require __DIR__ . '/../templates/errors/404.php';\n            return;\n        }\n\n        $title = $post['tytul'];\n        require __DIR__ . '/../templates/layout.php';\n    }\n\n    // POST /admin/posts — zapisz nowy post\n    public function store(): void {\n        // Walidacja danych z formularza\n        $tytul = trim($_POST['tytul'] ?? '');\n        $tresc = trim($_POST['tresc'] ?? '');\n\n        if (empty($tytul) || empty($tresc)) {\n            // Przekieruj z powrotem z błędem\n            header('Location: /admin/posts?error=empty');\n            return;\n        }\n\n        $this-&gt;postModel-&gt;create([\n            'tytul'           =&gt; $tytul,\n            'slug'            =&gt; $this-&gt;slugify($tytul),\n            'tresc'           =&gt; $tresc,\n            'autor_id'        =&gt; 1, // TODO: pobrać z sesji\n            'status'          =&gt; 'published',\n            'data_publikacji' =&gt; date('Y-m-d H:i:s'),\n        ]);\n\n        header('Location: /?success=created');\n    }\n\n    private function slugify(string $text): string {\n        $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text);\n        $text = preg_replace('/[^a-zA-Z0-9]/', '-', strtolower($text));\n        return trim(preg_replace('/-+/', '-', $text), '-');\n    }\n}\n\n\nWidok (Template)\n&lt;!-- templates/layout.php --&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"pl\"&gt;\n&lt;head&gt;\n    &lt;meta charset=\"UTF-8\"&gt;\n    &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\n    &lt;title&gt;&lt;?= htmlspecialchars($title) ?&gt; — Mój CMS&lt;/title&gt;\n    &lt;link rel=\"stylesheet\" href=\"/css/style.css\"&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;header&gt;\n        &lt;nav&gt;\n            &lt;a href=\"/\"&gt;Start&lt;/a&gt;\n            &lt;a href=\"/admin/posts\"&gt;Panel&lt;/a&gt;\n        &lt;/nav&gt;\n    &lt;/header&gt;\n\n    &lt;main&gt;\n        &lt;?php\n        // Wybierz odpowiedni fragment widoku\n        $page = $post ?? null;\n        if ($page) {\n            require __DIR__ . '/post/show.php';\n        } else {\n            require __DIR__ . '/home.php';\n        }\n        ?&gt;\n    &lt;/main&gt;\n\n    &lt;footer&gt;\n        &lt;p&gt;&copy; &lt;?= date('Y') ?&gt; Mój CMS&lt;/p&gt;\n    &lt;/footer&gt;\n&lt;/body&gt;\n&lt;/html&gt;\n&lt;!-- templates/home.php --&gt;\n&lt;h1&gt;Najnowsze artykuły&lt;/h1&gt;\n&lt;?php foreach ($posty as $p): ?&gt;\n    &lt;article&gt;\n        &lt;h2&gt;&lt;a href=\"/post/&lt;?= htmlspecialchars($p['slug']) ?&gt;\"&gt;\n            &lt;?= htmlspecialchars($p['tytul']) ?&gt;\n        &lt;/a&gt;&lt;/h2&gt;\n        &lt;time&gt;&lt;?= $p['data_publikacji'] ?&gt;&lt;/time&gt;\n        &lt;p&gt;&lt;?= htmlspecialchars(mb_substr($p['tresc'], 0, 200)) ?&gt;...&lt;/p&gt;\n    &lt;/article&gt;\n&lt;?php endforeach; ?&gt;\nWażne: htmlspecialchars() — funkcja, która zamienia znaki specjalne HTML (&lt;, &gt;, \") na bezpieczne encje (&lt;, &gt;). Chroni przed atakami XSS (Cross-Site Scripting), gdzie złośliwy użytkownik wstrzykuje &lt;script&gt; do treści.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "PHP – Programowanie obiektowe, bazy danych i wzorce CMS"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad4.html#hashowanie-haseł-password_hash-i-password_verify",
+    "href": "lectures/wyklad4.html#hashowanie-haseł-password_hash-i-password_verify",
+    "title": "PHP – Programowanie obiektowe, bazy danych i wzorce CMS",
+    "section": "7. Hashowanie haseł: password_hash i password_verify",
+    "text": "7. Hashowanie haseł: password_hash i password_verify\nNigdy, przenigdy nie przechowuj haseł w czystym tekście. Nawet nie szyfruj ich (szyfrowanie jest odwracalne). Używaj hashowania — funkcji jednokierunkowej:\n&lt;?php\n// Przy rejestracji:\n$haslo_czyste   = 'MojeSuperHaslo123';\n$haslo_zahashowane = password_hash($haslo_czyste, PASSWORD_BCRYPT);\n// Wynik: \"$2y$10$xN5Fz...\" — nawet administrator bazy nie odczyta hasła\n\n// Przy logowaniu:\n$czy_poprawne = password_verify('MojeSuperHaslo123', $haslo_zahashowane);\n// true — hasło się zgadza\n\n$czy_poprawne = password_verify('zle_haslo', $haslo_zahashowane);\n// false\nPASSWORD_BCRYPT automatycznie dodaje losową “sól” (salt) — dwa identyczne hasła dadzą różne hashe. Atakujący nie może użyć gotowych tablic rainbow.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "PHP – Programowanie obiektowe, bazy danych i wzorce CMS"
+    ]
+  },
+  {
+    "objectID": "lectures/wyklad4.html#podsumowanie-wykładu-4",
+    "href": "lectures/wyklad4.html#podsumowanie-wykładu-4",
+    "title": "PHP – Programowanie obiektowe, bazy danych i wzorce CMS",
+    "section": "Podsumowanie Wykładu 4",
+    "text": "Podsumowanie Wykładu 4\n\n\n\n\n\n\n\nTemat\nCo zapamiętać\n\n\n\n\nPHP 8.x\ndeclare(strict_types=1), union types, named args, enum, match\n\n\nOOP\nKlasa = przepis, Obiekt = ciasto. public / private / protected\n\n\nConstructor Promotion\npublic function __construct(private string $nazwa)\n\n\nPDO Singleton\nJedno połączenie na żądanie, ERRMODE_EXCEPTION, EMULATE_PREPARES =&gt; false\n\n\nPrepared Statements\nZAWSZE :parametry + execute(). NIGDY zmienne w SQL\n\n\nModel abstrakcyjny\nBazowy CRUD, podklasy definiują $table i metody specyficzne\n\n\nMVC\nModel (dane) → Controller (logika) → View (HTML). Front Controller + Router\n\n\nBezpieczeństwo\nhtmlspecialchars() vs XSS, password_hash() vs plaintext\n\n\n\nZadanie do przećwiczenia: Zbuduj prosty blog z panelem admina. Struktura MVC, dwa modele (Post, User), logowanie przez password_verify, lista postów na stronie głównej, formularz dodawania nowego postu. Bonus: zamknij wszystko w kontenerze Docker z Wykładu 2.",
+    "crumbs": [
+      "222890-S",
+      "Wykłady",
+      "PHP – Programowanie obiektowe, bazy danych i wzorce CMS"
     ]
   }
 ]

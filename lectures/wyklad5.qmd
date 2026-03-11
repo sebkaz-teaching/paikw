@@ -1,0 +1,696 @@
+---
+title: "JavaScript – Język, który ożywia przeglądarkę"
+format:
+  html:
+    code-fold: true
+---
+
+## 1. Dlaczego JavaScript?
+
+Na Wykładzie 1 poznaliśmy trzy języki Frontendu: HTML (struktura), CSS (wygląd) i JavaScript (zachowanie). Na Wykładzie 3 zgłębiliśmy HTML5 i CSS. Teraz czas na trzecią nogę — jedyny język programowania, który przeglądarka rozumie natywnie.
+
+**JavaScript to nie Java.** Nazwa to marketingowy chwyt z lat 90., gdy Java była modna. To zupełnie różne języki. JavaScript powstał w 1995 roku — napisany w 10 dni przez Brendana Eicha w firmie Netscape. Od tego czasu przeszedł ewolucję od prostego skryptowania po pełnoprawny język do budowy zarówno Frontendu (React, Angular), jak i Backendu (Node.js — Wykład 1).
+
+**ECMAScript (ES)** — oficjalna specyfikacja języka. Kluczowe wersje:
+
+* **ES5 (2009):** `var`, `function` — "stary" JavaScript
+* **ES6/ES2015:** Rewolucja — `let`/`const`, arrow functions, klasy, moduły, template literals
+* **ES2020+:** Optional chaining (`?.`), nullish coalescing (`??`), top-level await
+
+Piszemy **nowoczesny JS (ES6+)** — stary styl zostawiamy dla kursów archeologii.
+
+## 2. Zmienne: let, const i dlaczego nie var
+
+```js
+// ❌ var — stare podejście, unikaj
+var imie = "Jan";
+var imie = "Anna"; // Nie zgłasza błędu — nadpisuje po cichu!
+
+// ✅ let — wartość może się zmienić
+let wiek = 25;
+wiek = 26; // OK
+
+// ✅ const — wartość NIE może się zmienić (stała)
+const PI = 3.14159;
+// PI = 3; // ❌ TypeError: Assignment to constant variable
+
+const student = { imie: "Jan", wiek: 25 };
+student.wiek = 26;  // ✅ OK! Obiekt jest stały, ale jego WŁAŚCIWOŚCI mogą się zmieniać
+// student = {};     // ❌ Błąd — nie możesz podmienić całego obiektu
+```
+
+**Zasada:** Domyślnie używaj `const`. Sięgaj po `let` tylko wtedy, gdy wartość musi się zmieniać (np. licznik w pętli). Nigdy nie używaj `var`.
+
+Dlaczego nie `var`? Trzy powody: `var` ma zasięg funkcyjny (nie blokowy), pozwala na ponowną deklarację i jest "wyciągany" na górę funkcji (*hoisting*) — to źródło trudnych do znalezienia błędów.
+
+## 3. Typy danych
+
+JavaScript ma **typowanie dynamiczne** — nie deklarujesz typu zmiennej, ale każda wartość MA swój typ:
+
+```js
+// Typy prymitywne
+const text     = "Hello";        // string
+const liczba   = 42;             // number (int i float to jedno!)
+const pi       = 3.14;           // number
+const prawda   = true;           // boolean
+const nic      = null;           // null — celowy brak wartości
+let   x;                         // undefined — zmienna bez wartości
+const duza     = 9007199254740991n; // BigInt (ES2020)
+const sym      = Symbol('id');   // Symbol — unikalny identyfikator
+
+// Typy złożone (referencyjne)
+const tablica  = [1, 2, 3];           // Array
+const obiekt   = { imie: "Jan" };     // Object
+const funkcja  = (x) => x * 2;        // Function (tak, funkcja to typ!)
+```
+
+### Porównywanie: == vs ===
+
+```js
+// == porównuje WARTOŚĆ (z konwersją typów) — ❌ unikaj
+0 == ""         // true (co?!)
+0 == false      // true
+"" == false     // true
+null == undefined // true
+
+// === porównuje WARTOŚĆ i TYP — ✅ zawsze używaj
+0 === ""        // false
+0 === false     // false
+null === undefined // false
+```
+
+**Zasada:** Zawsze używaj `===` (ścisłe porównanie). Operator `==` ma niezrozumiałe reguły konwersji typów i jest źródłem 90% błędów logicznych.
+
+## 4. Funkcje: Trzy sposoby zapisu
+
+```js
+// 1. Deklaracja funkcji (function declaration)
+function dodaj(a, b) {
+    return a + b;
+}
+
+// 2. Wyrażenie funkcyjne (function expression)
+const odejmij = function(a, b) {
+    return a - b;
+};
+
+// 3. ✅ Arrow function (ES6) — preferowany skrót
+const pomnoz = (a, b) => a * b;
+
+// Arrow z jednym parametrem — można pominąć nawiasy
+const podwoj = x => x * 2;
+
+// Arrow z blokiem kodu
+const podziel = (a, b) => {
+    if (b === 0) throw new Error("Dzielenie przez zero!");
+    return a / b;
+};
+```
+
+### Parametry domyślne i rest
+
+```js
+// Parametry domyślne
+function powitaj(imie = "Gość", jezyk = "pl") {
+    const powitania = { pl: "Cześć", en: "Hello", de: "Hallo" };
+    return `${powitania[jezyk]}, ${imie}!`;
+}
+
+powitaj();            // "Cześć, Gość!"
+powitaj("Jan", "en"); // "Hello, Jan!"
+
+// Rest parameters — zbiera "resztę" argumentów do tablicy
+function suma(...liczby) {
+    return liczby.reduce((acc, n) => acc + n, 0);
+}
+
+suma(1, 2, 3, 4, 5); // 15
+```
+
+## 5. Obiekty i destrukturyzacja
+
+Obiekty w JS to odpowiedniki tablic asocjacyjnych z PHP:
+
+```js
+const student = {
+    imie: "Anna",
+    wiek: 22,
+    kierunek: "Informatyka",
+    oceny: [4, 5, 3, 5, 4],
+
+    // Metoda obiektu
+    srednia() {
+        const suma = this.oceny.reduce((a, b) => a + b, 0);
+        return suma / this.oceny.length;
+    }
+};
+
+console.log(student.imie);      // "Anna"
+console.log(student.srednia()); // 4.2
+
+// Destrukturyzacja — wyciąganie wartości do zmiennych
+const { imie, wiek, kierunek } = student;
+console.log(imie);    // "Anna"
+console.log(kierunek); // "Informatyka"
+
+// Destrukturyzacja z aliasem
+const { imie: name, wiek: age } = student;
+console.log(name); // "Anna"
+```
+
+### Spread operator (...)
+
+```js
+// Kopiowanie obiektu (płytka kopia)
+const kopia = { ...student, wiek: 23 }; // Kopia z nadpisanym wiekiem
+
+// Łączenie tablic
+const a = [1, 2, 3];
+const b = [4, 5, 6];
+const c = [...a, ...b]; // [1, 2, 3, 4, 5, 6]
+```
+
+## 6. Tablice i metody wyższego rzędu
+
+Tablice w JS mają potężne wbudowane metody. Zamiast pisać pętle `for`, używamy podejścia **funkcyjnego**:
+
+```js
+const produkty = [
+    { nazwa: "Laptop",  cena: 5499, kategoria: "elektronika" },
+    { nazwa: "Koszulka", cena: 79,  kategoria: "odzież" },
+    { nazwa: "Telefon", cena: 3299, kategoria: "elektronika" },
+    { nazwa: "Buty",    cena: 349,  kategoria: "odzież" },
+    { nazwa: "Tablet",  cena: 2199, kategoria: "elektronika" },
+];
+
+// filter — filtruj elementy spełniające warunek
+const elektronika = produkty.filter(p => p.kategoria === "elektronika");
+// [{Laptop}, {Telefon}, {Tablet}]
+
+// map — przekształć każdy element
+const nazwy = produkty.map(p => p.nazwa);
+// ["Laptop", "Koszulka", "Telefon", "Buty", "Tablet"]
+
+// find — znajdź PIERWSZY pasujący
+const laptop = produkty.find(p => p.nazwa === "Laptop");
+// {nazwa: "Laptop", cena: 5499, ...}
+
+// reduce — "zredukuj" tablicę do jednej wartości
+const sumarycznaCena = produkty.reduce((suma, p) => suma + p.cena, 0);
+// 11425
+
+// sort — posortuj (uwaga: mutuje oryginalną tablicę!)
+const posortowane = [...produkty].sort((a, b) => a.cena - b.cena);
+// Od najtańszego do najdroższego
+
+// Łączenie metod (chaining)
+const drogiElektronik = produkty
+    .filter(p => p.kategoria === "elektronika")
+    .filter(p => p.cena > 3000)
+    .map(p => `${p.nazwa}: ${p.cena} zł`)
+    .join(", ");
+// "Laptop: 5499 zł, Telefon: 3299 zł"
+```
+
+**Dlaczego to ważne?** Takie podejście (filter/map/reduce) jest fundamentem Reacta i innych frameworków Frontendowych. Zamiast ręcznie budować HTML w pętli, mapujesz tablicę danych na tablicę komponentów.
+
+## 7. Asynchroniczność: Serce komunikacji z API
+
+Na Wykładzie 1 widzieliśmy `fetch` — JavaScript wysyłał żądanie do serwera. Ale komunikacja z serwerem jest **asynchroniczna** — przeglądarka nie zamraża się czekając na odpowiedź. Wyobraź sobie zamawianie kawy w kawiarni: składasz zamówienie (wysyłasz request), siadasz przy stoliku (przeglądarka robi inne rzeczy), a barista przynosi kawę, gdy jest gotowa (odpowiedź przychodzi).
+
+### Promises (Obietnice)
+
+```js
+// fetch zwraca Promise — "obietnicę", że dane kiedyś przyjdą
+fetch("https://api.example.com/studenci")
+    .then(response => {
+        // 1. Sprawdź, czy serwer odpowiedział sukcesem
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        // 2. Zamień odpowiedź na JSON
+        return response.json();
+    })
+    .then(data => {
+        // 3. Dane gotowe — użyj ich
+        console.log("Studenci:", data);
+    })
+    .catch(error => {
+        // 4. Obsługa błędów (sieć padła, serwer nie odpowiada)
+        console.error("Błąd:", error.message);
+    });
+```
+
+### async/await — czytelniejsza składnia
+
+`.then().then().catch()` przy złożonych operacjach staje się nieczytelne (tzw. "callback hell"). `async/await` to cukier składniowy, który sprawia, że asynchroniczny kod wygląda jak synchroniczny:
+
+```js
+// Ta sama logika co wyżej, ale czytelniejsza:
+async function pobierzStudentow() {
+    try {
+        const response = await fetch("https://api.example.com/studenci");
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Studenci:", data);
+        return data;
+
+    } catch (error) {
+        console.error("Błąd:", error.message);
+        return [];
+    }
+}
+
+// Wywołanie
+pobierzStudentow();
+```
+
+`await` "wstrzymuje" wykonanie funkcji (ale nie blokuje przeglądarki!) do momentu, aż Promise się rozwiąże. Może być użyty tylko wewnątrz funkcji oznaczonej `async`.
+
+## 8. DOM: Manipulacja stroną z poziomu JS
+
+DOM (Document Object Model) to "drzewo" elementów HTML, które JavaScript widzi i może modyfikować. Każdy tag HTML to "węzeł" tego drzewa.
+
+### Wybieranie elementów
+
+```js
+// Jeden element (pierwszy pasujący)
+const naglowek = document.querySelector('h1');
+const przycisk = document.querySelector('#moj-przycisk');
+const karta    = document.querySelector('.karta-produktu');
+
+// Wiele elementów (NodeList — "tablica" elementów)
+const linki   = document.querySelectorAll('nav a');
+const karty   = document.querySelectorAll('.karta-produktu');
+
+// Iteracja po kolekcji
+linki.forEach(link => {
+    console.log(link.href);
+});
+```
+
+### Zmiana treści i stylu
+
+```js
+const tytul = document.querySelector('#tytul');
+
+// Zmiana tekstu
+tytul.textContent = "Nowy tytuł";
+
+// Zmiana HTML wewnątrz elementu
+tytul.innerHTML = "Nowy <em>tytuł</em>";
+
+// Zmiana stylu
+tytul.style.color = "#0066cc";
+tytul.style.fontSize = "2rem";
+
+// Lepsze podejście: dodaj/usuń klasę CSS
+tytul.classList.add('wyroznienie');
+tytul.classList.remove('ukryty');
+tytul.classList.toggle('aktywny'); // Dodaje jeśli nie ma, usuwa jeśli jest
+```
+
+**Ważna zasada:** Unikaj `style.color = ...` w JavaScript. Zamiast tego definiuj klasy CSS i dodawaj/usuwaj je przez `classList`. Oddziela to logikę od stylowania.
+
+### Tworzenie elementów
+
+```js
+// Stwórz nowy element
+const nowyElement = document.createElement('article');
+nowyElement.className = 'karta-produktu';
+nowyElement.innerHTML = `
+    <h3>Nowy produkt</h3>
+    <p class="cena">199 zł</p>
+`;
+
+// Dodaj do strony
+document.querySelector('.lista-produktow').appendChild(nowyElement);
+```
+
+## 9. Zdarzenia (Events): Reagowanie na użytkownika
+
+JavaScript reaguje na akcje użytkownika (kliknięcia, pisanie, scrollowanie) przez system **zdarzeń** (events):
+
+```js
+// Kliknięcie przycisku
+const przycisk = document.querySelector('#dodaj-btn');
+
+przycisk.addEventListener('click', function(event) {
+    console.log("Kliknięto przycisk!");
+    console.log("Element:", event.target); // Sam przycisk
+});
+
+// Arrow function (krócej)
+przycisk.addEventListener('click', (e) => {
+    e.preventDefault(); // Zablokuj domyślne zachowanie (np. wysłanie formularza)
+    console.log("Kliknięto!");
+});
+```
+
+### Popularne typy zdarzeń
+
+| Zdarzenie | Kiedy? | Typowe użycie |
+|-----------|--------|---------------|
+| `click` | Kliknięcie | Przyciski, linki |
+| `submit` | Wysłanie formularza | Walidacja przed wysłaniem |
+| `input` | Zmiana wartości pola | Wyszukiwanie "na żywo" |
+| `keydown` | Wciśnięcie klawisza | Skróty klawiaturowe |
+| `DOMContentLoaded` | HTML załadowany | Inicjalizacja skryptów |
+| `scroll` | Przewijanie strony | Lazy loading, animacje |
+
+### Praktyczny przykład: Walidacja formularza
+
+```js
+document.querySelector('#form-rejestracja').addEventListener('submit', (e) => {
+    const email = document.querySelector('#email').value;
+    const haslo = document.querySelector('#haslo').value;
+    const bledy = [];
+
+    if (!email.includes('@')) {
+        bledy.push('Podaj prawidłowy adres e-mail');
+    }
+
+    if (haslo.length < 8) {
+        bledy.push('Hasło musi mieć co najmniej 8 znaków');
+    }
+
+    if (bledy.length > 0) {
+        e.preventDefault(); // Zablokuj wysłanie formularza
+        const kontenerBledow = document.querySelector('#bledy');
+        kontenerBledow.innerHTML = bledy
+            .map(b => `<p class="blad">${b}</p>`)
+            .join('');
+    }
+});
+```
+
+## 10. Fetch + DOM: Łączymy wszystko w całość
+
+Na Wykładzie 1 widzieliśmy, jak Frontend rozmawia z Backendem. Teraz połączymy pobieranie danych z API z dynamicznym wyświetlaniem ich na stronie — bez przeładowania:
+
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista studentów</title>
+    <style>
+        .student-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .loading { color: #888; font-style: italic; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Lista studentów</h1>
+    <button id="pobierz-btn">Pobierz z serwera</button>
+    <div id="kontener"></div>
+
+    <script>
+    const kontener = document.querySelector('#kontener');
+    const przycisk = document.querySelector('#pobierz-btn');
+
+    przycisk.addEventListener('click', async () => {
+        // 1. Pokaż stan ładowania
+        kontener.innerHTML = '<p class="loading">Ładowanie danych...</p>';
+        przycisk.disabled = true;
+
+        try {
+            // 2. Pobierz dane z API (GET)
+            const response = await fetch('http://localhost:5000/api/studenci');
+
+            if (!response.ok) {
+                throw new Error(`Serwer zwrócił błąd ${response.status}`);
+            }
+
+            const studenci = await response.json();
+
+            // 3. Zbuduj HTML z danych i wstaw do DOM
+            if (studenci.length === 0) {
+                kontener.innerHTML = '<p>Brak studentów w bazie.</p>';
+            } else {
+                kontener.innerHTML = studenci
+                    .map(s => `
+                        <article class="student-card">
+                            <h3>${s.imie}</h3>
+                            <p>Kierunek: ${s.kierunek}</p>
+                        </article>
+                    `)
+                    .join('');
+            }
+
+        } catch (error) {
+            // 4. Obsługa błędów
+            kontener.innerHTML = `<p class="error">Błąd: ${error.message}</p>`;
+        } finally {
+            przycisk.disabled = false;
+        }
+    });
+    </script>
+</body>
+</html>
+```
+
+Ten prosty przykład demonstruje **cały cykl SPA** z Wykładu 1:
+
+1. Przeglądarka NIE przeładowuje strony
+2. JavaScript wysyła żądanie GET do API
+3. Serwer odpowiada JSON-em (nie HTML-em!)
+4. JavaScript sam buduje HTML z otrzymanych danych i wstawia go do DOM
+
+## 11. Wysyłanie danych: POST z fetch
+
+Na Wykładzie 1 widzieliśmy prosty POST. Oto pełna wersja z walidacją i obsługą odpowiedzi:
+
+```js
+async function dodajStudenta(imie, kierunek) {
+    try {
+        const response = await fetch('http://localhost:5000/api/studenci', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                imie: imie,
+                kierunek: kierunek
+            })
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || `HTTP ${response.status}`);
+        }
+
+        const wynik = await response.json();
+        console.log("Dodano studenta z ID:", wynik.id);
+        return wynik;
+
+    } catch (error) {
+        console.error("Nie udało się dodać studenta:", error.message);
+        throw error; // Przekaż dalej, niech wywołujący zdecyduje co z tym zrobić
+    }
+}
+
+// Obsługa formularza
+document.querySelector('#form-dodaj').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Nie przeładowuj strony!
+
+    const imie = document.querySelector('#imie').value.trim();
+    const kierunek = document.querySelector('#kierunek').value.trim();
+
+    if (!imie || !kierunek) {
+        alert("Wypełnij wszystkie pola");
+        return;
+    }
+
+    try {
+        await dodajStudenta(imie, kierunek);
+        alert("Student dodany!");
+        e.target.reset(); // Wyczyść formularz
+    } catch (err) {
+        alert("Błąd: " + err.message);
+    }
+});
+```
+
+Porównaj z Wykładem 1 — ta sama logika, ale z poprawną obsługą błędów, walidacją i `async/await` zamiast łańcuchów `.then()`.
+
+## 12. Klasy w JavaScript (ES6)
+
+JavaScript ma klasy od ES6. Składnia jest podobna do PHP z Wykładu 4:
+
+```js
+class Produkt {
+    // Pola prywatne (ES2022) — zaczynają się od #
+    #nazwa;
+    #cena;
+    #ilosc;
+
+    constructor(nazwa, cena, ilosc = 0) {
+        this.#nazwa  = nazwa;
+        this.#cena   = cena;
+        this.#ilosc  = ilosc;
+    }
+
+    // Gettery
+    get nazwa() { return this.#nazwa; }
+    get cena()  { return this.#cena; }
+
+    jestDostepny() {
+        return this.#ilosc > 0;
+    }
+
+    sprzedaj(ile = 1) {
+        if (ile > this.#ilosc) {
+            throw new Error("Brak na stanie");
+        }
+        this.#ilosc -= ile;
+    }
+
+    // Metoda do serializacji (analogia do toArray() z PHP)
+    toJSON() {
+        return {
+            nazwa:    this.#nazwa,
+            cena:     this.#cena,
+            ilosc:    this.#ilosc,
+            dostepny: this.jestDostepny()
+        };
+    }
+
+    // Metoda statyczna — wywoływana na klasie, nie na obiekcie
+    static fromJSON(json) {
+        return new Produkt(json.nazwa, json.cena, json.ilosc);
+    }
+}
+
+// Użycie
+const laptop = new Produkt("ThinkPad", 5499, 10);
+console.log(laptop.nazwa);          // "ThinkPad" (getter)
+console.log(laptop.jestDostepny()); // true
+
+// Serializacja do JSON (np. wysyłka do API)
+const json = JSON.stringify(laptop.toJSON());
+// {"nazwa":"ThinkPad","cena":5499,"ilosc":10,"dostepny":true}
+```
+
+### Dziedziczenie
+
+```js
+class ProduktFizyczny extends Produkt {
+    #waga;
+
+    constructor(nazwa, cena, ilosc, waga) {
+        super(nazwa, cena, ilosc); // Wywołaj konstruktor rodzica
+        this.#waga = waga;
+    }
+
+    kosztDostawy() {
+        return this.#waga * 5; // 5 zł za kg
+    }
+
+    toJSON() {
+        return {
+            ...super.toJSON(),       // Spread: weź pola z rodzica
+            waga:    this.#waga,
+            dostawa: this.kosztDostawy()
+        };
+    }
+}
+
+const laptop = new ProduktFizyczny("ThinkPad", 5499, 10, 1.2);
+console.log(laptop.kosztDostawy()); // 6
+```
+
+## 13. Moduły (import/export)
+
+W większych projektach kod dzielimy na pliki (moduły). Każdy moduł eksportuje to, co chce udostępnić, i importuje to, czego potrzebuje:
+
+```js
+// ═══ plik: models/Produkt.js ═══
+export class Produkt {
+    constructor(nazwa, cena) {
+        this.nazwa = nazwa;
+        this.cena  = cena;
+    }
+}
+
+export function formatujCene(cena) {
+    return `${cena.toFixed(2)} zł`;
+}
+
+// ═══ plik: services/api.js ═══
+const API_URL = 'http://localhost:5000/api';
+
+export async function pobierzProdukty() {
+    const res = await fetch(`${API_URL}/produkty`);
+    return res.json();
+}
+
+export async function dodajProdukt(dane) {
+    const res = await fetch(`${API_URL}/produkty`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dane)
+    });
+    return res.json();
+}
+
+// ═══ plik: main.js ═══
+import { Produkt, formatujCene } from './models/Produkt.js';
+import { pobierzProdukty } from './services/api.js';
+
+const produkty = await pobierzProdukty();
+produkty.forEach(p => {
+    console.log(`${p.nazwa}: ${formatujCene(p.cena)}`);
+});
+```
+
+Aby użyć modułów w HTML:
+```html
+<!-- type="module" włącza obsługę import/export -->
+<script type="module" src="main.js"></script>
+```
+
+## 14. JavaScript a PHP — porównanie
+
+Po Wykładzie 4 (PHP) i 5 (JS) warto zestawić oba języki:
+
+| Cecha | PHP | JavaScript |
+|-------|-----|------------|
+| Gdzie działa? | Serwer | Przeglądarka (i serwer z Node.js) |
+| Typowanie | Dynamiczne (strict_types opcjonalne) | Dynamiczne (TypeScript opcjonalny) |
+| Zmienne | `$zmienna` | `let`/`const` (bez prefiksu) |
+| Tablice asocjacyjne | `['klucz' => 'wartość']` | `{ klucz: 'wartość' }` (obiekt) |
+| Pętla po tablicy | `foreach ($arr as $item)` | `arr.forEach(item => ...)` |
+| Klasa + konstruktor | `__construct()` | `constructor()` |
+| Prywatne pola | `private $pole` | `#pole` |
+| Dostęp do pola | `$this->pole` | `this.pole` / `this.#pole` |
+| Łączenie stringów | `"Witaj, $imie"` lub `.` | `` `Witaj, ${imie}` `` (template literal) |
+| Brak wartości | `null` | `null` i `undefined` |
+| Porównanie | `===` (zalecane) | `===` (obowiązkowe!) |
+| Asynchroniczność | Brak (każde żądanie = osobny proces) | Wbudowana (Promise, async/await) |
+
+## Podsumowanie Wykładu 5
+
+| Temat | Co zapamiętać |
+|-------|---------------|
+| Zmienne | `const` domyślnie, `let` gdy zmienia się wartość, nigdy `var` |
+| Typy | `===` zamiast `==`. `typeof` do sprawdzania typu |
+| Funkcje | Arrow functions: `(a, b) => a + b`. Parametry domyślne, rest `...args` |
+| Tablice | `filter`, `map`, `find`, `reduce` — programowanie funkcyjne |
+| Asynchroniczność | `async/await` + `try/catch`. `fetch` do komunikacji z API |
+| DOM | `querySelector`, `addEventListener`, `classList`, `createElement` |
+| Klasy | `class`, `constructor`, `#prywatne`, `extends`, `super` |
+| Moduły | `export`/`import`, `<script type="module">` |
+| Bezpieczeństwo | Nigdy nie wstawiaj danych użytkownika przez `innerHTML` bez walidacji (XSS!) |
+
+**Zadanie do przećwiczenia:** Stwórz prostą aplikację "Lista zadań" (Todo) z użyciem czystego JS. Wymagania: dodawanie nowych zadań z formularza, oznaczanie jako wykonane (toggle klasy CSS), usuwanie zadań, zapisywanie do `localStorage`. Bonus: połącz z API (serwer z Wykładu 4) zamiast localStorage — pełny CRUD przez `fetch`.
