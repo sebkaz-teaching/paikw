@@ -1,0 +1,207 @@
+# LABORATORIUM 1: Czysty HTML5 
+
+
+
+Cel: Struktura dokumentu, semantyka, formularze   
+Brak CSS — liczy się TYLKO poprawna struktura HTML 
+
+        
+ZADANIA:
+        
+1. Przeanalizuj ten plik — każdy tag jest opisany komentarzem
+2. Zmień dane na swoje (imię, projekty, umiejętności)
+3. Dodaj nową sekcję <section> z opisem hobby
+4. Dodaj tabelę z planem zajęć (użyj <table>, <thead>, <tbody>)
+5. Zwaliduj stronę na https://validator.w3.org/
+
+
+```html
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Jan Kowalski</title>
+    
+</head>
+<body>
+
+    <!-- ===== NAGŁÓWEK STRONY ===== -->
+    <header>
+        <h1>Jan Kowalski</h1>
+        <p>Student Informatyki — Wojskowa Akademia Techniczna</p>
+    </header>
+
+    <!-- ===== NAWIGACJA ===== -->
+    <nav>
+        <ul>
+            <li><a href="#o-mnie">O mnie</a></li>
+            <li><a href="#umiejetnosci">Umiejętności</a></li>
+            <li><a href="#projekty">Projekty</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== GŁÓWNA TREŚĆ (tylko jeden <main> na stronę!) ===== -->
+    <main>
+
+        <!-- Sekcja: O mnie -->
+        <section id="o-mnie">
+            <h2>O mnie</h2>
+            <p>Jestem studentem trzeciego roku Informatyki na WAT. 
+               Interesuję się tworzeniem aplikacji webowych, cyberbezpieczeństwem 
+               oraz konteneryzacją z Dockerem.</p>
+            <p>W wolnym czasie gram w szachy i biegam.</p>
+        </section>
+
+        <!-- Sekcja: Umiejętności -->
+        <section id="umiejetnosci">
+            <h2>Umiejętności</h2>
+
+            <!-- Lista nieuporządkowana -->
+            <h3>Języki programowania</h3>
+            <ul>
+                <li>Python</li>
+                <li>JavaScript</li>
+                <li>PHP</li>
+                <li>C++</li>
+            </ul>
+
+            <!-- Lista uporządkowana (ranking) -->
+            <h3>Technologie (od najlepszej)</h3>
+            <ol>
+                <li>Docker &amp; Docker Compose</li>
+                <li>Git &amp; GitHub</li>
+                <li>Linux (Ubuntu)</li>
+                <li>MySQL</li>
+            </ol>
+
+            <!-- Tabela -->
+            <h3>Poziom zaawansowania</h3>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Technologia</th>
+                        <th>Poziom</th>
+                        <th>Doświadczenie</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HTML/CSS</td>
+                        <td>Średniozaawansowany</td>
+                        <td>2 lata</td>
+                    </tr>
+                    <tr>
+                        <td>Python</td>
+                        <td>Zaawansowany</td>
+                        <td>3 lata</td>
+                    </tr>
+                    <tr>
+                        <td>Docker</td>
+                        <td>Początkujący</td>
+                        <td>3 miesiące</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Sekcja: Projekty -->
+        <section id="projekty">
+            <h2>Moje projekty</h2>
+
+            <!-- Każdy projekt to samodzielna treść = <article> -->
+            <article>
+                <h3>CorpoApp — Tablica ogłoszeń</h3>
+                <p>Aplikacja webowa w PHP z bazą MySQL, uruchamiana w Dockerze.</p>
+                <p>Technologie: <strong>PHP</strong>, <strong>MySQL</strong>, <strong>Docker Compose</strong></p>
+                <a href="https://github.com/jankowalski/corpoapp">Zobacz na GitHub</a>
+            </article>
+
+            <hr>
+
+            <article>
+                <h3>Kalkulator BMI</h3>
+                <p>Prosty kalkulator <abbr title="Body Mass Index">BMI</abbr> napisany w JavaScript.</p>
+                <p>Technologie: <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong></p>
+                <a href="#">Demo</a>
+            </article>
+
+            <hr>
+
+            <article>
+                <h3>Skaner portów</h3>
+                <p>Narzędzie do skanowania portów sieciowych napisane w Pythonie.</p>
+                <p>Technologie: <strong>Python</strong>, <strong>Socket</strong></p>
+            </article>
+        </section>
+
+        <!-- ===== ASIDE: treść poboczna ===== -->
+        <aside>
+            <h2>Ciekawostka</h2>
+            <blockquote>
+                <p>"Jedynym sposobem, żeby robić świetne rzeczy, jest kochać to, co robisz."</p>
+                <cite>— Steve Jobs</cite>
+            </blockquote>
+        </aside>
+
+        <!-- Sekcja: Formularz kontaktowy -->
+        <section id="kontakt">
+            <h2>Kontakt</h2>
+            <p>Napisz do mnie:</p>
+
+            <form action="/lab1/dziekuje.html" method="POST">
+                <div>
+                    <label for="imie">Imię i nazwisko:</label><br>
+                    <input type="text" id="imie" name="imie" required 
+                           placeholder="Anna Nowak" minlength="3">
+                </div>
+                <br>
+                <div>
+                    <label for="email">Adres e-mail:</label><br>
+                    <input type="email" id="email" name="email" required 
+                           placeholder="anna@example.com">
+                </div>
+                <br>
+                <div>
+                    <label for="temat">Temat:</label><br>
+                    <select id="temat" name="temat">
+                        <option value="wspolpraca">Propozycja współpracy</option>
+                        <option value="pytanie">Pytanie techniczne</option>
+                        <option value="inny">Inny</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    <label for="wiadomosc">Wiadomość:</label><br>
+                    <textarea id="wiadomosc" name="wiadomosc" rows="5" cols="40" 
+                              required placeholder="Treść wiadomości..."></textarea>
+                </div>
+                <br>
+                <div>
+                    <input type="checkbox" id="zgoda" name="zgoda" required>
+                    <label for="zgoda">Wyrażam zgodę na przetwarzanie danych</label>
+                </div>
+                <br>
+                <button type="submit">Wyślij wiadomość</button>
+                <button type="reset">Wyczyść formularz</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- ===== STOPKA ===== -->
+    <footer>
+        <hr>
+        <p>&copy; 2026 Jan Kowalski | 
+           <a href="mailto:jan@wat.edu.pl">jan@wat.edu.pl</a> | 
+           <a href="https://github.com/jankowalski">GitHub</a>
+        </p>
+    </footer>
+
+</body>
+</html>
+
+
+```
