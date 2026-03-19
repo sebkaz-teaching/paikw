@@ -1,0 +1,603 @@
+# LABORATORIUM 2: HTML + CSS 
+
+ZADANIA:
+
+1. Przeanalizuj style w pliku style.css — każda sekcja opisana
+2. Zmień paletę kolorów (zmienne CSS na górze pliku)
+3. Dodaj animację hover na kartach projektów
+4. Zmodyfikuj grid: 1 kolumna mobile → 2 tablet → 3 desktop
+5. Dodaj dark mode przez @media (prefers-color-scheme: dark)
+
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Jan Kowalski</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== NAWIGACJA ===== -->
+    <nav class="navbar">
+        <a href="#" class="logo">JK<span>.dev</span></a>
+        <div class="nav-links">
+            <a href="#o-mnie">O mnie</a>
+            <a href="#umiejetnosci">Umiejętności</a>
+            <a href="#projekty">Projekty</a>
+            <a href="#kontakt" class="btn btn-nav">Kontakt</a>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-badge">Student WAT — Informatyka</p>
+            <h1>Cześć, jestem <span class="accent">Jan Kowalski</span></h1>
+            <p class="hero-desc">Tworzę aplikacje webowe, interesuję się cyberbezpieczeństwem 
+               i konteneryzacją. Szukam stażu na lato 2026.</p>
+            <div class="hero-buttons">
+                <a href="#projekty" class="btn btn-primary">Moje projekty</a>
+                <a href="#kontakt" class="btn btn-outline">Napisz do mnie</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ===== O MNIE ===== -->
+        <section id="o-mnie" class="section">
+            <h2 class="section-title">O mnie</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Jestem studentem trzeciego roku Informatyki na Wojskowej Akademii Technicznej. 
+                       Od dwóch lat rozwijam się w kierunku full-stack web developmentu.</p>
+                    <p>Aktualnie uczę się architektury mikroserwisowej i orkiestracji kontenerów 
+                       z Dockerem i Kubernetes.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Lata programowania</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Ukończonych projektów</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4.5</span>
+                        <span class="stat-label">Średnia ocen</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== UMIEJĘTNOŚCI ===== -->
+        <section id="umiejetnosci" class="section section-alt">
+            <h2 class="section-title">Umiejętności</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3>Frontend</h3>
+                    <p>HTML5, CSS3, JavaScript, React</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>Backend</h3>
+                    <p>PHP, Python, Node.js, REST API</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🗄️</div>
+                    <h3>Bazy danych</h3>
+                    <p>MySQL, PostgreSQL, MongoDB</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🐳</div>
+                    <h3>DevOps</h3>
+                    <p>Docker, Git, Linux, CI/CD</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROJEKTY ===== -->
+        <section id="projekty" class="section">
+            <h2 class="section-title">Projekty</h2>
+            <div class="projects-grid">
+
+                <article class="project-card">
+                    <div class="project-img">📢</div>
+                    <div class="project-body">
+                        <span class="project-tag">PHP + MySQL</span>
+                        <h3>CorpoApp — Tablica ogłoszeń</h3>
+                        <p>Wewnętrzna tablica ogłoszeń z formularzem, bazą danych i Dockerem.</p>
+                        <div class="project-links">
+                            <a href="/" class="btn btn-sm">Live demo</a>
+                            <a href="#" class="btn btn-sm btn-ghost">GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, #10b981, #0ea5e9);">🧮</div>
+                    <div class="project-body">
+                        <span class="project-tag">JavaScript</span>
+                        <h3>Kalkulator BMI</h3>
+                        <p>Kalkulator wskaźnika BMI z walidacją formularza i dynamicznym wynikiem.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm">Live demo</a>
+                            <a href="#" class="btn btn-sm btn-ghost">GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, #ef4444, #f59e0b);">🔍</div>
+                    <div class="project-body">
+                        <span class="project-tag">Python</span>
+                        <h3>Skaner portów</h3>
+                        <p>Narzędzie CLI do skanowania otwartych portów w sieci lokalnej.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm btn-ghost">GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ===== KONTAKT ===== -->
+        <section id="kontakt" class="section section-alt">
+            <h2 class="section-title">Kontakt</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Napisz do mnie</h3>
+                    <p>Chętnie porozmawiam o projektach, stażach lub współpracy.</p>
+                    <ul class="contact-list">
+                        <li>📧 jan@wat.edu.pl</li>
+                        <li>🐙 github.com/jankowalski</li>
+                        <li>💼 linkedin.com/in/jankowalski</li>
+                    </ul>
+                </div>
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="imie">Imię</label>
+                            <input type="text" id="imie" name="imie" required placeholder="Anna">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required placeholder="anna@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="wiadomosc">Wiadomość</label>
+                        <textarea id="wiadomosc" name="wiadomosc" rows="5" required 
+                                  placeholder="Treść wiadomości..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Wyślij wiadomość</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Jan Kowalski — Laboratorium 2: HTML + CSS</p>
+    </footer>
+
+</body>
+</html>
+```
+
+
+plik `style.css` wygeneruj z kodem: 
+
+```css
+/*
+    ╔══════════════════════════════════════════════════════════╗
+    ║  LABORATORIUM 2: Arkusz stylów CSS                      ║
+    ║  Techniki: zmienne CSS, Flexbox, Grid, responsive,      ║
+    ║  transitions, hover, box-sizing, jednostki rem           ║
+    ╚══════════════════════════════════════════════════════════╝
+*/
+
+/* ===== ZMIENNE CSS (Custom Properties) =====
+   Zmień kolory tutaj — cała strona się zaktualizuje */
+:root {
+    --color-primary: #1e40af;
+    --color-primary-dark: #1e3a8a;
+    --color-accent: #0ea5e9;
+    --color-text: #1e293b;
+    --color-text-light: #64748b;
+    --color-bg: #ffffff;
+    --color-bg-alt: #f8fafc;
+    --color-border: #e2e8f0;
+    --font-main: system-ui, -apple-system, sans-serif;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== RESET + BOX-SIZING =====
+   Każdy element liczy width ŁĄCZNIE z padding i border */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;  /* Płynne scrollowanie do #sekcji */
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-text);
+    line-height: 1.6;
+    background: var(--color-bg);
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ===== NAWIGACJA (Flexbox) ===== */
+.navbar {
+    display: flex;                      /* Flexbox! */
+    justify-content: space-between;     /* Logo ←→ Linki */
+    align-items: center;                /* Wyrównanie w pionie */
+    padding: 16px 24px;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;                   /* Przyklejona do góry */
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-primary);
+}
+.logo span { color: var(--color-accent); }
+
+.nav-links {
+    display: flex;
+    gap: 24px;                          /* Odstępy między linkami */
+    align-items: center;
+}
+.nav-links a {
+    color: var(--color-text-light);
+    font-weight: 500;
+    transition: color 0.2s;             /* Płynna zmiana koloru */
+}
+.nav-links a:hover { color: var(--color-primary); }
+
+/* ===== PRZYCISKI (reużywalne klasy) ===== */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+}
+.btn-primary {
+    background: var(--color-primary);
+    color: white;
+}
+.btn-primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);        /* Unosi się! */
+}
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+}
+.btn-outline:hover {
+    background: var(--color-primary);
+    color: white;
+}
+.btn-nav {
+    background: var(--color-primary);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+.btn-sm { padding: 6px 14px; font-size: 0.8rem; }
+.btn-ghost {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+.btn-ghost:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.btn-full { width: 100%; text-align: center; }
+
+/* ===== HERO (Flexbox + centrowanie) ===== */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;                   /* 70% wysokości ekranu */
+    padding: 60px 24px;
+    background: linear-gradient(135deg, #eff6ff, #f8fafc);
+}
+.hero-content {
+    max-width: 650px;
+    text-align: center;
+}
+.hero-badge {
+    display: inline-block;
+    background: #dbeafe;
+    color: var(--color-primary);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem); /* Responsywny font! */
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+.accent { color: var(--color-primary); }
+.hero-desc {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: 32px;
+}
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===== SEKCJE ===== */
+.section {
+    padding: 80px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.section-alt {
+    background: var(--color-bg-alt);
+    max-width: 100%;
+    /* Wewnętrzny kontener nadal ograniczony */
+}
+.section-alt > * {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--color-text);
+}
+
+/* ===== O MNIE (Grid: 2 kolumny) ===== */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;         /* Mobile: 1 kolumna */
+    gap: 40px;
+    align-items: center;
+}
+.about-text p {
+    color: var(--color-text-light);
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+.about-stats {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+}
+.stat {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    min-width: 100px;
+}
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-primary);
+}
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+}
+
+/* ===== UMIEJĘTNOŚCI (Grid: responsywny) ===== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+.skill-card {
+    background: white;
+    padding: 28px;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+.skill-icon { font-size: 2rem; margin-bottom: 12px; }
+.skill-card h3 { margin-bottom: 8px; }
+.skill-card p { color: var(--color-text-light); font-size: 0.9rem; }
+
+/* ===== PROJEKTY (Grid) ===== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+.project-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+.project-img {
+    height: 160px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+.project-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.project-tag {
+    display: inline-block;
+    background: #eff6ff;
+    color: var(--color-primary);
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    align-self: flex-start;             /* Nie rozciągaj na całą szerokość */
+}
+.project-body h3 { margin-bottom: 8px; }
+.project-body p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    flex: 1;                            /* Rozciągnij — przycisk na dole */
+}
+.project-links {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;                   /* Przyciski ZAWSZE na dole karty */
+}
+
+/* ===== KONTAKT (Grid: 2 kolumny) ===== */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+.contact-info h3 { margin-bottom: 8px; color: var(--color-text); }
+.contact-info p { color: var(--color-text-light); margin-bottom: 16px; }
+.contact-list {
+    list-style: none;
+}
+.contact-list li {
+    padding: 8px 0;
+    color: var(--color-text-light);
+}
+
+/* ===== FORMULARZ ===== */
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+.form-group {
+    flex: 1;
+    margin-bottom: 16px;
+}
+.form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-bottom: 4px;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--color-text-light);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--color-border);
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE DESIGN — Mobile First!
+   Bazowe style = mobile.
+   Media queries DODAJĄ reguły dla większych ekranów.
+   ═══════════════════════════════════════════ */
+
+/* TABLET (768px+) */
+@media (min-width: 768px) {
+    .about-grid {
+        grid-template-columns: 2fr 1fr;  /* Tekst szerszy, statsy węższe */
+    }
+    .about-stats {
+        flex-direction: column;           /* Statsy w kolumnie na boku */
+    }
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .contact-wrapper {
+        grid-template-columns: 1fr 2fr;  /* Info | Formularz */
+    }
+}
+
+/* DESKTOP (1024px+) */
+@media (min-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* MOBILE: nawigacja i formularz */
+@media (max-width: 640px) {
+    .nav-links {
+        gap: 12px;
+        font-size: 0.85rem;
+    }
+    .form-row {
+        flex-direction: column;           /* Pola jedno pod drugim */
+        gap: 0;
+    }
+    .hero {
+        min-height: 50vh;
+    }
+}
+
+```
