@@ -20,6 +20,7 @@ website:
       - section : "Laboratoria"
         contents:
         - href: labs/lab1.qmd
+        - href: labs/lab2.qmd
        
   navbar:
     left: 
