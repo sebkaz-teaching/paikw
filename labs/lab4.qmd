@@ -8,7 +8,7 @@ ZADANIA:
 4. Dodaj plik header.php i footer.php (include)
 5. Dodaj sortowanie: ?sort=price_asc lub ?sort=price_desc
 
-```php 
+```html
 <?php
 
 declare(strict_types=1);

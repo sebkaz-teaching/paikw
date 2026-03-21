@@ -7,7 +7,7 @@ ZADANIA:
 4. Dodaj sortowanie klikając w nagłówki kolumn tabeli
 5. Wydziel klasę Database (Singleton) do osobnego pliku
 
-```php 
+```html
 <?php
 declare(strict_types=1);
 
