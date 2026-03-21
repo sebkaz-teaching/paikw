@@ -1,0 +1,175 @@
+# LABORATORIUM 4: PHP — Dynamiczne strony
+
+ZADANIA:
+
+1. Dodaj nowy produkt do tablicy $products
+2. Dodaj filtrowanie po cenie: ?max_price=1000
+3. Stwórz podstronę szczegółów: details.php?id=1
+4. Dodaj plik header.php i footer.php (include)
+5. Dodaj sortowanie: ?sort=price_asc lub ?sort=price_desc
+
+```php 
+<?php
+
+declare(strict_types=1);
+
+// ─── "BAZA DANYCH" w tablicy PHP ───
+$products = [
+    ['id' => 1, 'name' => 'Laptop ThinkPad X1',        'price' => 5499.99, 'category' => 'elektronika', 'in_stock' => 15],
+    ['id' => 2, 'name' => 'Monitor Dell 27" 4K',        'price' => 1899.00, 'category' => 'elektronika', 'in_stock' => 8],
+    ['id' => 3, 'name' => 'Słuchawki Sony WH-1000XM5',  'price' => 1499.00, 'category' => 'audio',       'in_stock' => 23],
+    ['id' => 4, 'name' => 'Klawiatura Keychron Q1',     'price' => 849.00,  'category' => 'peryferia',   'in_stock' => 12],
+    ['id' => 5, 'name' => 'Myszka Logitech MX Master',  'price' => 449.00,  'category' => 'peryferia',   'in_stock' => 30],
+    ['id' => 6, 'name' => 'Webcam Elgato Facecam',      'price' => 699.00,  'category' => 'peryferia',   'in_stock' => 0],
+];
+
+// ─── FILTROWANIE po kategorii z URL ───
+// Użytkownik wchodzi na: ?category=elektronika
+$selected_category = $_GET['category'] ?? 'all';
+
+if ($selected_category !== 'all') {
+    $filtered = array_filter($products, function($p) use ($selected_category) {
+        return $p['category'] === $selected_category;
+    });
+} else {
+    $filtered = $products;
+}
+
+// ─── WYCIĄGNIJ unikalne kategorie (do filtrów) ───
+$categories = array_unique(array_column($products, 'category'));
+
+// ─── OBLICZENIA ───
+$total_products = count($products);
+$total_value = array_sum(array_column($products, 'price'));
+$out_of_stock = count(array_filter($products, fn($p) => $p['in_stock'] === 0));
+
+// ─── DYNAMICZNE POWITANIE ───
+$hour = (int) date('H');
+if ($hour < 12) {
+    $greeting = 'Dzień dobry';
+} elseif ($hour < 18) {
+    $greeting = 'Dobre popołudnie';
+} else {
+    $greeting = 'Dobry wieczór';
+}
+?>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep — Lab 4 (PHP)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .out-of-stock { opacity: 0.5; }
+        .badge-stock { font-size: 0.75rem; }
+    </style>
+</head>
+<body class="bg-light">
+
+<div class="container mt-4 mb-5">
+
+    <!-- ===== NAGŁÓWEK Z DYNAMICZNYM POWITANIEM ===== -->
+    <header class="text-center mb-4">
+        <h1 class="display-6 fw-bold text-primary">🛒 CorpoShop</h1>
+        <!-- PHP generuje tekst na podstawie godziny serwera -->
+        <p class="text-muted"><?= $greeting ?>! Jest <?= date('H:i') ?>, <?= date('d.m.Y') ?></p>
+    </header>
+
+    <!-- ===== STATYSTYKI (obliczone w PHP) ===== -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm text-center p-3">
+                <span class="fs-3 fw-bold text-primary"><?= $total_products ?></span>
+                <small class="text-muted">Produktów w ofercie</small>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm text-center p-3">
+                <span class="fs-3 fw-bold text-success"><?= number_format($total_value, 2, ',', ' ') ?> zł</span>
+                <small class="text-muted">Łączna wartość</small>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm text-center p-3">
+                <span class="fs-3 fw-bold text-danger"><?= $out_of_stock ?></span>
+                <small class="text-muted">Brak w magazynie</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FILTRY KATEGORII (linki z $_GET) ===== -->
+    <div class="mb-4">
+        <span class="text-muted me-2">Filtruj:</span>
+        <a href="?category=all" 
+           class="btn btn-sm <?= $selected_category === 'all' ? 'btn-primary' : 'btn-outline-primary' ?>">
+            Wszystkie
+        </a>
+        <?php foreach ($categories as $cat): ?>
+            <a href="?category=<?= urlencode($cat) ?>" 
+               class="btn btn-sm <?= $selected_category === $cat ? 'btn-primary' : 'btn-outline-primary' ?>">
+                <?= htmlspecialchars(ucfirst($cat)) ?>
+            </a>
+        <?php endforeach; ?>
+    </div>
+
+    <!-- ===== LISTA PRODUKTÓW (pętla PHP) ===== -->
+    <div class="row g-3">
+        <?php if (empty($filtered)): ?>
+            <div class="col-12">
+                <div class="alert alert-info">Brak produktów w kategorii "<?= htmlspecialchars($selected_category) ?>"</div>
+            </div>
+        <?php else: ?>
+            <?php foreach ($filtered as $product): ?>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 <?= $product['in_stock'] === 0 ? 'out-of-stock' : '' ?>">
+                        <div class="card-body d-flex flex-column">
+                            <!-- Kategoria jako badge -->
+                            <span class="badge bg-primary bg-opacity-10 text-primary align-self-start mb-2">
+                                <?= htmlspecialchars($product['category']) ?>
+                            </span>
+
+                            <h5 class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
+                            
+                            <p class="fs-4 fw-bold text-primary mb-2">
+                                <?= number_format($product['price'], 2, ',', ' ') ?> zł
+                            </p>
+
+                            <!-- Warunek: w magazynie czy nie? -->
+                            <?php if ($product['in_stock'] > 0): ?>
+                                <span class="badge bg-success badge-stock mb-3">
+                                    ✅ W magazynie (<?= $product['in_stock'] ?> szt.)
+                                </span>
+                            <?php else: ?>
+                                <span class="badge bg-danger badge-stock mb-3">
+                                    ❌ Brak w magazynie
+                                </span>
+                            <?php endif; ?>
+
+                            <button class="btn btn-primary mt-auto" 
+                                    <?= $product['in_stock'] === 0 ? 'disabled' : '' ?>>
+                                <?= $product['in_stock'] > 0 ? 'Dodaj do koszyka' : 'Niedostępny' ?>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+
+    <!-- ===== INFORMACJE O PHP ===== -->
+    <div class="card border-0 shadow-sm mt-5 p-4">
+        <h5 class="text-muted mb-3">🔧 Informacje diagnostyczne (PHP)</h5>
+        <table class="table table-sm table-bordered mb-0">
+            <tr><td class="fw-bold" style="width:200px">Wersja PHP</td><td><?= phpversion() ?></td></tr>
+            <tr><td class="fw-bold">Serwer</td><td><?= htmlspecialchars($_SERVER['SERVER_SOFTWARE'] ?? 'N/A') ?></td></tr>
+            <tr><td class="fw-bold">Metoda HTTP</td><td><?= $_SERVER['REQUEST_METHOD'] ?></td></tr>
+            <tr><td class="fw-bold">Request URI</td><td><?= htmlspecialchars($_SERVER['REQUEST_URI']) ?></td></tr>
+            <tr><td class="fw-bold">$_GET</td><td><code><?= htmlspecialchars(json_encode($_GET)) ?></code></td></tr>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+# LABORATORIUM 5: PHP + Baza danych (PDO)    
+
+ZADANIA:
+1. Dodaj edycję produktu (przycisk "Edytuj" → formularz z aktualnymi danymi)
+2. Dodaj potwierdzenie usunięcia (JavaScript confirm())
+3. Dodaj wyszukiwarkę: pole tekstowe + SQL LIKE '%...%'
+4. Dodaj sortowanie klikając w nagłówki kolumn tabeli
+5. Wydziel klasę Database (Singleton) do osobnego pliku
+
+```php 
+<?php
+declare(strict_types=1);
+
+// ─── POŁĄCZENIE Z BAZĄ (PDO) ───
+$host   = 'db';        // Nazwa kontenera z docker-compose!
+$dbname = 'cms_db';
+$user   = 'root';
+$pass   = 'root';
+
+try {
+    $pdo = new PDO(
+        "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
+        $user,
+        $pass,
+        [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ]
+    );
+} catch (PDOException $e) {
+    die("Błąd połączenia z bazą: " . $e->getMessage());
+}
+
+// ─── OBSŁUGA AKCJI (POST) ───
+$message = '';
+$error   = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'] ?? '';
+
+    // ═══ DODANIE PRODUKTU ═══
+    if ($action === 'add') {
+        $name     = trim($_POST['name'] ?? '');
+        $price    = (float) ($_POST['price'] ?? 0);
+        $category = trim($_POST['category'] ?? '');
+        $in_stock = (int) ($_POST['in_stock'] ?? 0);
+
+        // Walidacja po stronie serwera (klientowi NIGDY nie ufamy!)
+        if (empty($name) || $price <= 0 || empty($category)) {
+            $error = 'Wypełnij wszystkie pola poprawnie.';
+        } else {
+            $stmt = $pdo->prepare("
+                INSERT INTO products (name, price, category, in_stock) 
+                VALUES (:name, :price, :category, :in_stock)
+            ");
+            $stmt->execute([
+                ':name'     => $name,
+                ':price'    => $price,
+                ':category' => $category,
+                ':in_stock' => $in_stock,
+            ]);
+            $message = "Dodano produkt: " . htmlspecialchars($name);
+        }
+    }
+
+    // ═══ USUNIĘCIE PRODUKTU ═══
+    if ($action === 'delete') {
+        $id = (int) ($_POST['id'] ?? 0);
+        if ($id > 0) {
+            $stmt = $pdo->prepare("DELETE FROM products WHERE id = :id");
+            $stmt->execute([':id' => $id]);
+            $message = "Usunięto produkt #$id";
+        }
+    }
+
+    // Wzorzec PRG (Post-Redirect-GET) — zapobiega podwójnemu wysłaniu
+    // W produkcji: header('Location: /lab5/') + exit;
+    // Na potrzeby laba: zostawiamy message/error do wyświetlenia
+}
+
+// ─── POBRANIE PRODUKTÓW ───
+$category_filter = $_GET['category'] ?? 'all';
+
+if ($category_filter !== 'all') {
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE category = :cat ORDER BY id DESC");
+    $stmt->execute([':cat' => $category_filter]);
+} else {
+    $stmt = $pdo->query("SELECT * FROM products ORDER BY id DESC");
+}
+$products = $stmt->fetchAll();
+
+// ─── STATYSTYKI ───
+$stats_stmt = $pdo->query("
+    SELECT 
+        COUNT(*) as total,
+        SUM(price) as total_value,
+        SUM(CASE WHEN in_stock = 0 THEN 1 ELSE 0 END) as out_of_stock
+    FROM products
+");
+$stats = $stats_stmt->fetch();
+
+// ─── KATEGORIE DO FILTRÓW ───
+$cat_stmt = $pdo->query("SELECT DISTINCT category FROM products ORDER BY category");
+$categories = $cat_stmt->fetchAll(PDO::FETCH_COLUMN);
+?>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel produktów — Lab 5 (PHP + PDO)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-4 mb-5">
+
+    <header class="text-center mb-4">
+        <h1 class="display-6 fw-bold text-primary">🗄️ Panel produktów</h1>
+        <p class="text-muted">Lab 5: PHP + PDO — dane z bazy MySQL (phpMyAdmin: <a href="http://localhost:8080" target="_blank">localhost:8080</a>)</p>
+    </header>
+
+    <!-- Komunikaty -->
+    <?php if ($message): ?>
+        <div class="alert alert-success alert-dismissible fade show"><?= $message ?></div>
+    <?php endif; ?>
+    <?php if ($error): ?>
+        <div class="alert alert-danger alert-dismissible fade show"><?= $error ?></div>
+    <?php endif; ?>
+
+    <!-- ===== STATYSTYKI (z bazy) ===== -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm text-center p-3">
+                <span class="fs-3 fw-bold text-primary"><?= $stats['total'] ?></span>
+                <small class="text-muted">Produktów w bazie</small>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm text-center p-3">
+                <span class="fs-3 fw-bold text-success"><?= number_format((float)$stats['total_value'], 2, ',', ' ') ?> zł</span>
+                <small class="text-muted">Łączna wartość</small>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm text-center p-3">
+                <span class="fs-3 fw-bold text-danger"><?= $stats['out_of_stock'] ?></span>
+                <small class="text-muted">Brak w magazynie</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- ===== FORMULARZ DODAWANIA ===== -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-0 pt-3">
+                    <h5 class="mb-0">➕ Dodaj produkt</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <input type="hidden" name="action" value="add">
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label small fw-bold text-muted">Nazwa</label>
+                            <input type="text" class="form-control" id="name" name="name" 
+                                   required placeholder="np. Monitor LG 32&quot;">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="price" class="form-label small fw-bold text-muted">Cena (zł)</label>
+                            <input type="number" class="form-control" id="price" name="price" 
+                                   required min="0.01" step="0.01" placeholder="1299.99">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="category" class="form-label small fw-bold text-muted">Kategoria</label>
+                            <select class="form-select" id="category" name="category" required>
+                                <option value="">-- wybierz --</option>
+                                <option value="elektronika">Elektronika</option>
+                                <option value="audio">Audio</option>
+                                <option value="peryferia">Peryferia</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="in_stock" class="form-label small fw-bold text-muted">Ilość w magazynie</label>
+                            <input type="number" class="form-control" id="in_stock" name="in_stock" 
+                                   min="0" value="0">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">Dodaj do bazy</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== TABELA PRODUKTÓW ===== -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-0 pt-3 d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">📋 Produkty w bazie</h5>
+                    <!-- Filtry -->
+                    <div>
+                        <a href="?category=all" class="btn btn-sm <?= $category_filter === 'all' ? 'btn-primary' : 'btn-outline-primary' ?>">Wszystkie</a>
+                        <?php foreach ($categories as $cat): ?>
+                            <a href="?category=<?= urlencode($cat) ?>" 
+                               class="btn btn-sm <?= $category_filter === $cat ? 'btn-primary' : 'btn-outline-primary' ?>">
+                                <?= htmlspecialchars(ucfirst($cat)) ?>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nazwa</th>
+                                <th>Kategoria</th>
+                                <th>Cena</th>
+                                <th>Magazyn</th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (empty($products)): ?>
+                                <tr><td colspan="6" class="text-center text-muted py-4">Brak produktów</td></tr>
+                            <?php else: ?>
+                                <?php foreach ($products as $p): ?>
+                                    <tr class="<?= $p['in_stock'] == 0 ? 'table-warning' : '' ?>">
+                                        <td class="text-muted">#<?= $p['id'] ?></td>
+                                        <td class="fw-bold"><?= htmlspecialchars($p['name']) ?></td>
+                                        <td><span class="badge bg-primary bg-opacity-10 text-primary"><?= htmlspecialchars($p['category']) ?></span></td>
+                                        <td><?= number_format((float)$p['price'], 2, ',', ' ') ?> zł</td>
+                                        <td>
+                                            <?php if ($p['in_stock'] > 0): ?>
+                                                <span class="text-success"><?= $p['in_stock'] ?> szt.</span>
+                                            <?php else: ?>
+                                                <span class="text-danger fw-bold">Brak</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td>
+                                            <!-- Formularz usuwania (POST z hidden field) -->
+                                            <form method="POST" style="display: inline;" 
+                                                  onsubmit="return confirm('Na pewno usunąć <?= htmlspecialchars($p['name']) ?>?')">
+                                                <input type="hidden" name="action" value="delete">
+                                                <input type="hidden" name="id" value="<?= $p['id'] ?>">
+                                                <button type="submit" class="btn btn-outline-danger btn-sm">🗑️ Usuń</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

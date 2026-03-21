@@ -21,6 +21,9 @@ website:
         contents:
         - href: labs/lab1.qmd
         - href: labs/lab2.qmd
+        - href: labs/lab3.qmd
+        - href: labs/lab4.qmd
+        - href: labs/lab5.qmd
        
   navbar:
     left: 
