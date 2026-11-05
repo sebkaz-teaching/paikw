@@ -1,6 +1,6 @@
 ---
 title: "Laboratorium 1: osobista witryna HTML5"
-subtitle: "Sekcje 1–2 · Pierwsza strona, podstrony i nawigacja"
+subtitle: "Sekcje 1–3 · HTML5, nawigacja i wspólny arkusz CSS"
 lang: pl
 toc-title: "Na tej stronie"
 code-copy: true
@@ -500,3 +500,332 @@ Zachowuj identyczną wielkość liter w nazwach plików i adresach. `About.html`
 - [ ] Nawigacja działa również przy użyciu klawiatury.
 
 **Rezultat:** masz kompletną statyczną witrynę z trzema stronami. W kolejnym etapie podłączysz wspólny arkusz CSS. Powtarzający się kod menu pozostaje na razie w trzech plikach; później przeniesiemy go do wspólnego szablonu Flaska.
+
+
+## Sekcja 3. Podstawy CSS i wspólny arkusz stylów
+
+Masz już trzy dokumenty HTML połączone menu. Teraz nadasz im wspólny wygląd. Utworzysz jeden arkusz CSS, podłączysz go do każdej strony i sprawdzisz, czy zmiana jednej reguły wpływa na całą witrynę.
+
+HTML nadal opisuje strukturę i znaczenie treści. CSS określi między innymi kolory, krój pisma, odstępy i układ menu.
+
+### 1. Podłącz arkusz do trzech dokumentów
+
+W każdym pliku — `index.html`, `about.html` i `interests.html` — dodaj poniższy element wewnątrz `head`, po `title`:
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+Dla strony głównej kompletny fragment `head` będzie wyglądał tak:
+
+```html
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jan Kowalski — strona osobista</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+```
+
+Na podstronach zachowaj ich własne tytuły. Dodaj wyłącznie odwołanie do arkusza.
+
+`rel="stylesheet"` określa, że podłączony zasób jest arkuszem stylów. `href="style.css"` wskazuje plik w tym samym katalogu co dokument. Element `link` nie ma znacznika zamykającego.
+
+::: {.callout-important}
+## Który plik edytujesz?
+
+Edytuj `style.css` we własnym projekcie `personal-website`. Nie edytuj arkusza strony kursu ani plików w katalogu `docs`. Kod z tej instrukcji jest przeznaczony dla Twojej witryny.
+:::
+
+### 2. Sprawdź połączenie z arkuszem
+
+W pustym `style.css` wpisz:
+
+```css
+body {
+    background-color: #eef2f6;
+    color: #1f2937;
+}
+```
+
+Zapisz arkusz i wszystkie trzy dokumenty HTML. Odśwież kolejno każdą stronę. Tło powinno zmienić kolor na jasny szaroniebieski, a tekst na ciemnoszary.
+
+Jeżeli zmiana występuje tylko na jednej stronie, sprawdź element `link` w dwóch pozostałych. Jeżeli nie występuje nigdzie, sprawdź nazwę i położenie arkusza.
+
+### 3. Poznaj zapis reguły CSS
+
+```css
+body {
+    color: #1f2937;
+}
+```
+
+Reguła składa się z selektora i bloku deklaracji:
+
+| Fragment | Znaczenie |
+|---|---|
+| `body` | Selektor: wybiera element, który chcemy stylować. |
+| `{ ... }` | Blok deklaracji przypisanych do selektora. |
+| `color` | Właściwość określająca kolor tekstu. |
+| `#1f2937` | Wartość koloru w zapisie szesnastkowym. |
+| `;` | Kończy deklarację. |
+
+Jeden blok może zawierać wiele deklaracji. Dwukropek oddziela nazwę właściwości od wartości. Nawiasy klamrowe obejmują cały blok.
+
+### 4. Wpisz kompletny wspólny arkusz
+
+Zastąp dotychczasową zawartość `style.css` poniższym kodem. Jest to kompletny arkusz dla wszystkich trzech stron — nie wklejaj go do plików HTML.
+
+```css
+/* Include padding and borders in declared element widths. */
+* {
+    box-sizing: border-box;
+}
+
+/* Set shared typography and page colors. */
+body {
+    margin: 0;
+    background-color: #eef2f6;
+    color: #1f2937;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* Center the main page regions and limit their width. */
+header,
+nav,
+main,
+footer {
+    width: 100%;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+header {
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+h1 {
+    margin: 0 0 0.5rem;
+    color: #17365d;
+    font-size: 2rem;
+}
+
+header p {
+    margin: 0;
+    color: #475569;
+}
+
+/* Arrange navigation links in a row that can wrap. */
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    padding: 0.6rem 1rem;
+    border: 1px solid #17365d;
+    border-radius: 0.4rem;
+    text-decoration: none;
+}
+
+a {
+    color: #17365d;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+nav a:hover {
+    background-color: #dbeafe;
+}
+
+nav a[aria-current="page"] {
+    background-color: #17365d;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Keep keyboard focus visible on every link. */
+a:focus-visible {
+    outline: 3px solid #9a3412;
+    outline-offset: 3px;
+}
+
+/* Present each content section as a separate panel. */
+main section {
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+}
+
+main section > h2:first-child {
+    margin-top: 0;
+}
+
+footer {
+    border-top: 1px solid #cbd5e1;
+    color: #475569;
+    font-size: 0.9rem;
+}
+```
+
+Zapisz arkusz i odśwież stronę główną, a następnie obie podstrony.
+
+### 5. Przeanalizuj typografię i dziedziczenie
+
+W regule `body` ustawiliśmy wspólne właściwości tekstu:
+
+```css
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+```
+
+Przeglądarka próbuje użyć Arial, potem Helvetica, a następnie dostępnej czcionki bezszeryfowej. Lista pozwala wyświetlić tekst również na komputerze bez pierwszej z podanych czcionek.
+
+Jednostka `rem` odnosi się do rozmiaru czcionki elementu głównego `html`. Przy typowych ustawieniach `1rem` odpowiada 16 pikselom, ale użytkownik może zmienić te ustawienia. `line-height: 1.6` określa wysokość wiersza jako 1,6 rozmiaru czcionki danego elementu.
+
+Wiele właściwości tekstu, w tym krój pisma i kolor, jest dziedziczonych przez elementy potomne. Nie musimy więc osobno przypisywać czcionki każdemu akapitowi. Reguły dla nagłówków i odnośników mogą nadpisywać wybrane wartości.
+
+### 6. Zrozum odstępy i szerokość
+
+Każdy element jest opisywany przez model pudełkowy: treść, wewnętrzny odstęp `padding`, obramowanie `border` i zewnętrzny odstęp `margin`.
+
+| Właściwość | Zastosowanie w przykładzie |
+|---|---|
+| `padding: 1.5rem` | Odsuwa treść sekcji od jej obramowania. |
+| `border: 1px solid #cbd5e1` | Tworzy cienką, ciągłą ramkę sekcji. |
+| `margin-bottom: 1rem` | Dodaje odstęp pod sekcją. |
+| `max-width: 60rem` | Ogranicza szerokość głównych obszarów na dużym ekranie. |
+| `margin: 0 auto` | Ustawia zerowy margines pionowy i automatyczne marginesy poziome. |
+
+Przy szerokości ograniczonej przez `max-width` automatyczne marginesy poziome wyśrodkowują obszar. Na małym ekranie `width: 100%` pozwala wykorzystać dostępną szerokość.
+
+Na początku arkusza ustawiliśmy `box-sizing: border-box` dla wszystkich elementów za pomocą selektora `*`. Dzięki temu zadeklarowana szerokość obejmuje również `padding` i obramowanie. Ułatwia to utrzymanie elementów w granicach ekranu.
+
+**Eksperyment:** zmień `padding` w `main section` z `1.5rem` na `0`. Sprawdź, jak tekst zbliża się do ramki. Następnie przywróć poprzednią wartość. Porównaj z ustawieniem `margin-bottom: 0`, które zmienia odstęp na zewnątrz sekcji.
+
+### 7. Rozpoznaj selektory i kaskadę
+
+| Selektor | Co wybiera? |
+|---|---|
+| `body` | Element `body`. |
+| `header, nav, main, footer` | Cztery rodzaje elementów objęte wspólną regułą. |
+| `header p` | Akapity znajdujące się wewnątrz nagłówka strony. |
+| `nav a` | Odnośniki wewnątrz nawigacji. |
+| `nav a[aria-current="page"]` | Odnośnik menu z podaną wartością atrybutu. |
+| `a:hover` | Odnośnik wskazywany kursorem. |
+| `a:focus-visible` | Odnośnik, dla którego przeglądarka wskazuje potrzebę widocznego fokusu, zwykle podczas obsługi klawiaturą. |
+
+Spacja w `nav a` oznacza potomka: odnośnik nie musi być bezpośrednim dzieckiem `nav`. W naszym HTML między nimi znajdują się jeszcze `ul` i `li`.
+
+Reguła `main section > h2:first-child` wybiera nagłówek `h2`, który jest pierwszym dzieckiem sekcji wewnątrz `main`. Usuwa jego górny margines, pozostawiając odstęp kontrolowany przez `padding` sekcji.
+
+O wyniku decyduje kaskada. W naszym arkuszu, dla deklaracji o tym samym pochodzeniu i poziomie ważności, bardziej szczegółowy selektor wygrywa z mniej szczegółowym. Przy takiej samej szczegółowości wygrywa deklaracja zapisana później.
+
+Przykładowo `nav a` usuwa podkreślenie menu, choć przeglądarka domyślnie podkreśla odnośniki. Reguła `nav a[aria-current="page"]` przywraca je dla bieżącej strony i ustawia jej tło. Dzięki temu aktywna pozycja różni się nie tylko kolorem.
+
+### 8. Zobacz, jak Flexbox układa menu
+
+```css
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+```
+
+`display: flex` zmienia układ dzieci listy, czyli elementów `li`. Domyślnie są rozmieszczane w wierszu. `gap` określa odstępy między nimi, a `flex-wrap: wrap` pozwala przejść do kolejnego wiersza, gdy brakuje miejsca.
+
+`list-style: none` usuwa wizualne punkty listy; elementy `ul` i `li` nadal pozostają w HTML. Zerujemy także domyślne marginesy i wewnętrzny odstęp listy.
+
+W regule `nav a` używamy `display: block`, aby obszar odnośnika wraz z wewnętrznymi odstępami tworzył wyraźne pole do kliknięcia.
+
+Zwęż okno przeglądarki. Menu powinno zawijać się zamiast wymagać sztywnej szerokości strony. Ten prosty układ nie wymaga jeszcze reguł `@media`.
+
+### 9. Sprawdź hover, fokus i bieżącą stronę
+
+1. Najedź kursorem na odnośnik menu. Sprawdź zmianę tła i podkreślenie.
+2. Przejdź klawiszem **Tab** do menu. Powinno pojawić się widoczne obramowanie fokusu.
+3. Naciśnij **Enter**, aby otworzyć podstronę.
+4. Sprawdź, czy ciemne tło, pogrubienie i podkreślenie wskazują właściwą pozycję.
+
+Jeżeli na każdej stronie wyróżnione jest „O mnie”, sprawdź `aria-current` w HTML. Arkusz odczytuje ten atrybut; nie rozpoznaje samodzielnie nazwy otwartego pliku.
+
+Nie usuwaj obramowania fokusu bez zapewnienia innego wyraźnego oznaczenia. Użytkownik klawiatury musi wiedzieć, który odnośnik otworzy po naciśnięciu Enter.
+
+### 10. Zmień wygląd całej witryny w jednym miejscu
+
+Wybierz własną paletę i zmodyfikuj tylko arkusz:
+
+- kolor tła `body`;
+- kolor nagłówka `h1`;
+- odstęp `gap` w menu;
+- zaokrąglenie `border-radius` panelu z treścią.
+
+Zachowaj czytelny kontrast tekstu względem tła. Po każdej zmianie sprawdź wszystkie trzy strony oraz stan aktywnego odnośnika.
+
+**Eksperyment ze wspólnym arkuszem:** ustaw `border-radius: 0` w `main section`. Otwórz kolejno każdą stronę. We wszystkich panel powinien mieć prostokątne narożniki, mimo że zmieniłeś tylko jeden plik.
+
+### 11. Znajdź regułę w narzędziach przeglądarki
+
+Kliknij prawym przyciskiem myszy panel z treścią i wybierz **Zbadaj / Inspect**. W narzędziach deweloperskich odszukaj zakładkę ze stylami wybranego elementu.
+
+Sprawdź:
+
+1. Czy widzisz regułę `main section` pochodzącą z `style.css`?
+2. Jakie wartości mają `padding`, `border` i `margin`?
+3. Co się stanie po tymczasowym wyłączeniu deklaracji `background-color`?
+
+Zmiany wprowadzone w narzędziach przeglądarki są eksperymentem i zwykle znikają po odświeżeniu. Aby zachować zmianę, zapisz ją w `style.css` w edytorze.
+
+### 12. Gdy style nie działają
+
+| Objaw | Co sprawdzić? |
+|---|---|
+| Żadna strona nie ma stylów | Nazwę `style.css`, położenie pliku i element `link` w `head`. |
+| Jedna strona wygląda inaczej | Czy odwołuje się do tego samego arkusza i ma zgodną strukturę HTML? |
+| Pojedyncza właściwość nie działa | Pisownię nazwy, wartość, jednostkę i średnik w poprzedniej deklaracji. |
+| Większy fragment arkusza nie działa | Czy nawiasy klamrowe są poprawnie zamknięte? |
+| Widać poprzednie style | Czy zapisano plik? Spróbuj odświeżenia z pominięciem pamięci podręcznej. |
+| Bieżąca pozycja menu jest błędna | Położenie `aria-current="page"` w otwartym dokumencie. |
+
+Nie wpisuj znaczników `<style>` do pliku `.css`. Zewnętrzny arkusz zawiera same reguły CSS. Nie zastępuj nim istniejącego kodu HTML.
+
+### 13. Punkt kontrolny sekcji 3
+
+- [ ] Każda z trzech stron ma odwołanie do tego samego `style.css`.
+- [ ] Strony mają wspólną typografię, kolory i szerokość treści.
+- [ ] Rozróżniasz `margin`, `padding` i `border`.
+- [ ] Menu układa się w wierszu i zawija przy małej szerokości.
+- [ ] Bieżąca pozycja menu ma właściwe wyróżnienie.
+- [ ] Odnośniki reagują na kursor i mają widoczny fokus klawiatury.
+- [ ] Zmiana reguły w jednym arkuszu jest widoczna na trzech stronach po odświeżeniu.
+- [ ] Potrafisz odnaleźć regułę elementu w narzędziach przeglądarki.
+
+**Rezultat:** masz statyczną witrynę z trzema podstronami i jednym wspólnym arkuszem CSS. Kolejny etap to uruchomienie strony głównej przez Flask, a następnie dodanie obsługi dwóch pozostałych adresów.
