@@ -1,0 +1,234 @@
+---
+title: "Laboratorium 1: pierwsza strona HTML5"
+subtitle: "Sekcja 1 · Przygotowanie projektu i dokumentu HTML"
+lang: pl
+toc-title: "Na tej stronie"
+code-copy: true
+---
+
+## Cel tej sekcji
+
+Przygotujesz stronę główną osobistej witryny. Wpiszesz własną treść, otworzysz dokument w przeglądarce i sprawdzisz, jak znaczniki HTML opisują strukturę strony. Możesz przedstawić siebie, fikcyjną postać albo wybrany temat. Nie musisz podawać prawdziwych danych osobowych.
+
+To pierwszy etap laboratorium: **HTML5 → CSS → Flask → Dockerfile → Docker Compose → GitHub**. W tej sekcji pracujemy wyłącznie z HTML. Podstrony uzupełnimy w następnym etapie.
+
+## 1. Przygotuj katalog projektu
+
+Utwórz katalog `personal-website`. W Visual Studio Code wybierz **File → Open Folder** i otwórz ten katalog. Następnie utwórz cztery puste pliki:
+
+```text
+personal-website/
+├── index.html
+├── about.html
+├── interests.html
+└── style.css
+```
+
+| Plik | Przeznaczenie |
+|---|---|
+| `index.html` | Strona główna z powitaniem |
+| `about.html` | Podstrona „O mnie” |
+| `interests.html` | Podstrona „Zainteresowania” |
+| `style.css` | Wspólny arkusz stylów, używany w kolejnej sekcji |
+
+Nazwa `index.html` jest zwyczajową nazwą strony domyślnej w katalogu witryny. Sprawdź rozszerzenia plików: `index.html.txt` nie jest plikiem `index.html`.
+
+## 2. Wpisz kompletny dokument HTML5
+
+Otwórz `index.html` i wprowadź poniższy kod. Przycisk kopiowania w prawym górnym rogu bloku pozwala skopiować cały przykład.
+
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jan Kowalski — strona osobista</title>
+</head>
+<body>
+    <header>
+        <h1>Jan Kowalski</h1>
+        <p>Witaj na mojej stronie internetowej!</p>
+    </header>
+
+    <nav aria-label="Nawigacja główna">
+        <ul>
+            <li><a href="index.html">Strona główna</a></li>
+            <li><a href="about.html">O mnie</a></li>
+            <li><a href="interests.html">Zainteresowania</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Moja pierwsza strona</h2>
+            <p>
+                Uczę się projektowania aplikacji internetowych.
+                Na tej stronie przedstawiam siebie i swoje zainteresowania.
+            </p>
+            <p>
+                W kolejnych etapach dodam style CSS,
+                a następnie uruchomię stronę jako aplikację Flask.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Autor: Jan Kowalski</p>
+    </footer>
+</body>
+</html>
+```
+
+Zapisz plik: **Ctrl+S** w Windows/Linux lub **Cmd+S** w macOS.
+
+## 3. Zrozum szkielet dokumentu
+
+### Znaczniki i elementy
+
+HTML opisuje strukturę i znaczenie treści. Zwykle element składa się ze znacznika otwierającego, treści i znacznika zamykającego:
+
+```html
+<p>Witaj na mojej stronie!</p>
+```
+
+`<p>` rozpoczyna akapit, a `</p>` go zamyka. Ukośnik oznacza znacznik zamykający. Nie wszystkie elementy mają znacznik zamykający: przykładowo `meta` go nie ma.
+
+Elementy mogą zawierać inne elementy. Wcięcia pokazują to zagnieżdżenie i ułatwiają czytanie kodu. Zamykaj elementy w odwrotnej kolejności do ich otwierania.
+
+### Typ dokumentu i język
+
+```html
+<!DOCTYPE html>
+<html lang="pl">
+```
+
+Deklaracja `<!DOCTYPE html>` uruchamia standardowy tryb interpretacji HTML w przeglądarce. Element `html` obejmuje dokument. Atrybut `lang="pl"` określa język treści, co pomaga między innymi czytnikom ekranu.
+
+Atrybut to dodatkowa informacja zapisana w znaczniku otwierającym. W tym przykładzie nazwą atrybutu jest `lang`, a jego wartością `pl`.
+
+### Metadane w head
+
+| Fragment | Znaczenie |
+|---|---|
+| `<meta charset="UTF-8">` | Deklaruje kodowanie znaków. Sam plik również zapisz jako UTF-8. |
+| `<meta name="viewport" content="width=device-width, initial-scale=1.0">` | Ustawia obszar wyświetlania zgodnie z szerokością urządzenia. |
+| `<title>Jan Kowalski — strona osobista</title>` | Określa tytuł dokumentu widoczny na karcie przeglądarki. |
+
+`head` zawiera metadane. Widoczną treść umieszczamy w `body`. Ustawienie `viewport` przyda się przy tworzeniu układu na telefon; samo nie zapewnia jeszcze responsywności.
+
+### Semantyczny podział body
+
+| Element | Rola w naszej stronie |
+|---|---|
+| `header` | Imię i nazwisko oraz powitanie |
+| `nav` | Główna nawigacja |
+| `main` | Główna treść dokumentu |
+| `section` | Tematycznie spójny fragment z własnym nagłówkiem |
+| `footer` | Informacja o autorze |
+
+W naszym dokumencie używamy jednego widocznego elementu `main`. Elementy semantyczne opisują przeznaczenie treści. Wygląd nadamy im później przez CSS.
+
+### Nagłówki i akapity
+
+`h1` to główny nagłówek strony. `h2` oznacza nagłówek sekcji, a `p` akapit. Dobieraj poziom nagłówka według hierarchii treści, a nie rozmiaru liter.
+
+::: {.callout-note}
+## Tytuł karty a nagłówek strony
+
+Zmień sam `title`, zapisz plik i odśwież przeglądarkę. Zmieni się podpis karty. Zmiana `h1` zmieni nagłówek w treści dokumentu. To dwa różne elementy.
+:::
+
+## 4. Przeanalizuj nawigację
+
+```html
+<a href="about.html">O mnie</a>
+```
+
+Element `a` tworzy odnośnik. Atrybut `href` podaje jego cel, a tekst między znacznikami jest etykietą widoczną na stronie.
+
+Adres `about.html` jest ścieżką względną. Przeglądarka szuka pliku w tym samym katalogu co bieżący dokument. Dlatego wszystkie trzy pliki HTML umieszczamy obok siebie.
+
+Menu zapisaliśmy jako listę: `ul` to lista nieuporządkowana, a każdy `li` jest jej pozycją. Atrybut `aria-label` nadaje obszarowi nawigacji nazwę dla technologii wspomagających.
+
+::: {.callout-important}
+## Podstrony są jeszcze puste
+
+Kliknięcie „O mnie” lub „Zainteresowania” otworzy pusty dokument, jeżeli utworzyłeś odpowiedni pusty plik. To oczekiwany stan tego etapu. Wróć przyciskiem Wstecz; zawartość podstron dodamy w kolejnej sekcji.
+:::
+
+## 5. Otwórz stronę w przeglądarce
+
+1. Znajdź `index.html` w menedżerze plików.
+2. Otwórz go w przeglądarce lub przeciągnij do jej okna.
+3. Sprawdź tytuł karty, nagłówek, menu, akapity i stopkę.
+
+Adres rozpoczynający się od `file:///` oznacza odczyt lokalnego pliku. Nie działa tu jeszcze serwer HTTP ani aplikacja Flask.
+
+Strona będzie miała domyślny wygląd przeglądarki. Menu może być pionową listą z punktami. Plik `style.css` jest pusty i nie został jeszcze podłączony.
+
+## 6. Uzupełnij własną treść
+
+Zastąp przykładowe dane własnymi lub wymyślonymi. Zmień:
+
+- tytuł dokumentu w `title`;
+- imię i nazwisko w `h1` oraz stopce;
+- powitanie w nagłówku;
+- nagłówek sekcji i dwa akapity opisu.
+
+Zachowaj strukturę dokumentu. Samodzielnie zdecyduj, jaki temat rozwiniesz na podstronie „Zainteresowania”. Napisz kilka zdań, które go zapowiadają.
+
+Po każdej zmianie **zapisz plik i odśwież przeglądarkę**: Ctrl+R lub Cmd+R. Samo wpisanie tekstu w edytorze nie zmienia pliku na dysku.
+
+## 7. Wykonaj dwa eksperymenty
+
+### Nowa linia w kodzie a nowy akapit
+
+Zastąp jeden akapit poniższym fragmentem:
+
+```html
+<p>
+    Pierwsze zdanie.
+    Drugie zdanie.
+    Trzecie zdanie.
+</p>
+```
+
+Zapisz plik i sprawdź efekt. Przy domyślnym sposobie wyświetlania przeglądarka traktuje przejścia do nowego wiersza i serie spacji jak pojedynczy odstęp. Tekst zawija się zależnie od dostępnej szerokości.
+
+Następnie porównaj z trzema osobnymi akapitami:
+
+```html
+<p>Pierwszy akapit.</p>
+<p>Drugi akapit.</p>
+<p>Trzeci akapit.</p>
+```
+
+### Znaczenie wyróżnienia
+
+Wstaw do jednego akapitu element `strong`:
+
+```html
+<p>
+    Na tych zajęciach tworzę
+    <strong>własną stronę internetową</strong>.
+</p>
+```
+
+`strong` oznacza treść o dużej wadze i domyślnie jest wyświetlany pogrubieniem. Zwróć uwagę: zamykamy `strong` przed zamknięciem otaczającego go `p`.
+
+## 8. Sprawdź rezultat
+
+To lista kontrolna wykonania zadania, nie punktowany test.
+
+- [ ] Projekt zawiera trzy pliki HTML i jeden CSS.
+- [ ] `index.html` zawiera kompletny dokument HTML5.
+- [ ] Tytuł karty i nagłówek mają własną treść.
+- [ ] Polskie znaki wyświetlają się poprawnie.
+- [ ] W dokumencie są nagłówek, nawigacja, główna treść i stopka.
+- [ ] Potrafisz wskazać cel odnośnika oraz jego etykietę.
+- [ ] Po zapisaniu pliku i odświeżeniu przeglądarki widzisz zmiany.
+
+Jeżeli widzisz sam kod zamiast strony, sprawdź rozszerzenie pliku i upewnij się, że otwierasz go w przeglądarce. Jeżeli widzisz poprzednią treść, zapisz plik i sprawdź, czy edytujesz ten sam dokument, który jest otwarty w przeglądarce.
+
+**Rezultat:** masz stronę główną z własną treścią. Następny etap to uzupełnienie dwóch podstron i sprawdzenie nawigacji między nimi.

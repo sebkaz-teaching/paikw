@@ -811,5 +811,125 @@
       "Wykłady",
       "PHP – Programowanie obiektowe, bazy danych i wzorce CMS"
     ]
+  },
+  {
+    "objectID": "labs/lab1-html.html",
+    "href": "labs/lab1-html.html",
+    "title": "Laboratorium 1: pierwsza strona HTML5",
+    "section": "",
+    "text": "Przygotujesz stronę główną osobistej witryny. Wpiszesz własną treść, otworzysz dokument w przeglądarce i sprawdzisz, jak znaczniki HTML opisują strukturę strony. Możesz przedstawić siebie, fikcyjną postać albo wybrany temat. Nie musisz podawać prawdziwych danych osobowych.\nTo pierwszy etap laboratorium: HTML5 → CSS → Flask → Dockerfile → Docker Compose → GitHub. W tej sekcji pracujemy wyłącznie z HTML. Podstrony uzupełnimy w następnym etapie.",
+    "crumbs": [
+      "222890-S",
+      "Laboratoria",
+      "Laboratorium 1: pierwsza strona HTML5"
+    ]
+  },
+  {
+    "objectID": "labs/lab1-html.html#cel-tej-sekcji",
+    "href": "labs/lab1-html.html#cel-tej-sekcji",
+    "title": "Laboratorium 1: pierwsza strona HTML5",
+    "section": "",
+    "text": "Przygotujesz stronę główną osobistej witryny. Wpiszesz własną treść, otworzysz dokument w przeglądarce i sprawdzisz, jak znaczniki HTML opisują strukturę strony. Możesz przedstawić siebie, fikcyjną postać albo wybrany temat. Nie musisz podawać prawdziwych danych osobowych.\nTo pierwszy etap laboratorium: HTML5 → CSS → Flask → Dockerfile → Docker Compose → GitHub. W tej sekcji pracujemy wyłącznie z HTML. Podstrony uzupełnimy w następnym etapie.",
+    "crumbs": [
+      "222890-S",
+      "Laboratoria",
+      "Laboratorium 1: pierwsza strona HTML5"
+    ]
+  },
+  {
+    "objectID": "labs/lab1-html.html#przygotuj-katalog-projektu",
+    "href": "labs/lab1-html.html#przygotuj-katalog-projektu",
+    "title": "Laboratorium 1: pierwsza strona HTML5",
+    "section": "1. Przygotuj katalog projektu",
+    "text": "1. Przygotuj katalog projektu\nUtwórz katalog personal-website. W Visual Studio Code wybierz File → Open Folder i otwórz ten katalog. Następnie utwórz cztery puste pliki:\npersonal-website/\n├── index.html\n├── about.html\n├── interests.html\n└── style.css\n\n\n\nPlik\nPrzeznaczenie\n\n\n\n\nindex.html\nStrona główna z powitaniem\n\n\nabout.html\nPodstrona „O mnie”\n\n\ninterests.html\nPodstrona „Zainteresowania”\n\n\nstyle.css\nWspólny arkusz stylów, używany w kolejnej sekcji\n\n\n\nNazwa index.html jest zwyczajową nazwą strony domyślnej w katalogu witryny. Sprawdź rozszerzenia plików: index.html.txt nie jest plikiem index.html.",
+    "crumbs": [
+      "222890-S",
+      "Laboratoria",
+      "Laboratorium 1: pierwsza strona HTML5"
+    ]
+  },
+  {
+    "objectID": "labs/lab1-html.html#wpisz-kompletny-dokument-html5",
+    "href": "labs/lab1-html.html#wpisz-kompletny-dokument-html5",
+    "title": "Laboratorium 1: pierwsza strona HTML5",
+    "section": "2. Wpisz kompletny dokument HTML5",
+    "text": "2. Wpisz kompletny dokument HTML5\nOtwórz index.html i wprowadź poniższy kod. Przycisk kopiowania w prawym górnym rogu bloku pozwala skopiować cały przykład.\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"pl\"&gt;\n&lt;head&gt;\n    &lt;meta charset=\"UTF-8\"&gt;\n    &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\n    &lt;title&gt;Jan Kowalski — strona osobista&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;header&gt;\n        &lt;h1&gt;Jan Kowalski&lt;/h1&gt;\n        &lt;p&gt;Witaj na mojej stronie internetowej!&lt;/p&gt;\n    &lt;/header&gt;\n\n    &lt;nav aria-label=\"Nawigacja główna\"&gt;\n        &lt;ul&gt;\n            &lt;li&gt;&lt;a href=\"index.html\"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;\n            &lt;li&gt;&lt;a href=\"about.html\"&gt;O mnie&lt;/a&gt;&lt;/li&gt;\n            &lt;li&gt;&lt;a href=\"interests.html\"&gt;Zainteresowania&lt;/a&gt;&lt;/li&gt;\n        &lt;/ul&gt;\n    &lt;/nav&gt;\n\n    &lt;main&gt;\n        &lt;section&gt;\n            &lt;h2&gt;Moja pierwsza strona&lt;/h2&gt;\n            &lt;p&gt;\n                Uczę się projektowania aplikacji internetowych.\n                Na tej stronie przedstawiam siebie i swoje zainteresowania.\n            &lt;/p&gt;\n            &lt;p&gt;\n                W kolejnych etapach dodam style CSS,\n                a następnie uruchomię stronę jako aplikację Flask.\n            &lt;/p&gt;\n        &lt;/section&gt;\n    &lt;/main&gt;\n\n    &lt;footer&gt;\n        &lt;p&gt;Autor: Jan Kowalski&lt;/p&gt;\n    &lt;/footer&gt;\n&lt;/body&gt;\n&lt;/html&gt;\nZapisz plik: Ctrl+S w Windows/Linux lub Cmd+S w macOS.",
+    "crumbs": [
+      "222890-S",
+      "Laboratoria",
+      "Laboratorium 1: pierwsza strona HTML5"
+    ]
+  },
+  {
+    "objectID": "labs/lab1-html.html#zrozum-szkielet-dokumentu",
+    "href": "labs/lab1-html.html#zrozum-szkielet-dokumentu",
+    "title": "Laboratorium 1: pierwsza strona HTML5",
+    "section": "3. Zrozum szkielet dokumentu",
+    "text": "3. Zrozum szkielet dokumentu\n\nZnaczniki i elementy\nHTML opisuje strukturę i znaczenie treści. Zwykle element składa się ze znacznika otwierającego, treści i znacznika zamykającego:\n&lt;p&gt;Witaj na mojej stronie!&lt;/p&gt;\n&lt;p&gt; rozpoczyna akapit, a &lt;/p&gt; go zamyka. Ukośnik oznacza znacznik zamykający. Nie wszystkie elementy mają znacznik zamykający: przykładowo meta go nie ma.\nElementy mogą zawierać inne elementy. Wcięcia pokazują to zagnieżdżenie i ułatwiają czytanie kodu. Zamykaj elementy w odwrotnej kolejności do ich otwierania.\n\n\nTyp dokumentu i język\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"pl\"&gt;\nDeklaracja &lt;!DOCTYPE html&gt; uruchamia standardowy tryb interpretacji HTML w przeglądarce. Element html obejmuje dokument. Atrybut lang=\"pl\" określa język treści, co pomaga między innymi czytnikom ekranu.\nAtrybut to dodatkowa informacja zapisana w znaczniku otwierającym. W tym przykładzie nazwą atrybutu jest lang, a jego wartością pl.\n\n\nMetadane w head\n\n\n\n\n\n\n\nFragment\nZnaczenie\n\n\n\n\n&lt;meta charset=\"UTF-8\"&gt;\nDeklaruje kodowanie znaków. Sam plik również zapisz jako UTF-8.\n\n\n&lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\nUstawia obszar wyświetlania zgodnie z szerokością urządzenia.\n\n\n&lt;title&gt;Jan Kowalski — strona osobista&lt;/title&gt;\nOkreśla tytuł dokumentu widoczny na karcie przeglądarki.\n\n\n\nhead zawiera metadane. Widoczną treść umieszczamy w body. Ustawienie viewport przyda się przy tworzeniu układu na telefon; samo nie zapewnia jeszcze responsywności.\n\n\nSemantyczny podział body\n\n\n\nElement\nRola w naszej stronie\n\n\n\n\nheader\nImię i nazwisko oraz powitanie\n\n\nnav\nGłówna nawigacja\n\n\nmain\nGłówna treść dokumentu\n\n\nsection\nTematycznie spójny fragment z własnym nagłówkiem\n\n\nfooter\nInformacja o autorze\n\n\n\nW naszym dokumencie używamy jednego widocznego elementu main. Elementy semantyczne opisują przeznaczenie treści. Wygląd nadamy im później przez CSS.\n\n\nNagłówki i akapity\nh1 to główny nagłówek strony. h2 oznacza nagłówek sekcji, a p akapit. Dobieraj poziom nagłówka według hierarchii treści, a nie rozmiaru liter.\n\n\n\n\n\n\nAdnotacjaTytuł karty a nagłówek strony\n\n\n\nZmień sam title, zapisz plik i odśwież przeglądarkę. Zmieni się podpis karty. Zmiana h1 zmieni nagłówek w treści dokumentu. To dwa różne elementy.",
+    "crumbs": [
+      "222890-S",
+      "Laboratoria",
+      "Laboratorium 1: pierwsza strona HTML5"
+    ]
+  },
+  {
+    "objectID": "labs/lab1-html.html#przeanalizuj-nawigację",
+    "href": "labs/lab1-html.html#przeanalizuj-nawigację",
+    "title": "Laboratorium 1: pierwsza strona HTML5",
+    "section": "4. Przeanalizuj nawigację",
+    "text": "4. Przeanalizuj nawigację\n&lt;a href=\"about.html\"&gt;O mnie&lt;/a&gt;\nElement a tworzy odnośnik. Atrybut href podaje jego cel, a tekst między znacznikami jest etykietą widoczną na stronie.\nAdres about.html jest ścieżką względną. Przeglądarka szuka pliku w tym samym katalogu co bieżący dokument. Dlatego wszystkie trzy pliki HTML umieszczamy obok siebie.\nMenu zapisaliśmy jako listę: ul to lista nieuporządkowana, a każdy li jest jej pozycją. Atrybut aria-label nadaje obszarowi nawigacji nazwę dla technologii wspomagających.\n\n\n\n\n\n\nWażnePodstrony są jeszcze puste\n\n\n\nKliknięcie „O mnie” lub „Zainteresowania” otworzy pusty dokument, jeżeli utworzyłeś odpowiedni pusty plik. To oczekiwany stan tego etapu. Wróć przyciskiem Wstecz; zawartość podstron dodamy w kolejnej sekcji.",
+    "crumbs": [
+      "222890-S",
+      "Laboratoria",
+      "Laboratorium 1: pierwsza strona HTML5"
+    ]
+  },
+  {
+    "objectID": "labs/lab1-html.html#otwórz-stronę-w-przeglądarce",
+    "href": "labs/lab1-html.html#otwórz-stronę-w-przeglądarce",
+    "title": "Laboratorium 1: pierwsza strona HTML5",
+    "section": "5. Otwórz stronę w przeglądarce",
+    "text": "5. Otwórz stronę w przeglądarce\n\nZnajdź index.html w menedżerze plików.\nOtwórz go w przeglądarce lub przeciągnij do jej okna.\nSprawdź tytuł karty, nagłówek, menu, akapity i stopkę.\n\nAdres rozpoczynający się od file:/// oznacza odczyt lokalnego pliku. Nie działa tu jeszcze serwer HTTP ani aplikacja Flask.\nStrona będzie miała domyślny wygląd przeglądarki. Menu może być pionową listą z punktami. Plik style.css jest pusty i nie został jeszcze podłączony.",
+    "crumbs": [
+      "222890-S",
+      "Laboratoria",
+      "Laboratorium 1: pierwsza strona HTML5"
+    ]
+  },
+  {
+    "objectID": "labs/lab1-html.html#uzupełnij-własną-treść",
+    "href": "labs/lab1-html.html#uzupełnij-własną-treść",
+    "title": "Laboratorium 1: pierwsza strona HTML5",
+    "section": "6. Uzupełnij własną treść",
+    "text": "6. Uzupełnij własną treść\nZastąp przykładowe dane własnymi lub wymyślonymi. Zmień:\n\ntytuł dokumentu w title;\nimię i nazwisko w h1 oraz stopce;\npowitanie w nagłówku;\nnagłówek sekcji i dwa akapity opisu.\n\nZachowaj strukturę dokumentu. Samodzielnie zdecyduj, jaki temat rozwiniesz na podstronie „Zainteresowania”. Napisz kilka zdań, które go zapowiadają.\nPo każdej zmianie zapisz plik i odśwież przeglądarkę: Ctrl+R lub Cmd+R. Samo wpisanie tekstu w edytorze nie zmienia pliku na dysku.",
+    "crumbs": [
+      "222890-S",
+      "Laboratoria",
+      "Laboratorium 1: pierwsza strona HTML5"
+    ]
+  },
+  {
+    "objectID": "labs/lab1-html.html#wykonaj-dwa-eksperymenty",
+    "href": "labs/lab1-html.html#wykonaj-dwa-eksperymenty",
+    "title": "Laboratorium 1: pierwsza strona HTML5",
+    "section": "7. Wykonaj dwa eksperymenty",
+    "text": "7. Wykonaj dwa eksperymenty\n\nNowa linia w kodzie a nowy akapit\nZastąp jeden akapit poniższym fragmentem:\n&lt;p&gt;\n    Pierwsze zdanie.\n    Drugie zdanie.\n    Trzecie zdanie.\n&lt;/p&gt;\nZapisz plik i sprawdź efekt. Przy domyślnym sposobie wyświetlania przeglądarka traktuje przejścia do nowego wiersza i serie spacji jak pojedynczy odstęp. Tekst zawija się zależnie od dostępnej szerokości.\nNastępnie porównaj z trzema osobnymi akapitami:\n&lt;p&gt;Pierwszy akapit.&lt;/p&gt;\n&lt;p&gt;Drugi akapit.&lt;/p&gt;\n&lt;p&gt;Trzeci akapit.&lt;/p&gt;\n\n\nZnaczenie wyróżnienia\nWstaw do jednego akapitu element strong:\n&lt;p&gt;\n    Na tych zajęciach tworzę\n    &lt;strong&gt;własną stronę internetową&lt;/strong&gt;.\n&lt;/p&gt;\nstrong oznacza treść o dużej wadze i domyślnie jest wyświetlany pogrubieniem. Zwróć uwagę: zamykamy strong przed zamknięciem otaczającego go p.",
+    "crumbs": [
+      "222890-S",
+      "Laboratoria",
+      "Laboratorium 1: pierwsza strona HTML5"
+    ]
+  },
+  {
+    "objectID": "labs/lab1-html.html#sprawdź-rezultat",
+    "href": "labs/lab1-html.html#sprawdź-rezultat",
+    "title": "Laboratorium 1: pierwsza strona HTML5",
+    "section": "8. Sprawdź rezultat",
+    "text": "8. Sprawdź rezultat\nTo lista kontrolna wykonania zadania, nie punktowany test.\n\nProjekt zawiera trzy pliki HTML i jeden CSS.\nindex.html zawiera kompletny dokument HTML5.\nTytuł karty i nagłówek mają własną treść.\nPolskie znaki wyświetlają się poprawnie.\nW dokumencie są nagłówek, nawigacja, główna treść i stopka.\nPotrafisz wskazać cel odnośnika oraz jego etykietę.\nPo zapisaniu pliku i odświeżeniu przeglądarki widzisz zmiany.\n\nJeżeli widzisz sam kod zamiast strony, sprawdź rozszerzenie pliku i upewnij się, że otwierasz go w przeglądarce. Jeżeli widzisz poprzednią treść, zapisz plik i sprawdź, czy edytujesz ten sam dokument, który jest otwarty w przeglądarce.\nRezultat: masz stronę główną z własną treścią. Następny etap to uzupełnienie dwóch podstron i sprawdzenie nawigacji między nimi.",
+    "crumbs": [
+      "222890-S",
+      "Laboratoria",
+      "Laboratorium 1: pierwsza strona HTML5"
+    ]
   }
 ]
