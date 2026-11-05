@@ -270,6 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sprawdź-rezultat" id="toc-sprawdź-rezultat" class="nav-link" data-scroll-target="#sprawdź-rezultat">8. Sprawdź rezultat</a></li>
   <li><a href="#sekcja-2.-dwie-podstrony-i-nawigacja" id="toc-sekcja-2.-dwie-podstrony-i-nawigacja" class="nav-link" data-scroll-target="#sekcja-2.-dwie-podstrony-i-nawigacja">Sekcja 2. Dwie podstrony i nawigacja</a></li>
   <li><a href="#sekcja-3.-podstawy-css-i-wspólny-arkusz-stylów" id="toc-sekcja-3.-podstawy-css-i-wspólny-arkusz-stylów" class="nav-link" data-scroll-target="#sekcja-3.-podstawy-css-i-wspólny-arkusz-stylów">Sekcja 3. Podstawy CSS i wspólny arkusz stylów</a></li>
+  <li><a href="#sekcja-4.-flask-jedna-strona-i-dwie-podstrony" id="toc-sekcja-4.-flask-jedna-strona-i-dwie-podstrony" class="nav-link" data-scroll-target="#sekcja-4.-flask-jedna-strona-i-dwie-podstrony">Sekcja 4. Flask: jedna strona i dwie podstrony</a></li>
   </ul>
 </nav>
     </div>
@@ -279,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab1-html.html">Laboratoria</a></li><li class="breadcrumb-item"><a href="../labs/lab1-html.html">Laboratorium 1: osobista witryna HTML5</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Laboratorium 1: osobista witryna HTML5</h1>
-<p class="subtitle lead">Sekcje 1–3 · HTML5, nawigacja i wspólny arkusz CSS</p>
+<p class="subtitle lead">Sekcje 1–4 · HTML5, CSS i aplikacja Flask</p>
 </div>
 
 
@@ -1329,6 +1330,345 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><label><input type="checkbox">Potrafisz odnaleźć regułę elementu w narzędziach przeglądarki.</label></li>
 </ul>
 <p><strong>Rezultat:</strong> masz statyczną witrynę z trzema podstronami i jednym wspólnym arkuszem CSS. Kolejny etap to uruchomienie strony głównej przez Flask, a następnie dodanie obsługi dwóch pozostałych adresów.</p>
+</section>
+</section>
+<section id="sekcja-4.-flask-jedna-strona-i-dwie-podstrony" class="level2">
+<h2 class="anchored" data-anchor-id="sekcja-4.-flask-jedna-strona-i-dwie-podstrony">Sekcja 4. Flask: jedna strona i dwie podstrony</h2>
+<p>Dotychczas przeglądarka odczytywała pliki z dysku. Teraz uruchomisz aplikację HTTP w Pythonie. Najpierw obsłużysz stronę główną, a następnie dodasz dwie podstrony. Zachowasz własną treść i wspólny arkusz CSS.</p>
+<section id="przygotuj-pythona-i-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="przygotuj-pythona-i-terminal">1. Przygotuj Pythona i terminal</h3>
+<p>Otwórz terminal w katalogu <code>personal-website</code>. To katalog Twojej aplikacji, nie repozytorium strony kursu. Korzystamy z <strong>Pythona 3.11 lub nowszego</strong>. Sprawdź wersję:</p>
+<p><strong>macOS / Linux:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">--version</span></span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>py <span class="op">-</span><span class="dv">3</span> <span class="op">--</span>version</span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Jeżeli interpreter nie jest dostępny, zgłoś to prowadzącemu. Nie instaluj pakietów globalnie i nie używaj <code>sudo</code>.</p>
+</section>
+<section id="utwórz-izolowane-środowisko" class="level3">
+<h3 class="anchored" data-anchor-id="utwórz-izolowane-środowisko">2. Utwórz izolowane środowisko</h3>
+<p><strong>macOS / Linux:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>py <span class="op">-</span><span class="dv">3</span> <span class="op">-</span>m venv <span class="op">.</span><span class="fu">venv</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>\<span class="op">.</span><span class="fu">venv</span>\Scripts\Activate<span class="op">.</span><span class="fu">ps1</span></span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Jeśli PowerShell blokuje aktywację, możesz korzystać bezpośrednio z interpretera środowiska, bez zmiany polityki wykonywania skryptów:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>\<span class="op">.</span><span class="fu">venv</span>\Scripts\python<span class="op">.</span><span class="fu">exe</span> <span class="op">-</span>m pip install Flask</span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p>W takim wariancie w następnych poleceniach zastępuj <code>python</code> przez <code>.\.venv\Scripts\python.exe</code>.</p>
+<p>Po aktywacji środowiska sprawdź interpreter i zainstaluj Flask:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import sys; print(sys.executable)"</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install Flask</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip show Flask</span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ścieżka interpretera powinna prowadzić do <code>.venv</code> w Twoim projekcie. Zapis <code>python -m pip</code> wiąże instalację z tym właśnie interpreterem. W edytorze również wybierz interpreter z <code>.venv</code>, jeśli zgłasza brak biblioteki Flask.</p>
+<p>Środowisko <code>.venv</code> zawiera lokalną instalację zależności. Nie jest kodem aplikacji i nie należy umieszczać go w repozytorium Git ani kopiować do obrazu Dockera.</p>
+</section>
+<section id="uporządkuj-pliki-aplikacji" class="level3">
+<h3 class="anchored" data-anchor-id="uporządkuj-pliki-aplikacji">3. Uporządkuj pliki aplikacji</h3>
+<p>Utwórz katalogi <code>templates</code> i <code>static</code>. Przenieś trzy pliki HTML do <code>templates</code>, a <code>style.css</code> do <code>static</code>. W głównym katalogu utwórz <code>app.py</code>:</p>
+<pre class="text"><code>personal-website/
+├── .venv/
+├── app.py
+├── templates/
+│   ├── index.html
+│   ├── about.html
+│   └── interests.html
+└── static/
+    └── style.css</code></pre>
+<p>Przenoś pliki zamiast zostawiać dodatkowe kopie. <code>app.py</code> musi znajdować się obok katalogów <code>templates</code> i <code>static</code>. Nie nazywaj go <code>flask.py</code>, ponieważ taka nazwa może przesłonić import biblioteki.</p>
+<p>Pliki HTML pozostają Twoimi dotychczasowymi dokumentami. Flask będzie je przetwarzać jako szablony. Arkusz CSS pozostaje bez zmian.</p>
+</section>
+<section id="napisz-aplikację-z-jedną-trasą" class="level3">
+<h3 class="anchored" data-anchor-id="napisz-aplikację-z-jedną-trasą">4. Napisz aplikację z jedną trasą</h3>
+<p>Wpisz kompletną zawartość <code>app.py</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/"</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> home() <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Render the home page."""</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> render_template(<span class="st">"index.html"</span>)</span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fragment</th>
+<th>Rola</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Flask</code></td>
+<td>Klasa, z której tworzymy obiekt aplikacji.</td>
+</tr>
+<tr class="even">
+<td><code>app = Flask(__name__)</code></td>
+<td>Tworzy aplikację z informacją o module potrzebną do lokalizowania zasobów.</td>
+</tr>
+<tr class="odd">
+<td><code>@app.route("/")</code></td>
+<td>Przypisuje adres strony głównej do funkcji poniżej.</td>
+</tr>
+<tr class="even">
+<td><code>home()</code></td>
+<td>Funkcja wykonywana przy żądaniu tej strony.</td>
+</tr>
+<tr class="odd">
+<td><code>render_template("index.html")</code></td>
+<td>Renderuje dokument z katalogu <code>templates</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Adnotacja <code>-&gt; str</code> opisuje typ wartości zwracanej przez naszą funkcję. Nie jest konfiguracją protokołu HTTP.</p>
+</section>
+<section id="przygotuj-stronę-główną-do-obsługi-przez-flask" class="level3">
+<h3 class="anchored" data-anchor-id="przygotuj-stronę-główną-do-obsługi-przez-flask">5. Przygotuj stronę główną do obsługi przez Flask</h3>
+<p>W <code>templates/index.html</code> zmień odwołanie do CSS na:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('static', filename='style.css') }}"</span><span class="dt">&gt;</span></span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Na razie zastąp całe menu wersją z jednym odnośnikiem:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">"Nawigacja główna"</span><span class="dt">&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('home') }}"</span><span class="ot"> aria-current</span><span class="op">=</span><span class="st">"page"</span><span class="dt">&gt;</span>Strona główna<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Nie dodawaj jeszcze <code>url_for('about')</code> ani <code>url_for('interests')</code>.</strong> Takie funkcje nie istnieją w aplikacji z jedną trasą. Dodamy je w kolejnym kroku.</p>
+<p>Zapis <code>{ ... }</code> jest wyrażeniem szablonu Jinja. Serwer oblicza jego wartość przed wysłaniem HTML do przeglądarki. <code>url_for('home')</code> generuje adres na podstawie nazwy funkcji, a <code>url_for('static', filename='style.css')</code> wskazuje zasób statyczny.</p>
+<p>W <code>head</code> zachowaj metadane i własny tytuł. Poza CSS i menu nie zmieniaj przygotowanej wcześniej treści.</p>
+</section>
+<section id="uruchom-pierwszą-stronę" class="level3">
+<h3 class="anchored" data-anchor-id="uruchom-pierwszą-stronę">6. Uruchom pierwszą stronę</h3>
+<p>W terminalu z aktywnym środowiskiem, pozostając w katalogu z <code>app.py</code>, wykonaj:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> flask <span class="at">--app</span> app run <span class="at">--debug</span></span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>--app app</code> wskazuje moduł <code>app.py</code>. Polecenie <code>run</code> uruchamia serwer deweloperski. Opcja <code>--debug</code> pomaga podczas lokalnych ćwiczeń i automatycznie przeładowuje aplikację po zmianach kodu Pythona.</p>
+<p>Otwórz <strong><a href="http://127.0.0.1:5000/">http://127.0.0.1:5000/</a></strong>. Terminal pozostaw uruchomiony. Zatrzymanie procesu przez <strong>Ctrl+C</strong> wyłącza serwer.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Ważne</span>Otwieraj adres HTTP, nie plik szablonu
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Od tego etapu korzystaj z adresu serwera. Podwójne kliknięcie <code>templates/index.html</code> nie uruchamia Flaska ani Jinja. Przy adresie <code>file:///</code> wyrażenia <code>{ ... }</code> nie zostaną obliczone.</p>
+<p>Tryb debugowania służy do lokalnej pracy laboratoryjnej. Nie udostępniaj go jako publicznego serwera.</p>
+</div>
+</div>
+<p>Sprawdź stronę główną i otwórz również <a href="http://127.0.0.1:5000/static/style.css">http://127.0.0.1:5000/static/style.css</a>. Powinien pojawić się kod Twojego arkusza. Adres <code>/about</code> na tym etapie zwróci <code>404</code>, ponieważ nie dodaliśmy jeszcze takiej trasy.</p>
+<p>Jeżeli port jest zajęty, uruchom serwer na innym porcie:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> flask <span class="at">--app</span> app run <span class="at">--debug</span> <span class="at">--port</span> 5001</span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Wtedy we wszystkich adresach używaj portu <code>5001</code>.</p>
+</section>
+<section id="dodaj-dwie-podstrony" class="level3">
+<h3 class="anchored" data-anchor-id="dodaj-dwie-podstrony">7. Dodaj dwie podstrony</h3>
+<p>Zastąp <code>app.py</code> poniższą kompletną wersją:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/"</span>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> home() <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Render the home page."""</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> render_template(<span class="st">"index.html"</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/about"</span>)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> about() <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Render the about page."""</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> render_template(<span class="st">"about.html"</span>)</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/interests"</span>)</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> interests() <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Render the interests page."""</span></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> render_template(<span class="st">"interests.html"</span>)</span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Zapisz plik. Przy uruchomionym trybie debugowania serwer powinien przeładować kod. Jeśli został zatrzymany, uruchom go ponownie tym samym poleceniem.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Adres w przeglądarce</th>
+<th>Funkcja / endpoint</th>
+<th>Plik szablonu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>/</code></td>
+<td><code>home</code></td>
+<td><code>templates/index.html</code></td>
+</tr>
+<tr class="even">
+<td><code>/about</code></td>
+<td><code>about</code></td>
+<td><code>templates/about.html</code></td>
+</tr>
+<tr class="odd">
+<td><code>/interests</code></td>
+<td><code>interests</code></td>
+<td><code>templates/interests.html</code></td>
+</tr>
+</tbody>
+</table>
+<p>Nazwa funkcji jest tutaj domyślną nazwą endpointu. Rozróżniaj trzy rzeczy: adres URL, nazwę funkcji oraz nazwę pliku. W przykładzie <code>/about</code> prowadzi do <code>about()</code>, a funkcja renderuje <code>about.html</code>.</p>
+</section>
+<section id="podłącz-css-na-obu-podstronach" class="level3">
+<h3 class="anchored" data-anchor-id="podłącz-css-na-obu-podstronach">8. Podłącz CSS na obu podstronach</h3>
+<p>W <code>templates/about.html</code> i <code>templates/interests.html</code> zastąp dotychczasowy element <code>link</code> tym samym zapisem co na stronie głównej:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('static', filename='style.css') }}"</span><span class="dt">&gt;</span></span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Nie wpisuj <code>../static/style.css</code>. Przeglądarka rozwiązuje względne adresy względem adresu dokumentu, a nie położenia szablonu na dysku serwera. <code>url_for()</code> pozwala uniknąć tego pomieszania.</p>
+</section>
+<section id="zaktualizuj-całe-menu-na-trzech-stronach" class="level3">
+<h3 class="anchored" data-anchor-id="zaktualizuj-całe-menu-na-trzech-stronach">9. Zaktualizuj całe menu na trzech stronach</h3>
+<p>Teraz wszystkie trzy endpointy istnieją. Wstaw właściwe menu do każdego szablonu, zastępując dotychczasowy element <code>nav</code>.</p>
+<p><strong><code>templates/index.html</code>:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">"Nawigacja główna"</span><span class="dt">&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('home') }}"</span><span class="ot"> aria-current</span><span class="op">=</span><span class="st">"page"</span><span class="dt">&gt;</span>Strona główna<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('about') }}"</span><span class="dt">&gt;</span>O mnie<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('interests') }}"</span><span class="dt">&gt;</span>Zainteresowania<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong><code>templates/about.html</code>:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">"Nawigacja główna"</span><span class="dt">&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('home') }}"</span><span class="dt">&gt;</span>Strona główna<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('about') }}"</span><span class="ot"> aria-current</span><span class="op">=</span><span class="st">"page"</span><span class="dt">&gt;</span>O mnie<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('interests') }}"</span><span class="dt">&gt;</span>Zainteresowania<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong><code>templates/interests.html</code>:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">"Nawigacja główna"</span><span class="dt">&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('home') }}"</span><span class="dt">&gt;</span>Strona główna<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('about') }}"</span><span class="dt">&gt;</span>O mnie<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('interests') }}"</span><span class="ot"> aria-current</span><span class="op">=</span><span class="st">"page"</span><span class="dt">&gt;</span>Zainteresowania<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Zachowaj własną treść <code>main</code>, metadane, nagłówek i stopkę. Odnośniki zewnętrzne oraz odnośnik <code>#top</code>, jeśli go dodałeś, nie wymagają zmiany.</p>
+</section>
+<section id="prześledź-żądanie-i-odpowiedź" class="level3">
+<h3 class="anchored" data-anchor-id="prześledź-żądanie-i-odpowiedź">10. Prześledź żądanie i odpowiedź</h3>
+<p>Kliknij „O mnie” i prześledź kolejne etapy:</p>
+<ol type="1">
+<li>Przeglądarka wysyła żądanie <code>GET /about</code> do lokalnego serwera.</li>
+<li>Flask dopasowuje trasę i wykonuje <code>about()</code>.</li>
+<li>Funkcja renderuje <code>about.html</code>, obliczając wyrażenia Jinja.</li>
+<li>Serwer zwraca wynikowy HTML.</li>
+<li>Przeglądarka odczytuje odwołanie do CSS i wysyła osobne żądanie <code>GET /static/style.css</code>.</li>
+</ol>
+<p>Otwórz źródło strony w przeglądarce i znajdź menu. Powinny być w nim zwykłe adresy <code>/</code>, <code>/about</code> i <code>/interests</code>, bez wyrażeń <code>{ url_for(...) }</code>. Kod Pythona i źródło szablonu nie są wysyłane jako kod do wykonania w przeglądarce.</p>
+</section>
+<section id="sprawdź-aplikację-i-obsługę-błędów" class="level3">
+<h3 class="anchored" data-anchor-id="sprawdź-aplikację-i-obsługę-błędów">11. Sprawdź aplikację i obsługę błędów</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Próba</th>
+<th>Oczekiwany efekt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Otwórz <code>/</code></td>
+<td>Strona główna, właściwy tytuł i wspólny CSS.</td>
+</tr>
+<tr class="even">
+<td>Otwórz <code>/about</code></td>
+<td>Własna treść strony „O mnie”.</td>
+</tr>
+<tr class="odd">
+<td>Otwórz <code>/interests</code></td>
+<td>Własna treść zainteresowań.</td>
+</tr>
+<tr class="even">
+<td>Przejdź między stronami przez menu</td>
+<td>Każdy odnośnik otwiera właściwą trasę.</td>
+</tr>
+<tr class="odd">
+<td>Otwórz <code>/static/style.css</code></td>
+<td>Kod wspólnego arkusza.</td>
+</tr>
+<tr class="even">
+<td>Otwórz <code>/missing</code></td>
+<td>Odpowiedź <code>404</code>, bo takiej trasy nie zdefiniowano.</td>
+</tr>
+</tbody>
+</table>
+<p>Obserwuj terminal: zobaczysz żądania oraz ich statusy. <code>200</code> oznacza powodzenie, <code>404</code> brak wskazanego zasobu, a <code>500</code> błąd po stronie aplikacji.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>Co sprawdzić?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>No module named flask</code></td>
+<td>Interpreter i instalację Flask w aktywnym <code>.venv</code>.</td>
+</tr>
+<tr class="even">
+<td><code>TemplateNotFound</code></td>
+<td>Pisownię nazwy i obecność pliku w <code>templates</code> obok <code>app.py</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>BuildError</code></td>
+<td>Czy argument <code>url_for()</code> jest nazwą istniejącego endpointu, np. <code>about</code>, a nie <code>about.html</code>?</td>
+</tr>
+<tr class="even">
+<td>Brak stylów</td>
+<td>Obecność <code>static/style.css</code> i poprawny element <code>link</code> w każdym szablonie.</td>
+</tr>
+<tr class="odd">
+<td><code>404</code> dla <code>/about.html</code></td>
+<td>Użyj <code>/about</code>: to adres zdefiniowany w aplikacji.</td>
+</tr>
+<tr class="even">
+<td>Brak połączenia</td>
+<td>Czy serwer działa i czy używasz portu wskazanego w terminalu?</td>
+</tr>
+</tbody>
+</table>
+<p>W tych przykładach trasy podstron nie kończą się ukośnikiem. Korzystaj z adresów generowanych przez menu, np. <code>/about</code>, zamiast samodzielnie dopisywać <code>/about/</code>.</p>
+</section>
+<section id="samodzielny-eksperyment-z-adresem" class="level3">
+<h3 class="anchored" data-anchor-id="samodzielny-eksperyment-z-adresem">12. Samodzielny eksperyment z adresem</h3>
+<p>Zmień tylko dekorator trasy strony „O mnie”:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/about-me"</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> about() <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Render the about page."""</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> render_template(<span class="st">"about.html"</span>)</span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Nie zmieniaj nazwy funkcji ani <code>url_for('about')</code> w menu. Po zapisaniu pliku odśwież stronę główną i kliknij „O mnie”. Adres powinien teraz kończyć się na <code>/about-me</code>. Stary adres <code>/about</code> zwróci <code>404</code>.</p>
+<p>To pokazuje, po co generujemy adresy na podstawie nazw endpointów. <strong>Po eksperymencie przywróć trasę <code>/about</code></strong>, aby projekt był zgodny z dalszą instrukcją.</p>
+</section>
+<section id="punkt-kontrolny-sekcji-4" class="level3">
+<h3 class="anchored" data-anchor-id="punkt-kontrolny-sekcji-4">13. Punkt kontrolny sekcji 4</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Flask jest zainstalowany w lokalnym środowisku <code>.venv</code>.</label></li>
+<li><label><input type="checkbox">Potrafisz uruchomić i zatrzymać serwer.</label></li>
+<li><label><input type="checkbox">Otwierasz aplikację przez <code>http://</code>, a nie <code>file:///</code>.</label></li>
+<li><label><input type="checkbox">Trasy <code>/</code>, <code>/about</code> i <code>/interests</code> renderują właściwe dokumenty.</label></li>
+<li><label><input type="checkbox">Wszystkie trzy strony pobierają wspólny arkusz z <code>/static/style.css</code>.</label></li>
+<li><label><input type="checkbox">Menu używa nazw endpointów w <code>url_for()</code>.</label></li>
+<li><label><input type="checkbox">Potrafisz odróżnić trasę, funkcję Pythona i plik szablonu.</label></li>
+<li><label><input type="checkbox">Po eksperymencie przywróciłeś adres <code>/about</code>.</label></li>
+</ul>
+<p><strong>Rezultat:</strong> Twoja witryna działa jako aplikacja Flask z trzema stronami. Wspólne elementy HTML nadal się powtarzają; w kolejnym etapie wydzielimy je do szablonu bazowego, zanim przygotujemy kontener.</p>
+<p>Dalsza lektura: oficjalne instrukcje <a href="https://flask.palletsprojects.com/en/stable/installation/">instalacji Flask</a> oraz <a href="https://flask.palletsprojects.com/en/stable/quickstart/">Quickstart</a> opisują środowisko, routing, szablony i pliki statyczne.</p>
 
 
 </section>

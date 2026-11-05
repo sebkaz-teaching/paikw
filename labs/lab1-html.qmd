@@ -1,6 +1,6 @@
 ---
 title: "Laboratorium 1: osobista witryna HTML5"
-subtitle: "Sekcje 1–3 · HTML5, nawigacja i wspólny arkusz CSS"
+subtitle: "Sekcje 1–4 · HTML5, CSS i aplikacja Flask"
 lang: pl
 toc-title: "Na tej stronie"
 code-copy: true
@@ -829,3 +829,318 @@ Nie wpisuj znaczników `<style>` do pliku `.css`. Zewnętrzny arkusz zawiera sam
 - [ ] Potrafisz odnaleźć regułę elementu w narzędziach przeglądarki.
 
 **Rezultat:** masz statyczną witrynę z trzema podstronami i jednym wspólnym arkuszem CSS. Kolejny etap to uruchomienie strony głównej przez Flask, a następnie dodanie obsługi dwóch pozostałych adresów.
+
+
+## Sekcja 4. Flask: jedna strona i dwie podstrony
+
+Dotychczas przeglądarka odczytywała pliki z dysku. Teraz uruchomisz aplikację HTTP w Pythonie. Najpierw obsłużysz stronę główną, a następnie dodasz dwie podstrony. Zachowasz własną treść i wspólny arkusz CSS.
+
+### 1. Przygotuj Pythona i terminal
+
+Otwórz terminal w katalogu `personal-website`. To katalog Twojej aplikacji, nie repozytorium strony kursu. Korzystamy z **Pythona 3.11 lub nowszego**. Sprawdź wersję:
+
+**macOS / Linux:**
+
+```bash
+python3 --version
+```
+
+**Windows (PowerShell):**
+
+```powershell
+py -3 --version
+```
+
+Jeżeli interpreter nie jest dostępny, zgłoś to prowadzącemu. Nie instaluj pakietów globalnie i nie używaj `sudo`.
+
+### 2. Utwórz izolowane środowisko
+
+**macOS / Linux:**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+**Windows (PowerShell):**
+
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+Jeśli PowerShell blokuje aktywację, możesz korzystać bezpośrednio z interpretera środowiska, bez zmiany polityki wykonywania skryptów:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install Flask
+```
+
+W takim wariancie w następnych poleceniach zastępuj `python` przez `.\.venv\Scripts\python.exe`.
+
+Po aktywacji środowiska sprawdź interpreter i zainstaluj Flask:
+
+```bash
+python -c "import sys; print(sys.executable)"
+python -m pip install Flask
+python -m pip show Flask
+```
+
+Ścieżka interpretera powinna prowadzić do `.venv` w Twoim projekcie. Zapis `python -m pip` wiąże instalację z tym właśnie interpreterem. W edytorze również wybierz interpreter z `.venv`, jeśli zgłasza brak biblioteki Flask.
+
+Środowisko `.venv` zawiera lokalną instalację zależności. Nie jest kodem aplikacji i nie należy umieszczać go w repozytorium Git ani kopiować do obrazu Dockera.
+
+### 3. Uporządkuj pliki aplikacji
+
+Utwórz katalogi `templates` i `static`. Przenieś trzy pliki HTML do `templates`, a `style.css` do `static`. W głównym katalogu utwórz `app.py`:
+
+```text
+personal-website/
+├── .venv/
+├── app.py
+├── templates/
+│   ├── index.html
+│   ├── about.html
+│   └── interests.html
+└── static/
+    └── style.css
+```
+
+Przenoś pliki zamiast zostawiać dodatkowe kopie. `app.py` musi znajdować się obok katalogów `templates` i `static`. Nie nazywaj go `flask.py`, ponieważ taka nazwa może przesłonić import biblioteki.
+
+Pliki HTML pozostają Twoimi dotychczasowymi dokumentami. Flask będzie je przetwarzać jako szablony. Arkusz CSS pozostaje bez zmian.
+
+### 4. Napisz aplikację z jedną trasą
+
+Wpisz kompletną zawartość `app.py`:
+
+```python
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def home() -> str:
+    """Render the home page."""
+    return render_template("index.html")
+```
+
+| Fragment | Rola |
+|---|---|
+| `Flask` | Klasa, z której tworzymy obiekt aplikacji. |
+| `app = Flask(__name__)` | Tworzy aplikację z informacją o module potrzebną do lokalizowania zasobów. |
+| `@app.route("/")` | Przypisuje adres strony głównej do funkcji poniżej. |
+| `home()` | Funkcja wykonywana przy żądaniu tej strony. |
+| `render_template("index.html")` | Renderuje dokument z katalogu `templates`. |
+
+Adnotacja `-> str` opisuje typ wartości zwracanej przez naszą funkcję. Nie jest konfiguracją protokołu HTTP.
+
+### 5. Przygotuj stronę główną do obsługi przez Flask
+
+W `templates/index.html` zmień odwołanie do CSS na:
+
+```html
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+```
+
+Na razie zastąp całe menu wersją z jednym odnośnikiem:
+
+```html
+<nav aria-label="Nawigacja główna">
+    <ul>
+        <li><a href="{{ url_for('home') }}" aria-current="page">Strona główna</a></li>
+    </ul>
+</nav>
+```
+
+**Nie dodawaj jeszcze `url_for('about')` ani `url_for('interests')`.** Takie funkcje nie istnieją w aplikacji z jedną trasą. Dodamy je w kolejnym kroku.
+
+Zapis `{{ ... }}` jest wyrażeniem szablonu Jinja. Serwer oblicza jego wartość przed wysłaniem HTML do przeglądarki. `url_for('home')` generuje adres na podstawie nazwy funkcji, a `url_for('static', filename='style.css')` wskazuje zasób statyczny.
+
+W `head` zachowaj metadane i własny tytuł. Poza CSS i menu nie zmieniaj przygotowanej wcześniej treści.
+
+### 6. Uruchom pierwszą stronę
+
+W terminalu z aktywnym środowiskiem, pozostając w katalogu z `app.py`, wykonaj:
+
+```bash
+python -m flask --app app run --debug
+```
+
+`--app app` wskazuje moduł `app.py`. Polecenie `run` uruchamia serwer deweloperski. Opcja `--debug` pomaga podczas lokalnych ćwiczeń i automatycznie przeładowuje aplikację po zmianach kodu Pythona.
+
+Otwórz **[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**. Terminal pozostaw uruchomiony. Zatrzymanie procesu przez **Ctrl+C** wyłącza serwer.
+
+::: {.callout-important}
+## Otwieraj adres HTTP, nie plik szablonu
+
+Od tego etapu korzystaj z adresu serwera. Podwójne kliknięcie `templates/index.html` nie uruchamia Flaska ani Jinja. Przy adresie `file:///` wyrażenia `{{ ... }}` nie zostaną obliczone.
+
+Tryb debugowania służy do lokalnej pracy laboratoryjnej. Nie udostępniaj go jako publicznego serwera.
+:::
+
+Sprawdź stronę główną i otwórz również [http://127.0.0.1:5000/static/style.css](http://127.0.0.1:5000/static/style.css). Powinien pojawić się kod Twojego arkusza. Adres `/about` na tym etapie zwróci `404`, ponieważ nie dodaliśmy jeszcze takiej trasy.
+
+Jeżeli port jest zajęty, uruchom serwer na innym porcie:
+
+```bash
+python -m flask --app app run --debug --port 5001
+```
+
+Wtedy we wszystkich adresach używaj portu `5001`.
+
+### 7. Dodaj dwie podstrony
+
+Zastąp `app.py` poniższą kompletną wersją:
+
+```python
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def home() -> str:
+    """Render the home page."""
+    return render_template("index.html")
+
+
+@app.route("/about")
+def about() -> str:
+    """Render the about page."""
+    return render_template("about.html")
+
+
+@app.route("/interests")
+def interests() -> str:
+    """Render the interests page."""
+    return render_template("interests.html")
+```
+
+Zapisz plik. Przy uruchomionym trybie debugowania serwer powinien przeładować kod. Jeśli został zatrzymany, uruchom go ponownie tym samym poleceniem.
+
+| Adres w przeglądarce | Funkcja / endpoint | Plik szablonu |
+|---|---|---|
+| `/` | `home` | `templates/index.html` |
+| `/about` | `about` | `templates/about.html` |
+| `/interests` | `interests` | `templates/interests.html` |
+
+Nazwa funkcji jest tutaj domyślną nazwą endpointu. Rozróżniaj trzy rzeczy: adres URL, nazwę funkcji oraz nazwę pliku. W przykładzie `/about` prowadzi do `about()`, a funkcja renderuje `about.html`.
+
+### 8. Podłącz CSS na obu podstronach
+
+W `templates/about.html` i `templates/interests.html` zastąp dotychczasowy element `link` tym samym zapisem co na stronie głównej:
+
+```html
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+```
+
+Nie wpisuj `../static/style.css`. Przeglądarka rozwiązuje względne adresy względem adresu dokumentu, a nie położenia szablonu na dysku serwera. `url_for()` pozwala uniknąć tego pomieszania.
+
+### 9. Zaktualizuj całe menu na trzech stronach
+
+Teraz wszystkie trzy endpointy istnieją. Wstaw właściwe menu do każdego szablonu, zastępując dotychczasowy element `nav`.
+
+**`templates/index.html`:**
+
+```html
+<nav aria-label="Nawigacja główna">
+    <ul>
+        <li><a href="{{ url_for('home') }}" aria-current="page">Strona główna</a></li>
+        <li><a href="{{ url_for('about') }}">O mnie</a></li>
+        <li><a href="{{ url_for('interests') }}">Zainteresowania</a></li>
+    </ul>
+</nav>
+```
+
+**`templates/about.html`:**
+
+```html
+<nav aria-label="Nawigacja główna">
+    <ul>
+        <li><a href="{{ url_for('home') }}">Strona główna</a></li>
+        <li><a href="{{ url_for('about') }}" aria-current="page">O mnie</a></li>
+        <li><a href="{{ url_for('interests') }}">Zainteresowania</a></li>
+    </ul>
+</nav>
+```
+
+**`templates/interests.html`:**
+
+```html
+<nav aria-label="Nawigacja główna">
+    <ul>
+        <li><a href="{{ url_for('home') }}">Strona główna</a></li>
+        <li><a href="{{ url_for('about') }}">O mnie</a></li>
+        <li><a href="{{ url_for('interests') }}" aria-current="page">Zainteresowania</a></li>
+    </ul>
+</nav>
+```
+
+Zachowaj własną treść `main`, metadane, nagłówek i stopkę. Odnośniki zewnętrzne oraz odnośnik `#top`, jeśli go dodałeś, nie wymagają zmiany.
+
+### 10. Prześledź żądanie i odpowiedź
+
+Kliknij „O mnie” i prześledź kolejne etapy:
+
+1. Przeglądarka wysyła żądanie `GET /about` do lokalnego serwera.
+2. Flask dopasowuje trasę i wykonuje `about()`.
+3. Funkcja renderuje `about.html`, obliczając wyrażenia Jinja.
+4. Serwer zwraca wynikowy HTML.
+5. Przeglądarka odczytuje odwołanie do CSS i wysyła osobne żądanie `GET /static/style.css`.
+
+Otwórz źródło strony w przeglądarce i znajdź menu. Powinny być w nim zwykłe adresy `/`, `/about` i `/interests`, bez wyrażeń `{{ url_for(...) }}`. Kod Pythona i źródło szablonu nie są wysyłane jako kod do wykonania w przeglądarce.
+
+### 11. Sprawdź aplikację i obsługę błędów
+
+| Próba | Oczekiwany efekt |
+|---|---|
+| Otwórz `/` | Strona główna, właściwy tytuł i wspólny CSS. |
+| Otwórz `/about` | Własna treść strony „O mnie”. |
+| Otwórz `/interests` | Własna treść zainteresowań. |
+| Przejdź między stronami przez menu | Każdy odnośnik otwiera właściwą trasę. |
+| Otwórz `/static/style.css` | Kod wspólnego arkusza. |
+| Otwórz `/missing` | Odpowiedź `404`, bo takiej trasy nie zdefiniowano. |
+
+Obserwuj terminal: zobaczysz żądania oraz ich statusy. `200` oznacza powodzenie, `404` brak wskazanego zasobu, a `500` błąd po stronie aplikacji.
+
+| Problem | Co sprawdzić? |
+|---|---|
+| `No module named flask` | Interpreter i instalację Flask w aktywnym `.venv`. |
+| `TemplateNotFound` | Pisownię nazwy i obecność pliku w `templates` obok `app.py`. |
+| `BuildError` | Czy argument `url_for()` jest nazwą istniejącego endpointu, np. `about`, a nie `about.html`? |
+| Brak stylów | Obecność `static/style.css` i poprawny element `link` w każdym szablonie. |
+| `404` dla `/about.html` | Użyj `/about`: to adres zdefiniowany w aplikacji. |
+| Brak połączenia | Czy serwer działa i czy używasz portu wskazanego w terminalu? |
+
+W tych przykładach trasy podstron nie kończą się ukośnikiem. Korzystaj z adresów generowanych przez menu, np. `/about`, zamiast samodzielnie dopisywać `/about/`.
+
+### 12. Samodzielny eksperyment z adresem
+
+Zmień tylko dekorator trasy strony „O mnie”:
+
+```python
+@app.route("/about-me")
+def about() -> str:
+    """Render the about page."""
+    return render_template("about.html")
+```
+
+Nie zmieniaj nazwy funkcji ani `url_for('about')` w menu. Po zapisaniu pliku odśwież stronę główną i kliknij „O mnie”. Adres powinien teraz kończyć się na `/about-me`. Stary adres `/about` zwróci `404`.
+
+To pokazuje, po co generujemy adresy na podstawie nazw endpointów. **Po eksperymencie przywróć trasę `/about`**, aby projekt był zgodny z dalszą instrukcją.
+
+### 13. Punkt kontrolny sekcji 4
+
+- [ ] Flask jest zainstalowany w lokalnym środowisku `.venv`.
+- [ ] Potrafisz uruchomić i zatrzymać serwer.
+- [ ] Otwierasz aplikację przez `http://`, a nie `file:///`.
+- [ ] Trasy `/`, `/about` i `/interests` renderują właściwe dokumenty.
+- [ ] Wszystkie trzy strony pobierają wspólny arkusz z `/static/style.css`.
+- [ ] Menu używa nazw endpointów w `url_for()`.
+- [ ] Potrafisz odróżnić trasę, funkcję Pythona i plik szablonu.
+- [ ] Po eksperymencie przywróciłeś adres `/about`.
+
+**Rezultat:** Twoja witryna działa jako aplikacja Flask z trzema stronami. Wspólne elementy HTML nadal się powtarzają; w kolejnym etapie wydzielimy je do szablonu bazowego, zanim przygotujemy kontener.
+
+Dalsza lektura: oficjalne instrukcje [instalacji Flask](https://flask.palletsprojects.com/en/stable/installation/) oraz [Quickstart](https://flask.palletsprojects.com/en/stable/quickstart/) opisują środowisko, routing, szablony i pliki statyczne.
