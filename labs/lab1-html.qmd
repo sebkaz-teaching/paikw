@@ -1,6 +1,6 @@
 ---
-title: "Laboratorium 1: pierwsza strona HTML5"
-subtitle: "Sekcja 1 · Przygotowanie projektu i dokumentu HTML"
+title: "Laboratorium 1: osobista witryna HTML5"
+subtitle: "Sekcje 1–2 · Pierwsza strona, podstrony i nawigacja"
 lang: pl
 toc-title: "Na tej stronie"
 code-copy: true
@@ -232,3 +232,271 @@ To lista kontrolna wykonania zadania, nie punktowany test.
 Jeżeli widzisz sam kod zamiast strony, sprawdź rozszerzenie pliku i upewnij się, że otwierasz go w przeglądarce. Jeżeli widzisz poprzednią treść, zapisz plik i sprawdź, czy edytujesz ten sam dokument, który jest otwarty w przeglądarce.
 
 **Rezultat:** masz stronę główną z własną treścią. Następny etap to uzupełnienie dwóch podstron i sprawdzenie nawigacji między nimi.
+
+
+## Sekcja 2. Dwie podstrony i nawigacja
+
+W pierwszym etapie powstała strona główna. Teraz uzupełnisz `about.html` i `interests.html`, a następnie sprawdzisz przechodzenie między trzema dokumentami. Nadal nie używamy CSS ani Flaska.
+
+Docelowo wszystkie trzy pliki mają znajdować się w jednym katalogu:
+
+```text
+personal-website/
+├── index.html
+├── about.html
+├── interests.html
+└── style.css
+```
+
+### 1. Przygotuj stronę „O mnie”
+
+Otwórz pusty plik `about.html` i wpisz cały poniższy dokument. Nie wklejaj go do `index.html`: każda podstrona jest osobnym plikiem z własnym `head` i `body`.
+
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O mnie — Jan Kowalski</title>
+</head>
+<body>
+    <header>
+        <h1>Jan Kowalski</h1>
+        <p>Moja osobista witryna internetowa</p>
+    </header>
+
+    <nav aria-label="Nawigacja główna">
+        <ul>
+            <li><a href="index.html">Strona główna</a></li>
+            <li><a href="about.html" aria-current="page">O mnie</a></li>
+            <li><a href="interests.html">Zainteresowania</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>O mnie</h2>
+            <p>
+                Jestem studentem i uczę się tworzyć aplikacje internetowe.
+                Lubię poznawać nowe narzędzia i sprawdzać je w praktyce.
+            </p>
+            <p>
+                Moim celem na te zajęcia jest przygotowanie własnej witryny
+                i uruchomienie jej w kontenerze.
+            </p>
+
+            <h3>Czego chcę się nauczyć?</h3>
+            <ul>
+                <li>Budowania stron w HTML5.</li>
+                <li>Opisywania wyglądu za pomocą CSS.</li>
+                <li>Tworzenia aplikacji we Flasku.</li>
+            </ul>
+
+            <p>
+                Materiały do samodzielnej nauki znajdziesz w
+                <a href="https://developer.mozilla.org/pl/docs/Web/HTML">dokumentacji HTML w MDN</a>.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Autor: Jan Kowalski</p>
+    </footer>
+</body>
+</html>
+```
+
+Zapisz plik i otwórz go w przeglądarce. Możesz również przejść do niego przez odnośnik „O mnie” na stronie głównej.
+
+### 2. Przeanalizuj różnice względem strony głównej
+
+Szkielet dokumentu pozostaje taki sam. Zmieniliśmy tytuł karty, treść `main` i oznaczenie bieżącej pozycji menu.
+
+| Fragment | Dlaczego go zmieniamy? |
+|---|---|
+| `title` | Pozwala rozpoznać podstronę na karcie przeglądarki. |
+| `h2` w `main` | Wskazuje temat bieżącej podstrony. |
+| Akapity i lista | Zawierają treść właściwą dla strony „O mnie”. |
+| `aria-current="page"` | Oznacza odnośnik prowadzący do aktualnie otwartej strony. |
+
+Nazwisko w `h1`, menu i stopka pozostają wspólne dla całej witryny. Pod nagłówkiem sekcji `h2` umieściliśmy nagłówek niższego poziomu `h3`, opisujący listę celów.
+
+Lista `ul` grupuje elementy, których kolejność nie jest istotna. Każda pozycja musi znajdować się we własnym elemencie `li`.
+
+::: {.callout-note}
+## Bieżąca strona w menu
+
+`aria-current="page"` przekazuje informację o bieżącej stronie technologiom wspomagającym. Sam atrybut nie zmienia domyślnie wyglądu odnośnika. Wyróżnienie wizualne dodamy w CSS.
+:::
+
+### 3. Przygotuj stronę „Zainteresowania”
+
+Otwórz `interests.html` i wpisz kompletny dokument:
+
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zainteresowania — Jan Kowalski</title>
+</head>
+<body>
+    <header>
+        <h1>Jan Kowalski</h1>
+        <p>Moja osobista witryna internetowa</p>
+    </header>
+
+    <nav aria-label="Nawigacja główna">
+        <ul>
+            <li><a href="index.html">Strona główna</a></li>
+            <li><a href="about.html">O mnie</a></li>
+            <li><a href="interests.html" aria-current="page">Zainteresowania</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Moje zainteresowania</h2>
+            <p>
+                Interesuję się fotografią i turystyką.
+                Podczas wyjazdów fotografuję krajobrazy i architekturę.
+            </p>
+            <p>
+                Chcę przygotować prostą galerię internetową,
+                w której będę prezentować wybrane zdjęcia.
+            </p>
+
+            <h3>Jak przygotowuję zdjęcia do galerii?</h3>
+            <ol>
+                <li>Wybieram zdjęcia z wyjazdu.</li>
+                <li>Przygotowuję krótki opis każdego zdjęcia.</li>
+                <li>Układam fotografie w kolejności prezentacji.</li>
+            </ol>
+
+            <p>
+                Przykłady fotografii możesz obejrzeć w
+                <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Autor: Jan Kowalski</p>
+    </footer>
+</body>
+</html>
+```
+
+Zapisz plik. Tutaj użyliśmy `ol`, czyli listy uporządkowanej: kolejność kroków ma znaczenie. Jej pozycje również zapisujemy jako `li`.
+
+Zastąp fotografię dowolnym własnym tematem. Zachowaj dwa akapity, nagłówek listy, listę i odnośnik zewnętrzny. Jeśli opisujesz zbiór zainteresowań bez określonej kolejności, możesz zamienić `ol` na `ul`, zmieniając oba znaczniki: otwierający i zamykający.
+
+### 4. Ujednolić menu na stronie głównej
+
+W `index.html` znajdź cały element `nav` i zastąp go poniższym fragmentem:
+
+```html
+<nav aria-label="Nawigacja główna">
+    <ul>
+        <li><a href="index.html" aria-current="page">Strona główna</a></li>
+        <li><a href="about.html">O mnie</a></li>
+        <li><a href="interests.html">Zainteresowania</a></li>
+    </ul>
+</nav>
+```
+
+W każdym pliku menu zawiera te same etykiety, adresy i kolejność odnośników. Różni się położeniem `aria-current="page"`:
+
+| Dokument | Odnośnik oznaczony jako bieżący |
+|---|---|
+| `index.html` | Strona główna |
+| `about.html` | O mnie |
+| `interests.html` | Zainteresowania |
+
+W każdym z tych menu oznacz dokładnie jedną pozycję jako bieżącą. Nie przenoś menu z `about.html` do pozostałych plików bez poprawienia tego oznaczenia.
+
+### 5. Rozróżnij rodzaje adresów
+
+Porównaj trzy zapisy:
+
+```html
+<a href="about.html">O mnie</a>
+<a href="https://developer.mozilla.org/pl/docs/Web/HTML">Dokumentacja HTML</a>
+<a href="#top">Początek strony</a>
+```
+
+| Adres | Działanie |
+|---|---|
+| `about.html` | Otwiera dokument względem katalogu bieżącej strony. |
+| `https://developer.mozilla.org/pl/docs/Web/HTML` | Otwiera wskazany adres w internecie. |
+| `#top` | Przechodzi do elementu o `id="top"` w bieżącym dokumencie. |
+
+Aby wypróbować trzeci wariant, dodaj `id="top"` do istniejącego nagłówka strony:
+
+```html
+<header id="top">
+    <h1>Jan Kowalski</h1>
+    <p>Moja osobista witryna internetowa</p>
+</header>
+```
+
+Następnie dodaj odnośnik „Początek strony” do stopki. Na krótkim dokumencie przewinięcie może być niezauważalne, ale w adresie pojawi się fragment `#top`. Wartość `id` musi być unikalna w obrębie dokumentu.
+
+::: {.callout-important}
+## Dlaczego bez ukośnika na początku?
+
+W tym ćwiczeniu zapisuj `href="about.html"`, a nie `href="/about.html"`. Początkowy ukośnik oznacza ścieżkę od korzenia bieżącego adresu. Przy otwieraniu lokalnych plików nie wskazuje katalogu projektu; na serwerze wskazuje korzeń witryny. Może więc prowadzić do innego miejsca niż oczekujesz.
+
+Nie wpisuj też ścieżek do własnego dysku, takich jak `C:\Users\Jan\...`. Menu ma działać również po przeniesieniu całego katalogu na inny komputer.
+:::
+
+Odnośniki z przykładów otwierają dokumenty w tej samej karcie. Przycisk Wstecz w przeglądarce pozwala wrócić do poprzednio odwiedzonej strony.
+
+### 6. Samodzielnie uzupełnij treść
+
+Na obu podstronach ustaw tę samą nazwę autora co na stronie głównej. Napisz własne akapity i zmień pozycje list. Dobierz odnośnik zewnętrzny związany z tematem i nadaj mu etykietę opisującą cel, np. „Dokumentacja HTML w MDN”, zamiast samego „Kliknij tutaj”.
+
+Nie zmieniaj nazw plików, chyba że poprawisz również wszystkie prowadzące do nich odnośniki. Zachowaj wspólną strukturę nagłówka, menu i stopki.
+
+### 7. Sprawdź wszystkie przejścia
+
+Otwórz `index.html`. Sprawdź poniższe przejścia, za każdym razem używając menu:
+
+| Z dokumentu | Przejdź do | Oczekiwany plik |
+|---|---|---|
+| Strona główna | O mnie | `about.html` |
+| O mnie | Zainteresowania | `interests.html` |
+| Zainteresowania | Strona główna | `index.html` |
+| Strona główna | Zainteresowania | `interests.html` |
+| Zainteresowania | O mnie | `about.html` |
+| O mnie | Strona główna | `index.html` |
+
+Po każdym przejściu sprawdź adres, tytuł karty i nagłówek treści. Dzięki temu upewnisz się, że odnośnik otwiera właściwy dokument, a nie tylko stronę o podobnym wyglądzie.
+
+Przetestuj również menu klawiaturą: użyj **Tab**, aby przejść do odnośnika, i **Enter**, aby go otworzyć. Sprawdź, czy widzisz obramowanie wskazujące aktualnie wybrany odnośnik.
+
+### 8. Jeśli nawigacja nie działa
+
+| Objaw | Co sprawdzić? |
+|---|---|
+| Przeglądarka nie znajduje pliku | Czy plik istnieje w tym samym katalogu i ma nazwę podaną w `href`? |
+| Otwiera się pusta strona | Czy zapisano zawartość właściwego pliku? |
+| Menu prowadzi do innej podstrony | Czy etykieta i `href` opisują tę samą stronę? |
+| Lokalnie działa, po przeniesieniu przestaje | Czy nie użyto ścieżki do własnego dysku lub innej wielkości liter? |
+| Tytuł karty jest taki sam wszędzie | Czy zmieniono `title` w każdym dokumencie? |
+
+Zachowuj identyczną wielkość liter w nazwach plików i adresach. `About.html` i `about.html` mogą być różnymi plikami na serwerze, nawet jeśli lokalny system ich nie rozróżnia.
+
+### 9. Punkt kontrolny sekcji 2
+
+- [ ] Wszystkie trzy pliki HTML zawierają kompletne dokumenty.
+- [ ] Każda strona ma własny tytuł karty i treść główną.
+- [ ] Z każdej strony można przejść do obu pozostałych przez menu.
+- [ ] Bieżąca pozycja menu jest oznaczona przez `aria-current="page"`.
+- [ ] Podstrony zawierają własne akapity, listy i odnośniki zewnętrzne.
+- [ ] Rozróżniasz odnośnik do pliku, adres internetowy i fragment dokumentu.
+- [ ] Nawigacja działa również przy użyciu klawiatury.
+
+**Rezultat:** masz kompletną statyczną witrynę z trzema stronami. W kolejnym etapie podłączysz wspólny arkusz CSS. Powtarzający się kod menu pozostaje na razie w trzech plikach; później przeniesiemy go do wspólnego szablonu Flaska.
